@@ -39,5 +39,12 @@ namespace MySchool.UI.Controllers
                   }
             );
         }
+
+        public ActionResult Save(GradeEntities grade)
+        {
+            GradeBL gradebl = new GradeBL();
+            int recordAffected = gradebl.SaveGrade(grade);
+            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
     }
 }

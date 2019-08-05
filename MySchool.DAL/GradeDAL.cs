@@ -14,9 +14,9 @@ namespace MySchool.DAL
     {
         public List<GradeGroupEntities> GetAllGradeGroup()
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MySchoolConnectionString"].ConnectionString);
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("@usp_Get_GradeGroup", con);
+            SqlCommand cmd = new SqlCommand("usp_Get_GradeGroup", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -37,9 +37,9 @@ namespace MySchool.DAL
 
         public int SaveGrade(GradeEntities grade)
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["MySchoolConnectionString"].ConnectionString);
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("ups_Insert_Grade", con);
+            SqlCommand cmd = new SqlCommand("usp_Insert_Grade", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Grade", grade.Grade);
             cmd.Parameters.AddWithValue("@GradeGroupID", grade.GradeGroupID);

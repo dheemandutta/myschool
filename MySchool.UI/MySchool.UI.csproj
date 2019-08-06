@@ -328,7 +328,7 @@
     <Content Include="Scripts\demo\demo-vector-map.js" />
     <Content Include="Scripts\demo\demo-wizard.js" />
     <Content Include="Scripts\demo\demo-xeditable.js" />
-    <Content Include="Scripts\myJavaScripts\grade.js" />
+    <Content Include="Scripts\grade.js" />
     <Content Include="Sql Script\20190804Night.sql" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animo.js\animo.js" />

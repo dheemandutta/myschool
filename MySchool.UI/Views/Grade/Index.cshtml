@@ -3,12 +3,15 @@
 @{
     ViewBag.Title = "Index";
 }
-<script src="~/Scripts/myJavaScripts/grade.js"></script>
+
+<script src="~/Scripts/grade.js"></script>
+
 <h3>
+    
     Grade
 </h3>
 <body>
-    @Html.Hidden("savegrade",@Url.Action("Save","Grade"))
+    @Html.Hidden("savegrade", @Url.Action("Save", "Grade"))
 
     <!-- START panel-->
     <div class="panel panel-default">
@@ -38,7 +41,7 @@
                     <div class="form-group">
                         <div class="col-sm-4 col-sm-offset-2">
                             <button type="submit" class="btn btn-default" id="btnCancel" onclick="ClearAll()">Cancel</button>
-                            <button type="submit" class="btn btn-primary" id="btnSave" onclick="SaveOrUpdate()">Save changes</button>
+                            <button type="submit" class="btn btn-primary" id="btnSave" onclick="SaveOrUpdate();">Save changes</button>
                         </div>
                     </div>
                 </fieldset>
@@ -47,7 +50,7 @@
     </div>
     <!-- END panel-->
 </body>
-@section Styles {
+@*@section Styles {
     @Styles.Render("~/bundles/tagsinputCss")
     @Styles.Render("~/bundles/sliderCtrlCss")
     @Styles.Render("~/bundles/chosenCss")
@@ -67,4 +70,4 @@
     @Scripts.Render("~/bundles/ColorPicker")
     @Scripts.Render("~/bundles/demoForms")
     @Scripts.Render("~/bundles/select2")
-}
+}*@

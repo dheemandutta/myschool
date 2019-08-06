@@ -19,10 +19,11 @@ function validate() {
 function ClearAll() {
     $('#txtGrade').val('');
     $('#drpGrade').val('');
-    //$('#btnSave').val('Save');
+    $('#btnSave').attr('Safafasve');
 }
 
 function SaveOrUpdate() {
+    alert("Hi");
     var postUrl = $('#savegrade').val();
     var res = validate;
     if (res === false) {
@@ -43,7 +44,7 @@ function SaveOrUpdate() {
         success: function (result) {
             if (result > 0) {
                 alert("Data saved successfully");
-               
+                ClearAll();
     //          SetUpGrid();
             }
             else {

@@ -46,6 +46,7 @@ namespace MySchool.DAL
             int recordAffected = cmd.ExecuteNonQuery();
             con.Close();
             return recordAffected;
+            /*iuhiuy*/
         }
     }
 }

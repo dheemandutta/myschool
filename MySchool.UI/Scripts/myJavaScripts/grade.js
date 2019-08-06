@@ -1,5 +1,5 @@
 ﻿//import { fstat } from "fs";
-
+//test
 function validate() {
     var isValid = true;
     if ($('#txtGrade').val().trim() == "") {

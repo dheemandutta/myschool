@@ -331,6 +331,7 @@
     <Content Include="Scripts\grade.js" />
     <Content Include="Sql Script\20190804Night.sql" />
     <Content Include="Sql Script\20190806Night.sql" />
+    <Content Include="Sql Script\20190807.sql" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animo.js\animo.js" />
     <Content Include="Vendor\blueimp-canvas-to-blob\js\canvas-to-blob.js" />

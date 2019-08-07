@@ -83,5 +83,42 @@ namespace MySchool.UI.Controllers
             int recordAffected = gradebl.SaveGrade(gradeentities);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetGradeAllPageWise()
+        {
+            int draw, start, length;
+            int pageIndex = 0;
+
+            if (null != Request.Form.GetValues("draw"))
+            {
+                draw = int.Parse(Request.Form.GetValues("draw").FirstOrDefault().ToString());
+                start = int.Parse(Request.Form.GetValues("start").FirstOrDefault().ToString());
+                length = int.Parse(Request.Form.GetValues("length").FirstOrDefault().ToString());
+            }
+            else
+            {
+                draw = 1;
+                start = 0;
+                length = 50;
+            }
+
+            if (start == 0)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                pageIndex = (start / length) + 1;
+            }
+
+            GradeBL gradeBl = new GradeBL();
+            int totalrecords = 0;
+
+            List<GradeEntities> gradeList = new List<GradeEntities>();
+            gradeList = gradeBl.GetAllGradePageWise(pageIndex, ref totalrecords, length);
+
+            var data = gradeList;
+            return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

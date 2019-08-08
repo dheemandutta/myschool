@@ -27,6 +27,24 @@
             <li class="nav-heading">
                 <span>Main Navigation</span>
             </li>
+
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+            <li class="@Html.isActive(controller: "Year")">
+                <a href="@Url.Action("Index", "Year")" title="Year">
+                    <em class="icon-trophy"></em>
+                    <span>Year</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Test")">
+                <a href="@Url.Action("Index", "Test")" title="Test">
+                    <em class="icon-trophy"></em>
+                    <span>Test</span>
+                </a>
+            </li>
+            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+
             <li class="@Html.isActive(controller: "Dashboard")">
                 <a href="#dashboard" title="Dashboard" data-toggle="collapse">
                     <div class="label label-info pull-right">3</div>
@@ -620,12 +638,7 @@
 
 
 
-            <li class="@Html.isActive(controller: "Test")">
-                <a href="@Url.Action("Index", "Test")" title="Test">
-                    <em class="icon-trophy"></em>
-                    <span>Test</span>
-                </a>
-            </li>
+
 
         </ul>
         <!-- END sidebar nav-->

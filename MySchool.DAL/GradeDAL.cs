@@ -48,5 +48,60 @@ namespace MySchool.DAL
             return recordAffected;
             /*iuhiuy*/
         }
+
+        public List<GradeEntities> GetAllGrade()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("usp_Get_Grade_All", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            List<GradeEntities> gradeList = new List<GradeEntities>();
+            GradeEntities garde = new GradeEntities();
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                gradeList.Add(new GradeEntities
+                {
+                    ID = Convert.ToInt32(dr["ID"].ToString()),
+                    Grade = Convert.ToString(dr["Grade"].ToString()),
+                    GradeGroupID = Convert.ToInt32(dr["GradeGroupID"].ToString()),
+                    GradeGroup = Convert.ToString(dr["GradeGroup"]),
+                });
+            }
+            con.Close();
+            return gradeList;
+        }
+
+        public List<GradeEntities> GetAllGradePageWise(int pageIndex, ref int recordCount, int length)
+        {
+            List<GradeEntities> gradeList = new List<GradeEntities>();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            SqlCommand cmd = new SqlCommand("usp_Get_Grade_All_PageWise", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+            cmd.Parameters.AddWithValue("@PageSize", length);
+            cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4);
+            cmd.Parameters["@RecordCount"].Direction = ParameterDirection.Output;
+            con.Open();
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                gradeList.Add(new GradeEntities
+                {
+                    ID= Convert.ToInt32(dr["ID"].ToString()),
+                    Grade= Convert.ToString(dr["Grade"]),
+                    GradeGroupID= Convert.ToInt32(dr["GradeGroupID"].ToString()),
+                    GradeGroup=Convert.ToString(dr["GradeGroup"]),
+                });
+                recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);
+            }
+            con.Close();
+            return gradeList;
+        }
     }
 }
+    

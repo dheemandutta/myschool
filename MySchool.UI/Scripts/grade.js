@@ -1,5 +1,5 @@
 ﻿//import { fstat } from "fs";
-
+//test
 function validate() {
     var isValid = true;
     if ($('#txtGrade').val().trim() === "") {
@@ -19,10 +19,11 @@ function validate() {
 function ClearAll() {
     $('#txtGrade').val('');
     $('#drpGrade').val('');
-    //$('#btnSave').val('Save');
+    $('#btnSave').attr('Safafasve');
 }
 
 function SaveOrUpdate() {
+    alert("Hi");
     var postUrl = $('#savegrade').val();
     var res = validate;
     if (res === false) {
@@ -41,90 +42,69 @@ function SaveOrUpdate() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-            debugger ("hi");
             if (result > 0) {
                 alert("Data saved successfully");
-               
-    //          SetUpGrid();
+                ClearAll();
+                SetUpGrid();
             }
             else {
                 alert("Data not saved");
             }
         },
         error: function (errormessage) {
-        alert(errormessage.responseText);
+            alert(errormessage.responseText);
         }
     });
 }
 
+function SetUpGrid() {
+    var loadposturl = $('#getgradeallpagewise').val();
+
     
+    $.fn.dataTable.ext.errMode = 'none';
+    if ($.fn.dataTable.isDataTable('#unitTable')) {
+        table = $('#tblGrade').DataTable();
+        table.destroy();
+    }
+    // alert('hh');
+    var mytable = $("#tblGrade").DataTable({
+        "processing": true,
+        "serverSide": true,
+        "filter": false, 
+        "orderMulti": false, 
+        "bLengthChange": false, 
+        "ajax": {
+            "url": loadposturl,
+            "type": "POST",
+            "datatype": "json"
+            //"data": { searchvalue: searchval }
+        },
+        "columns": [
+            {
+                "data": "GradeGroup", "name":"GradeGroup","autowidth":true
+            },
+            {
+                "data": "Grade", "name": "Grade", "autoWidth": true
+            },
+            {
+                "data": "ID", "width": "50px", "render": function (data) {
+                    return '<a href="#" onclick="GetGradeByID(' + data + ')"><i class="glyphicon glyphicon-edit"></i></a>';
+                }
+            },
+            {
+                "data": "ID", "width": "50px", "render": function (d) {
+                    return '<a href="#" onclick="Delete(' + d + ')"><i class="glyphicon glyphicon-trash"></i></a>';
+                }
+            }
 
+        ]
+    });
+}
 
-//function CreateParameter() {
-//    return CreateCommaSeperatedValues().then(function (commaseperatedIDs) {
-//        //debugger;
-//        var OwnerDetails = {
+function GetGradeByID(ID) {
 
-//            ID: $('#ID').val(),
-//            CompanyName: $('#CompanyName').val(),
-//            ProprietorFName1: $('#ProprietorFName1').val(),
-//            ProprietorMName1: $('#ProprietorMName1').val(),
-//            ProprietorLName1: $('#ProprietorLName1').val(),
-//            ProprietorFName2: $('#ProprietorFName2').val(),
-//            ProprietorMName2: $('#ProprietorMName2').val(),
-//            ProprietorLName2: $('#ProprietorLName2').val(),
-//            AddressLine1: $('#AddressLine1').val(),
-//            PinCode: $('#PinCode').val(),
-//            Locality: $('#Locality').val(),
-//            GSTIN: $('#GSTIN').val(),
-//            Phone1: $('#Phone1').val(),
-//            Phone2: $('#Phone2').val(),
+}
 
-//            UserName: $('#UserName').val(),
-//            Password: $('#Password').val(),
-//            ActivationStartDate: $('#ActivationStartDate').val(),
-//            ActivationEndDate: $('#ActivationEndDate').val(),
+function Delete(ID) {
 
-//            DistributorIds: commaseperatedIDs  // $('#ChannelID').val(),
-//        };
-
-//        //Console.log("Package", PackPackChannelDetails);
-//        console.log("Selected Distributor", commaseperatedIDs);
-//        return OwnerDetails;
-//    });
-//}
-
-//function Add() {
-//    var GroupsJsonObject = { WF: [] };
-//    var checkedIds = $('#ddlAdmCru').val();
-//    console.log('In Dept Add------');
-//    // console.log(checkedIds);
-//    GroupsJsonObject.WF.push({ d: checkedIds.join(",") });
-//    var posturl = $('#Owneradd').val();
-//    //var PackageJsonObject = { WF: [] };
-//    //debugger;
-
-//    var res = validate();
-//    if (res === false) {
-//        return false;
-//    }
-
-
-//    CreateParameter().done(function (OwnerDetails) {
-//        $.ajax({
-//            url: posturl,
-//            data: JSON.stringify(OwnerDetails),
-//            type: "POST",
-//            contentType: "application/json;charset=utf-8",
-//            dataType: "json",
-//            success: function (result) {
-//                loadData();
-//                $('#myModal').modal('hide');
-//                clearTextBox();
-//            },
-//            error: function (errormessage) {
-//                alert(errormessage.responseText);
-//            }
-//        });
-//    });
-//}
+}

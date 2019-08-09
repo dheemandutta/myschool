@@ -21,5 +21,17 @@ namespace MySchool.BL
             GradeDAL gradeDl = new GradeDAL();
             return gradeDl.SaveGrade(grade);
         }
+
+        public List<GradeEntities> GetAllGrade()
+        {
+            GradeBL gradeBl = new GradeBL();
+            return gradeBl.GetAllGrade();
+        }
+
+        public List<GradeEntities> GetAllGradePageWise(int pageIndex, ref int recordCount, int length)
+        {
+            GradeDAL gradeDl = new GradeDAL();
+            return gradeDl.GetAllGradePageWise(pageIndex, ref recordCount, length);
+        }
     }
 }

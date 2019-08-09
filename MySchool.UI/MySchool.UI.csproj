@@ -192,6 +192,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\YearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -329,8 +330,16 @@
     <Content Include="Scripts\demo\demo-wizard.js" />
     <Content Include="Scripts\demo\demo-xeditable.js" />
     <Content Include="Scripts\grade.js" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\Year.js" />
     <Content Include="Sql Script\20190804Night.sql" />
     <Content Include="Sql Script\20190806Night.sql" />
+    <Content Include="Sql Script\20190807.sql" />
+    <Content Include="Sql Script\MySchoolScript.sql" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animo.js\animo.js" />
     <Content Include="Vendor\blueimp-canvas-to-blob\js\canvas-to-blob.js" />
@@ -767,6 +776,9 @@
     <Content Include="Views\Shared\_TopNavbarHorizontal.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Grade\Index.cshtml" />
+    <Content Include="Views\Year\Index.cshtml" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MySchool.BL\MySchool.BL.csproj">

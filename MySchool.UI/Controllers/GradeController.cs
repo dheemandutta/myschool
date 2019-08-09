@@ -93,6 +93,14 @@ namespace MySchool.UI.Controllers
             int recordAffected = gradeBl.UpdateGrade(gradeentities);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
-        
+
+        public ActionResult DeleteGrade(int ID)
+        {
+            GradeBL gradeBl = new GradeBL();
+            int recordaffected = gradeBl.DeleteGrade(ID);
+            return Json(recordaffected, JsonRequestBehavior.AllowGet);
+
+        }
+
     }
 }

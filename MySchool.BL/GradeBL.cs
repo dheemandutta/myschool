@@ -27,6 +27,12 @@ namespace MySchool.BL
             GradeDAL gradeDl = new GradeDAL();
             return gradeDl.UpdateGrade(grade);
         }
+
+        public int DeleteGrade(int ID)
+        {
+            GradeDAL gradeDl = new GradeDAL();
+            return gradeDl.DeleteGrade(ID);
+        }
         public List<GradeEntities> GetAllGrade()
         {
             GradeBL gradeBl = new GradeBL();

@@ -91,6 +91,7 @@ function Update() {
     });
 }
 
+
 function loadData() {
     var loadposturl = $('#loadgradeallpagewise').val();
     $.ajax({
@@ -176,5 +177,30 @@ function GetGradeByID(ID) {
 }
 
 function Delete(ID) {
+    var ans = confirm("Do you want to delete the record?");
+    var deleteUrl = $('#deletegrade').val();
+    if (ans) {
+        $.ajax({
+            url: deleteUrl,
+            data: JSON.stringify({ ID: ID }),
+            type: "POST",
+            contentType: "application/json;charser=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                if (result > 0) {
+                    alert("Grade deleted successfully");
 
+                    SetUpGrid();
+                    
+                }
+                else {
+                    alert("Grade can not be deleted as this is already used.");
+                }
+            },
+            error: function () {
+                alert(errormessage.responseText);
+            }
+        });
+    }
 }

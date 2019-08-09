@@ -62,7 +62,18 @@ namespace MySchool.DAL
             con.Close();
             return recordAffected;
         }
-        
+        public int DeleteGrade(int ID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("usp_Delete_Grade_By_GradeID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", ID);
+            int recordAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return recordAffected;
+        }
+
 
         public List<GradeEntities> GetAllGrade()
         {

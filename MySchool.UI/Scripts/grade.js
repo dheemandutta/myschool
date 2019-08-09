@@ -22,8 +22,7 @@ function ClearAll() {
     $('#btnSave').attr('Safafasve');
 }
 
-function SaveOrUpdate() {
-    alert("Hi");
+function Save() {
     var postUrl = $('#savegrade').val();
     var res = validate;
     if (res === false) {
@@ -57,12 +56,64 @@ function SaveOrUpdate() {
     });
 }
 
-function SetUpGrid() {
-    var loadposturl = $('#getgradeallpagewise').val();
+function Update() {
+    var postUrl = $('#updategrade').val();
+    var res = validate;
+    if (res === false) {
+        return false;
+    }
 
-    
+    var grade = {
+        ID: $('#ID').val(),
+        Grade: $('#txtGrade').val(),
+        GradeGroupID: $('#drpGrade').val(),
+    };
+
+    $.ajax({
+        url: postUrl,
+        data: JSON.stringify({ gradeentities: grade }),
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            if (result > 0) {
+                alert("Data updated successfully");
+                ClearAll();
+                SetUpGrid();
+            }
+            else {
+                alert("Data not saved");
+            }
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+
+function loadData() {
+    var loadposturl = $('#loadgradeallpagewise').val();
+    $.ajax({
+        url: loadposturl,
+        type: "GET",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            SetUpGrid();
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+
+function SetUpGrid() {
+    var loadposturl = $('#loadgradeallpagewise').val();
+
     $.fn.dataTable.ext.errMode = 'none';
-    if ($.fn.dataTable.isDataTable('#unitTable')) {
+    if ($.fn.dataTable.isDataTable('#tblGrade')) {
         table = $('#tblGrade').DataTable();
         table.destroy();
     }
@@ -102,9 +153,54 @@ function SetUpGrid() {
 }
 
 function GetGradeByID(ID) {
-
+    var x = $("#getgradebyid").val();
+    $.ajax({
+        url: x,
+        data:
+        {
+            ID: ID
+        },
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        async: "false",
+        dataType: "json",
+        success: function (result) {
+            $('#txtGrade').val(result.Grade);
+            $('#drpGrade').val(result.GradeGroupID);
+            $("#btnSave").attr('value', 'Update');
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+    return false;
 }
 
 function Delete(ID) {
+    var ans = confirm("Do you want to delete the record?");
+    var deleteUrl = $('#deletegrade').val();
+    if (ans) {
+        $.ajax({
+            url: deleteUrl,
+            data: JSON.stringify({ ID: ID }),
+            type: "POST",
+            contentType: "application/json;charser=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                if (result > 0) {
+                    alert("Grade deleted successfully");
 
+                    SetUpGrid();
+                    
+                }
+                else {
+                    alert("Grade can not be deleted as this is already used.");
+                }
+            },
+            error: function () {
+                alert(errormessage.responseText);
+            }
+        });
+    }
 }

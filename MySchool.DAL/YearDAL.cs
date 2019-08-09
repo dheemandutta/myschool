@@ -11,7 +11,7 @@ using MySchool.Entities;
 namespace MySchool.DAL
 {
     public class YearDAL
-    {
+    { 
         public int SaveYear(YearEntities yearEntities)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);

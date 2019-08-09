@@ -42,8 +42,10 @@ function Add() {
         YearDesc: $('#YearDesc').val()
     };
 
+    console.log(years);
+
     $.post(postUrl,
-        { years },
+        { yearEntities : years },
         function (data, status, jqXHR) {
             //alert('Data Saved Successfully');
             loadData();

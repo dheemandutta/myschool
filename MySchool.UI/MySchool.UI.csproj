@@ -191,7 +191,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\YearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -336,6 +335,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\Year.js" />
+    <Content Include="Sql Script\09.08.2019_MySchool_Script.sql" />
     <Content Include="Sql Script\20190804Night.sql" />
     <Content Include="Sql Script\20190806Night.sql" />
     <Content Include="Sql Script\20190807.sql" />
@@ -774,7 +774,6 @@
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="Views\Shared\_TopNavbar.cshtml" />
     <Content Include="Views\Shared\_TopNavbarHorizontal.cshtml" />
-    <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Grade\Index.cshtml" />
     <Content Include="Views\Year\Index.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />

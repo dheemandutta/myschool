@@ -37,7 +37,7 @@ function Add() {
     //alert($('#drpCompanyMaster').val());
 
     var years = {
-        ID: $('#ID').val(),
+        ID: $('#YearID').val(),
         Year: $('#Year').val(),
         YearDesc: $('#YearDesc').val()
     };
@@ -45,17 +45,17 @@ function Add() {
     $.post(postUrl,
         { years },
         function (data, status, jqXHR) {
-            alert('Data Saved Successfully');
-            SetUpGrid();
+            //alert('Data Saved Successfully');
+            loadData();
             clearTextBox();
 
-            $.getJSON(postUrl1, function (data) {
-                //$.each(data, function (key, entry) {
-                //    //alert(entry.CompanyName);
-                //    console.log(entry);
-                //    $('#drpCompanyMaster').append($('<option></option>').attr('value', entry.CompanyId).text(entry.CompanyName));
-                //});
-            });
+            //$.getJSON(postUrl1, function (data) {
+            //    $.each(data, function (key, entry) {
+            //        //alert(entry.CompanyName);
+            //        console.log(entry);
+            //        //$('#drpCompanyMaster').append($('<option></option>').attr('value', entry.CompanyId).text(entry.CompanyName));
+            //    });
+            //});
 
         }).done(function () {
             swal("Good job!", "Data Saved Successfully", "success");
@@ -103,9 +103,6 @@ function SetUpGrid() {
             "datatype": "json"
         },
         "columns": [
-            {
-                "data": "ID", "name": "ID", "autoWidth": true
-            },
             {
                 "data": "Year", "name": "Year", "autoWidth": true
             },

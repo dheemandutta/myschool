@@ -23,7 +23,6 @@ function ClearAll() {
 }
 
 function SaveOrUpdate() {
-    alert("Hi");
     var postUrl = $('#savegrade').val();
     var res = validate;
     if (res === false) {
@@ -98,6 +97,23 @@ function SetUpGrid() {
             }
 
         ]
+    });
+}
+
+function loadData() {
+    var loadurl = $('#getgradeallpagewise').val();
+
+    $ajax({
+        url: loadurl,
+        type: "GET",
+        contentType: "application/json;charset=utf-8",
+        datatype: "json",
+        success: function (result) {
+            SetUpGrid();
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
     });
 }
 

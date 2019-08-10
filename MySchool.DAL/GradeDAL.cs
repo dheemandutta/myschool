@@ -15,6 +15,7 @@ namespace MySchool.DAL
         public List<GradeGroupEntities> GetAllGradeGroup()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+
             con.Open();
             SqlCommand cmd = new SqlCommand("usp_Get_GradeGroup", con);
             cmd.CommandType = CommandType.StoredProcedure;

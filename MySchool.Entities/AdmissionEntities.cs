@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MySchool.Entities
-{
+{ 
     public class AdmissionEntities
     {
         public int ID { get; set; }

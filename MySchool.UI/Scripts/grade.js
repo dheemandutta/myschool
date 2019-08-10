@@ -1,5 +1,4 @@
-﻿//import { fstat } from "fs";
-//test
+﻿
 function validate() {
     var isValid = true;
     if ($('#txtGrade').val().trim() === "") {
@@ -28,7 +27,6 @@ function validate() {
 //        //alert('invalid');
 //        return false;
 //    }
-
 //}
 
 function ClearAll() {
@@ -37,7 +35,7 @@ function ClearAll() {
     $('#btnSave').attr('Safafasve');
 }
 
-function Save() {
+function SaveOrUpdate() {
     var postUrl = $('#savegrade').val();
     var res = validate;
     if (res === false) {
@@ -45,8 +43,9 @@ function Save() {
     }
 
     var grade = {
+        ID: $('#GridID').val(),
         Grade: $('#txtGrade').val(),
-        GradeGroupID: $('#drpGrade').val(),
+        GradeGroupID: $('#drpGrade').val()
     };
 
     $.ajax({
@@ -71,39 +70,60 @@ function Save() {
     });
 }
 
-function Update() {
-    var postUrl = $('#updategrade').val();
-    var res = validate;
+function Add() {
+    var postUrl = $('#savegrade').val();
+
+    var res = validate();
     if (res === false) {
         return false;
     }
 
     var grade = {
-        ID: $('#ID').val(),
+        ID: $('#GridID').val(),
         Grade: $('#txtGrade').val(),
-        GradeGroupID: $('#drpGrade').val(),
+        GradeGroupID: $('#drpGrade').val()
     };
 
-    $.ajax({
-        url: postUrl,
-        data: JSON.stringify({ gradeentities: grade }),
-        type: "POST",
-        contentType: "application/json;charset=utf-8",
-        dataType: "json",
-        success: function (result) {
-            if (result > 0) {
-                alert("Data updated successfully");
-                ClearAll();
-                SetUpGrid();
+    $.post(postUrl,
+        { gradeentities: grade },
+        function (data, status, jqXHR) {
+       
+            SetUpGrid();
+            ClearAll();
+        }).done(function () {
+            swal("Good job!", "Data Saved Successfully", "success");
+        }).fail(function () {
+            swal("Sorry!", "Data Not Saved", "error");
+        });
+}
+
+function Delete(ID) {
+    var ans = confirm("Do you want to delete the record?");
+    var deleteUrl = $('#deletegrade').val();
+    if (ans) {
+        $.ajax({
+            url: deleteUrl,
+            data: JSON.stringify({ ID: ID }),
+            type: "POST",
+            contentType: "application/json;charser=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                debugger;
+                if (result > 0) {
+                    alert("Grade deleted successfully");
+
+                    SetUpGrid();
+
+                }
+                else {
+                    alert("Grade can not be deleted as this is already used.");
+                }
+            },
+            error: function () {
+                alert(errormessage.responseText);
             }
-            else {
-                alert("Data not saved");
-            }
-        },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
-        }
-    });
+        });
+    }
 }
 
 
@@ -191,31 +211,3 @@ function GetGradeByID(ID) {
     return false;
 }
 
-function Delete(ID) {
-    var ans = confirm("Do you want to delete the record?");
-    var deleteUrl = $('#deletegrade').val();
-    if (ans) {
-        $.ajax({
-            url: deleteUrl,
-            data: JSON.stringify({ ID: ID }),
-            type: "POST",
-            contentType: "application/json;charser=UTF-8",
-            dataType: "json",
-            success: function (result) {
-                debugger;
-                if (result > 0) {
-                    alert("Grade deleted successfully");
-
-                    SetUpGrid();
-                    
-                }
-                else {
-                    alert("Grade can not be deleted as this is already used.");
-                }
-            },
-            error: function () {
-                alert(errormessage.responseText);
-            }
-        });
-    }
-}

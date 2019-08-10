@@ -414,7 +414,67 @@
                                                 </form>
                                             </div>
                                             <div id="StudentResultDetails" role="tabpanel" class="tab-pane">
-                                                Student Result Details
+                                                <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
+
+                                                    <div class="panel-heading">
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="StudentID_StudentResultDetails"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Marks:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="Marks_StudentResultDetails"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Exam Subject:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="ExamSubjectID_StudentResultDetails"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Teacher Comments:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="TeacherComments_StudentResultDetails"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Guardian Comments:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="GuardianComments_StudentResultDetails"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Status:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="Status_StudentResultDetails"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input type="hidden" id="StudentResultDetailsID" />
+                                                    </div>
+
+                                                    <div class="panel-footer text-center">
+                                                        <button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentResultDetails();">Save</button>
+                                                        <button type="button" class="btn btn-primary" id="btnClear" onclick="clearStudentResultDetails();">Clear</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

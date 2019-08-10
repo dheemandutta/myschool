@@ -41,66 +41,85 @@
                                     <div class="ibox-content">
                                         <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
+                                            @*<div class="form-group" style="margin-right: -600px;">
+                                                    <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
+                                                    <div class="col-sm-10" style="width: 30%;">
+                                                        <input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">
+                                                    </div>
+                                                </div>*@
                                             <div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
+                                                <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">
-                                                </div>
-                                            </div>
-                                            <div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">First Name:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="FirstName" placeholder="First Name" required="required">
-                                                </div>
-                                            </div>
-                                            <div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Last Name:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="LastName" placeholder="Last Name" required="required">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="StudentName" placeholder="Student Name" required="required">
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">D.O.B:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="DOB" placeholder="D.O.B" required="required">
+                                                    @*<input type="text" class="form-control" style="width: 90%;" id="DOB" placeholder="D.O.B" required="required">*@
+                                                    <input type="text" data-masked="" id="DOB" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="D.O.B" class="form-control" />
+                                                    <span class="help-block">'99/99/9999'</span>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="GradeID" placeholder="Grade" required="required">
+                                                @*<div class="col-sm-10" style="width: 30%;">
+                                                        <input type="text" class="form-control" style="width: 90%;" id="GradeID" placeholder="Grade" required="required">
+                                                    </div>*@
+                                                <div class="col-sm-10" style="width: 30%;" required="required">
+                                                    <select name="account" class="form-control m-b" style="width:90%">
+                                                        <option value="">Select</option>
+                                                        <option value="A++">A++</option>
+                                                        <option value="A+">A+</option>
+                                                        <option value="A">A</option>
+                                                        <option value="B+">B+</option>
+                                                        <option value="B">B</option>
+                                                        <option value="C">C</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Start Date:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="StartDate" placeholder="Start Date" required="required">
+                                                    @*<input type="text" class="form-control" style="width: 90%;" id="StartDate" placeholder="Start Date" required="required">*@
+                                                    <input type="text" data-masked="" id="StartDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Start Date" class="form-control" />
+                                                    <span class="help-block">'99/99/9999'</span>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">End Date:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="EndDate" placeholder="End Date" required="required">
+                                                    @*<input type="text" class="form-control" style="width: 90%;" id="EndDate" placeholder="End Date" required="required">*@
+                                                    <input type="text" data-masked="" id="EndDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="End Date" class="form-control" />
+                                                    <span class="help-block">'99/99/9999'</span>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Leaving Reason:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="LeavingReason" placeholder="Leaving Reason">
+                                                    <textarea type="text" class="form-control valid" id="LeavingReason" placeholder="Leaving Reason" style="width: 90% !important;" required="required"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Gender:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="Gender" placeholder="Gender" required="required">
-                                                </div>
+                                                @*<div class="col-sm-10" style="width: 30%;">
+                                                        <input type="text" class="form-control" style="width: 90%;" id="Gender" placeholder="Gender" required="required">
+                                                    </div>*@
+                                            <div class="col-sm-10" style="width: 30%;" required="required">
+                                                <select name="account" class="form-control m-b" style="width:90%">
+                                                    <option value="">Select</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Photo:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
                                                     <input type="text" class="form-control" style="width: 90%;" id="Photo" placeholder="Photo">
                                                 </div>
-                                            </div>                              
+                                            </div>
 
                                             <div class="form-group">
                                                 <input type="hidden" id="StudentParticularsID" />
@@ -164,6 +183,12 @@
     @Styles.Render("~/bundles/datatablesCss")
     @Styles.Render("~/bundles/SweetAlertCss")
 
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
 
 }
 @section Scripts {
@@ -173,6 +198,18 @@
 
     @Scripts.Render("~/bundles/parsley")
     @Scripts.Render("~/bundles/SweetAlert")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
 
 }
 

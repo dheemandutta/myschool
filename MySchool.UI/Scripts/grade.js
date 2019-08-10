@@ -16,6 +16,21 @@ function validate() {
     return isValid;
 }
 
+
+//function validate() {
+
+//    var myform = $('#MyForm');
+//    if (myform.parsley().validate()) {
+//        //alert('valid');
+//        return true;
+//    }
+//    else {
+//        //alert('invalid');
+//        return false;
+//    }
+
+//}
+
 function ClearAll() {
     $('#txtGrade').val('');
     $('#drpGrade').val('');

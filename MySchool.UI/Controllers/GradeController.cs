@@ -74,10 +74,10 @@ namespace MySchool.UI.Controllers
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Save(GradeEntities gradeentities)
+        public ActionResult SaveOrUpdate(GradeEntities gradeentities)
         {
             GradeBL gradebl = new GradeBL();
-            int recordAffected = gradebl.SaveGrade(gradeentities);
+            int recordAffected = gradebl.SaveOrUpdateGrade(gradeentities);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
 
@@ -85,13 +85,6 @@ namespace MySchool.UI.Controllers
         {
             GradeBL gradebl = new GradeBL();
             return Json(gradebl.GetGradeByID(ID), JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Update(GradeEntities gradeentities)
-        {
-            GradeBL gradeBl = new GradeBL();
-            int recordAffected = gradeBl.UpdateGrade(gradeentities);
-            return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult DeleteGrade(int ID)

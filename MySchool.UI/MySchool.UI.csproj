@@ -233,6 +233,7 @@
     <Content Include="Content\Images\bootstrap-colorpicker\hue-horizontal.png" />
     <Content Include="Content\Images\bootstrap-colorpicker\hue.png" />
     <Content Include="Content\Images\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Content\Images\deep.jpg" />
     <Content Include="Content\Images\dummy.png" />
     <Content Include="Content\Images\jquery-ui\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
     <Content Include="Content\Images\jquery-ui\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />

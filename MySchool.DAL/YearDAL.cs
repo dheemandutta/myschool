@@ -11,7 +11,7 @@ using MySchool.Entities;
 namespace MySchool.DAL
 {
     public class YearDAL
-    {
+    { 
         public int SaveYear(YearEntities yearEntities)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -19,23 +19,25 @@ namespace MySchool.DAL
             SqlCommand cmd = new SqlCommand("stpSaveYear", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            if (!String.IsNullOrEmpty(yearEntities.Year))
-            {
-                cmd.Parameters.AddWithValue("@Year", yearEntities.Year);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@Year", DBNull.Value);
-            }
+            //if (!String.IsNullOrEmpty(yearEntities.Year))
+            //{
+            //    cmd.Parameters.AddWithValue("@Year", yearEntities.Year);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@Year", DBNull.Value);
+            //}
+            cmd.Parameters.AddWithValue("@Year", yearEntities.Year);
 
-            if (!String.IsNullOrEmpty(yearEntities.YearDesc))
-            {
-                cmd.Parameters.AddWithValue("@YearDesc", yearEntities.YearDesc);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@YearDesc", DBNull.Value);
-            }
+            //if (!String.IsNullOrEmpty(yearEntities.YearDesc))
+            //{
+            //    cmd.Parameters.AddWithValue("@YearDesc", yearEntities.YearDesc);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@YearDesc", DBNull.Value);
+            //}
+            cmd.Parameters.AddWithValue("@YearDesc", yearEntities.YearDesc);
 
             if (yearEntities.ID > 0)
             {
@@ -64,18 +66,17 @@ namespace MySchool.DAL
                     cmd.Parameters.AddWithValue("@PageSize", length);
                     cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4);
                     cmd.Parameters["@RecordCount"].Direction = ParameterDirection.Output;
-                    // cmd.Parameters.AddWithValue("@VesselID", VesselID);
                     con.Open();
 
                     DataSet ds = new DataSet();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
-                    //prodPOList = Common.CommonDAL.ConvertDataTable<ProductPOCO>(ds.Tables[0]);
+
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {
                         yearEntities.Add(new YearEntities
                         {
-                            ID = Convert.ToInt32(dr["ID"]),
+                            //ID = Convert.ToInt32(dr["ID"]),
                             Year = Convert.ToString(dr["Year"]),
                             YearDesc = Convert.ToString(dr["YearDesc"])
                         });

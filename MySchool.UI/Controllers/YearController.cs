@@ -19,6 +19,7 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
+
         public JsonResult Add(YearEntities yearEntities)
         {
             YearBL yearBL = new YearBL();

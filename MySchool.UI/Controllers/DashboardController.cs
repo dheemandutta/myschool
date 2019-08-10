@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MySchool.UI.Controllers
+namespace Accountant.UI.Controllers
 {
     public class DashboardController : Controller
     {

@@ -36,10 +36,24 @@
                 </a>
             </li>
 
-            <li class="@Html.isActive(controller: "Test")">
-                <a href="@Url.Action("Index", "Test")" title="Test">
+            <li class="@Html.isActive(controller: "Grade")">
+                <a href="@Url.Action("Index", "Grade")" title="Grade">
                     <em class="icon-trophy"></em>
-                    <span>Test</span>
+                    <span>Grade</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Student")">
+                <a href="@Url.Action("Index", "Student")" title="Student">
+                    <em class="icon-trophy"></em>
+                    <span>Student</span>
+                </a>
+            </li>
+            
+            <li class="@Html.isActive(controller: "StudentParticulars")">
+                <a href="@Url.Action("Index", "StudentParticulars")" title="StudentParticulars">
+                    <em class="icon-trophy"></em>
+                    <span>Student Particulars</span>
                 </a>
             </li>
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@

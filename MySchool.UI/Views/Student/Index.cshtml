@@ -1,0 +1,205 @@
+﻿@*@model MySchool.Entities.StudentEntities*@
+@{
+    ViewBag.Title = "Student";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/Student.js"></script>
+
+<body style="background-image: url(../background/depart.jpg);
+    background-size: cover;">
+
+
+    @Html.Hidden("saveStudentParticulars", @Url.Action("AddStudentParticulars", "Student"))
+    @Html.Hidden("loaddataStudentParticulars", @Url.Action("LoadDataStudentParticulars", "Student"))
+
+    <div class="row" style="height:1050px;">
+        <div class="col-md-7 bac" style=" width: 100%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text m-t-lg">
+                        <h2>
+                            Student
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8" style="width: 100%;">
+
+            <div style="height:900px;">
+                @*/////////////////////// class="table-responsive"///////////////////////////*@
+                <div class="card">
+
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- START panel-->
+                            <div id="panelDemo14" class="panel panel-default">
+                                <div class="panel-body">
+                                    <div role="tabpanel">
+                                        <!-- Nav tabs-->
+                                        <ul role="tablist" class="nav nav-tabs">
+                                            <li role="presentation" class="active">
+                                                <a href="#StudentParticulars" aria-controls="StudentParticulars" role="tab" data-toggle="tab">Student Particulars</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#StudentAttendent" aria-controls="StudentAttendent" role="tab" data-toggle="tab">Student Attendent</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#StudentContact" aria-controls="StudentContact" role="tab" data-toggle="tab">Student Contact</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#StudentHealth" aria-controls="StudentHealth" role="tab" data-toggle="tab">Student Health</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#StudentResult" aria-controls="StudentResult" role="tab" data-toggle="tab">Student Result</a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a href="#StudentResultDetails" aria-controls="StudentResultDetails" role="tab" data-toggle="tab">Student Result Details</a>
+                                            </li>
+                                        </ul>
+                                        <!-- Tab panes-->
+                                        <div class="tab-content">
+                                            <div id="StudentParticulars" role="tabpanel" class="tab-pane active">
+                                                <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
+
+                                                    <div class="panel-heading">
+                                                    </div>
+
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="StudentID"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">First Name:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="FirstName" placeholder="First Name" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="FirstName"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Last Name:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="LastName" placeholder="Last Name" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="LastName"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">D.O.B:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="DOB" placeholder="D.O.B" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="DOB"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="GradeID" placeholder="Grade" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="GradeID"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Start Date:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StartDate" placeholder="Start Date" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="StartDate"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">End Date:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="EndDate" placeholder="End Date" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="EndDate"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Leaving Reason:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="LeavingReason" placeholder="Leaving Reason">*@
+                                                            <label class="form-control" style="width: 90%;" id="LeavingReason"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Gender:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="Gender" placeholder="Gender" required="required">*@
+                                                            <label class="form-control" style="width: 90%;" id="Gender"></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Photo:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            @*<input type="text" class="form-control" style="width: 90%;" id="Photo" placeholder="Photo">*@
+                                                            <label class="form-control" style="width: 90%;" id="Photo"></label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input type="hidden" id="StudentParticularsID" />
+                                                    </div>
+
+                                                    <div class="panel-footer text-center">
+                                                        <button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentParticulars();">Save</button>
+                                                        <button type="button" class="btn btn-primary" id="btnClear" onclick="clearTextBoxStudentParticulars();">Clear</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div id="StudentAttendent" role="tabpanel" class="tab-pane">
+                                                Student Attendent
+                                            </div>
+                                            <div id="StudentContact" role="tabpanel" class="tab-pane">
+                                                Student Contact
+                                            </div>
+                                            <div id="StudentHealth" role="tabpanel" class="tab-pane">
+                                                Student Health
+                                            </div>
+                                            <div id="StudentResult" role="tabpanel" class="tab-pane">
+                                                Student Result
+                                            </div>
+                                            <div id="StudentResultDetails" role="tabpanel" class="tab-pane">
+                                                Student Result Details
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END panel-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*/////////////////////// class="table-responsive"///////////////////////////*@
+
+    </div>
+</body>
+
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
+
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
+    @Scripts.Render("~/bundles/demoPanels")
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        SetUpGridStudentParticulars();
+
+    });
+</script>
+

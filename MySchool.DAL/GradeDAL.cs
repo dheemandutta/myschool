@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using MySchool.Entities;
-
+ 
 namespace MySchool.DAL
 {
     public class GradeDAL
@@ -49,6 +49,32 @@ namespace MySchool.DAL
             return recordAffected;
             /*iuhiuy*/
         }
+
+        public int UpdateGrade(GradeEntities grade)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("usp_Update_Grade_By_GradeID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", grade.ID);
+            cmd.Parameters.AddWithValue("@Grade", grade.Grade);
+            cmd.Parameters.AddWithValue("@GradeGroupID", grade.GradeGroupID);
+            int recordAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return recordAffected;
+        }
+        public int DeleteGrade(int ID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("usp_Delete_Grade_By_GradeID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@id", ID);
+            int recordAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return recordAffected;
+        }
+
 
         public List<GradeEntities> GetAllGrade()
         {
@@ -102,6 +128,24 @@ namespace MySchool.DAL
             }
             con.Close();
             return gradeList;
+        }
+
+        public GradeEntities GetGradeByID(int GradeID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("usp_Get_Grade_By_GradeID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", GradeID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            GradeEntities grade = new GradeEntities();
+            grade.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
+            grade.Grade = Convert.ToString(ds.Tables[0].Rows[0]["Grade"]);
+            grade.GradeGroupID = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeGroupID"].ToString());
+            return grade;
         }
     }
 }

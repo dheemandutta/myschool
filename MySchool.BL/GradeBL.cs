@@ -22,6 +22,17 @@ namespace MySchool.BL
             return gradeDl.SaveGrade(grade);
         }
 
+        public int UpdateGrade(GradeEntities grade)
+        {
+            GradeDAL gradeDl = new GradeDAL();
+            return gradeDl.UpdateGrade(grade);
+        }
+
+        public int DeleteGrade(int ID)
+        {
+            GradeDAL gradeDl = new GradeDAL();
+            return gradeDl.DeleteGrade(ID);
+        }
         public List<GradeEntities> GetAllGrade()
         {
             GradeBL gradeBl = new GradeBL();
@@ -32,6 +43,12 @@ namespace MySchool.BL
         {
             GradeDAL gradeDl = new GradeDAL();
             return gradeDl.GetAllGradePageWise(pageIndex, ref recordCount, length);
+        }
+
+        public GradeEntities GetGradeByID(int GradeID)
+        {
+            GradeDAL gradeDl = new GradeDAL();
+            return gradeDl.GetGradeByID(GradeID);
         }
     }
 }

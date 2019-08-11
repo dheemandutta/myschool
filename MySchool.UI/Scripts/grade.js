@@ -1,33 +1,33 @@
 ﻿
-function validate() {
-    var isValid = true;
-    if ($('#txtGrade').val().trim() === "") {
-        isValid = false;
-    }
-    //if ($('#drpGrade').val().trim() == "" || $('#drpGrade').val("Select")) {
-
-    else if ($('#drpGrade').val().trim() === "") {
-        isValid = false;
-    }
-    else {
-        isValid = true;
-    }
-    return isValid;
-}
-
-
 //function validate() {
+//    var isValid = true;
+//    if ($('#txtGrade').val().trim() === "") {
+//        isValid = false;
+//    }
+//    //if ($('#drpGrade').val().trim() == "" || $('#drpGrade').val("Select")) {
 
-//    var myform = $('#MyForm');
-//    if (myform.parsley().validate()) {
-//        //alert('valid');
-//        return true;
+//    else if ($('#drpGrade').val().trim() === "") {
+//        isValid = false;
 //    }
 //    else {
-//        //alert('invalid');
-//        return false;
+//        isValid = true;
 //    }
+//    return isValid;
 //}
+
+
+function validate() {
+
+    var myform = $('#MyForm');
+    if (myform.parsley().validate()) {
+        //alert('valid');
+        return true;
+    }
+    else {
+        //alert('invalid');
+        return false;
+    }
+}
 
 function ClearAll() {
     $('#txtGrade').val('');
@@ -47,6 +47,8 @@ function SaveOrUpdate() {
         Grade: $('#txtGrade').val(),
         GradeGroupID: $('#drpGrade').val()
     };
+
+    console.log(grade);
 
     $.ajax({
         url: postUrl,
@@ -202,7 +204,8 @@ function GetGradeByID(ID) {
         success: function (result) {
             $('#txtGrade').val(result.Grade);
             $('#drpGrade').val(result.GradeGroupID);
-            $("#btnSave").attr('value', 'Update');
+            $('#GridID').val(result.ID);
+            //$("#btnSave").attr('value', 'Update');
         },
         error: function (errormessage) {
             alert(errormessage.responseText);

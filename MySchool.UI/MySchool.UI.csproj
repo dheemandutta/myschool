@@ -193,6 +193,8 @@
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentParticularsController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\TeacherParticularController.cs" />
     <Compile Include="Controllers\YearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -735,11 +737,13 @@
     <Content Include="Views\Dashboard\Dashboard_v1.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\StudentParticulars\Index.cshtml" />
+    <Content Include="Views\TeacherParticular\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Vendor\blueimp-file-upload\js\cors\" />
     <Folder Include="Vendor\blueimp-file-upload\js\vendor\" />
+    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

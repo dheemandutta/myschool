@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\StudentAttendentController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentParticularsController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -339,12 +340,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\StudentAttendent.js" />
     <Content Include="Scripts\Year.js" />
     <Content Include="Sql Script\09.08.2019_MySchool_Script.sql" />
     <Content Include="Sql Script\20190804Night.sql" />
     <Content Include="Sql Script\20190806Night.sql" />
     <Content Include="Sql Script\20190807.sql" />
     <Content Include="Sql Script\MySchoolScript.sql" />
+    <Content Include="Sql Script\Prasenjit_Patch_12_08_2019.sql" />
     <Content Include="Sql Script\Snehasish_Patch_09_08_2019.sql" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animo.js\animo.js" />
@@ -738,6 +741,7 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\StudentParticulars\Index.cshtml" />
     <Content Include="Views\TeacherParticular\Index.cshtml" />
+    <Content Include="Views\StudentAttendent\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

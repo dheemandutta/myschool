@@ -12,6 +12,8 @@ namespace MySchool.Entities
 
         public int StudentID { get; set; }
 
+        public string StudentName { get; set; }
+
         public DateTime Date { get; set; }
 
         public string IsPresents { get; set; }

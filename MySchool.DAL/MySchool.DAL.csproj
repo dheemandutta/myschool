@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="GradeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentAttendentDAL.cs" />
     <Compile Include="YearDAL.cs" />
   </ItemGroup>
   <ItemGroup>

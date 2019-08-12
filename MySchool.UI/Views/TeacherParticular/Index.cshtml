@@ -3,12 +3,17 @@
     ViewBag.Title = "Index";
 }
 
+
+@{
+    ViewBag.Title = "TeacherParticulars";
+}
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/Student.js"></script>
 
-<body style="background-image: url(../background/depart.jpg);
-    background-size: cover;">
 
+@*<body style="background-image: url(../background/depart.jpg);
+    background-size: cover;">*@
+<body>
+    <h2>Teacher Details</h2>
 
     @Html.Hidden("saveStudentParticulars", @Url.Action("AddStudentParticulars", "Student"))
     @Html.Hidden("loaddataStudentParticulars", @Url.Action("LoadDataStudentParticulars", "Student"))
@@ -19,7 +24,7 @@
                 <div class="col-lg-12">
                     <div class="text m-t-lg">
                         <h2>
-                            Student
+                            Teacher
                         </h2>
                     </div>
                 </div>
@@ -31,9 +36,6 @@
             <div style="height:900px;">
                 @*/////////////////////// class="table-responsive"///////////////////////////*@
                 <div class="card">
-
-
-
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- START panel-->
@@ -43,117 +45,175 @@
                                         <!-- Nav tabs-->
                                         <ul role="tablist" class="nav nav-tabs">
                                             <li role="presentation" class="active">
-                                                <a href="#StudentParticulars" aria-controls="StudentParticulars" role="tab" data-toggle="tab">Student Particulars</a>
+                                                <a href="#TeacherBasicDetails" aria-controls="TeacherBasicDetails" role="tab" data-toggle="tab">Basic Details</a>
                                             </li>
                                             <li role="presentation">
-                                                <a href="#StudentAttendent" aria-controls="StudentAttendent" role="tab" data-toggle="tab">Student Attendent</a>
+                                                <a href="#TeacherQualification" aria-controls="Qualification" role="tab" data-toggle="tab">Qualification</a>
                                             </li>
                                             <li role="presentation">
-                                                <a href="#StudentContact" aria-controls="StudentContact" role="tab" data-toggle="tab">Student Contact</a>
+                                                <a href="#TeacherSubject" aria-controls="StudentContact" role="tab" data-toggle="tab">Subject</a>
                                             </li>
-                                            <li role="presentation">
-                                                <a href="#StudentHealth" aria-controls="StudentHealth" role="tab" data-toggle="tab">Student Health</a>
-                                            </li>
-                                            <li role="presentation">
-                                                <a href="#StudentResult" aria-controls="StudentResult" role="tab" data-toggle="tab">Student Result</a>
-                                            </li>
-                                            <li role="presentation">
-                                                <a href="#StudentResultDetails" aria-controls="StudentResultDetails" role="tab" data-toggle="tab">Student Result Details</a>
-                                            </li>
+
                                         </ul>
+
                                         <!-- Tab panes-->
                                         <div class="tab-content">
-                                            <div id="StudentParticulars" role="tabpanel" class="tab-pane active">
+                                            <div id="TeacherBasicDetails" role="tabpanel" class="tab-pane active">
                                                 <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
                                                     <div class="panel-heading">
                                                     </div>
 
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">First Name<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="StudentID_StudentParticulars"></label>
+                                                            <input type="text" class="form-control" style="width: 90%;" id="txtFirstName" placeholder="First Name" required="required">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">First Name:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Last Name<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="FirstName" placeholder="First Name" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="FirstName_StudentParticulars"></label>
+
+                                                            <input type="text" class="form-control" style="width: 90%;" id="txtLastName" placeholder="Last Name" required="required">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Last Name:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="LastName" placeholder="Last Name" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="LastName_StudentParticulars"></label>
+                                                        <label class="col-sm-2 control-label">Gender<font color=""></font> </label>
+
+                                                        <div class="col-sm-10" style="width: 30%;" required="required">
+                                                            <select name="gender" id="drpGender" class="form-control m-b" style="width:90%">
+                                                                <option value="">Select</option>
+                                                                <option value="Male">Male</option>
+                                                                <option value="Female">Female</option>
+                                                                <option value="Others">Others</option>
+                                                            </select>
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">D.O.B:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Address<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="DOB" placeholder="D.O.B" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="DOB_StudentParticulars"></label>
+                                                            <textarea type="text" class="form-control valid" id="txtAddress" placeholder="Address" style="width: 90% !important;" required="required"></textarea>
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Phone Number 1<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="GradeID" placeholder="Grade" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="GradeID_StudentParticulars"></label>
+                                                            <input type="text" class="form-control" style="width: 90%;" id="txtPhoneNumberOne" placeholder="Phone Number 1" required="required">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Start Date:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Phone Number 2<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StartDate" placeholder="Start Date" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="StartDate_StudentParticulars"></label>
+                                                            <input type="text" class="form-control" style="width: 90%;" id="txtPhoneNumberTwo" placeholder="Phone Number 2" required="required">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">End Date:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Start Date<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="EndDate" placeholder="End Date" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="EndDate_StudentParticulars"></label>
+                                                            <input type="text" data-masked="" id="dtStartDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Start Date" class="form-control" />
+                                                            <span class="help-block">'99/99/9999'</span>
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Leaving Reason:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">End Date<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="LeavingReason" placeholder="Leaving Reason">*@
-                                                            <label class="form-control" style="width: 90%;" id="LeavingReason_StudentParticulars"></label>
+                                                            <input type="text" data-masked="" id="dtEndDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="End Date" class="form-control" />
+                                                            <span class="help-block">'99/99/9999'</span>
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Gender:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Comments<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="Gender" placeholder="Gender" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="Gender_StudentParticulars"></label>
+                                                            <input type="text" class="form-control" style="width: 90%;" id="txtComments" placeholder="Comments" required="required">
                                                         </div>
                                                     </div>
+
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Photo:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Designation<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="Photo" placeholder="Photo">*@
-                                                            @*<label class="form-control" style="width: 90%;" id="Photo_StudentParticulars"></label>*@
-                                                            <div class="col-lg-4 text-center mb-lg">
-                                                                <img src="~/Content/Images/deep.jpg" alt="Image" id="Photo_StudentParticulars" class="img-responsive img-thumbnail" />
+                                                            <input type="text" class="form-control" style="width: 90%;" id="txtDesignation" placeholder="Designation" required="required">
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <input type="hidden" id="ID" />
+                                                    </div>
+
+
+                                                </form>
+                                            </div>
+
+                                            <div id="TeacherQualification" role="tabpanel" class="tab-pane">
+                                                <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
+
+                                                    <div class="panel-heading">
+
+
+                                                        <div class="form-group" style="margin-right: -600px;">
+                                                            <label class="col-sm-2 control-label">Qualification<font color=""></font> </label>
+                                                            <div class="col-sm-10" style="width: 30%;">
+                                                                <input type="text" class="form-control" style="width: 90%;" id="txtQualification" placeholder="Qualification" required="required">
                                                             </div>
                                                         </div>
-                                                    </div>
 
-                                                    <div class="form-group">
-                                                        <input type="hidden" id="StudentParticularsID" />
-                                                    </div>
+                                                        <div class="form-group" style="margin-right: -600px;">
+                                                            <label class="col-sm-2 control-label">Qualification Status<font color=""></font> </label>
+                                                            <div class="col-sm-10" style="width: 30%;" required="required">
+                                                                <select name="QualificationStatus" id="drpQualificationStatus" class="form-control m-b" style="width:90%">
+                                                                    <option value="">Select</option>
+                                                                    <option value="Male">Passed</option>
+                                                                    <option value="Female">Pursuing</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group" style="margin-right: -600px;">
+                                                            <label class="col-sm-2 control-label">Completion Date:<font color=""></font> </label>
+                                                            <div class="col-sm-10" style="width: 30%;">
 
-                                                    <div class="panel-footer text-center">
-                                                        <button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentParticulars();">Save</button>
-                                                        <button type="button" class="btn btn-primary" id="btnClear" onclick="clearStudentParticulars();">Clear</button>
+                                                                <input type="text" data-masked="" id="txtCompletionDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Completion Date" class="form-control" />
+                                                                <span class="help-block">'99/99/9999'</span>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="form-group" style="margin-left: 500px;">
+                                                            <input type="button" class="btn btn-primary" value="Add Row" id="btnAdd">
+                                                            <button type="button" class="btn btn-primary" id="btnRemove">Delete Row</button>
+                                                        </div>
                                                     </div>
                                                 </form>
+                                                <div class="table-responsive">
+                                                    <table id="tblQualification" class="table table-striped table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Select</th>
+                                                                <th>Qualification</th>
+                                                                <th>Status</th>
+                                                                <th>Completion Date</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody></tbody>
+                                                    </table>
+
+                                                </div>
                                             </div>
-                                            <div id="StudentAttendent" role="tabpanel" class="tab-pane">
+
+
+
+
+
+
+                                            <div id="TeacherSubject" role="tabpanel" class="tab-pane">
                                                 <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
                                                     <div class="panel-heading">
@@ -162,45 +222,7 @@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="StudentID_StudentAttendent"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Date:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="FirstName" placeholder="First Name" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="Date_StudentAttendent"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Is Presents:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="LastName" placeholder="Last Name" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="IsPresents_StudentAttendent"></label>
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="form-group">
-                                                        <input type="hidden" id="StudentAttendentID" />
-                                                    </div>
-
-                                                    <div class="panel-footer text-center">
-                                                        <button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentAttendent();">Save</button>
-                                                        <button type="button" class="btn btn-primary" id="btnClear" onclick="clearStudentAttendent();">Clear</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div id="StudentContact" role="tabpanel" class="tab-pane">
-                                                <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
-
-                                                    <div class="panel-heading">
-                                                    </div>
-
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="StudentID_StudentContact"></label>
                                                         </div>
                                                     </div>
@@ -210,28 +232,28 @@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Father Name:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="FatherName_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Father Address:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="FatherAddress_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Father Phone No.1:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="FPh1_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Father Phone No.2:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="FPh2_StudentContact"></label>
                                                         </div>
                                                     </div>
@@ -241,28 +263,28 @@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Mother Name:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="MotherName_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Mother Address:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="MotherAddress_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Mother Phone No.1:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="MPh1_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Mother Phone No.2:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="MPh2_StudentContact"></label>
                                                         </div>
                                                     </div>
@@ -272,28 +294,28 @@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Grand Father Name:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="GName_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Grand Father Address:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="GAddress_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Grand Father Phone No.1:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="GPh1_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Grand Father Phone No.2:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
+
                                                             <label class="form-control" style="width: 90%;" id="GPh2_StudentContact"></label>
                                                         </div>
                                                     </div>
@@ -304,118 +326,22 @@
                                                     </div>
 
                                                     <div class="panel-footer text-center">
-                                                        <button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentContact();">Save</button>
-                                                        <button type="button" class="btn btn-primary" id="btnClear" onclick="clearStudentContact();">Clear</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div id="StudentHealth" role="tabpanel" class="tab-pane">
-                                                <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
-                                                    <div class="panel-heading">
-                                                    </div>
+                                                        <button class="btn btn-primary" onclick="location.href='@Url.Action("Index", "StudentContact")';return false;">Add</button>
 
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="StudentID_StudentHealth"></label>
-                                                        </div>
                                                     </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Blood Group:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="BloodGroup_StudentHealth"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Known Madical Problems:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="KnownMadicalProblems_StudentHealth"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Doctor Name:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="DoctorName_StudentHealth"></label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <input type="hidden" id="StudentHealthID" />
-                                                    </div>
-
                                                     <div class="panel-footer text-center">
-                                                        <button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentHealth();">Save</button>
-                                                        <button type="button" class="btn btn-primary" id="btnClear" onclick="clearStudentHealth();">Clear</button>
+
+                                                        <button class="btn btn-primary" onclick="location.href='@Url.Action("Index", "StudentParticulars")';return false;">Add</button>
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div id="StudentResult" role="tabpanel" class="tab-pane">
-                                                <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
-                                                    <div class="panel-heading">
-                                                    </div>
-
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="StudentID_StudentResult"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Student Result Details:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="StudentResultDetailsID_StudentResult"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Total Marks:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="TotalMarks_StudentResult"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Marks Obtained:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="MarksObtained_StudentResult"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">No Of Subjects Fails:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="NoOfSubjectsFails_StudentResult"></label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Result Status:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="ResultStatus_StudentResult"></label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <input type="hidden" id="StudentResultID" />
-                                                    </div>
-
-                                                    <div class="panel-footer text-center">
-                                                        <button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentResult();">Save</button>
-                                                        <button type="button" class="btn btn-primary" id="btnClear" onclick="clearStudentResult();">Clear</button>
-                                                    </div>
-                                                </form>
+                                            <div class="form-group">
+                                                <input type="hidden" id="StudentAttendentID" />
                                             </div>
-                                            <div id="StudentResultDetails" role="tabpanel" class="tab-pane">
-                                                Student Result Details
-                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -431,114 +357,99 @@
     </div>
 </body>
 
-@*@section Styles {
+@section Styles {
     @Styles.Render("~/bundles/datatablesCss")
     @Styles.Render("~/bundles/SweetAlertCss")
 
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
+
 }
+
 @section Scripts {
 
     @Scripts.Render("~/bundles/datatables")
     @Scripts.Render("~/bundles/demoDatatable")
+
     @Scripts.Render("~/bundles/parsley")
     @Scripts.Render("~/bundles/SweetAlert")
-    @Scripts.Render("~/bundles/demoPanels")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
+
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
 
 }
 
+@*<script type="text/javascript">
+        $(document).ready(function () {
+
+            SetUpGridStudentParticulars();
+
+        });
+    </script>*@
+
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#btnAdd").click(function () {
+            var qualification = $("#txtQualification").val();
+            var completionStatus = $("#drpQualificationStatus").val();
+            var completionDate = $("#txtCompletionDate").val();
+            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + qualification + "</td><td>" + completionStatus + "</td><td>" + completionDate + "</td></tr>";
+            $("#tblQualification tbody").append(markup);
 
-        SetUpGridStudentParticulars();
+            $("#txtQualification").val('');
+            $("#drpQualificationStatus").val('');
+            $("#txtCompletionDate").val('');
+        });
 
+        // Find and remove selected table rows
+        $("#btnRemove").click(function () {
+            $("#tblQualification tbody").find('input[name="record"]').each(function () {
+                if ($(this).is(":checked")) {
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
     });
 </script>
 
-
-<h3>Teacher Particulars</h3>
-    <div class="panel panel-default">
-            <div class="panel-body" >
-            <form id="example-form" action="#">
-                <div>
-                    <h4>
-                        Basic Details
-                    </h4>
-                    <fieldset >
-                        <label>First Name</label>
-                        <input id="txtFirstName" type="text" class="form-control required" style="width:30%">
-                        <label>Last Name</label>
-                        <input id="txtLastName" type="text" class="form-control required" style="width:30%" >
-                        <label>Photo</label>
-
-                        <input type="file" name="files[]" multiple="">
-                        <label>Gender</label>
-                        <select name="gender" id="drpGender" class="form-control m-b" style="width:20%">
-                            <option>Male</option>
-                            <option>Female</option>
-                            <option>Transgender</option>
-                        </select>
-
-                        <label>Address</label>
-
-                            <textarea id="inputContact6" row="4" class="form-control">Some nice Street, 1234</textarea>
-
-                        <input id="txtAddress" type="text" class="form-control required">
-                        <label>Phone</label>
-                        <input id="txtPhone" type="text" class="form-control required">
-                        <label>Mobile</label>
-                        <input id="txtMobile" type="text" class="form-control required">
-                        <label>Start Date</label>
-                        <input id="txtStartDate" type="text" class="form-control required">
-                        <label>End Date</label>
-                        <input id="txtEndDate" type="text" class="form-control required">
-                        <label>Comments</label>
-                        <input id="txtComments" type="text" class="form-control required">
-                        <label>Designation</label>
-                        <input id="txtDesignation" type="text" class="form-control required">
-                        <p>(*) Mandatory</p>
-                    </fieldset>
-                    <h4>
-                        Qualification
-                        <br>
-                        <small>Nam egestas, leo eu gravida tincidunt</small>
-                    </h4>
-                    <fieldset>
-                        <label for="name">First name *</label>
-                        <input id="name" name="name" type="text" class="form-control required">
-                        <label for="surname">Last name *</label>
-                        <input id="surname" name="surname" type="text" class="form-control required">
-                        <label for="email">Email *</label>
-                        <input id="email" name="email" type="text" class="form-control required email">
-                        <label for="address">Address</label>
-                        <input id="address" name="address" type="text" class="form-control">
-                        <p>(*) Mandatory</p>
-                    </fieldset>
-                    <h4>
-                        Subjects
-                        <br>
-                        <small>Nam egestas, leo eu gravida tincidunt</small>
-                    </h4>
-                    <fieldset>
-                        <p class="lead text-center">Almost there!</p>
-                    </fieldset>
-
-                </div>
-            </form>
-        </div>
-    </div>
-
-
-@*@section Styles {
-        @Styles.Render("~/bundles/fileUploadCss")
+<style type="text/css">
+    form {
+        margin: 20px 0;
     }
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryValidate")
-        @Scripts.Render("~/bundles/jquerySteps")
-        @Scripts.Render("~/bundles/demoWizard")
-        @Scripts.Render("~/bundles/fileUpload")
-        @Scripts.Render("~/bundles/demoUpload")
-    }*@
+        form input, button {
+            padding: 5px;
+        }
 
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
 
+    table, th, td {
+        border: 1px solid #cdcdcd;
+    }
 
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+        }
+</style>

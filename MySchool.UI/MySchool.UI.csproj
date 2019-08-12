@@ -349,6 +349,7 @@
     <Content Include="Sql Script\MySchoolScript.sql" />
     <Content Include="Sql Script\Prasenjit_Patch_12_08_2019.sql" />
     <Content Include="Sql Script\Snehasish_Patch_09_08_2019.sql" />
+    <Content Include="Sql Script\Snehasish_Patch_12_08_2019.sql" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animo.js\animo.js" />
     <Content Include="Vendor\blueimp-canvas-to-blob\js\canvas-to-blob.js" />

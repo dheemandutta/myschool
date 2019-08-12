@@ -66,3 +66,27 @@ begin
 			update TeacherQual set TeacherID=@TeacherID, QualName=@QualName, QualCertPath=@QualCertPath,QualStatus=QualStatus, QualCompletionDate=@QualCompletionDate where id=@ID
 		end
 end
+
+
+Go
+CREATE PROCEDURE usp_Insert_Subject
+@ID int,
+@SubjectName varchar(500),
+@GradeID int
+as
+begin
+	Declare @countSubject int
+	set @countSubject=0
+	if @countSubject is null
+		begin
+			select @countSubject=COUNT(*) from Subject where RTRIM(ltrim(upper(@SubjectName)))=RTRIM(ltrim(upper(SubjectName))) and RTRIM(LTRIM(@GradeID))=rtrim(ltrim(GradeID))
+		end
+		if @countSubject>0 
+			begin
+				insert into Subject(SubjectName,GradeID) values (@SubjectName, @GradeID)
+			end
+		else
+			begin
+				update Subject set SubjectName=@SubjectName, GradeID=@GradeID where id=@ID
+			end
+end

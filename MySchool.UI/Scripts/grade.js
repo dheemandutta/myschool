@@ -179,12 +179,12 @@ function SetUpGrid() {
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="GetGradeByID(' + data + ')"><i class="glyphicon glyphicon-edit"></i></a>';
+                    return '<a href="#" onclick="GetGradeByID(' + data + ')"><i class="fa fa-edit"></i></a>';
                 }
             },
             {
                 "data": "ID", "width": "50px", "render": function (d) {
-                    return '<a href="#" onclick="Delete(' + d + ')"><i class="glyphicon glyphicon-trash"></i></a>';
+                    return '<a href="#" onclick="Delete(' + d + ')"><i class="fa fa-trash"></i></a>';
                 }
             }
 

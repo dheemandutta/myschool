@@ -58,12 +58,15 @@ function SaveOrUpdate() {
         dataType: "json",
         success: function (result) {
             if (result > 0) {
-                alert("Data saved successfully");
                 ClearAll();
                 SetUpGrid();
+                swal("Good job!", "Data Saved Successfully", "success");
+                
             }
             else {
-                alert("Data not saved");
+                ClearAll();
+                SetUpGrid();
+                swal("Sorry!", "Data Not Saved", "error");
             }
         },
         error: function (errormessage) {

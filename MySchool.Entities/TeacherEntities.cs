@@ -29,5 +29,7 @@ namespace MySchool.Entities
         public DateTime EndDate { get; set; }
 
         public string Comments { get; set; }
+
+        public string  Designation{ get; set; }
     }
 }

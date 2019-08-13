@@ -16,7 +16,7 @@ namespace MySchool.DAL
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("@usp_Insert_Update_Subject", cmd);
+            SqlCommand cmd = new SqlCommand("@usp_Insert_Update_Subject", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
             if (String.IsNullOrEmpty(subject.ID.ToString()) || (subject.ID == 0))

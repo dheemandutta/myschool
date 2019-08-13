@@ -101,21 +101,21 @@
 
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Phone Number 1<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
+                                                        <div class="col-sm-10" style="width: 12%;">
                                                             <input type="text" class="form-control" style="width: 90%;" id="txtPhoneNumberOne" placeholder="Phone Number 1" required="required">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Phone Number 2<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
+                                                        <div class="col-sm-10" style="width: 12%;">
                                                             <input type="text" class="form-control" style="width: 90%;" id="txtPhoneNumberTwo" placeholder="Phone Number 2" required="required">
                                                         </div>
                                                     </div>
 
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Start Date<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
+                                                        <div class="col-sm-10" style="width: 10%;">
                                                             <input type="text" data-masked="" id="dtStartDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Start Date" class="form-control" />
                                                             <span class="help-block">'99/99/9999'</span>
                                                         </div>
@@ -123,7 +123,7 @@
 
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">End Date<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
+                                                        <div class="col-sm-10" style="width: 10%;">
                                                             <input type="text" data-masked="" id="dtEndDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="End Date" class="form-control" />
                                                             <span class="help-block">'99/99/9999'</span>
                                                         </div>
@@ -178,7 +178,7 @@
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Completion Date:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
+                                                        <div class="col-sm-10" style="width: 10%;">
 
                                                             <input type="text" data-masked="" id="txtCompletionDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Completion Date" class="form-control" />
                                                             <span class="help-block">'99/99/9999'</span>
@@ -244,8 +244,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-left: 500px;">
-                                                        <input type="button" class="btn btn-primary" value="Add Row" id="btnAddSubject">
-                                                        <button type="button" class="btn btn-primary" id="btnRemoveSubject">Delete Row</button>
+                                                        
+                                                        <button type="button" class="btn btn-primary" id="btnAddSubject">Add</button>
+                                                        <button type="button" class="btn btn-primary" id="btnRemoveSubject">Delete</button>
                                                     </div>
 
                                                     <div class="form-group">
@@ -368,22 +369,23 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnAddSubject").click(function () {
-            //var subject = $("#drpSubject option:selected").val();
-            var subject = $("#drpSubject").find("option:selected").text();
-            if ($('#chkPrimarySubject').is(":checked")) {
-                var primarySubject = 'Yes';
-            }
-            else {
-                var primarySubject = 'No';
-            }
 
-            //var primarySubject = $("#chkPrimarySubject").val();
-            //alert (primarySubject )
-            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + subject + "</td><td>" + primarySubject + "</td></tr>";
-            $("#tblSubject tbody").append(markup);
+          
+                var subject = $("#drpSubject").find("option:selected").text();
+                if ($('#chkPrimarySubject').is(":checked")) {
+                    var primarySubject = 'Yes';
+                }
+                else {
+                    var primarySubject = 'No';
+                }
 
-            $("#drpSubject").val('');
-            $("#chkPrimarySubject").val('');
+
+                var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + subject + "</td><td>" + primarySubject + "</td></tr>";
+                $("#tblSubject tbody").append(markup);
+
+                $("#drpSubject").val('');
+                $("#chkPrimarySubject").val('');
+          
         });
 
         // Find and remove selected table rows

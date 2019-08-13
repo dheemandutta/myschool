@@ -62,7 +62,7 @@
                                                 <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
                                                     @*<div class="panel-heading">
-                                                    </div>*@
+                                                        </div>*@
 
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">First Name<font color=""></font> </label>
@@ -159,41 +159,41 @@
                                                     @*<div class="panel-heading">*@
 
 
-                                                        <div class="form-group" style="margin-right: -600px;">
-                                                            <label class="col-sm-2 control-label">Qualification<font color=""></font> </label>
-                                                            <div class="col-sm-10" style="width: 30%;">
-                                                                <input type="text" class="form-control" style="width: 90%;" id="txtQualification" placeholder="Qualification" required="required">
-                                                            </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Qualification<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            <input type="text" class="form-control" style="width: 90%;" id="txtQualification" placeholder="Qualification" required="required">
                                                         </div>
+                                                    </div>
 
-                                                        <div class="form-group" style="margin-right: -600px;">
-                                                            <label class="col-sm-2 control-label">Qualification Status<font color=""></font> </label>
-                                                            <div class="col-sm-10" style="width: 30%;" required="required">
-                                                                <select name="QualificationStatus" id="drpQualificationStatus" class="form-control m-b" style="width:90%">
-                                                                    <option value="">Select</option>
-                                                                    <option value="Male">Passed</option>
-                                                                    <option value="Female">Pursuing</option>
-                                                                </select>
-                                                            </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Qualification Status<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;" required="required">
+                                                            <select name="QualificationStatus" id="drpQualificationStatus" class="form-control m-b" style="width:90%">
+                                                                <option value="">Select</option>
+                                                                <option value="Male">Passed</option>
+                                                                <option value="Female">Pursuing</option>
+                                                            </select>
                                                         </div>
-                                                        <div class="form-group" style="margin-right: -600px;">
-                                                            <label class="col-sm-2 control-label">Completion Date:<font color=""></font> </label>
-                                                            <div class="col-sm-10" style="width: 30%;">
+                                                    </div>
+                                                    <div class="form-group" style="margin-right: -600px;">
+                                                        <label class="col-sm-2 control-label">Completion Date:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
 
-                                                                <input type="text" data-masked="" id="txtCompletionDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Completion Date" class="form-control" />
-                                                                <span class="help-block">'99/99/9999'</span>
-                                                            </div>
+                                                            <input type="text" data-masked="" id="txtCompletionDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Completion Date" class="form-control" />
+                                                            <span class="help-block">'99/99/9999'</span>
                                                         </div>
+                                                    </div>
 
 
-                                                        <div class="form-group" style="margin-left: 500px;">
-                                                            <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
-                                                            <button type="button" class="btn btn-primary" id="btnRemove">Delete</button>
-                                                        </div>
+                                                    <div class="form-group" style="margin-left: 500px;">
+                                                        <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
+                                                        <button type="button" class="btn btn-primary" id="btnRemove">Delete</button>
+                                                    </div>
                                                     @*</div>*@
                                                 </form>
                                                 <div class="table-responsive">
-                                                    <table name ="table"  id="tblQualification" class="table table-striped table-hover">
+                                                    <table name="table" id="tblQualification" class="table table-striped table-hover">
                                                         <thead>
                                                             <tr>
                                                                 <th>Select</th>
@@ -213,7 +213,7 @@
                                                 <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
                                                     @*<div class="panel-heading">
-            </div>*@
+                                                        </div>*@
 
 
                                                     <div class="form-group" style="margin-right: -600px;">
@@ -255,13 +255,13 @@
 
                                                 </form>
                                                 <div class="table-responsive">
-                                                    <table name ="table" id="tblSubject" class="table table-striped table-hover">
+                                                    <table name="table" id="tblSubject" class="table table-striped table-hover">
                                                         <thead>
                                                             <tr>
                                                                 <th>Select</th>
                                                                 <th>Subject</th>
                                                                 <th>Is primary</th>
-                                                                
+
                                                             </tr>
                                                         </thead>
                                                         <tbody></tbody>
@@ -337,6 +337,8 @@
         });
     </script>*@
 
+@* ---------------------- Clone for Qualification ---------------------- *@
+
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnAdd").click(function () {
@@ -362,6 +364,7 @@
     });
 </script>
 
+@* ---------------------- Clone for Subject ---------------------- *@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnAddSubject").click(function () {
@@ -375,7 +378,7 @@
             }
 
             //var primarySubject = $("#chkPrimarySubject").val();
-            alert (primarySubject )
+            //alert (primarySubject )
             var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + subject + "</td><td>" + primarySubject + "</td></tr>";
             $("#tblSubject tbody").append(markup);
 
@@ -394,6 +397,7 @@
     });
 </script>
 
+@* ---------------------- Qulaification and Subject table ---------------------- *@
 <style type="text/css">
     form {
         margin: 20px 0;

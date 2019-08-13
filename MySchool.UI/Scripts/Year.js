@@ -104,27 +104,19 @@ function SetUpGrid() {
             "type": "POST",
             "datatype": "json"
         },
-        "columns": [
+        "columns":[
             {
                 "data": "Year", "name": "Year", "autoWidth": true
             },
             {
                 "data": "YearDesc", "name": "YearDesc", "autoWidth": true
             }
-            //,
-            //{
-            //    "data": "CompanyId", "width": "50px", "render": function (data) {
-            //        return '<a href="#" onclick="GetCompanyDetailsById(' + data + ')"><i class="glyphicon glyphicon-edit"></i></a>';
-            //    }
-            //},
-            //{
-            //    "data": "CompanyId", "width": "50px", "render": function (d) {
-            //        return '<a href="#" onclick="Delete(' + d + ')"><i class="glyphicon glyphicon-trash"></i></a>';
+
+            //,{
+            //    "data": "PresentOrAbsent ", "width": "50px", "render": function (data) {
+            //        return '<div class="checkbox c-checkbox"> <label> <input type="checkbox"/> <span class="fa fa-check"> </span> </label> </div>';
             //    }
             //}
-
         ]
-        //"rowId": "ID"//,
-        // "dom": "Bfrtip"
     });
 }

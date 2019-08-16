@@ -15,6 +15,7 @@ namespace MySchool.DAL
         public List<GradeGroupEntities> GetAllGradeGroup()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+
             con.Open();
             SqlCommand cmd = new SqlCommand("usp_Get_GradeGroup", con);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -35,18 +36,25 @@ namespace MySchool.DAL
             return gradeGroupList;
         }
 
-        public int SaveGrade(GradeEntities grade)
+        public int SaveOrUpdateGrade(GradeEntities grade)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("usp_Insert_Grade", con);
+            SqlCommand cmd = new SqlCommand("usp_Insert_Update_Grade", con);
             cmd.CommandType = CommandType.StoredProcedure;
+            if (String.IsNullOrEmpty(grade.ID.ToString()) || (grade.ID== 0))
+            {
+                cmd.Parameters.AddWithValue("@ID", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ID", grade.ID);
+            }
             cmd.Parameters.AddWithValue("@Grade", grade.Grade);
             cmd.Parameters.AddWithValue("@GradeGroupID", grade.GradeGroupID);
             int recordAffected = cmd.ExecuteNonQuery();
             con.Close();
             return recordAffected;
-            /*iuhiuy*/
         }
 
         public int UpdateGrade(GradeEntities grade)

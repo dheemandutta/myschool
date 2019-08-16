@@ -16,10 +16,10 @@ namespace MySchool.BL
             return gradeGroup.GetAllGradeGroup();
         }
 
-        public int SaveGrade(GradeEntities grade)
+        public int SaveOrUpdateGrade(GradeEntities grade)
         {
             GradeDAL gradeDl = new GradeDAL();
-            return gradeDl.SaveGrade(grade);
+            return gradeDl.SaveOrUpdateGrade(grade);
         }
 
         public int UpdateGrade(GradeEntities grade)

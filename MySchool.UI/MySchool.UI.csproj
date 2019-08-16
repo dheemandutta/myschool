@@ -191,6 +191,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\StudentAttendentController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\StudentParticularsController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
+    <Compile Include="Controllers\TeacherParticularController.cs" />
     <Compile Include="Controllers\YearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,6 +236,7 @@
     <Content Include="Content\Images\bootstrap-colorpicker\hue-horizontal.png" />
     <Content Include="Content\Images\bootstrap-colorpicker\hue.png" />
     <Content Include="Content\Images\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Content\Images\deep.jpg" />
     <Content Include="Content\Images\dummy.png" />
     <Content Include="Content\Images\jquery-ui\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
     <Content Include="Content\Images\jquery-ui\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
@@ -334,13 +340,17 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\StudentAttendent.js" />
     <Content Include="Scripts\Year.js" />
     <Content Include="Sql Script\09.08.2019_MySchool_Script.sql" />
     <Content Include="Sql Script\20190804Night.sql" />
     <Content Include="Sql Script\20190806Night.sql" />
     <Content Include="Sql Script\20190807.sql" />
     <Content Include="Sql Script\MySchoolScript.sql" />
+    <Content Include="Sql Script\Prasenjit_Patch_12_08_2019.sql" />
     <Content Include="Sql Script\Snehasish_Patch_09_08_2019.sql" />
+    <Content Include="Sql Script\Snehasish_Patch_12_08_2019.sql" />
+    <Content Include="Sql Script\Snehasish_Patch_13_08_2019.sql" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animo.js\animo.js" />
     <Content Include="Vendor\blueimp-canvas-to-blob\js\canvas-to-blob.js" />
@@ -730,11 +740,16 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Dashboard\Dashboard_v1.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\StudentParticulars\Index.cshtml" />
+    <Content Include="Views\TeacherParticular\Index.cshtml" />
+    <Content Include="Views\StudentAttendent\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Vendor\blueimp-file-upload\js\cors\" />
     <Folder Include="Vendor\blueimp-file-upload\js\vendor\" />
+    <Folder Include="Views\Teacher\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

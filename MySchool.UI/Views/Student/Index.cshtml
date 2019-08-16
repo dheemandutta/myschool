@@ -19,7 +19,7 @@
                 <div class="col-lg-12">
                     <div class="text m-t-lg">
                         <h2>
-                            Student
+                            {{Name OF Student}}
                         </h2>
                     </div>
                 </div>
@@ -43,23 +43,23 @@
                                         <!-- Nav tabs-->
                                         <ul role="tablist" class="nav nav-tabs">
                                             <li role="presentation" class="active">
-                                                <a href="#StudentParticulars" aria-controls="StudentParticulars" role="tab" data-toggle="tab">Student Particulars</a>
+                                                <a href="#StudentParticulars" aria-controls="StudentParticulars" role="tab" data-toggle="tab"> Particulars</a>
                                             </li>
                                             <li role="presentation">
-                                                <a href="#StudentAttendent" aria-controls="StudentAttendent" role="tab" data-toggle="tab">Student Attendent</a>
+                                                <a href="#StudentAttendent" aria-controls="StudentAttendent" role="tab" data-toggle="tab"> Attendance</a>
                                             </li>
                                             <li role="presentation">
-                                                <a href="#StudentContact" aria-controls="StudentContact" role="tab" data-toggle="tab">Student Contact</a>
+                                                <a href="#StudentContact" aria-controls="StudentContact" role="tab" data-toggle="tab"> Contact</a>
                                             </li>
                                             <li role="presentation">
-                                                <a href="#StudentHealth" aria-controls="StudentHealth" role="tab" data-toggle="tab">Student Health</a>
+                                                <a href="#StudentHealth" aria-controls="StudentHealth" role="tab" data-toggle="tab"> Health</a>
                                             </li>
                                             <li role="presentation">
-                                                <a href="#StudentResult" aria-controls="StudentResult" role="tab" data-toggle="tab">Student Result</a>
+                                                <a href="#StudentResult" aria-controls="StudentResult" role="tab" data-toggle="tab"> Result</a>
                                             </li>
-                                            <li role="presentation">
-                                                <a href="#StudentResultDetails" aria-controls="StudentResultDetails" role="tab" data-toggle="tab">Student Result Details</a>
-                                            </li>
+                                            @*<li role="presentation">
+                                                <a href="#StudentResultDetails" aria-controls="StudentResultDetails" role="tab" data-toggle="tab"> Result Details</a>
+                                            </li>*@
                                         </ul>
                                         <!-- Tab panes-->
                                         <div class="tab-content">
@@ -69,13 +69,12 @@
                                                     <div class="panel-heading">
                                                     </div>
 
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="StudentID_StudentParticulars"></label>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
@@ -113,9 +112,9 @@
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Leaving Reason:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
+                                                        <div class="col-sm-10" style="width: 30%; ">
                                                             @*<input type="text" class="form-control" style="width: 90%;" id="LeavingReason" placeholder="Leaving Reason">*@
-                                                            <label class="form-control" style="width: 90%;" id="LeavingReason_StudentParticulars"></label>
+                                                            <label class="form-control" style="width: 90%; height:80px;" id="LeavingReason_StudentParticulars"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
@@ -152,25 +151,29 @@
                                                     <div class="panel-heading">
                                                     </div>
 
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="StudentID_StudentAttendent"></label>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    </div>*@
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Date:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="FirstName" placeholder="First Name" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="Date_StudentAttendent"></label>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    </div>*@
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Is Presents:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="LastName" placeholder="Last Name" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="IsPresents_StudentAttendent"></label>
+                                                        </div>
+                                                    </div>*@
+
+                                                      <div class="form-group" style="margin-right: -600px;">
+                                                          <label class="col-sm-2 control-label">Percentage:<font color=""></font> </label>
+                                                        <div class="col-sm-10" style="width: 30%;">
+                                                            <label class="form-control" style="width: 90%;" id="Percentage_StudentAttendent"></label>
                                                         </div>
                                                     </div>
                                                    
@@ -191,13 +194,12 @@
                                                     <div class="panel-heading">
                                                     </div>
 
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="StudentID_StudentContact"></label>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
 
                                                     <legend></legend>
 
@@ -264,28 +266,28 @@
                                                     <legend></legend>
 
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Grand Father Name:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Guardian Name:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
                                                             @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="GName_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Grand Father Address:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Guardian Address:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
                                                             @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="GAddress_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Grand Father Phone No.1:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Guardian Phone No.1:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
                                                             @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="GPh1_StudentContact"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Grand Father Phone No.2:<font color=""></font> </label>
+                                                        <label class="col-sm-2 control-label">Guardian Phone No.2:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
                                                             @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="GPh2_StudentContact"></label>
@@ -310,13 +312,12 @@
                                                     <div class="panel-heading">
                                                     </div>
 
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="StudentID_StudentHealth"></label>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Blood Group:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
@@ -356,27 +357,24 @@
                                                     <div class="panel-heading">
                                                     </div>
 
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="StudentID_StudentResult"></label>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    </div>*@
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Student Result Details:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="StudentResultDetailsID_StudentResult"></label>
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group" style="margin-right: -600px;">
+                                                    </div>*@
+                                                    @*<div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Total Marks:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="TotalMarks_StudentResult"></label>
                                                         </div>
-                                                    </div>
+                                                    </div>*@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Marks Obtained:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
@@ -410,24 +408,15 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div id="StudentResultDetails" role="tabpanel" class="tab-pane">
+                                            @*<div id="StudentResultDetails" role="tabpanel" class="tab-pane">
                                                 <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
                                                     <div class="panel-heading">
                                                     </div>
 
                                                     <div class="form-group" style="margin-right: -600px;">
-                                                        <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
-                                                        <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
-                                                            <label class="form-control" style="width: 90%;" id="StudentID_StudentResultDetails"></label>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Marks:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="Marks_StudentResultDetails"></label>
                                                         </div>
                                                     </div>
@@ -435,7 +424,6 @@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Exam Subject:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="ExamSubjectID_StudentResultDetails"></label>
                                                         </div>
                                                     </div>
@@ -443,7 +431,6 @@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Teacher Comments:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="TeacherComments_StudentResultDetails"></label>
                                                         </div>
                                                     </div>
@@ -451,14 +438,12 @@
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Guardian Comments:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="GuardianComments_StudentResultDetails"></label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">Status:<font color=""></font> </label>
                                                         <div class="col-sm-10" style="width: 30%;">
-                                                            @*<input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">*@
                                                             <label class="form-control" style="width: 90%;" id="Status_StudentResultDetails"></label>
                                                         </div>
                                                     </div>
@@ -468,12 +453,11 @@
                                                     </div>
 
                                                     <div class="panel-footer text-center">
-                                                        @*<button type="button" class="btn btn-primary" id="btnSave" onclick="return AddStudentResultDetails();">Save</button>*@
                                                         <button class="btn btn-primary" onclick="location.href='@Url.Action("Index", "StudentResultDetails")';return false;">Add</button>
 
                                                     </div>
                                                 </form>
-                                            </div>
+                                            </div>*@
                                         </div>
                                     </div>
                                 </div>

@@ -33,18 +33,51 @@ namespace MySchool.DAL
             return rowAffected;
         }
 
-        public List<SectionEntities> GetAllSection()
+        //public List<SectionEntities> GetAllSection()
+        //{
+        //    List<SectionEntities> sectionsList = new List<SectionEntities>();
+        //    SectionEntities section = new SectionEntities();
+        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand("stpGetAllGradeForDrp", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    DataSet ds = new DataSet();
+        //    da.Fill(ds);
+
+        //    foreach (DataRow dr in ds.Tables[0].Rows)
+        //    {
+        //        sectionsList.Add(new SectionEntities
+        //        {
+        //            ID=Convert.ToInt32(dr["ID"].ToString()),
+        //            GradeId=Convert.ToInt32(dr["GradeId"].ToString()),
+        //            Section=Convert.ToString(dr["Section"]),
+        //        });
+        //    }
+
+        //    con.Close();
+        //    return sectionsList;
+
+        //}
+
+        public List<GradeEntities> GetAllGradeForDrp()
         {
-            List<SectionEntities> sectionsList = new List<SectionEntities>();
-            SectionEntities section = new SectionEntities();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpGetAllGradeForDrp", con);
             cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<GradeEntities> unitMasterList = myTable.AsEnumerable().Select(m => new GradeEntities()
+            {
+                ID = m.Field<int>("ID"),
+                Grade = m.Field<string>("Grade")
 
-
-
+            }).ToList();
+            con.Close();
+            return unitMasterList;
         }
-        
     }
 }

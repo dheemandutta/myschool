@@ -15,5 +15,11 @@ namespace MySchool.BL
             SectionDAL sectionDl = new SectionDAL();
             return sectionDl.SaveOrUpdate(section);
         }
+
+        public List<GradeEntities> GetAllGradeForDrp()
+        {
+            SectionDAL sectionDal = new SectionDAL();
+            return sectionDal.GetAllGradeForDrp();
+        }
     }
 }

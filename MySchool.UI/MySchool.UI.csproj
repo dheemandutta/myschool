@@ -258,6 +258,7 @@
     <Content Include="Content\Images\mb-sample.jpg" />
     <Content Include="Content\Images\mockup.png" />
     <Content Include="Content\Images\profile-bg.jpg" />
+    <Content Include="Content\Images\student.jpg" />
     <Content Include="Content\Images\user\01.jpg" />
     <Content Include="Content\Images\user\02.jpg" />
     <Content Include="Content\Images\user\03.jpg" />

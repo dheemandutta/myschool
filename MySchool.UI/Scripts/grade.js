@@ -1,20 +1,4 @@
 ﻿
-//function validate() {
-//    var isValid = true;
-//    if ($('#txtGrade').val().trim() === "") {
-//        isValid = false;
-//    }
-//    //if ($('#drpGrade').val().trim() == "" || $('#drpGrade').val("Select")) {
-
-//    else if ($('#drpGrade').val().trim() === "") {
-//        isValid = false;
-//    }
-//    else {
-//        isValid = true;
-//    }
-//    return isValid;
-//}
-
 
 function validate() {
 
@@ -32,7 +16,6 @@ function validate() {
 function ClearAll() {
     $('#txtGrade').val('');
     $('#drpGrade').val('');
-    $('#btnSave').attr('Safafasve');
 }
 
 function SaveOrUpdate() {

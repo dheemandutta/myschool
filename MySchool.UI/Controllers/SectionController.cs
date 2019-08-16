@@ -13,13 +13,14 @@ namespace MySchool.UI.Controllers
         // GET: Section
         public ActionResult Index()
         {
+            GetAllGradeForDrp();
             return View();
         }
 
-        public ActionResult Save(SectionEntities section)
+        public ActionResult SaveOrUpdate(SectionEntities sectionentities)
         {
             SectionBL sectionBl = new SectionBL();
-            int rowAffected = sectionBl.SaveOrUpdate(section);
+            int rowAffected = sectionBl.SaveOrUpdate(sectionentities);
             return Json(rowAffected, JsonRequestBehavior.AllowGet);
         }
 

@@ -43,6 +43,14 @@
                 </a>
             </li>
 
+
+            <li class="@Html.isActive(controller: "Section")">
+                <a href="@Url.Action("Index", "Section")" title="Section">
+                    <em class="icon-trophy"></em>
+                    <span>Section</span>
+                </a>
+            </li>
+
             <li class="@Html.isActive(controller: "Student")">
                 <a href="@Url.Action("Index", "Student")" title="Student">
                     <em class="icon-trophy"></em>

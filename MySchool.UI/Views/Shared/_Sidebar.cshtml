@@ -60,7 +60,21 @@
             <li class="@Html.isActive(controller: "StudentAttendent")">
                 <a href="@Url.Action("Index", "StudentAttendent")" title="StudentAttendent">
                     <em class="icon-trophy"></em>
-                    <span>Student Attendent</span>
+                    <span>Student Attendance</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "StudentContact")">
+                <a href="@Url.Action("Index", "StudentContact")" title="StudentContact">
+                    <em class="icon-trophy"></em>
+                    <span>Student Contact</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Student Health")">
+                <a href="@Url.Action("Index", "StudentHealth")" title="StudentHealth">
+                    <em class="icon-trophy"></em>
+                    <span>Student Health</span>
                 </a>
             </li>
 
@@ -77,6 +91,8 @@
                     <span>Teacher Particulars</span>
                 </a>
             </li>
+
+
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
 

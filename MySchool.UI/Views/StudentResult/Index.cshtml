@@ -1,24 +1,24 @@
 ﻿@model MySchool.Entities.GradeEntities
 @{
-    ViewBag.Title = "StudentAttendent";
+    ViewBag.Title = "StudentResult";
 }
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/StudentAttendent.js"></script>
+<script src="~/Scripts/StudentResult.js"></script>
 
 <body style="background-image: url(../background/depart.jpg);
     background-size: cover;">
 
-    @Html.Hidden("saveStudentAttendent", @Url.Action("Add", "StudentAttendent"))
-    @Html.Hidden("loaddata", @Url.Action("LoadData", "StudentAttendent"))
+    @Html.Hidden("saveStudentResult", @Url.Action("Add", "StudentResult"))
+    @Html.Hidden("loaddata", @Url.Action("LoadData", "StudentResult"))
 
-    <div class="row" style="height:1050px;">
+    <div class="row" style="height:2050px;">
         <div class="col-md-7 bac" style=" width: 100%;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text m-t-lg">
                         <h2>
-                            Student Attendance
+                            Student Result
                         </h2>
                     </div>
                 </div>
@@ -34,31 +34,47 @@
                         <div class="col-lg-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <div class="panel-title"><h4>  </h4></div>
+                                    <div class="panel-title"><h4>Add Student Result</h4></div>
                                 </div>
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-content">
                                         <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
-                                            @*<div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">
-                                                    </div>
-                                              </div>*@
+
+                                            <div class="panel-heading">
+                                            </div>
 
                                             <div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;" required="required">
-                                                    @Html.DropDownListFor(model => model.ID, (IEnumerable<SelectListItem>)ViewBag.StudentAttendentMaster, "Select", new { @class = "form-control", @id = "drpGrade" })
+                                                <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="StudentName" placeholder="Student Name" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Blood Group:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="BloodGroup" placeholder="Blood Group" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Known Madical Problems:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="KnownMadicalProblems" placeholder="Known Madical Problems" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Doctor Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="DoctorName" placeholder="Doctor Name" required="required">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <input type="hidden" id="StudentAttendentID" />
+                                                <input type="hidden" id="StudentResultID" />
                                             </div>
 
                                             <div class="panel-footer text-center">
                                                 <button type="button" class="btn btn-primary" id="btnSave" onclick="return Add();">Save</button>
+                                                <button type="button" class="btn btn-primary" id="btnClear" onclick="clearTextBox();">Clear</button>
                                             </div>
 
                                         </form>
@@ -67,6 +83,7 @@
                             </div>
                         </div>
                     </div>
+
 
                     @*GRD-Table*@
                     <div style="width: 100%;">
@@ -79,38 +96,25 @@
                                     <input type="hidden" id="hdndbfilePath" />
 
                                     <div class="table-responsive">
+                                        @*/////////////////////// class="table-responsive"///////////////////////////*@
                                         <h2>
-                                            Student Attendance List
+                                            Student Result List
                                         </h2>
-                                        <table id="StudentAttendentTable" class="table table-striped table-bordered table-hover" cellspacing="0" style="width: 93.667%;">
+                                        <table id="StudentResultTable" class="table table-striped table-bordered table-hover" cellspacing="0" style="width: 93.667%;">
                                             <thead>
                                                 <tr>
-                                                    <th>Student Name</th>
-                                                    <th>Presents</th>
+                                                    <th>Student</th>
+                                                    <th>Name</th>
+                                                    <th>Grade</th>
+                                                    <th>Leaving Reason</th>
+                                                    <th>Gender</th>
                                                 </tr>
                                             </thead>
                                         </table>
                                     </div>
+
                                 </div>
 
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-content">
-                                        <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
-
-                                            <div class="panel-footer text-center">
-                                                <button type="button" class="btn btn-primary" id="btnSave" onclick="return Add();">Save</button>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -168,4 +172,5 @@
 
     });
 </script>
+
 

@@ -17,7 +17,7 @@ namespace MySchool.DAL
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
 
             con.Open();
-            SqlCommand cmd = new SqlCommand("usp_Get_GradeGroup", con);
+            SqlCommand cmd = new SqlCommand("stpGetGradeGroup", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -40,7 +40,7 @@ namespace MySchool.DAL
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("usp_Insert_Update_Grade", con);
+            SqlCommand cmd = new SqlCommand("stpInsertUpdateGrade", con);
             cmd.CommandType = CommandType.StoredProcedure;
             if (String.IsNullOrEmpty(grade.ID.ToString()) || (grade.ID== 0))
             {
@@ -57,24 +57,24 @@ namespace MySchool.DAL
             return recordAffected;
         }
 
-        public int UpdateGrade(GradeEntities grade)
-        {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("usp_Update_Grade_By_GradeID", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@id", grade.ID);
-            cmd.Parameters.AddWithValue("@Grade", grade.Grade);
-            cmd.Parameters.AddWithValue("@GradeGroupID", grade.GradeGroupID);
-            int recordAffected = cmd.ExecuteNonQuery();
-            con.Close();
-            return recordAffected;
-        }
+        //public int UpdateGrade(GradeEntities grade)
+        //{
+        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand("stpUpdateGradeByGradeID", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Parameters.AddWithValue("@id", grade.ID);
+        //    cmd.Parameters.AddWithValue("@Grade", grade.Grade);
+        //    cmd.Parameters.AddWithValue("@GradeGroupID", grade.GradeGroupID);
+        //    int recordAffected = cmd.ExecuteNonQuery();
+        //    con.Close();
+        //    return recordAffected;
+        //}
         public int DeleteGrade(int ID)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("usp_Delete_Grade_By_GradeID", con);
+            SqlCommand cmd = new SqlCommand("stpDeleteGradeByGradeID", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@id", ID);
             int recordAffected = cmd.ExecuteNonQuery();
@@ -82,12 +82,11 @@ namespace MySchool.DAL
             return recordAffected;
         }
 
-
         public List<GradeEntities> GetAllGrade()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("usp_Get_Grade_All", con);
+            SqlCommand cmd = new SqlCommand("stpGetGradeAll", con);
             cmd.CommandType = CommandType.StoredProcedure;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
@@ -112,7 +111,7 @@ namespace MySchool.DAL
         {
             List<GradeEntities> gradeList = new List<GradeEntities>();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
-            SqlCommand cmd = new SqlCommand("usp_Get_Grade_All_PageWise", con);
+            SqlCommand cmd = new SqlCommand("stpGetGradeAllPageWise", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
             cmd.Parameters.AddWithValue("@PageSize", length);
@@ -141,7 +140,7 @@ namespace MySchool.DAL
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("usp_Get_Grade_By_GradeID", con);
+            SqlCommand cmd = new SqlCommand("stpGetGradeByGradeID", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ID", GradeID);
             SqlDataAdapter da = new SqlDataAdapter(cmd);

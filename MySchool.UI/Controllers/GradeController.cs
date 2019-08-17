@@ -22,7 +22,6 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
-
         public void GetGradeGroupAll()
         {
             GradeBL gradebl = new GradeBL();

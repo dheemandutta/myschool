@@ -15,6 +15,7 @@ namespace MySchool.UI.Controllers
         {
             GetAllGradeForDrp();
             return View();
+
         }
 
         public ActionResult SaveOrUpdate(SectionEntities sectionentities)

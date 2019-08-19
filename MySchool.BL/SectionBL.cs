@@ -24,8 +24,8 @@ namespace MySchool.BL
         
         public int Delete(int id)
         {
-            SectionBL sectionbl = new SectionBL();
-            return sectionbl.Delete(id);
+            SectionDAL sectionDl = new SectionDAL();
+            return sectionDl.Delete(id);
         }
 
         public List<SectionEntities> GetAllSectionPageWise(int pageIndex, ref int recordCount, int length)

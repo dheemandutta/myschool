@@ -137,7 +137,7 @@ namespace MySchool.DAL
             section.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
             section.Section= Convert.ToString(ds.Tables[0].Rows[0]["Section"]);
             section.GradeId = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeId"].ToString());
-            section.Grade= Convert.ToString(ds.Tables[0].Rows[0]["Grade"]);
+           // section.Grade= Convert.ToString(ds.Tables[0].Rows[0]["Grade"].ToString());
             return section;
         }
     }

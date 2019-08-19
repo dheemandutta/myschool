@@ -22,11 +22,11 @@ namespace MySchool.BL
             return gradeDl.SaveOrUpdateGrade(grade);
         }
 
-        public int UpdateGrade(GradeEntities grade)
-        {
-            GradeDAL gradeDl = new GradeDAL();
-            return gradeDl.UpdateGrade(grade);
-        }
+        //public int UpdateGrade(GradeEntities grade)
+        //{
+        //    GradeDAL gradeDl = new GradeDAL();
+        //    return gradeDl.UpdateGrade(grade);
+        //}
 
         public int DeleteGrade(int ID)
         {

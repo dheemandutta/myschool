@@ -23,5 +23,18 @@ namespace MySchool.UI.Controllers
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
 
+        public void GetGradeGroupAll()
+        {
+            SectionBL sectioBl = new SectionBL();
+            List<GradeEntities> gradeList = new List<GradeEntities>();
+            gradeList = sectioBl.GetAllGradeForDrp();
+            ViewBag.getAllGrade = gradeList.Select(x =>
+                  new SelectListItem
+                  {
+                      Text = x.Grade,
+                      Value = x.ID.ToString()
+                  }
+            );
+        }
     }
 }

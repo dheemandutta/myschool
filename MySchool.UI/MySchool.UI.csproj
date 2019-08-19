@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StudentAttendentController.cs" />
     <Compile Include="Controllers\StudentContactController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -746,6 +747,7 @@
     <Content Include="Views\StudentContact\Index.cshtml" />
     <Content Include="Views\StudentHealth\Index.cshtml" />
     <Content Include="Views\StudentResult\Index.cshtml" />
+    <Content Include="Views\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

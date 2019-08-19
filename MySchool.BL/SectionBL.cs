@@ -21,5 +21,23 @@ namespace MySchool.BL
             SectionDAL sectionDal = new SectionDAL();
             return sectionDal.GetAllGradeForDrp();
         }
+        
+        public int Delete(int id)
+        {
+            SectionBL sectionbl = new SectionBL();
+            return sectionbl.Delete(id);
+        }
+
+        public List<SectionEntities> GetAllSectionPageWise(int pageIndex, ref int recordCount, int length)
+        {
+            SectionDAL sectionDl = new SectionDAL();
+            return sectionDl.GetAllSectionPageWise(pageIndex, ref recordCount, length);
+        }
+
+        public SectionEntities GetSectionByID(int sectionID)
+        {
+            SectionDAL sectionDl = new SectionDAL();
+            return sectionDl.GetSectionByID(sectionID);
+        }
     }
 }

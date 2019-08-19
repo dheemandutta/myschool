@@ -1,41 +1,36 @@
-﻿
-
-function validate() {
-
-    var myform = $('#MyForm');
-    if (myform.parsley().validate()) {
-        //alert('valid');
+﻿function validate() {
+    var myForm = $('#MyForm');
+    if (myForm.parsley().validate()) {
         return true;
     }
     else {
-        //alert('invalid');
         return false;
     }
 }
 
 function ClearAll() {
-    $('#txtGrade').val('');
-    $('#drpGrade').val('');
+    $('#drpSection').val('');
+    $('#txtSection').val('');
 }
 
 function SaveOrUpdate() {
-    var postUrl = $('#savegrade').val();
+    var postUrl = $('#savesection').val();
     var res = validate;
     if (res === false) {
         return false;
     }
 
-    var grade = {
-        ID: $('#GridID').val(),
-        Grade: $('#txtGrade').val(),
-        GradeGroupID: $('#drpGrade').val()
+    var section = {
+        ID: $('#SectionID').val(),
+        GradeId: $('#drpGrade').val(),
+        Section: $('#txtSection').val()
     };
 
-    console.log(grade);
+    console.log(section);
 
     $.ajax({
         url: postUrl,
-        data: JSON.stringify({ gradeentities: grade }),
+        data: JSON.stringify({ sectionentities: section }),
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
@@ -44,7 +39,7 @@ function SaveOrUpdate() {
                 ClearAll();
                 SetUpGrid();
                 swal("Good job!", "Data Saved Successfully", "success");
-                
+
             }
             else {
                 ClearAll();
@@ -58,36 +53,9 @@ function SaveOrUpdate() {
     });
 }
 
-function Add() {
-    var postUrl = $('#savegrade').val();
-
-    var res = validate();
-    if (res === false) {
-        return false;
-    }
-
-    var grade = {
-        ID: $('#GridID').val(),
-        Grade: $('#txtGrade').val(),
-        GradeGroupID: $('#drpGrade').val()
-    };
-
-    $.post(postUrl,
-        { gradeentities: grade },
-        function (data, status, jqXHR) {
-       
-            SetUpGrid();
-            ClearAll();
-        }).done(function () {
-            swal("Good job!", "Data Saved Successfully", "success");
-        }).fail(function () {
-            swal("Sorry!", "Data Not Saved", "error");
-        });
-}
-
 function Delete(ID) {
     var ans = confirm("Do you want to delete the record?");
-    var deleteUrl = $('#deletegrade').val();
+    var deleteUrl = $('#deletesection').val();
     if (ans) {
         $.ajax({
             url: deleteUrl,
@@ -98,13 +66,13 @@ function Delete(ID) {
             success: function (result) {
                 debugger;
                 if (result > 0) {
-                    alert("Grade deleted successfully");
+                    alert("Section deleted successfully");
 
                     SetUpGrid();
 
                 }
                 else {
-                    alert("Grade can not be deleted as this is already used.");
+                    alert("Section can not be deleted as this is already used.");
                 }
             },
             error: function () {
@@ -114,9 +82,8 @@ function Delete(ID) {
     }
 }
 
-
 function loadData() {
-    var loadposturl = $('#loadgradeallpagewise').val();
+    var loadposturl = $('#loadsectionallpagewise').val();
     $.ajax({
         url: loadposturl,
         type: "GET",
@@ -131,22 +98,21 @@ function loadData() {
     });
 }
 
-
 function SetUpGrid() {
-    var loadposturl = $('#loadgradeallpagewise').val();
+    var loadposturl = $('#loadsectionallpagewise').val();
 
     $.fn.dataTable.ext.errMode = 'none';
-    if ($.fn.dataTable.isDataTable('#tblGrade')) {
-        table = $('#tblGrade').DataTable();
+    if ($.fn.dataTable.isDataTable('#tblSection')) {
+        table = $('#tblSection').DataTable();
         table.destroy();
     }
     // alert('hh');
-    var mytable = $("#tblGrade").DataTable({
+    var mytable = $("#tblSection").DataTable({
         "processing": true,
         "serverSide": true,
-        "filter": false, 
-        "orderMulti": false, 
-        "bLengthChange": false, 
+        "filter": false,
+        "orderMulti": false,
+        "bLengthChange": false,
         "ajax": {
             "url": loadposturl,
             "type": "POST",
@@ -155,14 +121,14 @@ function SetUpGrid() {
         },
         "columns": [
             {
-                "data": "GradeGroup", "name":"GradeGroup","autowidth":true
+                "data": "Grade", "name": "Grade", "autowidth": true
             },
             {
-                "data": "Grade", "name": "Grade", "autoWidth": true
+                "data": "Section", "name": "Section", "autoWidth": true
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="GetGradeByID(' + data + ')"><i class="fa fa-edit"></i></a>';
+                    return '<a href="#" onclick="GetSectionByID(' + data + ')"><i class="fa fa-edit"></i></a>';
                 }
             },
             {
@@ -175,8 +141,8 @@ function SetUpGrid() {
     });
 }
 
-function GetGradeByID(ID) {
-    var x = $("#getgradebyid").val();
+function GetSectionByID(ID) {
+    var x = $("#getsectionbyid").val();
     $.ajax({
         url: x,
         data:
@@ -188,9 +154,9 @@ function GetGradeByID(ID) {
         async: "false",
         dataType: "json",
         success: function (result) {
-            $('#txtGrade').val(result.Grade);
-            $('#drpGrade').val(result.GradeGroupID);
-            $('#GridID').val(result.ID);
+            $('#txtSection').val(result.section);
+            $('#drpGrade').val(result.GradeId);
+            $('#SectionID').val(result.ID);
             //$("#btnSave").attr('value', 'Update');
         },
         error: function (errormessage) {

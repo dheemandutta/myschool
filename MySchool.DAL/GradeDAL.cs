@@ -153,6 +153,8 @@ namespace MySchool.DAL
             grade.GradeGroupID = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeGroupID"].ToString());
             return grade;
         }
+
+       
     }
 }
     

@@ -10,6 +10,7 @@ namespace MySchool.Entities
     {
         public int ID { get; set; }
 
+
         public string FName { get; set; }
 
         public string LName { get; set; }

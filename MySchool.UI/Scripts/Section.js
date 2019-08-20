@@ -64,7 +64,6 @@ function Delete(ID) {
             contentType: "application/json;charser=UTF-8",
             dataType: "json",
             success: function (result) {
-                debugger;
                 if (result > 0) {
                     alert("Section deleted successfully");
 
@@ -154,7 +153,7 @@ function GetSectionByID(ID) {
         async: "false",
         dataType: "json",
         success: function (result) {
-            $('#txtSection').val(result.section);
+            $('#txtSection').val(result.Section);
             $('#drpGrade').val(result.GradeId);
             $('#SectionID').val(result.ID);
             //$("#btnSave").attr('value', 'Update');

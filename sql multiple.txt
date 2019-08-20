@@ -1,0 +1,22 @@
+BEGIN
+	DECLARE @XId int
+
+	BEGIN TRY
+		BEGIN TRAN	
+		
+		insert in parent table
+		
+		SET @Xid = @@IDENTITY
+
+		insert in child 
+
+		COMMIT TRAN		
+
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRAN		
+	END CATCH
+
+
+
+END

@@ -12,7 +12,7 @@ namespace MySchool.DAL
 {
     public class TeacherDAL
     {
-        public int SaveOrUpdate(TeacherEntities teacher, TeacherQualEntities teacherQualification)
+        public int SaveOrUpdate(TeacherEntities teacher)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
@@ -26,6 +26,11 @@ namespace MySchool.DAL
             {
                 cmd.Parameters.AddWithValue("@ID", teacher.ID);
             }
+
+            
+
+            
+
             cmd.Parameters.AddWithValue("@FName", teacher.FName);
             cmd.Parameters.AddWithValue("@LName", teacher.LName);
             cmd.Parameters.AddWithValue("@Photo", teacher.Photo);
@@ -38,15 +43,20 @@ namespace MySchool.DAL
             cmd.Parameters.AddWithValue("@Comments", teacher.Comments);
             cmd.Parameters.AddWithValue("@Designation", teacher.Designation);
 
-            cmd.Parameters.AddWithValue("@ID1", teacherQualification.ID);
-            cmd.Parameters.AddWithValue("@TeacherID", teacherQualification.TeacherID);
-            cmd.Parameters.AddWithValue("@QualName", teacherQualification.QualName);
-            cmd.Parameters.AddWithValue("@QualCertPath", teacherQualification.QualCertPath);
-            cmd.Parameters.AddWithValue("@QualStatus", teacherQualification.QualStatus);
-            cmd.Parameters.AddWithValue("@QualCompletionDate", teacherQualification.QualCompletionDate);
+            cmd.Parameters.AddWithValue("@QualificationID", teacher.TeacherQualificationID);
+            cmd.Parameters.AddWithValue("@TeacherID", teacher.TeacherIDInTeacherQualification);
+            cmd.Parameters.AddWithValue("@QualName", teacher.QualName);
+            cmd.Parameters.AddWithValue("@QualCertPath", teacher.QualCertPath);
+            cmd.Parameters.AddWithValue("@QualStatus", teacher.QualStatus);
+            cmd.Parameters.AddWithValue("@QualCompletionDate", teacher.QualCompletionDate);
 
-            int recordAffected = cmd.ExecuteNonQuery();
-            return recordAffected;
+            cmd.Parameters.AddWithValue("@TeacherSubjectId", teacher.TeacheSubjectId);
+            cmd.Parameters.AddWithValue("@TeacherIDinQualification", teacher.TeacherIDInTeacherQualification);
+            cmd.Parameters.AddWithValue("@SubjectID", teacher.SubjectID);
+            cmd.Parameters.AddWithValue("@isPrimarySubject", teacher.isPrimarySubject); 
+
+           int recordAffected = cmd.ExecuteNonQuery();
+           return recordAffected;
         }
     }
 }

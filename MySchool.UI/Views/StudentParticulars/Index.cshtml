@@ -1,4 +1,5 @@
-﻿
+﻿@model MySchool.Entities.StudentParticularsEntities
+
 @{
     ViewBag.Title = "StudentParticulars";
 }
@@ -42,15 +43,27 @@
                                         <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
                                             @*<div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">
-                                                    </div>
-                                                </div>*@
+            <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
+            <div class="col-sm-10" style="width: 30%;">
+                <input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">
+            </div>
+        </div>*@
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="StudentName" placeholder="Student Name" required="required">
+                                                <div class="col-sm-10" style="width: 27%;">
+                                                    @Html.DropDownListFor(model => model.StudentID, (IEnumerable<SelectListItem>)ViewBag.StudentParticulars, "Select", new { @class = "form-control", @id = "drpStudentName" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 27%;">
+                                                    @Html.DropDownListFor(model => model.GradeID, (IEnumerable<SelectListItem>)ViewBag.GradeForDrp, "Select", new { @class = "form-control", @id = "drpGrade" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Section:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 27%;">
+                                                    @Html.DropDownListFor(model => model.SectionID, (IEnumerable<SelectListItem>)ViewBag.SectionForDrp, "Select", new { @class = "form-control", @id = "drpSection" })
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
@@ -64,8 +77,8 @@
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
                                                 @*<div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="GradeID" placeholder="Grade" required="required">
-                                                    </div>*@
+                <input type="text" class="form-control" style="width: 90%;" id="GradeID" placeholder="Grade" required="required">
+            </div>*@
                                                 <div class="col-sm-10" style="width: 30%;" required="required">
                                                     <select name="account" class="form-control m-b" style="width:90%">
                                                         <option value="Class1A">Class1A</option>
@@ -107,8 +120,8 @@
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Gender:<font color=""></font> </label>
                                                 @*<div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="Gender" placeholder="Gender" required="required">
-                                                    </div>*@
+                <input type="text" class="form-control" style="width: 90%;" id="Gender" placeholder="Gender" required="required">
+            </div>*@
                                                 <div class="col-sm-10" style="width: 30%;" required="required">
                                                     <select name="account" class="form-control m-b" style="width:90%">
                                                         <option value="">Select</option>
@@ -119,11 +132,11 @@
                                                 </div>
                                             </div>
                                             @*<div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Photo:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="Photo" placeholder="Photo">
-                                                    </div>
-                                            </div>*@
+            <label class="col-sm-2 control-label">Photo:<font color=""></font> </label>
+            <div class="col-sm-10" style="width: 30%;">
+                    <input type="text" class="form-control" style="width: 90%;" id="Photo" placeholder="Photo">
+                </div>
+        </div>*@
 
                                             <div class="form-group">
                                                 <input type="hidden" id="StudentParticularsID" />
@@ -147,9 +160,9 @@
                                 <div class="panel-heading">
                                     <div class="panel-title"><h4>Photo Upload</h4></div>
                                 </div>
-                                <div class="ibox float-e-margins" >
+                                <div class="ibox float-e-margins">
                                     <div class="ibox-content">
-                                        <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data" >
+                                        <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
                                             <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload-->
                                             <div class="row fileupload-buttonbar">
                                                 <div class="col-lg-7">

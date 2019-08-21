@@ -1,4 +1,4 @@
-﻿@model MySchool.Entities.GradeEntities
+﻿@model MySchool.Entities.StudentParticularsEntities
 @{
     ViewBag.Title = "StudentContact";
 }
@@ -40,105 +40,124 @@
                                     <div class="ibox-content">
                                         <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
-                                                <div class="panel-heading">
-                                                </div>
+                                            <div class="panel-heading">
+                                            </div>
 
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="StudentName" placeholder="Student Name" required="required">
-                                                    </div>
-                                                </div>
+                                            @*<div class="form-group" style="margin-right: -600px;">
+            <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
+            <div class="col-sm-10" style="width: 30%;">
+                <input type="text" class="form-control" style="width: 90%;" id="StudentName" placeholder="Student Name" required="required">
+            </div>
+        </div>*@
 
-                                                <legend></legend>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 27%;">
+                                                    @Html.DropDownListFor(model => model.StudentID, (IEnumerable<SelectListItem>)ViewBag.StudentParticulars, "Select", new { @class = "form-control", @id = "drpStudentName" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 27%;">
+                                                    @Html.DropDownListFor(model => model.GradeID, (IEnumerable<SelectListItem>)ViewBag.GradeForDrp, "Select", new { @class = "form-control", @id = "drpGrade" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Section:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 27%;">
+                                                    @Html.DropDownListFor(model => model.SectionID, (IEnumerable<SelectListItem>)ViewBag.SectionForDrp, "Select", new { @class = "form-control", @id = "drpSection" })
+                                                </div>
+                                            </div>
 
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Father Name:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="FatherName" placeholder="Student" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Father Address:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="FatherAddress" placeholder="Father Address" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Father Phone No.1:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="FPh1" placeholder="Father Phone No.1" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Father Phone No.2:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="FPh2" placeholder="Father Phone No.2" required="required">
-                                                    </div>
-                                                </div>
+                                            <legend></legend>
 
-                                                <legend></legend>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Father Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="FatherName" placeholder="Student" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Father Address:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="FatherAddress" placeholder="Father Address" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Father Phone No.1:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="FPh1" placeholder="Father Phone No.1" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Father Phone No.2:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="FPh2" placeholder="Father Phone No.2" required="required">
+                                                </div>
+                                            </div>
 
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Mother Name:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="MotherName" placeholder="Mother Name" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Mother Address:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="MotherAddress" placeholder="Mother Address" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Mother Phone No.1:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="MPh1" placeholder="Mother Phone No.1" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Mother Phone No.2:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="MPh2" placeholder="Mother Phone No.2" required="required">
-                                                    </div>
-                                                </div>
+                                            <legend></legend>
 
-                                                <legend></legend>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Mother Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="MotherName" placeholder="Mother Name" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Mother Address:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="MotherAddress" placeholder="Mother Address" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Mother Phone No.1:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="MPh1" placeholder="Mother Phone No.1" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Mother Phone No.2:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="MPh2" placeholder="Mother Phone No.2" required="required">
+                                                </div>
+                                            </div>
 
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Guardian Name:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="GName" placeholder="Grand Father Name" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Guardian Address:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="GAddress" placeholder="Grand Father Address" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Guardian Phone No.1:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="GPh1" placeholder="Grand Father Phone No.1" required="required">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Guardian Phone No.2:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        <input type="text" class="form-control" style="width: 90%;" id="GPh2" placeholder="Grand Father Phone No.2" required="required">
-                                                    </div>
-                                                </div>
+                                            <legend></legend>
 
-                                                <div class="form-group">
-                                                    <input type="hidden" id="StudentContactID" />
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Guardian Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="GName" placeholder="Grand Father Name" required="required">
                                                 </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Guardian Address:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="GAddress" placeholder="Grand Father Address" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Guardian Phone No.1:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="GPh1" placeholder="Grand Father Phone No.1" required="required">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Guardian Phone No.2:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="GPh2" placeholder="Grand Father Phone No.2" required="required">
+                                                </div>
+                                            </div>
 
-                                                <div class="panel-footer text-center">
-                                                    <button type="button" class="btn btn-primary" id="btnSave" onclick="return Add();">Save</button>
-                                                    <button type="button" class="btn btn-primary" id="btnClear" onclick="clearTextBox();">Clear</button>
-                                                </div>
+                                            <div class="form-group">
+                                                <input type="hidden" id="StudentContactID" />
+                                            </div>
+
+                                            <div class="panel-footer text-center">
+                                                <button type="button" class="btn btn-primary" id="btnSave" onclick="return Add();">Save</button>
+                                                <button type="button" class="btn btn-primary" id="btnClear" onclick="clearTextBox();">Clear</button>
+                                            </div>
                                         </form>
 
                                     </div>

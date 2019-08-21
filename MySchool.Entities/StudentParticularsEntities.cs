@@ -29,5 +29,14 @@ namespace MySchool.Entities
         public string Gender { get; set; }
 
         public string Photo { get; set; }
+
+
+
+        public string StudentName { get; set; }
+        public string Grade { get; set; }
+
+
+        public int SectionID { get; set; }
+        public string Section { get; set; }
     }
 }

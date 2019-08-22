@@ -9,7 +9,7 @@ using System.Configuration;
 using MySchool.Entities;
 
 namespace MySchool.DAL
-{
+{ 
     public class YearDAL
     { 
         public int SaveYear(YearEntities yearEntities)

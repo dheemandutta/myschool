@@ -10,6 +10,7 @@ namespace MySchool.Entities
     {
         public int ID { get; set; }
 
+
         public int GradeID { get; set; }
 
         public int YearID { get; set; }

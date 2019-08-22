@@ -1,49 +1,16 @@
-﻿function validate() {
+﻿//import { Function } from "core-js";
 
-}
 
-function SaveOrUpdate() {
-    //var postUrl = $('#saverorupdate').val(); 
-    //var dataArr = [];
-    //$("tblSubject td").each(function () {
-    //    dataArr.push($(this).html());
-    //});
-    
-    //$.ajax({
-    //    url: postUrl,
-    //    data: JSON.stringify({ teachenetities: dataArr}),
-    //    type: "POST",
-    //    url: postUrl,
-    //    data: "content=" + dataArr,
-    //    success: function (data) {
-    //        console.log(data);
-    //    },
-    //    error: function () {
-    //    }
-    //});
-
-    
+function SaveOrUpdate()
+{
+    var myTable = $('#tblSubject table tbody');
     var dataArr = [];
-    $("tblSubject td").each(function () {
-    dataArr.push($(this).html());
-
-    });
-    
-    
-    //$.ajax({
-    //    url: postUrl,
-    //    data: JSON.stringify({ teachenetities: dataArr }),
-    //    type: "POST",
-    //    data: dataArr,
-    //    success: function (data) {
-    //        console.log(data);
-    //    },
-    //    error: function () {
-    //    }
-    //});
-
+    dataArr.push({
+        myTable.find('tr').each(function (i, el) {
+        var $tds = $(this).find('td'),
+            subject = $tds.eq(1).text(),
+            primarySubject = $tds.eq(2).text();
+            }
+        });
+    console.log(dataArr);
 }
-
-
-
-//console.log(section);

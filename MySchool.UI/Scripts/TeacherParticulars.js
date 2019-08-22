@@ -26,6 +26,7 @@ function SaveOrUpdate() {
     var dataArr = [];
     $("tblSubject td").each(function () {
     dataArr.push($(this).html());
+
     });
     
     

@@ -358,6 +358,7 @@
     <Content Include="Sql Script\SS_Patch_16_08_2019.sql" />
     <Content Include="Sql Script\SS_Patch_20_08_2019.sql" />
     <Content Include="Sql Script\SS_Patch_21_08_2019.sql" />
+    <Content Include="Sql Script\SS_Patch_25_08_2019.sql" />
     <Content Include="Vendor\animate.css\animate.min.css" />
     <Content Include="Vendor\animo.js\animo.js" />
     <Content Include="Vendor\blueimp-canvas-to-blob\js\canvas-to-blob.js" />

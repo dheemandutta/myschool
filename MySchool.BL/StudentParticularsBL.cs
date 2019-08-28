@@ -10,6 +10,24 @@ namespace MySchool.BL
 {
     public class StudentParticularsBL
     {
+        public int SaveStudentParticulars(StudentParticularsEntities studentParticularsEntities)
+        {
+            StudentParticularsDAL studentParticularsDAL = new StudentParticularsDAL();
+            return studentParticularsDAL.SaveStudentParticulars(studentParticularsEntities);
+        }
+
+        public StudentParticularsEntities GetStudentParticularsByID(int ID)
+        {
+            StudentParticularsDAL studentParticularsDAL = new StudentParticularsDAL();
+            return studentParticularsDAL.GetStudentParticularsByID(ID);
+        }
+
+        public List<StudentParticularsEntities> GetStudentParticularsPageWise(int pageIndex, ref int recordCount, int length)
+        {
+            StudentParticularsDAL studentParticularsDAL = new StudentParticularsDAL();
+            return studentParticularsDAL.GetStudentParticularsPageWise(pageIndex, ref recordCount, length);
+        }
+
         //for StudentName drp
         public List<StudentParticularsEntities> GetStudentForDrp()
         {

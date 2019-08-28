@@ -1,30 +1,39 @@
-﻿function validate() {
+﻿//import { Function } from "core-js";
 
-}
 
-function SaveOrUpdate() {
-    var postUrl = $('#saverorupdate').val(); 
- //    console.log(grade);
-
+function SaveOrUpdate()
+{
+    var myTable = $('#tblSubject tbody');
     var dataArr = [];
-    $("tblSubject td").each(function () {
-        dataArr.push($(this).html());
+
+    myTable.find('tr').each(function (i) {
+        var $tds = $(this).find('td'),
+            sub = $tds.eq(1).text(),
+            psub = $tds.eq(2).text()
+        console.log(sub);
+        console.log(psub);
+
+
+        //var sritems = [],
+        //    total = 0,
+
+        //    products.each(function (index) {
+
+        //        var offset = (index === 0) ? 1 : 0,
+        //            sku = $.trim($(this).find('td').eq(offset + 4).text()),
+        //            qty = parseInt($(this).find('td').eq(offset + 0).text(), 10),
+        //            price = parseFloat($(this).find('td').eq(offset + 6).text().replace(/[^0-9\.]+/g, ""));
+
+        //        total += (qty * price);
+
+        //        //push the object onto the array
+        //        sritems.push({
+        //            "productId": sku,
+        //            "qty": qty,
+        //            "price": price
+        //        });
+
+            //});
     });
-    
-    $.ajax({
-        url: postUrl,
-        data: JSON.stringify({ teachenetities: dataArr}),
-        type: "POST",
-        url: postUrl,
-        data: "content=" + dataArr,
-        success: function (data) {
-            console.log(data);// alert the data from the server
-        },
-        error: function () {
-        }
-    });
+
 }
-
-
-
-//console.log(section);

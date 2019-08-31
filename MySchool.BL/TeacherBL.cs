@@ -14,6 +14,6 @@ namespace MySchool.BL
         {
             TeacherDAL teacherDl = new TeacherDAL();
             return teacherDl.SaveOrUpdate(teacher);
-                }
+        }
     }
 }

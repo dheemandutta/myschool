@@ -27,10 +27,6 @@ namespace MySchool.DAL
                 cmd.Parameters.AddWithValue("@ID", teacher.ID);
             }
 
-            
-
-            
-
             cmd.Parameters.AddWithValue("@FName", teacher.FName);
             cmd.Parameters.AddWithValue("@LName", teacher.LName);
             cmd.Parameters.AddWithValue("@Photo", teacher.Photo);
@@ -44,7 +40,7 @@ namespace MySchool.DAL
             cmd.Parameters.AddWithValue("@Designation", teacher.Designation);
 
             cmd.Parameters.AddWithValue("@QualificationID", teacher.TeacherQualificationID);
-            cmd.Parameters.AddWithValue("@TeacherID", teacher.TeacherIDInTeacherQualification);
+
             cmd.Parameters.AddWithValue("@QualName", teacher.QualName);
             cmd.Parameters.AddWithValue("@QualCertPath", teacher.QualCertPath);
             cmd.Parameters.AddWithValue("@QualStatus", teacher.QualStatus);

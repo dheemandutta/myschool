@@ -9,7 +9,7 @@ Select ID
 from Grade
 end
 
-
+ 
 GO
 -- exec stpGetStudentForDrp
 ALTER procedure [dbo].[stpGetStudentForDrp]

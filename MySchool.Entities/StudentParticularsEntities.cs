@@ -16,13 +16,13 @@ namespace MySchool.Entities
 
         public string LastName { get; set; }
 
-        public DateTime DOB { get; set; }
+        public string DOB { get; set; }
 
         public int GradeID { get; set; }
 
-        public DateTime StartDate { get; set; }
+        public string StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public string EndDate { get; set; }
 
         public string LeavingReason { get; set; }
 

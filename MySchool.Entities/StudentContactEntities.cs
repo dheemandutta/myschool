@@ -41,5 +41,9 @@ namespace MySchool.Entities
         public string GPh1 { get; set; }
 
         public string GPh2 { get; set; }
+        public string StudentName { get; set; }
+        public string GName { get; set; }
+
+        
     }
 }

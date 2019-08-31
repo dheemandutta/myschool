@@ -22,6 +22,55 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
+        public JsonResult Add(StudentContactEntities studentContactEntities)
+        {
+            StudentContactBL studentContactBL = new StudentContactBL();
+            return Json(studentContactBL.SaveStudentContact(studentContactEntities), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetStudentContactByID(int ID)
+        {
+            StudentContactBL studentContactBL = new StudentContactBL();
+            return Json(studentContactBL.GetStudentContactByID(ID), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult LoadData()
+        {
+            int draw, start, length;
+            int pageIndex = 0;
+
+            if (null != Request.Form.GetValues("draw"))
+            {
+                draw = int.Parse(Request.Form.GetValues("draw").FirstOrDefault().ToString());
+                start = int.Parse(Request.Form.GetValues("start").FirstOrDefault().ToString());
+                length = int.Parse(Request.Form.GetValues("length").FirstOrDefault().ToString());
+            }
+            else
+            {
+                draw = 1;
+                start = 0;
+                length = 50;
+            }
+
+            if (start == 0)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                pageIndex = (start / length) + 1;
+            }
+
+            StudentContactBL studentContactBL = new StudentContactBL();
+            int totalrecords = 0;
+
+            List<StudentContactEntities> studentContactEntities = new List<StudentContactEntities>();
+            studentContactEntities = studentContactBL.GetStudentContactPageWise(pageIndex, ref totalrecords, length);
+
+            var data = studentContactEntities;
+            return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
         //for Catagory drp
         public void GetStudentForDrp()
         {

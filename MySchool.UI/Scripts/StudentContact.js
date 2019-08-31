@@ -46,7 +46,7 @@ function Add() {
     //alert($('#FirstName').val());
 
     var studentContact = {
-        ID: $('#StudentParticularsID').val(),
+        ID: $('#StudentContactID').val(),
         StudentID: $('#drpStudentName').val(),
 
         FatherFName: $('#FatherFName').val(),
@@ -155,44 +155,36 @@ function SetUpGrid() {
     });
 }
 
-function GetStudentContactByID(ID) {
+function GetStudentContactByID(contID) {
+    console.log(contID);
+
     var x = $("#getStudentContactByID").val();
-    $.ajax({
-        url: x,
-        data:
-        {
-            ID: ID
-        },
-        type: "GET",
-        contentType: "application/json;charset=UTF-8",
-        async: "false",
-        dataType: "json",
-        success: function (result) {
-            $('#drpStudentName').val(result.StudentID);
 
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
+    $.getJSON(x, { ID: contID }, function (result) {
+        console.log(result);
 
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
+        $('#drpStudentName').val(result.StudentID);
 
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-            $('#FatherFName').val(result.FatherFName);
-        
-            $('#StudentContactID').val(result.ID);
-        },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
-        }
+        $('#FatherFName').val(result.FatherFName);
+        $('#FatherLName').val(result.FatherLName);
+        $('#FatherAddress').val(result.FatherAddress);
+        $('#FPh1').val(result.FPh1);
+        $('#FPh2').val(result.FPh2);
+
+        $('#MotherFName').val(result.MotherFName);
+        $('#MotherLName').val(result.MotherLName);
+        $('#MotherAddress').val(result.MotherAddress);
+        $('#MPh1').val(result.MPh1);
+        $('#MPh2').val(result.MPh2);
+
+        $('#GFName').val(result.GFName);
+        $('#GLName').val(result.GLName);
+        $('#GAddress').val(result.GAddress);
+        $('#GPh1').val(result.GPh1);
+        $('#GPh2').val(result.GPh2);
+
+        $('#StudentContactID').val(result.ID);
+
     });
     return false;
 }

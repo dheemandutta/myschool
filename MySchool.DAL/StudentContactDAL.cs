@@ -240,7 +240,7 @@ namespace MySchool.DAL
                     {
                         studentContactEntities.Add(new StudentContactEntities
                         {
-                            //ID = Convert.ToInt32(dr["ID"]),
+                            ID = Convert.ToInt32(dr["ID"]),
                             //StudentID = Convert.ToInt32(dr["StudentID"]),
 
                             //FatherFName = Convert.ToString(dr["FatherFName"]),

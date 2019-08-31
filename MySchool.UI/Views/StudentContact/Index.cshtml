@@ -11,6 +11,7 @@
 
     @Html.Hidden("saveStudentContact", @Url.Action("Add", "StudentContact"))
     @Html.Hidden("loaddata", @Url.Action("LoadData", "StudentContact"))
+    @Html.Hidden("getStudentContactByID", @Url.Action("GetStudentContactByID", "StudentContact"))
 
     <div class="row" style="height:2050px;">
         <div class="col-md-7 bac" style=" width: 100%;">
@@ -50,17 +51,17 @@
                                                 </div>
                                             </div>
                                             @*<div class="form-group" style="margin-right: -600px;">
-            <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
-            <div class="col-sm-10" style="width: 27%;">
-                @Html.DropDownListFor(model => model.GradeID, (IEnumerable<SelectListItem>)ViewBag.GradeForDrp, "Select", new { @class = "form-control", @id = "drpGrade" })
-            </div>
-        </div>*@
+                                                    <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
+                                                    <div class="col-sm-10" style="width: 27%;">
+                                                        @Html.DropDownListFor(model => model.GradeID, (IEnumerable<SelectListItem>)ViewBag.GradeForDrp, "Select", new { @class = "form-control", @id = "drpGrade" })
+                                                    </div>
+                                                </div>*@
                                             @*<div class="form-group" style="margin-right: -600px;">
-            <label class="col-sm-2 control-label">Section:<font color=""></font> </label>
-            <div class="col-sm-10" style="width: 27%;">
-                @Html.DropDownListFor(model => model.SectionID, (IEnumerable<SelectListItem>)ViewBag.SectionForDrp, "Select", new { @class = "form-control", @id = "drpSection" })
-            </div>
-        </div>*@
+                                                    <label class="col-sm-2 control-label">Section:<font color=""></font> </label>
+                                                    <div class="col-sm-10" style="width: 27%;">
+                                                        @Html.DropDownListFor(model => model.SectionID, (IEnumerable<SelectListItem>)ViewBag.SectionForDrp, "Select", new { @class = "form-control", @id = "drpSection" })
+                                                    </div>
+                                                </div>*@
 
                                             <legend></legend>
 

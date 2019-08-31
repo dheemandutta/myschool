@@ -145,19 +145,14 @@ function SetUpGrid() {
     });
 }
 
-function GetStudentParticularsByID(ID) {
+function GetStudentParticularsByID(parID) {
+    console.log(parID);
+
     var x = $("#getStudentParticularsByID").val();
-    $.ajax({
-        url: x,
-        data:
-        {
-            ID: ID
-        },
-        type: "GET",
-        contentType: "application/json;charset=UTF-8",
-        async: "false",
-        dataType: "json",
-        success: function (result) {
+
+    $.getJSON(x, { ID: parID }, function (result) {
+        console.log(result);
+
             $('#FirstName').val(result.FirstName);
             $('#LastName').val(result.LastName);
             $('#DOB').val(result.DOB);
@@ -168,10 +163,6 @@ function GetStudentParticularsByID(ID) {
             $('#Gender').val(result.Gender);         
 
             $('#StudentParticularsID').val(result.ID);
-        },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
-        }
     });
     return false;
 }

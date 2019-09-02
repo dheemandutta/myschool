@@ -94,6 +94,7 @@ namespace MySchool.DAL
             return studentHealthEntities;
         }
 
+
         public List<StudentHealthEntities> GetStudentHealthPageWise(int pageIndex, ref int recordCount, int length)
         {
             List<StudentHealthEntities> studentHealthEntities = new List<StudentHealthEntities>();

@@ -348,6 +348,7 @@
     <Content Include="Scripts\Section.js" />
     <Content Include="Scripts\StudentAttendent.js" />
     <Content Include="Scripts\StudentContact.js" />
+    <Content Include="Scripts\StudentHealth.js" />
     <Content Include="Scripts\StudentParticulars.js" />
     <Content Include="Scripts\TeacherParticulars.js" />
     <Content Include="Scripts\Year.js" />

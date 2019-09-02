@@ -12,32 +12,18 @@ function validate() {
 
 function clearTextBox() {
 
-    $('#StudentContactID').val("");
+    $('#StudentHealthID').val("");
+
     $('#drpStudentName').val("");
-
-    $('#FatherFName').val("");
-    $('#FatherLName').val("");
-    $('#FatherAddress').val("");
-    $('#FPh1').val("");
-    $('#FPh2').val("");
-
-    $('#MotherFName').val("");
-    $('#MotherLName').val("");
-    $('#MotherAddress').val("");
-    $('#MPh1').val("");
-    $('#MPh2').val("");
-
-    $('#GFName').val("");
-    $('#GLName').val("");
-    $('#GAddress').val("");
-    $('#GPh1').val("");
-    $('#GPh2').val("");
+    $('#BloodGroup').val("");
+    $('#KnownMadicalProblems').val("");
+    $('#DoctorName').val("");
 
     //$('input:checkbox').removeAttr('checked');
 }
 
 function Add() {
-    var postUrl = $('#saveStudentContact').val();
+    var postUrl = $('#saveStudentHealth').val();
 
     var res = validate();
     if (res === false) {
@@ -46,34 +32,20 @@ function Add() {
 
     //alert($('#FirstName').val());
 
-    var studentContact = {
-        ID: $('#StudentContactID').val(),
+    var studentHealth = {
+        ID: $('#StudentHealthID').val(),
         StudentID: $('#drpStudentName').val(),
 
-        FatherFName: $('#FatherFName').val(),
-        FatherLName: $('#FatherLName').val(),
-        FatherAddress: $('#FatherAddress').val(),
-        FPh1: $('#FPh1').val(),
-        FPh2: $('#FPh2').val(),
-
-        MotherFName: $('#MotherFName').val(),
-        MotherLName: $('#MotherLName').val(),
-        MotherAddress: $('#MotherAddress').val(),
-        MPh1: $('#MPh1').val(),
-        MPh2: $('#MPh2').val(),
-
-        GFName: $('#GFName').val(),
-        GLName: $('#GLName').val(),
-        GAddress: $('#GAddress').val(),
-        GPh1: $('#GPh1').val(),
-        GPh2: $('#GPh2').val()
+        BloodGroup: $('#BloodGroup').val(),
+        KnownMadicalProblems: $('#KnownMadicalProblems').val(),
+        DoctorName: $('#DoctorName').val()
     };
 
-    console.log(studentContact);
+    console.log(studentHealth);
 
     $.ajax({
         url: postUrl,
-        data: JSON.stringify({ studentContactEntities: studentContact }),
+        data: JSON.stringify({ studentHealthEntities: studentHealth }),
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
@@ -118,12 +90,12 @@ function SetUpGrid() {
     //do not throw error
     $.fn.dataTable.ext.errMode = 'none';
     //check if datatable is already created then destroy iy and then create it
-    if ($.fn.dataTable.isDataTable('#StudentContactTable')) {
-        table = $('#StudentContactTable').DataTable();
+    if ($.fn.dataTable.isDataTable('#StudentHealthTable')) {
+        table = $('#StudentHealthTable').DataTable();
         table.destroy();
     }
 
-    $("#StudentContactTable").DataTable({
+    $("#StudentHealthTable").DataTable({
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
         "filter": false, // this is for disable filter (search box)
@@ -139,52 +111,38 @@ function SetUpGrid() {
                 "data": "StudentName", "name": "StudentName", "autoWidth": true
             },
             {
-                "data": "GName", "name": "GName", "autoWidth": true
+                "data": "BloodGroup", "name": "BloodGroup", "autoWidth": true
             },
             {
-                "data": "GAddress", "name": "GAddress", "autoWidth": true
+                "data": "KnownMadicalProblems", "name": "KnownMadicalProblems", "autoWidth": true
             },
             {
-                "data": "GPh1", "name": "GPh1", "autoWidth": true
+                "data": "DoctorName", "name": "DoctorName", "autoWidth": true
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="GetStudentContactByID(' + data + ')"><i class="fa fa-edit"></i></a>';
+                    return '<a href="#" onclick="GetStudentHealthByID(' + data + ')"><i class="fa fa-edit"></i></a>';
                 }
             }
         ]
     });
 }
 
-function GetStudentContactByID(contID) {
+function GetStudentHealthByID(contID) {
     console.log(contID);
 
-    var x = $("#getStudentContactByID").val();
+    var x = $("#getStudentHealthByID").val();
 
     $.getJSON(x, { ID: contID }, function (result) {
         console.log(result);
 
         $('#drpStudentName').val(result.StudentID);
 
-        $('#FatherFName').val(result.FatherFName);
-        $('#FatherLName').val(result.FatherLName);
-        $('#FatherAddress').val(result.FatherAddress);
-        $('#FPh1').val(result.FPh1);
-        $('#FPh2').val(result.FPh2);
+        $('#BloodGroup').val(result.BloodGroup);
+        $('#KnownMadicalProblems').val(result.KnownMadicalProblems);
+        $('#DoctorName').val(result.DoctorName);
 
-        $('#MotherFName').val(result.MotherFName);
-        $('#MotherLName').val(result.MotherLName);
-        $('#MotherAddress').val(result.MotherAddress);
-        $('#MPh1').val(result.MPh1);
-        $('#MPh2').val(result.MPh2);
-
-        $('#GFName').val(result.GFName);
-        $('#GLName').val(result.GLName);
-        $('#GAddress').val(result.GAddress);
-        $('#GPh1').val(result.GPh1);
-        $('#GPh2').val(result.GPh2);
-
-        $('#StudentContactID').val(result.ID);
+        $('#StudentHealthID').val(result.ID);
 
     });
     return false;

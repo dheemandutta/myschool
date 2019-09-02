@@ -46,6 +46,7 @@
     <Compile Include="SectionBL.cs" />
     <Compile Include="StudentAttendentBL.cs" />
     <Compile Include="StudentContactBL.cs" />
+    <Compile Include="StudentHealthBL.cs" />
     <Compile Include="StudentParticularsBL.cs" />
     <Compile Include="SubjectBL.cs" />
     <Compile Include="TeacherBL.cs" />

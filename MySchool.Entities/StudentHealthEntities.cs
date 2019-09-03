@@ -18,5 +18,7 @@ namespace MySchool.Entities
 
         public string DoctorName { get; set; }
 
+        public string StudentName { get; set; }
+
     }
 }

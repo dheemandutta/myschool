@@ -3,35 +3,27 @@ function validate() {
 
     var myform = $('#MyForm');
     if (myform.parsley().validate()) {
-        //alert('valid');
         return true;
     }
     else {
-        //alert('invalid');
         return false;
     }
 }
 
 function clearTextBox() {
 
-    $('#StudentParticularsID').val("");
-    $('#FirstName').val("");
-    $('#LastName').val("");
-    //$('#drpStudentName').val("");
-    $('#drpGrade').val("");
-    //$('#drpSection').val("");            ////////////////
-    $('#DOB').val("");
-    $('#StartDate').val("");
-    $('#EndDate').val("");
-    $('#LeavingReason').val("");
-    $('#Gender').val("");
+    $('#StudentHealthID').val("");
 
-    //$('#drpYear').val("");
+    $('#drpStudentName').val("");
+    $('#BloodGroup').val("");
+    $('#KnownMadicalProblems').val("");
+    $('#DoctorName').val("");
+
     //$('input:checkbox').removeAttr('checked');
 }
 
 function Add() {
-    var postUrl = $('#saveStudentParticulars').val();
+    var postUrl = $('#saveStudentHealth').val();
 
     var res = validate();
     if (res === false) {
@@ -40,24 +32,20 @@ function Add() {
 
     //alert($('#FirstName').val());
 
-    var studentParticulars = {
-        ID: $('#StudentParticularsID').val(),
-        FirstName: $('#FirstName').val(),
-        LastName: $('#LastName').val(),
-        //drpStudentName: $('#drpStudentName').val(),
-        DOB: $('#DOB').val(),
-        GradeID: $('#drpGrade').val(),
-        StartDate: $('#StartDate').val(),
-        EndDate: $('#EndDate').val(),
-        LeavingReason: $('#LeavingReason').val(),
-        Gender: $('#Gender').val()
+    var studentHealth = {
+        ID: $('#StudentHealthID').val(),
+        StudentID: $('#drpStudentName').val(),
+
+        BloodGroup: $('#BloodGroup').val(),
+        KnownMadicalProblems: $('#KnownMadicalProblems').val(),
+        DoctorName: $('#DoctorName').val()
     };
 
-    console.log(studentParticulars);
+    console.log(studentHealth);
 
     $.ajax({
         url: postUrl,
-        data: JSON.stringify({ studentParticularsEntities: studentParticulars }),
+        data: JSON.stringify({ studentHealthEntities: studentHealth }),
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
@@ -102,12 +90,12 @@ function SetUpGrid() {
     //do not throw error
     $.fn.dataTable.ext.errMode = 'none';
     //check if datatable is already created then destroy iy and then create it
-    if ($.fn.dataTable.isDataTable('#StudentParticularsTable')) {
-        table = $('#StudentParticularsTable').DataTable();
+    if ($.fn.dataTable.isDataTable('#StudentHealthTable')) {
+        table = $('#StudentHealthTable').DataTable();
         table.destroy();
     }
 
-    $("#StudentParticularsTable").DataTable({
+    $("#StudentHealthTable").DataTable({
         "processing": true, // for show progress bar
         "serverSide": true, // for process server side
         "filter": false, // this is for disable filter (search box)
@@ -123,46 +111,39 @@ function SetUpGrid() {
                 "data": "StudentName", "name": "StudentName", "autoWidth": true
             },
             {
-                "data": "DOB", "name": "DOB", "autoWidth": true
+                "data": "BloodGroup", "name": "BloodGroup", "autoWidth": true
             },
             {
-                "data": "Grade", "name": "GradeID", "autoWidth": true
+                "data": "KnownMadicalProblems", "name": "KnownMadicalProblems", "autoWidth": true
             },
             {
-                "data": "Gender", "name": "Gender", "autoWidth": true
-            },
-            {
-                "render": function (data, type, JsonResultRow, meta) {
-                    return '<img src="' + JsonResultRow.Photo + '"width="50" height="50"  alt="Image" class="img-responsive img-circle"  >';
-                }
+                "data": "DoctorName", "name": "DoctorName", "autoWidth": true
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="GetStudentParticularsByID(' + data + ')"><i class="fa fa-edit"></i></a>';
+                    return '<a href="#" onclick="GetStudentHealthByID(' + data + ')"><i class="fa fa-edit"></i></a>';
                 }
             }
         ]
     });
 }
 
-function GetStudentParticularsByID(parID) {
-    console.log(parID);
+function GetStudentHealthByID(contID) {
+    console.log(contID);
 
-    var x = $("#getStudentParticularsByID").val();
+    var x = $("#getStudentHealthByID").val();
 
-    $.getJSON(x, { ID: parID }, function (result) {
+    $.getJSON(x, { ID: contID }, function (result) {
         console.log(result);
 
-            $('#FirstName').val(result.FirstName);
-            $('#LastName').val(result.LastName);
-            $('#DOB').val(result.DOB);
-            $('#GradeID').val(result.GradeID);
-            $('#StartDate').val(result.StartDate);
-            $('#EndDate').val(result.EndDate);
-            $('#LeavingReason').val(result.LeavingReason);
-            $('#Gender').val(result.Gender);         
+        $('#drpStudentName').val(result.StudentID);
 
-            $('#StudentParticularsID').val(result.ID);
+        $('#BloodGroup').val(result.BloodGroup);
+        $('#KnownMadicalProblems').val(result.KnownMadicalProblems);
+        $('#DoctorName').val(result.DoctorName);
+
+        $('#StudentHealthID').val(result.ID);
+
     });
     return false;
 }

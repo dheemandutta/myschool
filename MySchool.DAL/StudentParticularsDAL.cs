@@ -148,7 +148,7 @@ namespace MySchool.DAL
                     {
                         studentParticularsEntities.Add(new StudentParticularsEntities
                         {
-                            //ID = Convert.ToInt32(dr["ID"]),
+                            ID = Convert.ToInt32(dr["ID"]),
                             StudentName = Convert.ToString(dr["StudentName"]),
                             DOB = Convert.ToString(dr["DOB"]),
                             Grade = Convert.ToString(dr["Grade"]),

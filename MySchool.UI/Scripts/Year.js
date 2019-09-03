@@ -15,7 +15,7 @@ function validate() {
 
 function clearTextBox() {
 
-    $('#ID').val("");
+    $('#YearID').val("");
     $('#Year').val("");
     $('#YearDesc').val("");
 

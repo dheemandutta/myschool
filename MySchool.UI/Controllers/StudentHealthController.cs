@@ -22,6 +22,56 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
+        public JsonResult Add(StudentHealthEntities studentHealthEntities)
+        {
+            StudentHealthBL studentHealthBL = new StudentHealthBL();
+            return Json(studentHealthBL.SaveStudentHealth(studentHealthEntities), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetStudentHealthByID(int ID)
+        {
+            StudentHealthBL studentHealthBL = new StudentHealthBL();
+            return Json(studentHealthBL.GetStudentHealthByID(ID), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult LoadData()
+        {
+            int draw, start, length;
+            int pageIndex = 0;
+
+            if (null != Request.Form.GetValues("draw"))
+            {
+                draw = int.Parse(Request.Form.GetValues("draw").FirstOrDefault().ToString());
+                start = int.Parse(Request.Form.GetValues("start").FirstOrDefault().ToString());
+                length = int.Parse(Request.Form.GetValues("length").FirstOrDefault().ToString());
+            }
+            else
+            {
+                draw = 1;
+                start = 0;
+                length = 50;
+            }
+
+            if (start == 0)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                pageIndex = (start / length) + 1;
+            }
+
+            StudentHealthBL studentHealthBL = new StudentHealthBL();
+            int totalrecords = 0;
+
+            List<StudentHealthEntities> studentHealthEntities = new List<StudentHealthEntities>();
+            studentHealthEntities = studentHealthBL.GetStudentHealthPageWise(pageIndex, ref totalrecords, length);
+
+            var data = studentHealthEntities;
+            return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+
         //for Catagory drp
         public void GetStudentForDrp()
         {

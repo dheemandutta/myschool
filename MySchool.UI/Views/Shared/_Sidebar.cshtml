@@ -50,7 +50,12 @@
                     <span>Section</span>
                 </a>
             </li>
-
+            <li class="@Html.isActive(controller: "Subject")">
+                <a href="@Url.Action("Index", "Subject")" title="Subject">
+                    <em class="icon-trophy"></em>
+                    <span>Subject</span>
+                </a>
+            </li>
             <li class="@Html.isActive(controller: "Student")">
                 <a href="@Url.Action("Index", "Student")" title="Student">
                     <em class="icon-trophy"></em>

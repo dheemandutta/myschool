@@ -16,7 +16,7 @@ namespace MySchool.DAL
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("@usp_Insert_Update_Subject", con);
+            SqlCommand cmd = new SqlCommand("@stpInsertUpdateSubject", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
             if (String.IsNullOrEmpty(subject.ID.ToString()) || (subject.ID == 0))
@@ -33,6 +33,26 @@ namespace MySchool.DAL
             int recordAffected = cmd.ExecuteNonQuery();
             con.Close();
             return recordAffected;
+        }
+
+        public List<GradeEntities> GetAllGradeForDrp()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetAllGradeForDrp", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<GradeEntities> unitMasterList = myTable.AsEnumerable().Select(m => new GradeEntities()
+            {
+                ID = m.Field<int>("ID"),
+                Grade = m.Field<string>("Grade")
+
+            }).ToList();
+            con.Close();
+            return unitMasterList;
         }
     }
 }

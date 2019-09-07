@@ -10,11 +10,17 @@ namespace MySchool.BL
 {
     public class SubjectBL
     {
-        public int Save(SubjectEntities subject)
+        public int SaveOrUpdate(SubjectEntities subject)
         {
             SubjectDAL subjectDl = new SubjectDAL();
             return subjectDl.SaveOrUpdate(subject);
 
+        }
+
+        public List<GradeEntities> GetAllGradeForDrp()
+        {
+            SectionDAL sectionDal = new SectionDAL();
+            return sectionDal.GetAllGradeForDrp();
         }
     }
 }

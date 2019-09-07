@@ -13,11 +13,6 @@ function SaveOrUpdate() {
             sub: $tds.eq(1).text(),
             psub: $tds.eq(2).text()
         };
-
-            //subId = $tds.eq(0).('id'),
-            //sub = $tds.eq(1).text(),
-            //psub = $tds.eq(2).text()
-
         dataArrSubject.push(objSub);   
     });
 

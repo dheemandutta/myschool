@@ -198,6 +198,7 @@
     <Compile Include="Controllers\StudentHealthController.cs" />
     <Compile Include="Controllers\StudentParticularsController.cs" />
     <Compile Include="Controllers\StudentResultController.cs" />
+    <Compile Include="Controllers\StudentSearchController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherParticularController.cs" />
     <Compile Include="Controllers\YearController.cs" />
@@ -350,6 +351,7 @@
     <Content Include="Scripts\StudentContact.js" />
     <Content Include="Scripts\StudentHealth.js" />
     <Content Include="Scripts\StudentParticulars.js" />
+    <Content Include="Scripts\StudentSearch.js" />
     <Content Include="Scripts\TeacherParticulars.js" />
     <Content Include="Scripts\Year.js" />
     <Content Include="Sql Script\FullScriptOfMySchool_16.08.2019 .sql" />
@@ -765,6 +767,7 @@
     <Content Include="Views\StudentHealth\Index.cshtml" />
     <Content Include="Views\StudentResult\Index.cshtml" />
     <Content Include="Views\Section\Index.cshtml" />
+    <Content Include="Views\StudentSearch\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

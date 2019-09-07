@@ -229,5 +229,52 @@ namespace MySchool.DAL
             con.Close();
             return studentParticularsList;
         }
+
+
+
+
+
+        public List<StudentParticularsEntities> GetStudentSearchByNamePageWise(int pageIndex, ref int recordCount, int length, string searchval)
+        {
+            List<StudentParticularsEntities> sList = new List<StudentParticularsEntities>();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("stpGetStudentSearchByNamePageWise", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+                    cmd.Parameters.AddWithValue("@PageSize", length);
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4);
+                    cmd.Parameters["@RecordCount"].Direction = ParameterDirection.Output;
+                    if (!string.IsNullOrEmpty(searchval))
+                        cmd.Parameters.AddWithValue("@SearchValue", searchval);
+                    else
+                        cmd.Parameters.AddWithValue("@SearchValue", DBNull.Value);
+
+                    con.Open();
+
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+                    //prodPOList = Common.CommonDAL.ConvertDataTable<ProductPOCO>(ds.Tables[0]);
+
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        sList.Add(new StudentParticularsEntities
+                        {
+                            ID = Convert.ToInt32(dr["ID"]),
+                            StudentName = Convert.ToString(dr["StudentName"]),
+                            DOB = Convert.ToString(dr["DOB"]),
+                            Grade = Convert.ToString(dr["Grade"]),
+                            Gender = Convert.ToString(dr["Gender"])
+                        });
+                    }
+                    recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);
+                    con.Close();
+                }
+            }
+            return sList;
+        }
     }
 }

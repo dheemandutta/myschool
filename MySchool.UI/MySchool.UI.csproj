@@ -190,6 +190,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StudentAttendentController.cs" />
@@ -340,6 +341,7 @@
     <Content Include="Scripts\demo\demo-vector-map.js" />
     <Content Include="Scripts\demo\demo-wizard.js" />
     <Content Include="Scripts\demo\demo-xeditable.js" />
+    <Content Include="Scripts\exam.js" />
     <Content Include="Scripts\grade.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -768,6 +770,7 @@
     <Content Include="Views\StudentResult\Index.cshtml" />
     <Content Include="Views\Section\Index.cshtml" />
     <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\Exam\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

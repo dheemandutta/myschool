@@ -367,6 +367,7 @@
     <Content Include="Sql Script\PP_Patch_21_08_2019.sql" />
     <Content Include="Sql Script\PP_Patch_28_08_2019.sql" />
     <Content Include="Sql Script\PP_Patch_31_08_2019.sql" />
+    <Content Include="Sql Script\SS_Patch_08_09_2019.sql" />
     <Content Include="Sql Script\SS_Patch_09_08_2019.sql" />
     <Content Include="Sql Script\SS_Patch_12_08_2019.sql" />
     <Content Include="Sql Script\SS_Patch_13_08_2019.sql" />

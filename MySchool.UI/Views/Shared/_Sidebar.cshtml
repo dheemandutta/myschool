@@ -29,6 +29,14 @@
             </li>
 
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+            <li class="@Html.isActive(controller: "StudentSearch")">
+                <a href="@Url.Action("Index", "StudentSearch")" title="StudentSearch">
+                    <em class="icon-trophy"></em>
+                    <span>StudentSearch</span>
+                </a>
+            </li>
+
             <li class="@Html.isActive(controller: "Year")">
                 <a href="@Url.Action("Index", "Year")" title="Year">
                     <em class="icon-trophy"></em>

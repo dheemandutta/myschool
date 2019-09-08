@@ -48,5 +48,13 @@ namespace MySchool.BL
             StudentParticularsDAL studentParticularsDal = new StudentParticularsDAL();
             return studentParticularsDal.GetSectionForDrp();
         }
+
+
+        public List<StudentParticularsEntities> GetStudentSearchByNamePageWise(int pageIndex, ref int recordCount, int length, string searchval)
+        {
+            StudentParticularsDAL studentParticularsDal = new StudentParticularsDAL();
+            return studentParticularsDal.GetStudentSearchByNamePageWise(pageIndex, ref recordCount, length, searchval);
+        }
+
     }
 }

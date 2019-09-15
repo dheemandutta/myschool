@@ -228,6 +228,7 @@
     <Content Include="Content\app\css\theme-f.css" />
     <Content Include="Content\app\css\theme-g.css" />
     <Content Include="Content\app\css\theme-h.css" />
+    <Content Include="Content\bootstrap-multiselect.css" />
     <Content Include="Content\Images\bg1.jpg" />
     <Content Include="Content\Images\bg10.jpg" />
     <Content Include="Content\Images\bg2.jpg" />
@@ -327,6 +328,7 @@
     <Content Include="Content\Json\jqgrid-tree.json" />
     <Content Include="Content\Json\jqgrid.json" />
     <Content Include="Content\Json\xeditable-groups.json" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\demo\demo-dashboard.js" />
     <Content Include="Scripts\demo\demo-datatable.js" />
     <Content Include="Scripts\demo\demo-flot.js" />
@@ -359,6 +361,7 @@
     <Content Include="Scripts\TeacherParticulars.js" />
     <Content Include="Scripts\Year.js" />
     <Content Include="Sql Script\FullScriptOfMySchool_16.08.2019 .sql" />
+    <Content Include="Sql Script\fullscript_15092019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_03_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_01_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_02_09_2019.sql" />

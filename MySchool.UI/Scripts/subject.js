@@ -32,10 +32,11 @@ function Add() {
     var subject = {
         ID: $('#SubjectID').val(),
         SubjectName: $('#SubjectName').val(),
-        GradeID: $('#drpGrade').val()
+        GradeIds: $('#drpGrade').val()
     };
 
     console.log(subject);
+    console.log(JSON.stringify(subject));
 
     $.ajax({
         url: postUrl,

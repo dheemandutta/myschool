@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace MySchool.Entities
 {
-    public class SubjectEntities
+    public class TopicEntities
     {
         public int ID { get; set; }
-
+        public int SubjectId { get; set; }
+        public string TopicName { get; set; }
         public string SubjectName { get; set; }
-
-        public int GradeID { get; set; }
-
-        public string Grade { get; set; }
-
-        public int Id { get; set; }
     }
 }

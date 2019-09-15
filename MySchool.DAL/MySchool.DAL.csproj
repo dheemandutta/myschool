@@ -42,16 +42,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChoiceDAL.cs" />
     <Compile Include="ExamDAL.cs" />
     <Compile Include="GradeDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionDAL.cs" />
     <Compile Include="SectionDAL.cs" />
     <Compile Include="StudentAttendentDAL.cs" />
     <Compile Include="StudentContactDAL.cs" />
     <Compile Include="StudentHealthDAL.cs" />
     <Compile Include="StudentParticularsDAL.cs" />
+    <Compile Include="Subject2DAL.cs" />
     <Compile Include="SubjectDAL.cs" />
+    <Compile Include="tblConfigDAL.cs" />
     <Compile Include="TeacherDAL.cs" />
+    <Compile Include="TopicDAL.cs" />
     <Compile Include="YearDAL.cs" />
   </ItemGroup>
   <ItemGroup>

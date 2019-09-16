@@ -35,43 +35,43 @@ function Add() {
 
     console.log(subject);
 
-    $.post(postUrl,  {  subjectEntities: JSON.stringify(subject) })
-        .done(function () {
-            //console.log('Complete');
-            swal("Good job!", "Data Saved Successfully", "success");
-        })
-        .fail(function () {
-            swal("Sorry!", "Data Not Saved", "error");
-        })
-        .always(function () {
-            clearTextBox();
-            SetUpGrid();
-        });
+    //$.post(postUrl, JSON.stringify({ subjectEntities: subject }) )
+    //    .done(function () {
+    //        //console.log('Complete');
+    //        swal("Good job!", "Data Saved Successfully", "success");
+    //    })
+    //    .fail(function () {
+    //        swal("Sorry!", "Data Not Saved", "error");
+    //    })
+    //    .always(function () {
+    //        clearTextBox();
+    //        SetUpGrid();
+    //    });
 
 
-    //$.ajax({
-    //    url: postUrl,
-    //    data: JSON.stringify({ subjectEntities: subject }),
-    //    type: "POST",
-    //    contentType: "application/json;charset=utf-8",
-    //    dataType: "json",
-    //    success: function (result) {
-    //        if (result > 0) {
-    //            clearTextBox();
-    //            SetUpGrid();
-    //            swal("Good job!", "Data Saved Successfully", "success");
+    $.ajax({
+        url: postUrl,
+        data: JSON.stringify({ subjectEntities: subject }),
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            if (result > 0) {
+                clearTextBox();
+                SetUpGrid();
+                swal("Good job!", "Data Saved Successfully", "success");
 
-    //        }
-    //        else {
-    //            clearTextBox();
-    //            SetUpGrid();
-    //            swal("Sorry!", "Data Not Saved", "error");
-    //        }
-    //    },
-    //    error: function (errormessage) {
-    //        alert(errormessage.responseText);
-    //    }
-    //});
+            }
+            else {
+                clearTextBox();
+                SetUpGrid();
+                swal("Sorry!", "Data Not Saved", "error");
+            }
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
 }
 
 function loadData() {

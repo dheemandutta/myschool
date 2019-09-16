@@ -21,14 +21,14 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
-        public JsonResult Add(String subjectEntities)
+        public JsonResult Add(SubjectEntities subjectEntities)
         {
-            SubjectEntities x = new SubjectEntities();
+            //SubjectEntities x = new SubjectEntities();
 
-            x = JsonConvert.DeserializeObject<SubjectEntities>(subjectEntities);
+            //x = JsonConvert.DeserializeObject<SubjectEntities>(subjectEntities);
 
             Subject2BL subjectBL = new Subject2BL();
-            return Json(subjectBL.SaveSubject(x), JsonRequestBehavior.AllowGet);
+            return Json(subjectBL.SaveSubject(subjectEntities), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetSubjectByID(int ID)

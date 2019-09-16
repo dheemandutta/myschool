@@ -105,12 +105,33 @@ function SetUpGrid() {
                 "data": "ConfigValue", "name": "ConfigValue", "autoWidth": true
             },
             {
-                "data": "KeyName", "width": "50px", "render": function (d) {
-                    return '<a href="#" onclick="Delete(' + d + ')"><i class="fa fa-trash"></i></a>';
+                "data": "ID", "width": "50px", "render": function (data) {
+                    return '<a href="#" onclick="GettblConfigByKeyName("' + data + '")"><i class="fa fa-edit"></i></a>';
                 }
             }
+            //,{
+            //    "data": "KeyName", "width": "50px", "render": function (d) {
+            //        return '<a href="#" onclick="Delete(' + d + ')"><i class="fa fa-trash"></i></a>';
+            //    }
+            //}
         ]
     });
+}
+
+function GettblConfigByKeyName(parID) {
+    console.log(parID);
+
+    var x = $("#gettblConfigByKeyName").val();
+
+    $.getJSON(x, { ID: parID }, function (result) {
+      //  console.log(result);
+
+        $('#KeyName').val(result.KeyName);
+        $('#ConfigValue').val(result.ConfigValue);
+
+        $('#tblConfigID').val(result.ID);
+    });
+    return false;
 }
 
 function Delete(KeyName) {

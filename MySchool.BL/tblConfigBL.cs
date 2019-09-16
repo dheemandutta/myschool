@@ -16,6 +16,12 @@ namespace MySchool.BL
             return topicDAL.SaveConfig(configEntities);
         }
 
+        public tblConfigEntities GettblConfigByKeyName(int ID/*string KeyName*/)
+        {
+            tblConfigDAL topicDAL = new tblConfigDAL();
+            return topicDAL.GettblConfigByKeyName(ID);
+        }
+
         public List<tblConfigEntities> GettblConfigPageWise(int pageIndex, ref int recordCount, int length)
         {
             tblConfigDAL topicDAL = new tblConfigDAL();

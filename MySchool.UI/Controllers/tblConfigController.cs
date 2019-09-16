@@ -25,6 +25,12 @@ namespace MySchool.UI.Controllers
             return Json(topicBL.SavetblConfig(configEntities), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GettblConfigByKeyName(int ID/*string KeyName*/)
+        {
+            tblConfigBL topicBL = new tblConfigBL();
+            return Json(topicBL.GettblConfigByKeyName(ID), JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult LoadData()
         {
             int draw, start, length;

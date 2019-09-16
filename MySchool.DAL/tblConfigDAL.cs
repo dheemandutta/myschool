@@ -19,7 +19,7 @@ namespace MySchool.DAL
             SqlCommand cmd = new SqlCommand("stpInsertUpdatetblConfig", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            //if (String.IsNullOrEmpty(configEntities.ID.ToString()) || (configEntities.ID == 0))
+            //if (String.IsNullOrEmpty(configEntities.KeyName.ToString()) || (configEntities.ID == 0))
             //{
             //    cmd.Parameters.AddWithValue("@Id", DBNull.Value);
             //}
@@ -35,6 +35,23 @@ namespace MySchool.DAL
             int recordsAffected = cmd.ExecuteNonQuery();
             con.Close();
             return recordsAffected;
+        }
+
+        public tblConfigEntities GettblConfigByKeyName(int ID/*string KeyName*/)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGettblConfigByKeyName", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", ID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            tblConfigEntities topicEntities = new tblConfigEntities();
+            topicEntities.KeyName = Convert.ToString(ds.Tables[0].Rows[0]["KeyName"]);
+            topicEntities.ConfigValue = Convert.ToString(ds.Tables[0].Rows[0]["ConfigValue"]);
+            return topicEntities;
         }
 
         public List<tblConfigEntities> GettblConfigPageWise(int pageIndex, ref int recordCount, int length)

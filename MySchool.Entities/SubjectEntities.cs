@@ -16,6 +16,8 @@ namespace MySchool.Entities
 
         public string Grade { get; set; }
 
-        public int Id { get; set; }
+        //public int Id { get; set; }
+
+        public string[] GradeIds { get; set; }
     }
 }

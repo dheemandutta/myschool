@@ -20,23 +20,23 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(HttpPostedFileBase postedFile)
-        {
-            if (postedFile != null)
-            {
-                string path = Server.MapPath("~/QuestionIMG/");
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
+        //[HttpPost]
+        //public ActionResult Index(HttpPostedFileBase postedFile)
+        //{
+        //    if (postedFile != null)
+        //    {
+        //        string path = Server.MapPath("~/QuestionIMG/");
+        //        if (!Directory.Exists(path))
+        //        {
+        //            Directory.CreateDirectory(path);
+        //        }
 
-                postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
-                ViewBag.Message = "File uploaded successfully.";
-            }
+        //        postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+        //        ViewBag.Message = "File uploaded successfully.";
+        //    }
 
-            return View();
-        }
+        //    return View();
+        //}
 
         public JsonResult Add(QuestionEntities questionEntities)
         {

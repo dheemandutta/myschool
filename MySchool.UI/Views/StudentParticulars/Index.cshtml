@@ -13,8 +13,9 @@
 
     @Html.Hidden("saveStudentParticulars", @Url.Action("Add", "StudentParticulars"))
     @Html.Hidden("loaddata", @Url.Action("LoadData", "StudentParticulars"))
+    @Html.Hidden("getStudentParticularsByID", @Url.Action("GetStudentParticularsByID", "StudentParticulars"))
 
-    <div class="row" style="height:1050px;">
+    <div class="row" style="height:2000px;">
         <div class="col-md-7 bac" style=" width: 100%;">
             <div class="row">
                 <div class="col-lg-12">
@@ -42,64 +43,50 @@
                                     <div class="ibox-content">
                                         <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
-                                            @*<div class="form-group" style="margin-right: -600px;">
-            <label class="col-sm-2 control-label">Student:<font color=""></font> </label>
-            <div class="col-sm-10" style="width: 30%;">
-                <input type="text" class="form-control" style="width: 90%;" id="StudentID" placeholder="Student" required="required">
-            </div>
-        </div>*@
                                             <div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 27%;">
-                                                    @Html.DropDownListFor(model => model.StudentID, (IEnumerable<SelectListItem>)ViewBag.StudentParticulars, "Select", new { @class = "form-control", @id = "drpStudentName" })
+                                                <label class="col-sm-2 control-label">Student First Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="FirstName" placeholder="First Name" required="required">
                                                 </div>
                                             </div>
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <label class="col-sm-2 control-label">Student Last Name:<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="LastName" placeholder="Last Name" required="required">
+                                                </div>
+                                            </div>
+                                            @*<div class="form-group" style="margin-right: -600px;">
+                                                    <label class="col-sm-2 control-label">Student Name:<font color=""></font> </label>
+                                                    <div class="col-sm-10" style="width: 27%;">
+                                                        @Html.DropDownListFor(model => model.StudentID, (IEnumerable<SelectListItem>)ViewBag.StudentParticulars, "Select", new { @class = "form-control", @id = "drpStudentName" })
+                                                    </div>
+                                                </div>*@
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 27%;">
                                                     @Html.DropDownListFor(model => model.GradeID, (IEnumerable<SelectListItem>)ViewBag.GradeForDrp, "Select", new { @class = "form-control", @id = "drpGrade" })
                                                 </div>
                                             </div>
-                                            <div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Section:<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 27%;">
-                                                    @Html.DropDownListFor(model => model.SectionID, (IEnumerable<SelectListItem>)ViewBag.SectionForDrp, "Select", new { @class = "form-control", @id = "drpSection" })
-                                                </div>
-                                            </div>
+                                            @*<div class="form-group" style="margin-right: -600px;">
+                                                    <label class="col-sm-2 control-label">Section:<font color=""></font> </label>
+                                                    <div class="col-sm-10" style="width: 27%;">
+                                                        @Html.DropDownListFor(model => model.SectionID, (IEnumerable<SelectListItem>)ViewBag.SectionForDrp, "Select", new { @class = "form-control", @id = "drpSection" })
+                                                    </div>
+                                                </div>*@
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">D.O.B:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
                                                     @*<input type="text" class="form-control" style="width: 90%;" id="DOB" placeholder="D.O.B" required="required">*@
-                                                    <input type="text" data-masked="" id="DOB" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="D.O.B" class="form-control" />
+                                                    <input type="text" data-masked="" id="DOB" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="D.O.B" class="form-control" required="required" />
                                                     <span class="help-block">'DD/MM/YYYY'</span>
                                                 </div>
                                             </div>
-                                            <div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Grade:<font color=""></font> </label>
-                                                @*<div class="col-sm-10" style="width: 30%;">
-                <input type="text" class="form-control" style="width: 90%;" id="GradeID" placeholder="Grade" required="required">
-            </div>*@
-                                                <div class="col-sm-10" style="width: 30%;" required="required">
-                                                    <select name="account" class="form-control m-b" style="width:90%">
-                                                        <option value="Class1A">Class1A</option>
-                                                        <option value="Class1B">Class1B</option>
-                                                        <option value="Class1C">Class1C</option>
 
-                                                        <option value="Class2A">Class2A</option>
-                                                        <option value="Class2B">Class2B</option>
-                                                        <option value="Class2C">Class2C</option>
-
-                                                        <option value="Class3A">Class3A</option>
-                                                        <option value="Class3B">Class3B</option>
-                                                        <option value="Class3C">Class3C</option>
-                                                    </select>
-                                                </div>
-                                            </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Start Date:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
                                                     @*<input type="text" class="form-control" style="width: 90%;" id="StartDate" placeholder="Start Date" required="required">*@
-                                                    <input type="text" data-masked="" id="StartDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Start Date" class="form-control" />
+                                                    <input type="text" data-masked="" id="StartDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Start Date" class="form-control" required="required" />
                                                     <span class="help-block">'DD/MM/YYYY'</span>
                                                 </div>
                                             </div>
@@ -107,23 +94,21 @@
                                                 <label class="col-sm-2 control-label">End Date:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
                                                     @*<input type="text" class="form-control" style="width: 90%;" id="EndDate" placeholder="End Date" required="required">*@
-                                                    <input type="text" data-masked="" id="EndDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="End Date" class="form-control" />
+                                                    <input type="text" data-masked="" id="EndDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="End Date" class="form-control" required="required" />
                                                     <span class="help-block">'DD/MM/YYYY'</span>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Leaving Reason:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <textarea type="text" class="form-control valid" id="LeavingReason" placeholder="Leaving Reason" style="width: 90% !important;" required="required"></textarea>
+                                                    <textarea type="text" class="form-control valid" id="LeavingReason" placeholder="Leaving Reason" style="width: 90% !important;"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Gender:<font color=""></font> </label>
-                                                @*<div class="col-sm-10" style="width: 30%;">
-                <input type="text" class="form-control" style="width: 90%;" id="Gender" placeholder="Gender" required="required">
-            </div>*@
+
                                                 <div class="col-sm-10" style="width: 30%;" required="required">
-                                                    <select name="account" class="form-control m-b" style="width:90%">
+                                                    <select name="account" class="form-control m-b" style="width:90%" id="Gender">
                                                         <option value="">Select</option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
@@ -131,12 +116,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            @*<div class="form-group" style="margin-right: -600px;">
-            <label class="col-sm-2 control-label">Photo:<font color=""></font> </label>
-            <div class="col-sm-10" style="width: 30%;">
-                    <input type="text" class="form-control" style="width: 90%;" id="Photo" placeholder="Photo">
-                </div>
-        </div>*@
+
 
                                             <div class="form-group">
                                                 <input type="hidden" id="StudentParticularsID" />
@@ -232,10 +212,11 @@
                                             <thead>
                                                 <tr>
                                                     <th>Student</th>
-                                                    <th>Name</th>
+                                                    <th>DOB</th>
                                                     <th>Grade</th>
-                                                    <th>Leaving Reason</th>
                                                     <th>Gender</th>
+                                                    <th>Image</th>
+                                                    <th>Edit</th>
                                                 </tr>
                                             </thead>
                                         </table>

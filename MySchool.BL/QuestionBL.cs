@@ -40,5 +40,18 @@ namespace MySchool.BL
             QuestionDAL topicDAL = new QuestionDAL();
             return topicDAL.GetTopicForDrp();
         }
+
+
+        public int SaveOrUpdate(QuestionViewEntities questionEntities)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.SaveOrUpdate(questionEntities);
+        }
+
+        public List<ChoiceEntities> GetAnswerPageWise(int Id, int pageIndex, ref int recordCount, int length)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.GetAnswerPageWise(Id, pageIndex, ref recordCount, length);
+        }
     }
 }

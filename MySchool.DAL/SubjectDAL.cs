@@ -30,7 +30,7 @@ namespace MySchool.DAL
 
             cmd.Parameters.AddWithValue("@SubjectName", subjectEntities.SubjectName);
          
-            cmd.Parameters.AddWithValue("@GradeID", subjectEntities.GradeID);
+            cmd.Parameters.AddWithValue("@GradeID", String.Join(",",subjectEntities.GradeIds));
 
             int recordsAffected = cmd.ExecuteNonQuery();
             con.Close();

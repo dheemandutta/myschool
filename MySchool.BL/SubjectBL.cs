@@ -16,6 +16,11 @@ namespace MySchool.BL
             return subjectDAL.SaveSubject(subjectEntities);
         }
 
+        public int DeleteSubject(int ID)
+        {
+            SubjectDAL subjectDl = new SubjectDAL();
+            return subjectDl.DeleteSubject(ID);
+        }
         public SubjectEntities GetSubjectByID(int ID)
         {
             SubjectDAL subjectDAL = new SubjectDAL();

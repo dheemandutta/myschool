@@ -90,6 +90,18 @@ namespace MySchool.DAL
             return subjectEntities;
         }
 
+        public int DeleteSubject(int ID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpDeleteSubjecyByID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", ID);
+            int recordAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return recordAffected;
+        }
+
         //for Grade drp
         ///////////////////////////////////////////////
     }

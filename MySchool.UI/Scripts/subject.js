@@ -35,8 +35,8 @@ function Add() {
         GradeIds: $('#drpGrade').val()
     };
 
-    console.log(subject);
-    console.log(JSON.stringify(subject));
+    //console.log(subject);
+    //console.log(JSON.stringify(subject));
 
     $.ajax({
         url: postUrl,
@@ -63,6 +63,33 @@ function Add() {
     });
 }
 
+function Delete(ID) {
+    var ans = confirm("Do you want to delete the record?");
+    var deleteUrl = $('#delete').val();
+    if (ans) {
+        $.ajax({
+            url: deleteUrl,
+            data: JSON.stringify({ ID: ID }),
+            type: "POST",
+            contentType: "application/json;charser=UTF-8",
+            dataType: "json",
+            success: function (result) {
+                if (result > 0) {
+                    alert("Subject deleted successfully");
+                    SetUpGrid();
+
+                }
+                else {
+                    alert("Subject can not be deleted as this is already used.");
+                  
+                }
+            },
+            error: function () {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+}
 function loadData() {
     var loadposturl = $('#loaddata').val();
     $.ajax({
@@ -110,7 +137,7 @@ function SetUpGrid() {
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="GetSubjectByID(' + data + ')"><i class="fa fa-edit"></i></a>';
+                    return '<a href="#" onclick="Delete(' + data + ')"><i class="fa fa-trash"></i></a>';
                 }
             }
         ]
@@ -118,12 +145,12 @@ function SetUpGrid() {
 }
 
 function GetSubjectByID(parID) {
-    console.log(parID);
+    //console.log(parID);
 
     var x = $("#getSubjectByID").val();
 
     $.getJSON(x, { ID: parID }, function (result) {
-        console.log(result);
+        //console.log(result);
 
         $('#SubjectName').val(result.SubjectName);
         $('#drpGrade').val(result.GradeID);
@@ -132,3 +159,4 @@ function GetSubjectByID(parID) {
     });
     return false;
 }
+

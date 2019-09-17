@@ -98,5 +98,11 @@ namespace MySchool.UI.Controllers
 
         }
 
+        public ActionResult DeleteSubject(int ID)
+        {
+            SubjectBL subjectBl = new SubjectBL();
+            int recordAffected = subjectBl.DeleteSubject(ID);
+            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -17,7 +17,7 @@
     @Html.Hidden("saveSubject", @Url.Action("Add", "Subject"))
     @Html.Hidden("loaddata", @Url.Action("LoadData", "Subject"))
     @Html.Hidden("getSubjectByID", @Url.Action("GetSubjectByID", "Subject"))
-
+    @Html.Hidden("delete",@Url.Action("DeleteSubject","Subject"))
 
     <div class="row" style="height:2000px;">
         <div class="col-md-7 bac" style=" width: 100%;">
@@ -100,7 +100,7 @@
                                                 <tr>
                                                     <th>Subject</th>
                                                     <th>Grade</th>
-                                                    <th>Edit</th>
+                                                    <th>Delete</th>
                                                 </tr>
                                             </thead>
                                         </table>

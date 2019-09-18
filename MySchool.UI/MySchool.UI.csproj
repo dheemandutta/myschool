@@ -193,6 +193,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StudentAttendentController.cs" />
@@ -221,6 +222,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="background\OnlineExamSystem.jpg" />
+    <Content Include="background\online_examination_Software_odisha_india_interface_software_services.jpg" />
+    <Content Include="background\shutterstock_95107219.jpg" />
+    <Content Include="background\slide.jpg" />
     <Content Include="Content\app\css\app-rtl.css" />
     <Content Include="Content\app\css\app.css" />
     <Content Include="Content\app\css\bootstrap-rtl.css" />
@@ -382,6 +387,7 @@
     <Content Include="Sql Script\PP_Patch_12_08_2019.sql" />
     <Content Include="Sql Script\PP_Patch_15_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_17_09_2019.sql" />
+    <Content Include="Sql Script\PP_Patch_19_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_21_08_2019.sql" />
     <Content Include="Sql Script\PP_Patch_28_08_2019.sql" />
     <Content Include="Sql Script\PP_Patch_31_08_2019.sql" />
@@ -859,6 +865,9 @@
     <Content Include="Vendor\summernote\font\summernote.eot" />
     <Content Include="Vendor\summernote\font\summernote.ttf" />
     <Content Include="Vendor\summernote\font\summernote.woff" />
+    <Content Include="Views\Question\QuestionPaper.cshtml" />
+    <Content Include="Views\Question\StartTest.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

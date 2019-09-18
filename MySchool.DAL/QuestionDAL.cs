@@ -263,5 +263,68 @@ namespace MySchool.DAL
             }
             return ranksPOList;
         }
+
+
+        public ChoiceEntities GetAnswerByID(int ID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetChoiceByID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@Id", ID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            ChoiceEntities topicEntities = new ChoiceEntities();
+            topicEntities.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
+            //topicEntities.QuestionId = Convert.ToInt32(ds.Tables[0].Rows[0]["QuestionId"]);
+            topicEntities.ChoiceText = Convert.ToString(ds.Tables[0].Rows[0]["ChoiceText"]);
+            topicEntities.IsAnswer = Convert.ToBoolean(ds.Tables[0].Rows[0]["IsAnswer"]);
+            return topicEntities;
+        }
+
+
+        public QuestionViewEntities GetQuestionPaper()
+        {
+            QuestionViewEntities questionViewEntities = new QuestionViewEntities();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetQuestion", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.AddWithValue("@Id", ID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            QuestionEntities topicEntities = new QuestionEntities();
+            topicEntities.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
+            topicEntities.QuestionText = Convert.ToString(ds.Tables[0].Rows[0]["QuestionText"]);
+            questionViewEntities.QuestionEntities = topicEntities;
+            return questionViewEntities;
+        }
+
+
+        //for stpGettblSubjectForDrp drp
+        public List<QuestionEntities> GettblSubjectForDrp()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGettblSubjectForDrp", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<QuestionEntities> subjectParticularsList = myTable.AsEnumerable().Select(m => new QuestionEntities()
+            {
+                Id = m.Field<int>("Id"),
+                SubjectName = m.Field<string>("SubjectName")
+
+            }).ToList();
+
+            con.Close();
+            return subjectParticularsList;
+        }
     }
 }

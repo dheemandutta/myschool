@@ -16,5 +16,8 @@ namespace MySchool.Entities
         public string QuestionText { get; set; }
         public string ImagePath { get; set; }
         public decimal Marks { get; set; }
+
+
+        public string SubjectName { get; set; }
     }
 }

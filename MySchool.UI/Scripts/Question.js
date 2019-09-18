@@ -358,18 +358,16 @@ function ShowChildren(childdata) {
 
             { "data": "ChoiceText", "name": "ChoiceText", "autoWidth": true },
             { "data": "IsAnswer", "name": "IsAnswer", "autoWidth": true }
-
-            //{
-            //    "data": "FundCategoryId", "width": "50px", "render": function (data) {
-            //        return '<a href="#" onclick="GetFundCategoryById(' + data + ')">Edit</a>';
-            //    }
-            //},
-            //{
-            //    "data": "FundCategoryId", "width": "50px", "render": function (d) {
-            //        //debugger;
-            //        return '<a href="#" onclick="Delete(' + d + ')">Delete</a>';
-            //    }
-            //}
+            ,{
+                "data": "Id", "width": "50px", "render": function (data) {
+                    return '<a href="#" onclick="GetAnswerByID(' + data + ')"><i class="fa fa-edit"></i></a>';
+                }
+            },
+            {
+                "data": "Id", "width": "50px", "render": function (d) {
+                    return '<a href="#" onclick="DeleteAns(' + d + ')"><i class="fa fa-trash"></i></a>';
+                }
+            }
 
         ]//,
 
@@ -382,4 +380,76 @@ function ShowChildren(childdata) {
         //    }
         //}
     });
+}
+
+function GetAnswerByID(parID) {
+    console.log(parID);
+
+    var x = $("#getAnswerByID").val();
+
+    $.getJSON(x, { ID: parID }, function (result) {
+        console.log(result);
+
+        $('#drpSubject').val(result.ChoiceText);
+        //$('#chkPrimarySubject').val(result.IsAnswer);
+        IsAnswer: document.getElementById("chkPrimarySubject").checked,
+
+        $('#QuestionID').val(result.ID);
+    });
+    return false;
+}
+
+function DeleteAns(Id) {
+    var ans = confirm("Do you want to delete the record?");
+    var deleteUrl = $('#deleteAnswer').val();
+    if (ans) {
+        $.ajax({
+            url: deleteUrl,
+            data: JSON.stringify({ ID: Id }),
+            type: "POST",
+            contentType: "application/json;charser=UTF-8",
+            dataType: "json",
+            success: function (result) {
+
+                if (result > 0) {
+                    alert("Grade deleted successfully");
+
+                    SetUpGrid();
+
+                }
+                else {
+                    alert("Grade can not be deleted as this is already used.");
+                }
+            },
+            error: function () {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+}
+
+
+
+function GetQuestionPaper() {
+
+    var posturl = $('#getQuestionPaper').val();
+    // alert(posturl);
+    $.ajax({
+        url: posturl,
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            //console.log(result[0]);
+
+            $('#QuestionText').val(result.QuestionText);
+            //$("#Total").text(result[0].Total);
+            // $("#LineNumber2").text(result[1].ElapsedPeriod);
+            // $("#LineNumber3").text(result[2].ElapsedPeriod);
+        },
+        error: function (errormessage) {
+            console.log(errormessage.responseText);
+        }
+    });
+
 }

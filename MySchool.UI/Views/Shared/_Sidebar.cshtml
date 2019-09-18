@@ -158,6 +158,13 @@
                 </a>
             </li>
 
+            <li class="@Html.isActive(controller: "QuestionPaper")">
+                <a href="@Url.Action("QuestionPaper", "Question")" title="Question Paper">
+                    <em class="icon-trophy"></em>
+                    <span>Question Paper</span>
+                </a>
+            </li>
+
             <li class="@Html.isActive(controller: "Choice")">
                 <a href="@Url.Action("Index", "Choice")" title="Choice">
                     <em class="icon-trophy"></em>
@@ -170,8 +177,13 @@
                     <span>tblConfig</span>
                 </a>
             </li>
-
-
+            
+            <li class="@Html.isActive(controller: "Question")">
+                <a href="@Url.Action("StartTest", "Question")" title="StartTest">
+                    <em class="icon-trophy"></em>
+                    <span>StartTest</span>
+                </a>
+            </li>
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
 

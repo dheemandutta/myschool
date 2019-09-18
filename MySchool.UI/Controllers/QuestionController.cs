@@ -20,6 +20,21 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
+        public ActionResult StartTest()
+        {
+            GettblSubjectForDrp();
+            return View();
+        }
+
+        public ActionResult QuestionPaper()
+        {
+            //QuestionViewEntities questionEntities = new QuestionViewEntities();
+            //questionEntities = GetQuestionPaper();
+
+            //return View(questionEntities);
+            return View();
+        }
+
         //[HttpPost]
         //public ActionResult Index(HttpPostedFileBase postedFile)
         //{
@@ -172,5 +187,50 @@ namespace MySchool.UI.Controllers
             var data = topicEntities;
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
         }
+
+
+        public ActionResult GetAnswerByID(int ID)
+        {
+            QuestionBL topicBL = new QuestionBL();
+            return Json(topicBL.GetAnswerByID(ID), JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        public ActionResult GetQuestionPaper()
+        {
+            QuestionBL topicBL = new QuestionBL();
+            return Json(topicBL.GetQuestionPaper(), JsonRequestBehavior.AllowGet);
+        }
+
+
+        //for GettblSubjectForDrp drp
+        public void GettblSubjectForDrp()
+        {
+            QuestionBL topicBL = new QuestionBL();
+            List<QuestionEntities> pocoList = new List<QuestionEntities>();
+
+            pocoList = topicBL.GettblSubjectForDrp();
+
+            List<QuestionEntities> itmasterList = new List<QuestionEntities>();
+
+            foreach (QuestionEntities up in pocoList)
+            {
+                QuestionEntities unt = new QuestionEntities();
+                unt.Id = up.Id;
+                unt.SubjectName = up.SubjectName;
+
+                itmasterList.Add(unt);
+            }
+
+            ViewBag.SubjectForDrp = itmasterList.Select(x =>
+                                            new SelectListItem()
+                                            {
+                                                Text = x.SubjectName,
+                                                Value = x.Id.ToString()
+                                            });
+
+        }
+
     }
 }

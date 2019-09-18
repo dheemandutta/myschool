@@ -29,8 +29,6 @@ namespace MySchool.DAL
             }
 
             cmd.Parameters.AddWithValue("@SubjectName", subjectEntities.SubjectName);
-         
-            cmd.Parameters.AddWithValue("@GradeID", String.Join(",",subjectEntities.GradeIds));
 
             int recordsAffected = cmd.ExecuteNonQuery();
             con.Close();
@@ -51,7 +49,7 @@ namespace MySchool.DAL
             SubjectEntities subjectEntities = new SubjectEntities();
             subjectEntities.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
             subjectEntities.SubjectName = Convert.ToString(ds.Tables[0].Rows[0]["SubjectName"]);
-            subjectEntities.GradeID = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeID"]);
+            //subjectEntities.GradeID = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeID"]);
             return subjectEntities;
         }
 
@@ -79,8 +77,8 @@ namespace MySchool.DAL
                         subjectEntities.Add(new SubjectEntities
                         {
                             ID = Convert.ToInt32(dr["ID"]),
-                            SubjectName = Convert.ToString(dr["SubjectName"]),
-                            Grade = Convert.ToString(dr["Grade"])
+                            SubjectName = Convert.ToString(dr["SubjectName"])
+                            //Grade = Convert.ToString(dr["Grade"])
                         });
                     }
                     recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);

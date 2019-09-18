@@ -17,7 +17,8 @@ namespace MySchool.UI.Controllers
         // GET: Subject
         public ActionResult Index()
         {
-            GetGradeForDrp();
+            //GetGradeForDrp();
+            LoadData();
             return View();
         }
 
@@ -71,32 +72,32 @@ namespace MySchool.UI.Controllers
         }
 
         //for Grade drp
-        public void GetGradeForDrp()
-        {
-            StudentParticularsBL studentParticularsBL = new StudentParticularsBL();
-            List<StudentParticularsEntities> pocoList = new List<StudentParticularsEntities>();
+        //public void GetGradeForDrp()
+        //{
+        //    StudentParticularsBL studentParticularsBL = new StudentParticularsBL();
+        //    List<StudentParticularsEntities> pocoList = new List<StudentParticularsEntities>();
 
-            pocoList = studentParticularsBL.GetGradeForDrp();
+        //    pocoList = studentParticularsBL.GetGradeForDrp();
 
-            List<StudentParticularsEntities> itmasterList = new List<StudentParticularsEntities>();
+        //    List<StudentParticularsEntities> itmasterList = new List<StudentParticularsEntities>();
 
-            foreach (StudentParticularsEntities up in pocoList)
-            {
-                StudentParticularsEntities unt = new StudentParticularsEntities();
-                unt.GradeID = up.GradeID;
-                unt.Grade = up.Grade;
+        //    foreach (StudentParticularsEntities up in pocoList)
+        //    {
+        //        StudentParticularsEntities unt = new StudentParticularsEntities();
+        //        unt.GradeID = up.GradeID;
+        //        unt.Grade = up.Grade;
 
-                itmasterList.Add(unt);
-            }
+        //        itmasterList.Add(unt);
+        //    }
 
-            ViewBag.GradeForDrp = itmasterList.Select(x =>
-                                            new SelectListItem()
-                                            {
-                                                Text = x.Grade,
-                                                Value = x.GradeID.ToString()
-                                            });
+        //    ViewBag.GradeForDrp = itmasterList.Select(x =>
+        //                                    new SelectListItem()
+        //                                    {
+        //                                        Text = x.Grade,
+        //                                        Value = x.GradeID.ToString()
+        //                                    });
 
-        }
+        //}
 
         public ActionResult DeleteSubject(int ID)
         {

@@ -16,7 +16,7 @@ function clearTextBox() {
 
     $('#SubjectID').val("");
     $('#SubjectName').val("");
-    $('#drpGrade').val("");
+    // $('#drpGrade').val("");
 }
 
 function Add() {
@@ -31,13 +31,10 @@ function Add() {
 
     var subject = {
         ID: $('#SubjectID').val(),
-        SubjectName: $('#SubjectName').val(),
-        GradeIds: $('#drpGrade').val()
+        SubjectName: $('#SubjectName').val()
+        //    GradeIds: $('#drpGrade').val()
     };
-
-    //console.log(subject);
-    //console.log(JSON.stringify(subject));
-
+    alert('#SubjectID');
     $.ajax({
         url: postUrl,
         data: JSON.stringify({ subjectEntities: subject }),
@@ -81,7 +78,7 @@ function Delete(ID) {
                 }
                 else {
                     alert("Subject can not be deleted as this is already used.");
-                  
+
                 }
             },
             error: function () {
@@ -90,6 +87,60 @@ function Delete(ID) {
         });
     }
 }
+
+//function GetSubjectByID(ID) {
+//    alert("OK");
+//    var x = $("#getSubjectByID").val();
+//    $.ajax({
+//        url: x,
+//        data:
+//        {
+//            ID: ID
+          
+//        },
+        
+//        type: "GET",
+//        contentType: "application/json;charset=UTF-8",
+//        async: "false",
+//        dataType: "json",
+//        success: function (result) {
+//            $('#SubjectName').val(result.SubjectName);
+//            $('#SubjectID').val(result.ID);
+//        },
+//        error: function (errormessage) {
+//            alert(errormessage.responseText);
+//        }
+//    });
+//    alert(ID);
+//    return false;
+//}
+
+function GetSubjectByID(ID) {
+    var x = $("#getSubjectByID").val();
+    $.ajax({
+        url: x,
+        data:
+        {
+            ID: ID
+        },
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        async: "false",
+        dataType: "json",
+        success: function (result) {
+            $('#SubjectName').val(result.SubjectName);
+            $('#SubjectID').val(result.SubjectID);
+            alert($('#SubjectID').val());
+            //$("#btnSave").attr('value', 'Update');
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+    return false;
+}
+
+
 function loadData() {
     var loadposturl = $('#loaddata').val();
     $.ajax({
@@ -109,54 +160,39 @@ function loadData() {
 function SetUpGrid() {
     var loadposturl = $('#loaddata').val();
 
-    //do not throw error
     $.fn.dataTable.ext.errMode = 'none';
-    //check if datatable is already created then destroy iy and then create it
     if ($.fn.dataTable.isDataTable('#SubjectTable')) {
         table = $('#SubjectTable').DataTable();
         table.destroy();
     }
-
-    $("#SubjectTable").DataTable({
-        "processing": true, // for show progress bar
-        "serverSide": true, // for process server side
-        "filter": false, // this is for disable filter (search box)
-        "orderMulti": false, // for disable multiple column at once
-        "bLengthChange": false, //disable entries dropdown
+    // alert('hh');
+    var mytable = $("#SubjectTable").DataTable({
+        "processing": true,
+        "serverSide": true,
+        "filter": false,
+        "orderMulti": false,
+        "bLengthChange": false,
         "ajax": {
             "url": loadposturl,
             "type": "POST",
             "datatype": "json"
+            //"data": { searchvalue: searchval }
         },
         "columns": [
             {
-                "data": "SubjectName", "name": "SubjectName", "autoWidth": true
-            },
-            {
-                "data": "Grade", "name": "GradeID", "autoWidth": true
+                "data": "SubjectName", "name": "SubjectName", "autowidth": true
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="Delete(' + data + ')"><i class="fa fa-trash"></i></a>';
+                    return '<a href="#" onclick="GetSubjectByID(' + data + ')"><i class="fa fa-edit"></i></a>';
+                }
+            },
+            {
+                "data": "ID", "width": "50px", "render": function (d) {
+                    return '<a href="#" onclick="Delete(' + d + ')"><i class="fa fa-trash"></i></a>';
                 }
             }
+
         ]
     });
 }
-
-function GetSubjectByID(parID) {
-    //console.log(parID);
-
-    var x = $("#getSubjectByID").val();
-
-    $.getJSON(x, { ID: parID }, function (result) {
-        //console.log(result);
-
-        $('#SubjectName').val(result.SubjectName);
-        $('#drpGrade').val(result.GradeID);
-
-        $('#SubjectID').val(result.ID);
-    });
-    return false;
-}
-

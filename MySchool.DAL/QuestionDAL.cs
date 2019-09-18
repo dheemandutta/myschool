@@ -180,6 +180,7 @@ namespace MySchool.DAL
         public int SaveOrUpdate(QuestionViewEntities questionEntities)
         {
             DataTable atable = CreateTable();
+            if(questionEntities.AnswerEntities != null)
             foreach (AnswerEntities item in questionEntities.AnswerEntities)
             {
                 atable.Rows.Add(item.AnswerText,Convert.ToInt32(item.IsRightAnswer));
@@ -215,8 +216,8 @@ namespace MySchool.DAL
 
             cmd.Parameters.AddWithValue("@Marks", questionEntities.QuestionEntities.Marks);
 
-            cmd.Parameters.AddWithValue("@AnswerList", atable);
 
+            cmd.Parameters.AddWithValue("@AnswerList", atable);
             cmd.Parameters[4].SqlDbType = SqlDbType.Structured;
 
             int recordsAffected = cmd.ExecuteNonQuery();

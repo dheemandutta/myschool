@@ -17,8 +17,24 @@ namespace MySchool.DAL
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpInsertUpdateSubject", con);
-            cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandType = CommandType.StoredProcedure;
 
+            //if (String.IsNullOrEmpty(subjectEntities.ID.ToString()) || (subjectEntities.ID == 0))
+            //{
+            //    cmd.Parameters.AddWithValue("@ID", DBNull.Value);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@ID", subjectEntities.ID);
+            //}
+
+            //cmd.Parameters.AddWithValue("@SubjectName", subjectEntities.SubjectName);
+
+            //int recordsAffected = cmd.ExecuteNonQuery();
+            //con.Close();
+            //return recordsAffected;
+
+            cmd.CommandType = CommandType.StoredProcedure;
             if (String.IsNullOrEmpty(subjectEntities.ID.ToString()) || (subjectEntities.ID == 0))
             {
                 cmd.Parameters.AddWithValue("@ID", DBNull.Value);
@@ -29,10 +45,9 @@ namespace MySchool.DAL
             }
 
             cmd.Parameters.AddWithValue("@SubjectName", subjectEntities.SubjectName);
-
-            int recordsAffected = cmd.ExecuteNonQuery();
+            int rowAffected = cmd.ExecuteNonQuery();
             con.Close();
-            return recordsAffected;
+            return rowAffected;
         }
 
         public SubjectEntities GetSubjectByID(int ID)

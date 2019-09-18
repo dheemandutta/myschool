@@ -34,7 +34,6 @@ function Add() {
         SubjectName: $('#SubjectName').val()
         //    GradeIds: $('#drpGrade').val()
     };
-    alert('#SubjectID');
     $.ajax({
         url: postUrl,
         data: JSON.stringify({ subjectEntities: subject }),
@@ -130,7 +129,7 @@ function GetSubjectByID(ID) {
         success: function (result) {
             $('#SubjectName').val(result.SubjectName);
             $('#SubjectID').val(result.SubjectID);
-            alert($('#SubjectID').val());
+    
             //$("#btnSave").attr('value', 'Update');
         },
         error: function (errormessage) {

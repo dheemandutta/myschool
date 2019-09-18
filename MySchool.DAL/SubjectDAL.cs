@@ -17,8 +17,24 @@ namespace MySchool.DAL
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpInsertUpdateSubject", con);
-            cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.CommandType = CommandType.StoredProcedure;
 
+            //if (String.IsNullOrEmpty(subjectEntities.ID.ToString()) || (subjectEntities.ID == 0))
+            //{
+            //    cmd.Parameters.AddWithValue("@ID", DBNull.Value);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@ID", subjectEntities.ID);
+            //}
+
+            //cmd.Parameters.AddWithValue("@SubjectName", subjectEntities.SubjectName);
+
+            //int recordsAffected = cmd.ExecuteNonQuery();
+            //con.Close();
+            //return recordsAffected;
+
+            cmd.CommandType = CommandType.StoredProcedure;
             if (String.IsNullOrEmpty(subjectEntities.ID.ToString()) || (subjectEntities.ID == 0))
             {
                 cmd.Parameters.AddWithValue("@ID", DBNull.Value);
@@ -29,12 +45,9 @@ namespace MySchool.DAL
             }
 
             cmd.Parameters.AddWithValue("@SubjectName", subjectEntities.SubjectName);
-         
-            cmd.Parameters.AddWithValue("@GradeID", String.Join(",",subjectEntities.GradeIds));
-
-            int recordsAffected = cmd.ExecuteNonQuery();
+            int rowAffected = cmd.ExecuteNonQuery();
             con.Close();
-            return recordsAffected;
+            return rowAffected;
         }
 
         public SubjectEntities GetSubjectByID(int ID)
@@ -51,7 +64,7 @@ namespace MySchool.DAL
             SubjectEntities subjectEntities = new SubjectEntities();
             subjectEntities.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
             subjectEntities.SubjectName = Convert.ToString(ds.Tables[0].Rows[0]["SubjectName"]);
-            subjectEntities.GradeID = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeID"]);
+            //subjectEntities.GradeID = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeID"]);
             return subjectEntities;
         }
 
@@ -79,8 +92,8 @@ namespace MySchool.DAL
                         subjectEntities.Add(new SubjectEntities
                         {
                             ID = Convert.ToInt32(dr["ID"]),
-                            SubjectName = Convert.ToString(dr["SubjectName"]),
-                            Grade = Convert.ToString(dr["Grade"])
+                            SubjectName = Convert.ToString(dr["SubjectName"])
+                            //Grade = Convert.ToString(dr["Grade"])
                         });
                     }
                     recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);
@@ -88,6 +101,18 @@ namespace MySchool.DAL
                 }
             }
             return subjectEntities;
+        }
+
+        public int DeleteSubject(int ID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpDeleteSubjecyByID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", ID);
+            int recordAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return recordAffected;
         }
 
         //for Grade drp

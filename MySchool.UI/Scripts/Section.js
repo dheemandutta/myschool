@@ -26,8 +26,6 @@ function SaveOrUpdate() {
         Section: $('#txtSection').val()
     };
 
-    console.log(section);
-
     $.ajax({
         url: postUrl,
         data: JSON.stringify({ sectionentities: section }),
@@ -39,7 +37,6 @@ function SaveOrUpdate() {
                 ClearAll();
                 SetUpGrid();
                 swal("Good job!", "Data Saved Successfully", "success");
-
             }
             else {
                 ClearAll();

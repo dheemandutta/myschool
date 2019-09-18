@@ -29,13 +29,61 @@
             </li>
 
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-
-            <li class="@Html.isActive(controller: "StudentSearch")">
-                <a href="@Url.Action("Index", "StudentSearch")" title="StudentSearch">
-                    <em class="icon-trophy"></em>
-                    <span>StudentSearch</span>
+            <li class="@Html.isActive(controller: "Student")">
+                <a href="#Student" title="Student" data-toggle="collapse">
+                    @*<div class="label label-info pull-right">3</div>*@
+                    <em class="icon-speedometer"></em>
+                    <span data-localize="sidebar.nav.Student">Student</span>
                 </a>
+                <ul id="Student" class="nav sidebar-subnav collapse">
+                    <li class="sidebar-subnav-header">Student</li>
+
+                    <li class="@Html.isActive(controller: "StudentSearch")">
+                        <a href="@Url.Action("Index", "StudentSearch")" title="StudentSearch">
+                            @*<em class="icon-trophy"></em>*@
+                            <span>StudentSearch</span>
+                        </a>
+                    </li>
+
+                    <li class="@Html.isActive(controller: "Student")">
+                        <a href="@Url.Action("Index", "Student")" title="Student">
+                            @*<em class="icon-trophy"></em>*@
+                            <span>Student</span>
+                        </a>
+                    </li>
+
+                    <li class="@Html.isActive(controller: "StudentParticulars")">
+                        <a href="@Url.Action("Index", "StudentParticulars")" title="StudentParticulars">
+                            @*<em class="icon-trophy"></em>*@
+                            <span>Student Particulars</span>
+                        </a>
+                    </li>
+
+                    <li class="@Html.isActive(controller: "StudentAttendent")">
+                        <a href="@Url.Action("Index", "StudentAttendent")" title="StudentAttendent">
+                            @*<em class="icon-trophy"></em>*@
+                            <span>Student Attendance</span>
+                        </a>
+                    </li>
+
+                    <li class="@Html.isActive(controller: "StudentContact")">
+                        <a href="@Url.Action("Index", "StudentContact")" title="StudentContact">
+                            @*<em class="icon-trophy"></em>*@
+                            <span>Student Contact</span>
+                        </a>
+                    </li>
+
+                    <li class="@Html.isActive(controller: "Student Health")">
+                        <a href="@Url.Action("Index", "StudentHealth")" title="StudentHealth">
+                            @*<em class="icon-trophy"></em>*@
+                            <span>Student Health</span>
+                        </a>
+                    </li>
+
+                </ul>
             </li>
+
+
 
             <li class="@Html.isActive(controller: "Year")">
                 <a href="@Url.Action("Index", "Year")" title="Year">
@@ -64,40 +112,8 @@
                     <span>Subject</span>
                 </a>
             </li>
-            <li class="@Html.isActive(controller: "Student")">
-                <a href="@Url.Action("Index", "Student")" title="Student">
-                    <em class="icon-trophy"></em>
-                    <span>Student</span>
-                </a>
-            </li>
 
-            <li class="@Html.isActive(controller: "StudentParticulars")">
-                <a href="@Url.Action("Index", "StudentParticulars")" title="StudentParticulars">
-                    <em class="icon-trophy"></em>
-                    <span>Student Particulars</span>
-                </a>
-            </li>
 
-            <li class="@Html.isActive(controller: "StudentAttendent")">
-                <a href="@Url.Action("Index", "StudentAttendent")" title="StudentAttendent">
-                    <em class="icon-trophy"></em>
-                    <span>Student Attendance</span>
-                </a>
-            </li>
-
-            <li class="@Html.isActive(controller: "StudentContact")">
-                <a href="@Url.Action("Index", "StudentContact")" title="StudentContact">
-                    <em class="icon-trophy"></em>
-                    <span>Student Contact</span>
-                </a>
-            </li>
-
-            <li class="@Html.isActive(controller: "Student Health")">
-                <a href="@Url.Action("Index", "StudentHealth")" title="StudentHealth">
-                    <em class="icon-trophy"></em>
-                    <span>Student Health</span>
-                </a>
-            </li>
 
             <li class="@Html.isActive(controller: "Teacher")">
                 <a href="@Url.Action("Index", "Teacher")" title="StudentParticulars">
@@ -120,16 +136,18 @@
                 </a>
             </li>
 
-            <li class="@Html.isActive(controller: "Subject2")">
-                <a href="@Url.Action("Index", "Subject2")" title="Subject2">
-                    <em class="icon-trophy"></em>
-                    <span>Subject For Exam</span>
-                </a>
-            </li>
+
             <li class="@Html.isActive(controller: "Topic")">
                 <a href="@Url.Action("Index", "Topic")" title="Topic">
                     <em class="icon-trophy"></em>
                     <span>Topic</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Subject2")">
+                <a href="@Url.Action("Index", "Subject2")" title="Subject2">
+                    <em class="icon-trophy"></em>
+                    <span>Subject For Exam</span>
                 </a>
             </li>
 

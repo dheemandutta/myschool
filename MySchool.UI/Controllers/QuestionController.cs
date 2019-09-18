@@ -122,5 +122,55 @@ namespace MySchool.UI.Controllers
                                             });
 
         }
+
+
+
+        public ActionResult SaveOrUpdate(QuestionViewEntities questionEntities)
+        {
+            QuestionBL teacherBl = new QuestionBL();
+            int recordAffected = teacherBl.SaveOrUpdate(questionEntities);
+            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+
+        public JsonResult LoadDataForChild(int Id)
+        {
+            int draw, start, length;
+            int pageIndex = 0;
+
+            if (null != Request.Form.GetValues("draw"))
+            {
+                draw = int.Parse(Request.Form.GetValues("draw").FirstOrDefault().ToString());
+                start = int.Parse(Request.Form.GetValues("start").FirstOrDefault().ToString());
+                length = int.Parse(Request.Form.GetValues("length").FirstOrDefault().ToString());
+            }
+            else
+            {
+                draw = 1;
+                start = 0;
+                length = 50;
+            }
+
+            if (start == 0)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                pageIndex = (start / length) + 1;
+            }
+
+            QuestionBL topicBL = new QuestionBL();
+            int totalrecords = 0;
+
+            List<ChoiceEntities> topicEntities = new List<ChoiceEntities>();
+            topicEntities = topicBL.GetAnswerPageWise(Id,pageIndex, ref totalrecords, length);
+
+            var data = topicEntities;
+            return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -139,5 +139,129 @@ namespace MySchool.DAL
             con.Close();
             return subjectParticularsList;
         }
+
+       
+        public static DataTable CreateTable()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Ans", typeof(string));
+            dt.Columns.Add("IsAns", typeof(int));
+            return dt;
+        }
+
+        //private static List<T> ConvertDataTable<T>(DataTable dt)
+        //{
+        //    List<T> data = new List<T>();
+        //    foreach (DataRow row in dt.Rows)
+        //    {
+        //        T item = GetItem<T>(row);
+        //        data.Add(item);
+        //    }
+        //    return data;
+        //}
+        //private static T GetItem<T>(DataRow dr)
+        //{
+        //    Type temp = typeof(T);
+        //    T obj = Activator.CreateInstance<T>();
+
+        //    foreach (DataColumn column in dr.Table.Columns)
+        //    {
+        //        foreach (PropertyInfo pro in temp.GetProperties())
+        //        {
+        //            if (pro.Name == column.ColumnName)
+        //                pro.SetValue(obj, dr[column.ColumnName], null);
+        //            else
+        //                continue;
+        //        }
+        //    }
+        //    return obj;
+        //}
+
+        public int SaveOrUpdate(QuestionViewEntities questionEntities)
+        {
+            DataTable atable = CreateTable();
+            if(questionEntities.AnswerEntities != null)
+            foreach (AnswerEntities item in questionEntities.AnswerEntities)
+            {
+                atable.Rows.Add(item.AnswerText,Convert.ToInt32(item.IsRightAnswer));
+            }
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpInsertUpdateQuestion", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (String.IsNullOrEmpty(questionEntities.QuestionEntities.Id.ToString()) || (questionEntities.QuestionEntities.Id == 0))
+            {
+                cmd.Parameters.AddWithValue("@Id", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Id", questionEntities.QuestionEntities.Id);
+            }
+
+            cmd.Parameters.AddWithValue("@QuestionText", questionEntities.QuestionEntities.QuestionText);
+
+            cmd.Parameters.AddWithValue("@TopicId", questionEntities.QuestionEntities.TopicId);
+
+
+            //if (!String.IsNullOrEmpty(questionEntities.ImagePath))
+            //{
+            //    cmd.Parameters.AddWithValue("@ImagePath", questionEntities.ImagePath);
+            //}
+            //else
+            //{
+            //    cmd.Parameters.AddWithValue("@ImagePath", DBNull.Value);
+            //}
+
+            cmd.Parameters.AddWithValue("@Marks", questionEntities.QuestionEntities.Marks);
+
+
+            cmd.Parameters.AddWithValue("@AnswerList", atable);
+            cmd.Parameters[4].SqlDbType = SqlDbType.Structured;
+
+            int recordsAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return recordsAffected;
+        }
+
+        public List<ChoiceEntities> GetAnswerPageWise(int Id, int pageIndex, ref int recordCount, int length)
+        {
+
+            List<ChoiceEntities> ranksPOList = new List<ChoiceEntities>();
+            List<ChoiceEntities> ranksPO = new List<ChoiceEntities>();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("stpGettblAnswerPageWise", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@QuestionId", Id);
+                    cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+                    cmd.Parameters.AddWithValue("@PageSize", length);
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4);
+                    cmd.Parameters["@RecordCount"].Direction = ParameterDirection.Output;
+                    con.Open();
+
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+                    //prodPOList = Common.CommonDAL.ConvertDataTable<ProductPOCO>(ds.Tables[0]);
+
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        ranksPOList.Add(new ChoiceEntities
+                        {
+                            Id = Convert.ToInt32(dr["Id"]),
+                            ChoiceText = Convert.ToString(dr["ChoiceText"]),
+                            IsAnswer = Convert.ToBoolean(dr["IsAnswer"])
+                        });
+                    }
+                    recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);
+                    con.Close();
+                }
+            }
+            return ranksPOList;
+        }
     }
 }

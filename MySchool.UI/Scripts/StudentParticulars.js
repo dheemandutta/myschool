@@ -156,7 +156,7 @@ function GetStudentParticularsByID(parID) {
             $('#FirstName').val(result.FirstName);
             $('#LastName').val(result.LastName);
             $('#DOB').val(result.DOB);
-            $('#GradeID').val(result.GradeID);
+            $('#drpGrade').val(result.GradeID);
             $('#StartDate').val(result.StartDate);
             $('#EndDate').val(result.EndDate);
             $('#LeavingReason').val(result.LeavingReason);

@@ -10,11 +10,25 @@ namespace MySchool.BL
 {
     public class SubjectBL
     {
-        public int Save(SubjectEntities subject)
+        public int SaveSubject(SubjectEntities subjectEntities)
         {
-            SubjectDAL subjectDl = new SubjectDAL();
-            return subjectDl.SaveOrUpdate(subject);
-
+            SubjectDAL subjectDAL = new SubjectDAL();
+            return subjectDAL.SaveSubject(subjectEntities);
         }
+
+        public SubjectEntities GetSubjectByID(int ID)
+        {
+            SubjectDAL subjectDAL = new SubjectDAL();
+            return subjectDAL.GetSubjectByID(ID);
+        }
+
+        public List<SubjectEntities> GetSubjectPageWise(int pageIndex, ref int recordCount, int length)
+        {
+            SubjectDAL subjectDAL = new SubjectDAL();
+            return subjectDAL.GetSubjectPageWise(pageIndex, ref recordCount, length);
+        }
+
+        //for Grade drp
+        ////////////////////////////////////////////////////
     }
 }

@@ -12,6 +12,7 @@ function validate() {
 
 function clearTextBox() {
 
+    $('#StudentContactID').val("");
     $('#drpStudentName').val("");
 
     $('#FatherFName').val("");

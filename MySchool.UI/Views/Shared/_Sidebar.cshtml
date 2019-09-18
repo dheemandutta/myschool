@@ -29,6 +29,14 @@
             </li>
 
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+            <li class="@Html.isActive(controller: "StudentSearch")">
+                <a href="@Url.Action("Index", "StudentSearch")" title="StudentSearch">
+                    <em class="icon-trophy"></em>
+                    <span>StudentSearch</span>
+                </a>
+            </li>
+
             <li class="@Html.isActive(controller: "Year")">
                 <a href="@Url.Action("Index", "Year")" title="Year">
                     <em class="icon-trophy"></em>
@@ -50,7 +58,12 @@
                     <span>Section</span>
                 </a>
             </li>
-
+            <li class="@Html.isActive(controller: "Subject")">
+                <a href="@Url.Action("Index", "Subject")" title="Subject">
+                    <em class="icon-trophy"></em>
+                    <span>Subject</span>
+                </a>
+            </li>
             <li class="@Html.isActive(controller: "Student")">
                 <a href="@Url.Action("Index", "Student")" title="Student">
                     <em class="icon-trophy"></em>
@@ -97,6 +110,46 @@
                 <a href="@Url.Action("Index", "TeacherParticular")" title="StudentParticulars">
                     <em class="icon-trophy"></em>
                     <span>Teacher Particulars</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Exam")">
+                <a href="@Url.Action("Index", "Exam")" title="Exam">
+                    <em class="icon-trophy"></em>
+                    <span>Exam</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Subject2")">
+                <a href="@Url.Action("Index", "Subject2")" title="Subject2">
+                    <em class="icon-trophy"></em>
+                    <span>Subject For Exam</span>
+                </a>
+            </li>
+            <li class="@Html.isActive(controller: "Topic")">
+                <a href="@Url.Action("Index", "Topic")" title="Topic">
+                    <em class="icon-trophy"></em>
+                    <span>Topic</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Question")">
+                <a href="@Url.Action("Index", "Question")" title="Question">
+                    <em class="icon-trophy"></em>
+                    <span>Question</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Choice")">
+                <a href="@Url.Action("Index", "Choice")" title="Choice">
+                    <em class="icon-trophy"></em>
+                    <span>Choice</span>
+                </a>
+            </li>
+            <li class="@Html.isActive(controller: "tblConfig")">
+                <a href="@Url.Action("Index", "tblConfig")" title="tblConfig">
+                    <em class="icon-trophy"></em>
+                    <span>tblConfig</span>
                 </a>
             </li>
 

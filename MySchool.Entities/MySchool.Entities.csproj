@@ -45,6 +45,7 @@
     <Compile Include="AdmissionDetailsEntities.cs" />
     <Compile Include="AnnouncementEntities.cs" />
     <Compile Include="CampaignEntities.cs" />
+    <Compile Include="ChoiceEntities.cs" />
     <Compile Include="DayOfWeekEntities.cs" />
     <Compile Include="DonarEntities.cs" />
     <Compile Include="DonationEntities.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="ExamSubjectEntities.cs" />
     <Compile Include="GradeEntities.cs" />
     <Compile Include="GradeGroupEntities.cs" />
+    <Compile Include="QuestionEntities.cs" />
     <Compile Include="SectionEntities.cs" />
     <Compile Include="StudentEntities.cs" />
     <Compile Include="StudentAttendentEntities.cs" />
@@ -62,11 +64,13 @@
     <Compile Include="StudentParticularsEntities.cs" />
     <Compile Include="StudentResultEntities.cs" />
     <Compile Include="SubjectEntities.cs" />
+    <Compile Include="tblConfigEntities.cs" />
     <Compile Include="TeacherEntities.cs" />
     <Compile Include="TeacherGradeEntities.cs" />
     <Compile Include="TeacherQualEntities.cs" />
     <Compile Include="TeacherSubjectEntities.cs" />
     <Compile Include="TimeTableEntities.cs" />
+    <Compile Include="TopicEntities.cs" />
     <Compile Include="YearEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

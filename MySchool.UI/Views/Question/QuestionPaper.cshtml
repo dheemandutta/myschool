@@ -47,7 +47,7 @@
                                                     @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
                                                     @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
                                                     <table>
-                                                       
+
                                                         @for (int i = 0; i < Model.QuestionEntities.Count; i++)
                                                         {
                                                             //Question Row
@@ -74,27 +74,42 @@
                                                 </div>
                                             </div>
 
-                                            @*<div class="form-group">
-                <input type="hidden" id="TopicID" />
-                <input type="submit" />
-                <button type="button" class="btn btn-primary" id="btnSave" onclick="return SaveOrUpdate();">Save</button>
-            </div>*@
-
-
-
                                         </form>
-                                        @using (Html.BeginForm("GetQuestion", "Question"))
-                                        {
-                                            int i = 0;
-                                            <input type="hidden" name="QuestionIndex" value="@i" />
-                                            <input type="submit" value="Next" />
-                                        }
-                                        @using (Html.BeginForm("PrevQuestion", "Question"))
-                                        {
-                                           
-                                           
-                                            <input type="submit" value="Previous" />
-                                        }
+
+                                        @*@using (Html.BeginForm("GetQuestion", "Question"))
+                                            {
+                                                int i = 0;
+                                                <input type="hidden" name="QuestionIndex" value="@i" />
+                                                <input type="submit" value="Next" />
+                                            }
+                                            @using (Html.BeginForm("PrevQuestion", "Question"))
+                                            {
+
+
+                                                <input type="submit" value="Previous" />
+                                            }*@
+
+                                        <div class="form-group" style="margin-right: -600px;">
+
+                                            <div class="col-sm-10" style="width: 60%;">
+                                                @using (Html.BeginForm("PrevQuestion", "Question"))
+                                                {
+                                                    <input class="btn btn-warning" type="submit" value="Previous" />
+                                                }
+                                            </div>
+
+                                            <div class="col-sm-10" style="width: 30%;">
+                                                @using (Html.BeginForm("GetQuestion", "Question"))
+                                                {
+                                                    int i = 0;
+                                                    <input type="hidden" name="QuestionIndex" value="@i" />
+                                                    <input class="btn btn-success" type="submit" value="Next" />
+                                                }
+                                            </div>
+
+                                        </div>
+
+
                                     </div>
                                 </div>
                             </div>

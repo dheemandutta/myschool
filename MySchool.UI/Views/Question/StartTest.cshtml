@@ -42,26 +42,20 @@
                                 </div>
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-content">
-                                        <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
+                                        @using (Html.BeginForm("StartTest", "Question") )
+                                        {
+                                           
 
-                                            @*<div class="form-group" style="margin-right: -600px;">
-                                                <label class="col-sm-2 control-label">Subject<font color=""></font> </label>
-
-                                                <div class="col-sm-10" style="width: 30%;" required="required">
-                                                    @Html.DropDownListFor(model => model.Id, (IEnumerable<SelectListItem>)ViewBag.SubjectForDrp, "Select", new { @class = "form-control", @id = "drpSubject" })  drpGrade 
-
+                                                <div class="form-group">
+                                                    <input type="hidden" id="QuestionID" />
                                                 </div>
-                                            </div>*@
 
-                                            <div class="form-group">
-                                                <input type="hidden" id="QuestionID" />
-                                            </div>
+                                                <div class="panel-footer text-center">
+                                                    <input class="btn btn-primary" type="submit" value="Start Test" />
+                                                </div>
 
-                                            <div class="panel-footer text-center">
-                                                <button class="btn btn-primary" onclick="location.href='@Url.Action("QuestionPaper", "Question")';return false;">Start Test</button>
-                                            </div>
-
-                                        </form>
+                                           
+                                        }
                                     </div>
                                 </div>
                             </div>

@@ -31,8 +31,15 @@ namespace MySchool.UI.Controllers
 
         public ActionResult StartTest()
         {
-            GettblSubjectForDrp();
+           // GettblSubjectForDrp();
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult StartTest(QuestionEntities q)
+        {
+            // GettblSubjectForDrp();
+            return RedirectToAction("QuestionPaper", "Question");
         }
 
         public ActionResult QuestionPaper()

@@ -107,7 +107,7 @@ namespace MySchool.UI.Controllers
             }
             else if(command == "Previous")
             {
-                if (examPaper.PageIndex < int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString()) && examPaper.PageIndex > 1)
+                if (examPaper.PageIndex <= int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString()) && examPaper.PageIndex > 1)
                     examPaper.PageIndex -= 1;
             }
 

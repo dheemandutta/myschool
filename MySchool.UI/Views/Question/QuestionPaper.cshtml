@@ -58,19 +58,30 @@
                                                             //Question Row
                                                             //if (Model.QuestionEntities[i].IsShown)
                                                             //{
-                                                                <tr>
-                                                                    <td>
-                                                                        <h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.Raw(Model.QuestionEntities[i].QuestionText)</span></h1>
-                                                                    </td>
-                                                                </tr>
-                                                                foreach (var answer in Model.QuestionEntities[i].AnswerEntities)
+                                                            <tr>
+                                                                <td>
+                                                                    <h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.Raw(Model.QuestionEntities[i].QuestionText)</span></h1>
+                                                                </td>
+                                                            </tr>
+                                                            foreach (var answer in Model.QuestionEntities[i].AnswerEntities)
+                                                            {
+                                                                if (answer.IsUserAnswer == 1)
                                                                 {
                                                                     <tr>
-                                                                        <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID">@Html.DisplayFor(x => answer.AnswerText)</td>
+                                                                        <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID" checked="checked">@Html.DisplayFor(x => answer.AnswerText)</td>
 
                                                                     </tr>
                                                                 }
-                                                           // }
+                                                                else
+                                                                {
+                                                                    <tr>
+                                                                        <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID" >@Html.DisplayFor(x => answer.AnswerText)</td>
+
+                                                                    </tr>
+
+                                                                }
+                                                            }
+                                                            // }
                                                         }
                                                     </table>
 

@@ -285,23 +285,60 @@ namespace MySchool.DAL
         }
 
 
-        public QuestionViewEntities GetQuestionPaper()
+        public ExamPaper GetQuestionPaper(int questionCount)
         {
             QuestionViewEntities questionViewEntities = new QuestionViewEntities();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpGetQuestion", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@QuestionCount", questionCount);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
             con.Close();
-            QuestionEntities topicEntities = new QuestionEntities();
-            topicEntities.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
-            topicEntities.QuestionText = Convert.ToString(ds.Tables[0].Rows[0]["QuestionText"]);
-            questionViewEntities.QuestionEntities = topicEntities;
-            return questionViewEntities;
+            ExamPaper examPaper = new ExamPaper();
+            examPaper  = CreateDataSet(ds);
+            return examPaper;
+        }
+
+         private ExamPaper CreateDataSet(DataSet dsQuestion)
+        {
+            ExamPaper examPaper = new ExamPaper();
+            List<QuestionEntities> questionEntitiesList = new List<QuestionEntities>();
+            for (int i = 0; i < dsQuestion.Tables[0].Rows.Count; i++)
+            {
+                QuestionEntities questionEntities = new QuestionEntities();
+                questionEntities.Id = Convert.ToInt32(dsQuestion.Tables[0].Rows[i]["Id"].ToString());
+                questionEntities.QuestionText = Convert.ToString(dsQuestion.Tables[0].Rows[i]["QuestionText"]);
+                questionEntities.Marks = Convert.ToDecimal(dsQuestion.Tables[0].Rows[i]["Marks"]);
+
+                //DataView dv1 = dsQuestion.Tables[1].DefaultView;
+                //dv1.RowFilter = "QuestionId = " + dsQuestion.Tables[0].Rows[i]["Id"].ToString();
+                //DataTable dtAns = dv1.ToTable();
+                //dv1.Dispose();
+
+                DataTable dtAns = dsQuestion.Tables[1].AsEnumerable()
+                                    .Where(r => r.Field<int>("QuestionId") == int.Parse(dsQuestion.Tables[0].Rows[i]["Id"].ToString())).CopyToDataTable();
+
+                List<AnswerEntities> answerEntities = new List<AnswerEntities>();
+                for (int j = 0; j < dtAns.Rows.Count; j++)
+                {
+                    AnswerEntities answerEntities1 = new AnswerEntities();
+                    answerEntities1.ID = Convert.ToInt32(dtAns.Rows[j]["Id"].ToString());
+                    answerEntities1.AnswerText = Convert.ToString(dtAns.Rows[j]["ChoiceText"]);
+                    answerEntities1.QuestionID = Convert.ToInt32(dtAns.Rows[j]["QuestionId"].ToString());
+                    answerEntities1.IsRightAnswer = Convert.ToString(dtAns.Rows[j]["IsAnswer"].ToString());
+
+                    answerEntities.Add(answerEntities1);
+                }
+
+                questionEntities.AnswerEntities = answerEntities;
+                questionEntitiesList.Add(questionEntities);
+            }
+
+            examPaper.QuestionEntities = questionEntitiesList;
+            return examPaper;
         }
 
 

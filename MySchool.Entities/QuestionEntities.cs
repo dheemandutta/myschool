@@ -8,6 +8,13 @@ namespace MySchool.Entities
 {
     public class QuestionEntities
     {
+        public QuestionEntities()
+        {
+            List<AnswerEntities> answerEntities = new List<AnswerEntities>();
+            this.AnswerEntities = answerEntities;
+
+        }
+
         public int Id { get; set; }
 
         public int TopicId { get; set; }
@@ -19,5 +26,11 @@ namespace MySchool.Entities
 
 
         public string SubjectName { get; set; }
+
+        public List<AnswerEntities> AnswerEntities { get; set; }
+
+        public bool IsShown { get; set; }
+
+        public bool HasAlreadyShown { get; set; }
     }
 }

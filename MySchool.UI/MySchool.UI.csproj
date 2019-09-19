@@ -401,6 +401,7 @@
     <Content Include="Sql Script\SS_Patch_18_09_2019.sql" />
     <Content Include="Sql Script\SS_Patch_20_08_2019.sql" />
     <Content Include="Sql Script\SS_Patch_21_08_2019.sql" />
+    <Content Include="Sql Script\stpGetQuestion_19092019.sql" />
     <Content Include="Sql Script\stpInsertUpdateQuestion.sql" />
     <Content Include="StudentIMG\Farhan Qureshi.png" />
     <Content Include="StudentIMG\Fungsug Vangru.png" />

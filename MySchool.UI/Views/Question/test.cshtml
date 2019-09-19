@@ -1,0 +1,153 @@
+﻿@model MySchool.Entities.QuestionEntities
+
+@{
+    ViewBag.Title = "QuestionPape";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/Question.js"></script>
+
+<body style="background-image: url(../background/depart.jpg);
+    background-size: cover;">
+
+    @Html.Hidden("getQuestionPaper", @Url.Action("GetQuestionPaper", "Question"))
+
+    <div class="row" style="height:2000px;">
+
+        <div class="col-md-7 bac" style=" width: 100%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text m-t-lg">
+                        <h2>
+                            Question Paper
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8" style="width: 100%;">
+
+            <div style="height:900px;">
+                @*/////////////////////// class="table-responsive"///////////////////////////*@
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title"><h4>  </h4></div>
+                                </div>
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-content">
+                                        <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
+
+                                            <div class="form-group" style="margin-right: -1000px;">
+                                                <label class="col-sm-2 control-label">Q 1<font color=""></font> </label>
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
+                                                    <h2 class="no-margins">Which country is the secular country ?</h2>
+                                                </div>
+                                            </div>
+
+                                            <style>
+                                                table {
+                                                    border-collapse: collapse;
+                                                    width: 100%;
+                                                }
+
+                                                td, th {
+                                                    border: 1px solid #dddddd;
+                                                    text-align: left;
+                                                    padding: 8px;
+                                                }
+                                            </style>
+                                            <table>
+                                                <tr>
+                                                    <th>Select</th>
+                                                    <th>Answer</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>  <input type="checkbox" name="India" value="India"> </td>
+                                                    <td>India</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>  <input type="checkbox" name="Pakisthan" value="Pakisthan"> </td>
+                                                    <td>Pakisthan</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>  <input type="checkbox" name="China" value="China"> </td>
+                                                    <td>China</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>  <input type="checkbox" name="Bangladesh" value="Bangladesh"> </td>
+                                                    <td>Bangladesh</td>
+                                                </tr>
+                                            </table>
+
+                                            <div class="form-group">
+                                                <input type="hidden" id="TopicID" />
+                                            </div>
+
+
+                                        </form>
+
+                                        <div class="text-center mt-lg">
+                                            <button type="button" class="btn btn-warning">Previous</button>
+                                            <button type="button" class="btn btn-success">Next</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
+
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
+
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
+
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
+
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
+

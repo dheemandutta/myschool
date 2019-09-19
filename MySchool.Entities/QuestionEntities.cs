@@ -32,5 +32,7 @@ namespace MySchool.Entities
         public bool IsShown { get; set; }
 
         public bool HasAlreadyShown { get; set; }
+
+
     }
 }

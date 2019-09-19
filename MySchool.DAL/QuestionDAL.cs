@@ -285,7 +285,7 @@ namespace MySchool.DAL
         }
 
 
-        public ExamPaper GetQuestionPaper(int questionCount)
+        public void GetQuestionPaper(int questionCount)
         {
             QuestionViewEntities questionViewEntities = new QuestionViewEntities();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -297,12 +297,30 @@ namespace MySchool.DAL
             DataSet ds = new DataSet();
             da.Fill(ds);
             con.Close();
+            //ExamPaper examPaper = new ExamPaper();
+            //examPaper  = CreateDataSet(ds);
+            //return examPaper;
+        }
+
+        public ExamPaper GetNextPrevQuestion(int pageIndex,int pageSize)
+        {
+            QuestionViewEntities questionViewEntities = new QuestionViewEntities();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetNextQuestion", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+            cmd.Parameters.AddWithValue("@PageSize", pageSize);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
             ExamPaper examPaper = new ExamPaper();
-            examPaper  = CreateDataSet(ds);
+            examPaper = CreateDataSet(ds);
             return examPaper;
         }
 
-         private ExamPaper CreateDataSet(DataSet dsQuestion)
+        private ExamPaper CreateDataSet(DataSet dsQuestion)
         {
             ExamPaper examPaper = new ExamPaper();
             List<QuestionEntities> questionEntitiesList = new List<QuestionEntities>();

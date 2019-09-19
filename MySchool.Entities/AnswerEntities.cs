@@ -15,6 +15,8 @@ namespace MySchool.Entities
         public string AnswerText { get; set; }
         public string IsRightAnswer { get; set; }
 
+        public bool IsUserAnswer { get; set; }
+
 
     }
 }

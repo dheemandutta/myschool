@@ -63,14 +63,20 @@ namespace MySchool.BL
         }
 
 
-        public ExamPaper GetQuestionPaper(int questionCount)
+        public void GetQuestionPaper(int questionCount)
         {
             QuestionDAL questionDAL = new QuestionDAL();
-            return questionDAL.GetQuestionPaper(questionCount);
+            questionDAL.GetQuestionPaper(questionCount);
         }
 
-        //for GettblSubjectForDrp drp
-        public List<QuestionEntities> GettblSubjectForDrp()
+        public ExamPaper GetNextPrevQuestion(int pageIndex, int pageSize)
+        {
+            QuestionDAL questionDAL = new QuestionDAL();
+           return questionDAL.GetNextPrevQuestion(pageIndex, pageSize);
+        }
+
+            //for GettblSubjectForDrp drp
+            public List<QuestionEntities> GettblSubjectForDrp()
         {
             QuestionDAL topicDAL = new QuestionDAL();
             return topicDAL.GettblSubjectForDrp();

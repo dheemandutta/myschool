@@ -317,6 +317,8 @@ namespace MySchool.DAL
             con.Close();
             ExamPaper examPaper = new ExamPaper();
             examPaper = CreateDataSet(ds);
+            examPaper.PageSize = pageSize;
+            examPaper.PageIndex = pageIndex;
             return examPaper;
         }
 

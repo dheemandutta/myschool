@@ -33,16 +33,17 @@
             <div style="height:900px;">
                 @*/////////////////////// class="table-responsive"///////////////////////////*@
                 <div class="card">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="panel panel-default" style="height:300px">
-                                <div class="panel-heading">
-                                    <div class="panel-title"><h4>  </h4></div>
-                                </div>
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-content">
-                                        @using (Html.BeginForm("QuestionPaper", "Question", FormMethod.Post))
-                                        {
+                    @using (Html.BeginForm("QuestionPaper", "Question", FormMethod.Post))
+                    {
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default" style="height:300px">
+                                    <div class="panel-heading">
+                                        <div class="panel-title"><h4>  </h4></div>
+                                    </div>
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-content">
+
                                             @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
 
                                             <div class="form-group" style="margin-right: -600px;">
@@ -55,8 +56,8 @@
                                                         @for (int i = 0; i < Model.QuestionEntities.Count; i++)
                                                         {
                                                             //Question Row
-                                                            if (Model.QuestionEntities[i].IsShown)
-                                                            {
+                                                            //if (Model.QuestionEntities[i].IsShown)
+                                                            //{
                                                                 <tr>
                                                                     <td>
                                                                         <h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.Raw(Model.QuestionEntities[i].QuestionText)</span></h1>
@@ -69,7 +70,7 @@
 
                                                                     </tr>
                                                                 }
-                                                            }
+                                                           // }
                                                         }
                                                     </table>
 
@@ -83,37 +84,21 @@
                                             </div>
 
 
+                                        </div>
 
-
-                                        }
-
-
-                                        @*</form>*@
-                                        @*@using (Html.BeginForm("GetQuestion", "Question"))
-                    {
-                        int i = 0;
-                        <input type="hidden" name="QuestionIndex" value="@i" />
-                        <input type="submit" value="Next" />
-                    }
-                    @using (Html.BeginForm("PrevQuestion", "Question"))
-                    {
-
-
-                        <input type="submit" value="Previous" />
-                    }*@
                                     </div>
 
                                 </div>
 
+                                <div class="text-center mt-lg">
+                                    <input type="submit" class="btn btn-warning" value="Previous" name="Command" />
+                                    <input type="submit" class="btn btn-success" value="Next" name="Command" />
+                                </div>
                             </div>
-                          
-                            <div class="text-center mt-lg">
-                                <input type="submit" class="btn btn-warning" value="Previous" name="Command" />
-                                <input type="submit" class="btn btn-success" value="Next" name="Command" />
-                            </div>
+                            
                         </div>
+                    }
                     </div>
-                </div>
             </div>
         </div>
     </div>

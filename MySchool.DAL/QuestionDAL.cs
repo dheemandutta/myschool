@@ -317,6 +317,8 @@ namespace MySchool.DAL
             con.Close();
             ExamPaper examPaper = new ExamPaper();
             examPaper = CreateDataSet(ds);
+            examPaper.PageSize = pageSize;
+            examPaper.PageIndex = pageIndex;
             return examPaper;
         }
 
@@ -359,6 +361,7 @@ namespace MySchool.DAL
                     answerEntities1.AnswerText = Convert.ToString(dtAns.Rows[j]["ChoiceText"]);
                     answerEntities1.QuestionID = Convert.ToInt32(dtAns.Rows[j]["QuestionId"].ToString());
                     answerEntities1.IsRightAnswer = Convert.ToString(dtAns.Rows[j]["IsAnswer"].ToString());
+                    answerEntities1.IsUserAnswer = Convert.ToInt32(dtAns.Rows[j]["IsUserAnswer"].ToString());
 
                     answerEntities.Add(answerEntities1);
                 }

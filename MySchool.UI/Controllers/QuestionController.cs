@@ -19,7 +19,7 @@ namespace MySchool.UI.Controllers
         // GET: Question
         public ActionResult Index()
         {
-            //GetTopicForDrp();
+            GetTopicForDrp();
             return View();
         }
 
@@ -59,6 +59,8 @@ namespace MySchool.UI.Controllers
                 examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
                 examPaper.QuestionEntities[0].IsShown = true;
                 examPaper.QuestionEntities[0].HasAlreadyShown = true;
+                examPaper.PageIndex = 1;
+                examPaper.PageSize = 1;
                 Session["QuestionPaper"] = examPaper;
             }
             else
@@ -86,26 +88,37 @@ namespace MySchool.UI.Controllers
 
             foreach (AnswerEntities item in examPaper.QuestionEntities[0].AnswerEntities)
             {
-                if(item.ID == int.Parse(collection.AllKeys[0]))
+                if(collection.AllKeys.Length == 2)
+                if (item.ID == int.Parse(collection.AllKeys[0]))
                 {
                     item.IsUserAnswer = 1;
-                    topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer);
+                    topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer); //save userdata
                     break;
                 }
             }
 
-            //examPaper.QuestionEntities[0].AnswerEntities[rightAnswerIndex].IsUserAnswer = true; //set user answer
             examPaper.QuestionEntities[0].IsShown = false;
 
-            //save userdata
-            
+            if(command == "Next")
+            {
+                if (examPaper.PageIndex < int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString()))
+                    examPaper.PageIndex += 1;
+                   
+            }
+            else if(command == "Previous")
+            {
+                if (examPaper.PageIndex <= int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString()) && examPaper.PageIndex > 1)
+                    examPaper.PageIndex -= 1;
+            }
 
-          
+            examPaper = topicBL.GetNextPrevQuestion(examPaper.PageIndex, examPaper.PageSize);
+
+
 
             //Session.Abandon();
             Session["QuestionPaper"] = examPaper;
 
-            return View(examPaper);
+            return RedirectToAction("QuestionPaper", "Question");
         }
 
         public JsonResult GetFirstQuestion()

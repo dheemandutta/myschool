@@ -17,8 +17,10 @@ namespace MySchool.Entities
             this.QuestionEntities = q;
         }
         public List<QuestionEntities> QuestionEntities { get; set; }
+        public int PageIndex { get; set; }
+        public int PageSize { get; set; }
 
-        
+
 
     }
 }

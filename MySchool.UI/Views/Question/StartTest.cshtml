@@ -44,21 +44,20 @@
                                     <div class="ibox-content">
                                         <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
-                                            <div class="form-group" style="margin-right: -600px;">
+                                            @*<div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Subject<font color=""></font> </label>
 
                                                 <div class="col-sm-10" style="width: 30%;" required="required">
-                                                    @Html.DropDownListFor(model => model.Id, (IEnumerable<SelectListItem>)ViewBag.SubjectForDrp, "Select", new { @class = "form-control", @id = "drpSubject" }) @* drpGrade *@
+                                                    @Html.DropDownListFor(model => model.Id, (IEnumerable<SelectListItem>)ViewBag.SubjectForDrp, "Select", new { @class = "form-control", @id = "drpSubject" })  drpGrade 
 
                                                 </div>
-                                            </div>
+                                            </div>*@
 
                                             <div class="form-group">
                                                 <input type="hidden" id="QuestionID" />
                                             </div>
 
                                             <div class="panel-footer text-center">
-                                                @*<button type="button" class="btn btn-primary" id="btnSave" onclick="return Add();">Start Test</button>*@
                                                 <button class="btn btn-primary" onclick="location.href='@Url.Action("QuestionPaper", "Question")';return false;">Start Test</button>
                                             </div>
 

@@ -871,6 +871,7 @@
     <Content Include="Views\Question\QuestionPaper.cshtml" />
     <Content Include="Views\Question\StartTest.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Question\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

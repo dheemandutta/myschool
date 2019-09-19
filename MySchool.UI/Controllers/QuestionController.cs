@@ -19,7 +19,7 @@ namespace MySchool.UI.Controllers
         // GET: Question
         public ActionResult Index()
         {
-            GetTopicForDrp();
+            //GetTopicForDrp();
             return View();
         }
 
@@ -31,7 +31,10 @@ namespace MySchool.UI.Controllers
 
         public ActionResult StartTest()
         {
-           // GettblSubjectForDrp();
+            // GettblSubjectForDrp();
+            QuestionBL topicBL = new QuestionBL();
+            int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
+            topicBL.GetQuestionPaper(questionCount);
             return View();
         }
 
@@ -45,27 +48,48 @@ namespace MySchool.UI.Controllers
         public ActionResult QuestionPaper()
         {
             ExamPaper examPaper = new ExamPaper();
-            if (Session["QuestionPaper"] == null)
-            {
+            //if (Session["QuestionPaper"] == null)
+            //{
 
-                QuestionBL topicBL = new QuestionBL();
-                // i = i + 1;
-                int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
-                
-                examPaper = topicBL.GetQuestionPaper(questionCount);
-                examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
-                examPaper.QuestionEntities[0].IsShown = true;
-                examPaper.QuestionEntities[0].HasAlreadyShown = true;
-                Session["QuestionPaper"] = examPaper;
-            }
-            else
-            {
-                examPaper = (ExamPaper)Session["QuestionPaper"];
-            }
+            //    QuestionBL topicBL = new QuestionBL();
+            //    // i = i + 1;
+            //    int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
 
-           
+            //    examPaper = topicBL.GetQuestionPaper(questionCount);
+            //    examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
+            //    examPaper.QuestionEntities[0].IsShown = true;
+            //    examPaper.QuestionEntities[0].HasAlreadyShown = true;
+            //    Session["QuestionPaper"] = examPaper;
+            //}
+            //else
+            //{
+            //    examPaper = (ExamPaper)Session["QuestionPaper"];
+            //}
+
+
+            // return View(examPaper);
+
             return View(examPaper);
         }
+
+        public JsonResult GetFirstQuestion()
+        {
+            ExamPaper examPaper = new ExamPaper();
+            QuestionBL topicBL = new QuestionBL();
+            // i = i + 1;
+            int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
+
+            //examPaper = topicBL.GetQuestionPaper(questionCount);
+            examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
+            examPaper.QuestionEntities[0].IsShown = true;
+            examPaper.QuestionEntities[0].HasAlreadyShown = true;
+            Session["QuestionPaper"] = examPaper;
+
+            return Json(examPaper, JsonRequestBehavior.AllowGet);
+        }
+
+
+    
 
         [HttpPost]
         public ActionResult GetQuestion()
@@ -291,12 +315,12 @@ namespace MySchool.UI.Controllers
 
 
 
-        public ActionResult GetQuestionPaper()
-        {
-            QuestionBL topicBL = new QuestionBL();
-            int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
-            return Json(topicBL.GetQuestionPaper(questionCount), JsonRequestBehavior.AllowGet);
-        }
+        //public ActionResult GetQuestionPaper()
+        //{
+        //    QuestionBL topicBL = new QuestionBL();
+        //    int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
+        //    return Json(topicBL.GetQuestionPaper(questionCount), JsonRequestBehavior.AllowGet);
+        //}
 
 
         //for GettblSubjectForDrp drp

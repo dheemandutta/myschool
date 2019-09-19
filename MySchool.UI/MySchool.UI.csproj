@@ -366,6 +366,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\Question.js" />
+    <Content Include="Scripts\QuestionPaper.js" />
     <Content Include="Scripts\Section.js" />
     <Content Include="Scripts\StudentAttendent.js" />
     <Content Include="Scripts\StudentContact.js" />
@@ -402,6 +403,7 @@
     <Content Include="Sql Script\SS_Patch_18_09_2019.sql" />
     <Content Include="Sql Script\SS_Patch_20_08_2019.sql" />
     <Content Include="Sql Script\SS_Patch_21_08_2019.sql" />
+    <Content Include="Sql Script\stpGetNextQuestion_19092019.sql" />
     <Content Include="Sql Script\stpGetQuestion_19092019.sql" />
     <Content Include="Sql Script\stpInsertUpdateQuestion.sql" />
     <Content Include="StudentIMG\Farhan Qureshi.png" />

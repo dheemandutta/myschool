@@ -320,6 +320,18 @@ namespace MySchool.DAL
             return examPaper;
         }
 
+        public void SaveUserAnswer(int answerId,int useranswerId)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpSaveUserAnswer", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@AnswerId", useranswerId);
+            cmd.Parameters.AddWithValue("@Id", answerId);
+            int records = cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
         private ExamPaper CreateDataSet(DataSet dsQuestion)
         {
             ExamPaper examPaper = new ExamPaper();

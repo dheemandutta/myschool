@@ -72,15 +72,20 @@ namespace MySchool.BL
         public ExamPaper GetNextPrevQuestion(int pageIndex, int pageSize)
         {
             QuestionDAL questionDAL = new QuestionDAL();
-           return questionDAL.GetNextPrevQuestion(pageIndex, pageSize);
+            return questionDAL.GetNextPrevQuestion(pageIndex, pageSize);
         }
 
-            //for GettblSubjectForDrp drp
-            public List<QuestionEntities> GettblSubjectForDrp()
+        //for GettblSubjectForDrp drp
+        public List<QuestionEntities> GettblSubjectForDrp()
         {
             QuestionDAL topicDAL = new QuestionDAL();
             return topicDAL.GettblSubjectForDrp();
         }
 
+        public void SaveUserAnswer(int answerId, int useranswerId)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            topicDAL.SaveUserAnswer(answerId, useranswerId);
+        }
     }
 }

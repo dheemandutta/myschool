@@ -50,7 +50,7 @@
                     {
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="panel panel-default" style="height:300px">
+                                <div class="panel panel-default" style="height:400px">
                                     <div class="panel-heading">
                                         <div class="panel-title"><h4>  </h4></div>
                                     </div>
@@ -58,116 +58,116 @@
                                         <div class="ibox-content">
 
                                             @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    <table style="border-collapse:collapse; width:10%; position:center;">
 
-                                            <table style="border-collapse: collapse; width: 12%;">
-                                                
-                                                @if (Model.QuestionCount % 10 == 0)
-                                                {
-                                                    for (int m = 0, cnt = 0; m < Model.QuestionCount / 10; m++, cnt++)
-                                                    {
-                                                <tr>
-                                                    <td style="background-color:forestgreen; color: black;">01</td>
-                                                    <td style="color: black;">02</td>
-                                                    <td style="background-color:forestgreen; color: sandybrown;">03</td>
-                                                    <td style="color: sandybrown;">04</td>
-                                                    <td style="color: black;">05</td>
-                                                    <td style="color: black;">06</td>
-                                                    <td style="color: black;">07</td>
-                                                    <td style="color: black;">08</td>
-                                                    <td style="color: black;">09</td>
-                                                    <td style="color: black;">10</td>
-                                                </tr>
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    for (int m = 0, cnt = 0; m < Model.QuestionCount / 10; m++, cnt++)
-                                                    {
-                                            <tr>
-                                                        <td style="background-color:forestgreen; color: black;">01</td>
-                                                        <td style="color: black;">02</td>
-                                                        <td style="background-color:forestgreen; color: sandybrown;">03</td>
-                                                        <td style="color: sandybrown;">04</td>
-                                                        <td style="color: black;">05</td>
-                                                        <td style="color: black;">06</td>
-                                                        <td style="color: black;">07</td>
-                                                        <td style="color: black;">08</td>
-                                                        <td style="color: black;">09</td>
-                                                        <td style="color: black;">10</td>
-                                            </tr>
-                                                    }
-
-
-                                            <tr>
-
-                                                @for (int m = 0; m < Model.QuestionCount % 10; m++)
-                                                {
-                                                    
-                                                        var cnt = ((Model.QuestionCount / 10) * 10) + (m + 1);
-                                                        <td style="color: black;">@cnt</td>
-                                                    
-
-
-                                                }
-                                            </tr>
-                                                    
-                                                }
-
-                                            </table>
-
-                                                <div class="form-group" style="margin-right: -600px;">
-                                                    <label class="col-sm-2 control-label">Question:<font color=""></font> </label>
-                                                    <div class="col-sm-10" style="width: 30%;">
-                                                        @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
-                                                        @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
-                                                        <table>
-
-                                                            @for (int i = 0; i < Model.QuestionEntities.Count; i++)
+                                                        @if (Model.QuestionCount % 10 == 0)
+                                                        {
+                                                            for (int m = 0, cnt = 0; m < Model.QuestionCount / 10; m++, cnt++)
                                                             {
-                                                                //Question Row
-                                                                //if (Model.QuestionEntities[i].IsShown)
-                                                                //{
                                                                 <tr>
-                                                                    <td>
-                                                                        <h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.Raw(Model.QuestionEntities[i].QuestionText)</span></h1>
-                                                                    </td>
+                                                                    <td style="background-color:forestgreen; color: black;">01</td>
+                                                                    <td style="color: black;">02</td>
+                                                                    <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                                    <td style="color: sandybrown;">04</td>
+                                                                    <td style="color: black;">05</td>
+                                                                    <td style="color: black;">06</td>
+                                                                    <td style="color: black;">07</td>
+                                                                    <td style="color: black;">08</td>
+                                                                    <td style="color: black;">09</td>
+                                                                    <td style="color: black;">10</td>
                                                                 </tr>
-                                                                foreach (var answer in Model.QuestionEntities[i].AnswerEntities)
-                                                                {
-                                                                    if (answer.IsUserAnswer == 1)
-                                                                    {
-                                                                        <tr>
-                                                                            <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID" checked="checked">@Html.DisplayFor(x => answer.AnswerText)</td>
-
-                                                                        </tr>
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        <tr>
-                                                                            <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID">@Html.DisplayFor(x => answer.AnswerText)</td>
-
-                                                                        </tr>
-
-                                                                    }
-                                                                }
-                                                                // }
                                                             }
-                                                        </table>
+                                                        }
+                                                        else
+                                                        {
+                                                            for (int m = 0, cnt = 0; m < Model.QuestionCount / 10; m++, cnt++)
+                                                            {
+                                                                <tr>
+                                                                    <td style="background-color:forestgreen; color: black;">01</td>
+                                                                    <td style="color: black;">02</td>
+                                                                    <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                                    <td style="color: sandybrown;">04</td>
+                                                                    <td style="color: black;">05</td>
+                                                                    <td style="color: black;">06</td>
+                                                                    <td style="color: black;">07</td>
+                                                                    <td style="color: black;">08</td>
+                                                                    <td style="color: black;">09</td>
+                                                                    <td style="color: black;">10</td>
+                                                                </tr>
+                                                            }
 
-                                                        <table>
+
                                                             <tr>
+
+                                                                @for (int m = 0; m < Model.QuestionCount % 10; m++)
+                                                                {
+
+                                                                    var cnt = ((Model.QuestionCount / 10) * 10) + (m + 1);
+                                                                    <td style="color: black;">@cnt</td>
+
+
+
+                                                                }
                                                             </tr>
-                                                        </table>
+
+                                                        }
+
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group" style="margin-right: -600px;">
+                                                <div class="col-sm-10" style="width: 30%;">
+                                                    @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
+                                                    @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
+                                                    <h4>Question:</h4>
+                                                    <table>
+
+                                                        @for (int i = 0; i < Model.QuestionEntities.Count; i++)
+                                                        {
+                                                            //Question Row
+                                                            //if (Model.QuestionEntities[i].IsShown)
+                                                            //{
+                                                            <tr>
+                                                                <td>
+                                                                    <h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.Raw(Model.QuestionEntities[i].QuestionText)</span></h1>
+                                                                </td>
+                                                            </tr>
+                                                            foreach (var answer in Model.QuestionEntities[i].AnswerEntities)
+                                                            {
+                                                                if (answer.IsUserAnswer == 1)
+                                                                {
+                                                                    <tr>
+                                                                        <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID" checked="checked">@Html.DisplayFor(x => answer.AnswerText)</td>
+
+                                                                    </tr>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <tr>
+                                                                        <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID">@Html.DisplayFor(x => answer.AnswerText)</td>
+
+                                                                    </tr>
+
+                                                                }
+                                                            }
+                                                            // }
+                                                        }
+                                                    </table>
+
+                                                    <table>
+                                                        <tr>
+                                                        </tr>
+                                                    </table>
 
 
-                                                    </div>
+                                                </div>
                                                 </div>
 
-
                                         </div>
-
                                     </div>
-
                                 </div>
 
                                 <div class="text-center mt-lg">

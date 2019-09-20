@@ -13,7 +13,7 @@ namespace MySchool.UI.Controllers
         // GET: Section
         public ActionResult Index()
         {
-            GetAllGradeForDrp();
+            GetAllGradeForDrp() ;
             return View();
 
         }

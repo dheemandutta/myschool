@@ -400,5 +400,13 @@ namespace MySchool.UI.Controllers
 
         }
 
+
+
+        private int GetQuestionCount(int QuestionCount)
+        {
+            QuestionBL topicBL = new QuestionBL();
+            return topicBL.GetAllQuestion(QuestionCount);
+        }
+
     }
 }

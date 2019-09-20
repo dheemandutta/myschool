@@ -89,10 +89,10 @@ namespace MySchool.BL
         }
 
 
-        public ExamPaper GetAllQuestion()
+        public ExamPaper GetAllQuestion(int QuestionCount)
         {
             QuestionDAL topicDAL = new QuestionDAL();
-            return topicDAL.GetAllQuestion();
+            return topicDAL.GetAllQuestion(QuestionCount);
         }
     }
 }

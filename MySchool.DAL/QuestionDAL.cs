@@ -400,13 +400,13 @@ namespace MySchool.DAL
 
 
 
-        public ExamPaper GetAllQuestion()
+        public ExamPaper GetAllQuestion(int QuestionCount)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpGetAllQuestion", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@Id", ID);
+            cmd.Parameters.AddWithValue("@QuestionCount", QuestionCount);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);

@@ -396,5 +396,28 @@ namespace MySchool.DAL
             con.Close();
             return subjectParticularsList;
         }
+
+
+
+
+        public QuestionEntities GetAllQuestion()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetAllQuestion", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.AddWithValue("@Id", ID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            QuestionEntities topicEntities = new QuestionEntities();
+            topicEntities.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
+            topicEntities.QuestionText = Convert.ToString(ds.Tables[0].Rows[0]["QuestionText"]);
+            topicEntities.TopicId = Convert.ToInt32(ds.Tables[0].Rows[0]["TopicId"]);
+            topicEntities.ImagePath = Convert.ToString(ds.Tables[0].Rows[0]["ImagePath"]);
+            topicEntities.Marks = Convert.ToDecimal(ds.Tables[0].Rows[0]["Marks"]);
+            return topicEntities;
+        }
     }
 }

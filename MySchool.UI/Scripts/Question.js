@@ -14,10 +14,12 @@
 function clearTextBox() {
 
     $('#QuestionID').val("");
-    $('#summernote').val("");
+    $('#QuestionText').val("");  // $('#summernote').val("");
     $('#drpTopic').val("");
     //$('#ImagePath').val("");
     $('#Marks').val("");
+    $('#drpSubject').val("");
+    $('#tblSubject').val("");
 }
 
 function Add() {

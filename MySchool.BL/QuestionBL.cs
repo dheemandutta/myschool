@@ -87,5 +87,12 @@ namespace MySchool.BL
             QuestionDAL topicDAL = new QuestionDAL();
             topicDAL.SaveUserAnswer(answerId, useranswerId);
         }
+
+
+        public QuestionEntities GetAllQuestion()
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.GetAllQuestion();
+        }
     }
 }

@@ -531,6 +531,7 @@
     <Content Include="Sql Script\SS_Patch_20_08_2019.sql" />
     <Content Include="Sql Script\SS_Patch_21_08_2019.sql" />
     <Content Include="Sql Script\stpGetNextQuestion_19092019.sql" />
+    <Content Include="Sql Script\stpGetNextQuestion_20092019.sql" />
     <Content Include="Sql Script\stpGetQuestion_19092019.sql" />
     <Content Include="Sql Script\stpInsertUpdateQuestion.sql" />
     <Content Include="StudentIMG\Farhan Qureshi.png" />

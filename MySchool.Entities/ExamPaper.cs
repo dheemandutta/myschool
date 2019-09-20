@@ -22,5 +22,7 @@ namespace MySchool.Entities
 
 
         public int QuestionCount { get; set; }
+
+        public List<int> AnsweredQuestionList { get; set; }
     }
 }

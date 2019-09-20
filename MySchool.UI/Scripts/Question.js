@@ -16,6 +16,13 @@ function clearTextBox() {
     $('#QuestionID').val("");
     $('#QuestionText').val("");  // $('#summernote').val("");
     $('#drpTopic').val("");
+    $(this).parents("tr").remove();
+    $("#tblSubject tbody").find('input[name="record"]').each(function () {
+        if ($(this).is(":checked")) {
+            $(this).parents("tr").remove();
+        }
+    });
+
     //$('#ImagePath').val("");
     $('#Marks').val("");
     $('#drpSubject').val("");
@@ -429,8 +436,6 @@ function DeleteAns(Id) {
         });
     }
 }
-
-
 
 function GetQuestionPaper() {
 

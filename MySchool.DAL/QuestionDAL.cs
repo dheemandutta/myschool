@@ -400,7 +400,7 @@ namespace MySchool.DAL
 
 
 
-        public QuestionEntities GetAllQuestion()
+        public ExamPaper GetAllQuestion()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
@@ -411,12 +411,8 @@ namespace MySchool.DAL
             DataSet ds = new DataSet();
             da.Fill(ds);
             con.Close();
-            QuestionEntities topicEntities = new QuestionEntities();
-            topicEntities.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
-            topicEntities.QuestionText = Convert.ToString(ds.Tables[0].Rows[0]["QuestionText"]);
-            topicEntities.TopicId = Convert.ToInt32(ds.Tables[0].Rows[0]["TopicId"]);
-            topicEntities.ImagePath = Convert.ToString(ds.Tables[0].Rows[0]["ImagePath"]);
-            topicEntities.Marks = Convert.ToDecimal(ds.Tables[0].Rows[0]["Marks"]);
+            ExamPaper topicEntities = new ExamPaper();
+            topicEntities.QuestionCount = Convert.ToInt32(ds.Tables[0].Rows[0]["QuestionCount"].ToString());
             return topicEntities;
         }
     }

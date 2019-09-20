@@ -21,6 +21,6 @@ namespace MySchool.Entities
         public int PageSize { get; set; }
 
 
-
+        public int QuestionCount { get; set; }
     }
 }

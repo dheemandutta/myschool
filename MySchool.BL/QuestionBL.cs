@@ -89,7 +89,7 @@ namespace MySchool.BL
         }
 
 
-        public QuestionEntities GetAllQuestion()
+        public ExamPaper GetAllQuestion()
         {
             QuestionDAL topicDAL = new QuestionDAL();
             return topicDAL.GetAllQuestion();

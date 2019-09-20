@@ -311,14 +311,18 @@ namespace MySchool.DAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
             cmd.Parameters.AddWithValue("@PageSize", pageSize);
+            cmd.Parameters.Add(new SqlParameter("@QuestionCount", SqlDbType.Int));
+            cmd.Parameters[2].Direction = ParameterDirection.Output;
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
+            int questCount = (int)(cmd.Parameters[2].Value);
             con.Close();
             ExamPaper examPaper = new ExamPaper();
             examPaper = CreateDataSet(ds);
             examPaper.PageSize = pageSize;
             examPaper.PageIndex = pageIndex;
+            examPaper.QuestionCount = questCount;
             return examPaper;
         }
 
@@ -371,6 +375,16 @@ namespace MySchool.DAL
             }
 
             examPaper.QuestionEntities = questionEntitiesList;
+
+            List<int> qCnt = new List<int>();
+
+            for (int k = 0; k < dsQuestion.Tables[2].Rows.Count; k++)
+            {
+                qCnt.Add(int.Parse(dsQuestion.Tables[2].Rows[k][0].ToString()));
+            }
+
+            examPaper.AnsweredQuestionList = qCnt;
+
             return examPaper;
         }
 
@@ -400,20 +414,22 @@ namespace MySchool.DAL
 
 
 
-        public ExamPaper GetAllQuestion(int QuestionCount)
-        {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("stpGetAllQuestion", con);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@QuestionCount", QuestionCount);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            con.Close();
-            ExamPaper topicEntities = new ExamPaper();
-            topicEntities.QuestionCount = Convert.ToInt32(ds.Tables[0].Rows[0]["QuestionCount"].ToString());
-            return topicEntities;
-        }
+        //public int GetAllQuestion(int QuestionCount)
+        //{
+        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand("stpGetAllQuestion", con);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    cmd.Parameters.Add(new SqlParameter("@QuestionCount",SqlDbType.Int));
+        //    cmd.Parameters[0].Direction = ParameterDirection.Output;
+          
+        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
+        //    DataSet ds = new DataSet();
+        //    da.Fill(ds);
+        //    con.Close();
+        //    ExamPaper topicEntities = new ExamPaper();
+        //    topicEntities.QuestionCount = Convert.ToInt32(ds.Tables[0].Rows[0]["QuestionCount"].ToString());
+        //    return topicEntities;
+        //}
     }
 }

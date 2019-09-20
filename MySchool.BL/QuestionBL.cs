@@ -40,5 +40,59 @@ namespace MySchool.BL
             QuestionDAL topicDAL = new QuestionDAL();
             return topicDAL.GetTopicForDrp();
         }
+
+
+        public int SaveOrUpdate(QuestionViewEntities questionEntities)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.SaveOrUpdate(questionEntities);
+        }
+
+        public List<ChoiceEntities> GetAnswerPageWise(int Id, int pageIndex, ref int recordCount, int length)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.GetAnswerPageWise(Id, pageIndex, ref recordCount, length);
+        }
+
+
+
+        public ChoiceEntities GetAnswerByID(int ID)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.GetAnswerByID(ID);
+        }
+
+
+        public void GetQuestionPaper(int questionCount)
+        {
+            QuestionDAL questionDAL = new QuestionDAL();
+            questionDAL.GetQuestionPaper(questionCount);
+        }
+
+        public ExamPaper GetNextPrevQuestion(int pageIndex, int pageSize)
+        {
+            QuestionDAL questionDAL = new QuestionDAL();
+            return questionDAL.GetNextPrevQuestion(pageIndex, pageSize);
+        }
+
+        //for GettblSubjectForDrp drp
+        public List<QuestionEntities> GettblSubjectForDrp()
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.GettblSubjectForDrp();
+        }
+
+        public void SaveUserAnswer(int answerId, int useranswerId)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            topicDAL.SaveUserAnswer(answerId, useranswerId);
+        }
+
+
+        //public ExamPaper GetAllQuestion(int QuestionCount)
+        //{
+        //    QuestionDAL topicDAL = new QuestionDAL();
+        //    return topicDAL.GetAllQuestion(QuestionCount);
+        //}
     }
 }

@@ -1,0 +1,232 @@
+﻿@model MySchool.Entities.ExamPaper
+
+@{
+    ViewBag.Title = "QuestionPape";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/Question.js"></script>
+<script src="~/Scripts/QuestionPaper.js"></script>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body style="background-image: url(../background/depart.jpg);
+    background-size: cover;">
+
+    @Html.Hidden("getQuestionPaper", @Url.Action("GetQuestionPaper", "Question"))
+    @Html.Hidden("loaddata", @Url.Action("GetFirstQuestion", "Question"))
+
+    <div class="row" style="height:10px;">
+
+        <div class="col-md-7 bac" style=" width: 100%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text m-t-lg">
+                        <h2>
+                            Question Paper
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8" style="width: 100%;">
+
+            <div style="height:900px;">
+                @*/////////////////////// class="table-responsive"///////////////////////////*@
+                <div class="card">
+                    @using (Html.BeginForm("QuestionPaper", "Question", FormMethod.Post))
+                    {
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel panel-default" style="height:300px">
+                                    <div class="panel-heading">
+                                        <div class="panel-title"><h4>  </h4></div>
+                                    </div>
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-content">
+
+                                            @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
+
+                                            <table style="border-collapse: collapse; width: 12%;">
+                                                
+                                                @if (Model.QuestionCount % 10 == 0)
+                                                {
+                                                    for (int m = 0, cnt = 0; m < Model.QuestionCount / 10; m++, cnt++)
+                                                    {
+                                                <tr>
+                                                    <td style="background-color:forestgreen; color: black;">01</td>
+                                                    <td style="color: black;">02</td>
+                                                    <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                    <td style="color: sandybrown;">04</td>
+                                                    <td style="color: black;">05</td>
+                                                    <td style="color: black;">06</td>
+                                                    <td style="color: black;">07</td>
+                                                    <td style="color: black;">08</td>
+                                                    <td style="color: black;">09</td>
+                                                    <td style="color: black;">10</td>
+                                                </tr>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    for (int m = 0, cnt = 0; m < Model.QuestionCount / 10; m++, cnt++)
+                                                    {
+                                            <tr>
+                                                        <td style="background-color:forestgreen; color: black;">01</td>
+                                                        <td style="color: black;">02</td>
+                                                        <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                        <td style="color: sandybrown;">04</td>
+                                                        <td style="color: black;">05</td>
+                                                        <td style="color: black;">06</td>
+                                                        <td style="color: black;">07</td>
+                                                        <td style="color: black;">08</td>
+                                                        <td style="color: black;">09</td>
+                                                        <td style="color: black;">10</td>
+                                            </tr>
+                                                    }
+
+
+                                            <tr>
+
+                                                @for (int m = 0; m < Model.QuestionCount % 10; m++)
+                                                {
+                                                    
+                                                        var cnt = ((Model.QuestionCount / 10) * 10) + (m + 1);
+                                                        <td style="color: black;">@cnt</td>
+                                                    
+
+
+                                                }
+                                            </tr>
+                                                    
+                                                }
+
+                                            </table>
+
+                                                <div class="form-group" style="margin-right: -600px;">
+                                                    <label class="col-sm-2 control-label">Question:<font color=""></font> </label>
+                                                    <div class="col-sm-10" style="width: 30%;">
+                                                        @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
+                                                        @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
+                                                        <table>
+
+                                                            @for (int i = 0; i < Model.QuestionEntities.Count; i++)
+                                                            {
+                                                                //Question Row
+                                                                //if (Model.QuestionEntities[i].IsShown)
+                                                                //{
+                                                                <tr>
+                                                                    <td>
+                                                                        <h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.Raw(Model.QuestionEntities[i].QuestionText)</span></h1>
+                                                                    </td>
+                                                                </tr>
+                                                                foreach (var answer in Model.QuestionEntities[i].AnswerEntities)
+                                                                {
+                                                                    if (answer.IsUserAnswer == 1)
+                                                                    {
+                                                                        <tr>
+                                                                            <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID" checked="checked">@Html.DisplayFor(x => answer.AnswerText)</td>
+
+                                                                        </tr>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <tr>
+                                                                            <td><input type="radio" name="@answer.ID" value="male" id="@answer.ID">@Html.DisplayFor(x => answer.AnswerText)</td>
+
+                                                                        </tr>
+
+                                                                    }
+                                                                }
+                                                                // }
+                                                            }
+                                                        </table>
+
+                                                        <table>
+                                                            <tr>
+                                                            </tr>
+                                                        </table>
+
+
+                                                    </div>
+                                                </div>
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="text-center mt-lg">
+                                    <input type="submit" class="btn btn-warning" value="Previous" name="Command" />
+                                    <input type="submit" class="btn btn-success" value="Next" name="Command" />
+                                </div>
+                            </div>
+                            
+                        </div>
+                    }
+                    </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
+
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
+
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
+
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
+
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function SetRightAnswer(itm) {
+            alert(item);
+        }
+    });
+</script>
+

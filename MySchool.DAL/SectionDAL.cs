@@ -30,6 +30,7 @@ namespace MySchool.DAL
             cmd.Parameters.AddWithValue("@GradeId", section.GradeId);
             cmd.Parameters.AddWithValue("Section", section.Section);
             int rowAffected = cmd.ExecuteNonQuery();
+            con.Close();
             return rowAffected;
         }
 

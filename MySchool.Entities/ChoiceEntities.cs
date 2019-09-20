@@ -13,5 +13,9 @@ namespace MySchool.Entities
         public string ChoiceText { get; set; }
 
         public string QuestionName { get; set; }
+
+        public Boolean IsAnswer { get; set; }
+
+        public int Id { get; set; }
     }
 }

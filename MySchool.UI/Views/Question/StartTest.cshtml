@@ -1,0 +1,116 @@
+﻿@model MySchool.Entities.QuestionEntities
+
+@{
+    ViewBag.Title = "StartTest";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/Question.js"></script>
+
+<body style="background-image: url(../background/depart.jpg);
+    background-size: cover;">
+
+
+    @Html.Hidden("saveQuestion", @Url.Action("Add", "Question"))
+    @Html.Hidden("loaddata", @Url.Action("LoadData", "Question"))
+    @Html.Hidden("getQuestionByID", @Url.Action("GetQuestionByID", "Question"))
+
+
+    <div class="row" style="height:2000px;">
+        <div class="col-md-7 bac" style=" width: 100%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text m-t-lg">
+                        <h2>
+                            Start Test
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8" style="width: 100%;">
+
+            <div style="height:900px;">
+                @*/////////////////////// class="table-responsive"///////////////////////////*@
+                <div class="card">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="panel-title"><h4>  </h4></div>
+                                </div>
+                                <div class="ibox float-e-margins">
+                                    <div class="ibox-content">
+                                        @using (Html.BeginForm("StartTest", "Question") )
+                                        {
+                                           
+
+                                                <div class="form-group">
+                                                    <input type="hidden" id="QuestionID" />
+                                                </div>
+
+                                                <div class="panel-footer text-center" >
+                                                    <input class="btn btn-primary btn-success"  style="width:400px; height:100px" type="submit" value= StartTest>
+                                                </div>
+
+                                           
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        @*/////////////////////// class="table-responsive"///////////////////////////*@
+
+    </div>
+</body>
+
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
+
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
+
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
+
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
+
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //SetUpGrid();
+
+    });
+</script>
+

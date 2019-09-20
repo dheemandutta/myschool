@@ -61,7 +61,7 @@
                                                 <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
                                                     @*<div class="panel-heading">
-        </div>*@
+                                                        </div>*@
 
                                                     <div class="form-group" style="margin-right: -600px;">
                                                         <label class="col-sm-2 control-label">First Name<font color=""></font> </label>
@@ -145,7 +145,7 @@
                                                     <div class="form-group">
                                                         <input type="hidden" id="TeacherID" />
                                                     </div>
-                                                    
+
 
                                                 </form>
                                             </div>
@@ -168,8 +168,8 @@
                                                         <div class="col-sm-10" style="width: 30%;" required="required">
                                                             <select name="QualificationStatus" id="drpQualificationStatus" class="form-control m-b" style="width:90%">
                                                                 <option value="">Select</option>
-                                                                <option value="Male">Passed</option>
-                                                                <option value="Female">Pursuing</option>
+                                                                <option value="Passed">Passed</option>
+                                                                <option value="Pursuing">Pursuing</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -178,7 +178,7 @@
                                                         <div class="col-sm-10" style="width: 10%;">
 
                                                             <input type="text" data-masked="" id="txtCompletionDate" style="width: 90%;" data-inputmask="'mask': '99/99/9999'" placeholder="Completion Date" class="form-control" />
-                                                            <span class="help-block">'99/99/9999'</span>
+                                                            <span class="help-block">'dd/mm/yyyy'</span>
                                                         </div>
                                                     </div>
 
@@ -186,11 +186,11 @@
                                                         <div class="col-lg-12">
                                                             <div class="panel panel-default">
                                                                 <div class="panel-heading">
-                                                                    <div class="panel-title"><h4>Photo Upload</h4></div>
+                                                                    <div class="panel-title"><h4>Certificate Upload</h4></div>
                                                                 </div>
                                                                 <div class="ibox float-e-margins">
                                                                     <div class="ibox-content">
-                                                                        <form id="fileupload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
+                                                                        <form id="certificateUpload" action="//jquery-file-upload.appspot.com/" method="POST" enctype="multipart/form-data">
                                                                             <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload-->
                                                                             <div class="row fileupload-buttonbar">
                                                                                 <div class="col-lg-7">
@@ -296,10 +296,10 @@
                                                                 </label>
                                                             </div>
                                                         </div>
-                                                        
+
                                                     </div>
 
-                                                    
+
                                                     <div class="form-group" style="margin-left: 500px;">
 
                                                         <button type="button" class="btn btn-primary" id="btnAddSubject">Add</button>
@@ -337,7 +337,7 @@
 
                             </div>
                             <!-- END panel-->
-                            
+
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-default" id="btnCancel" onclick="ClearAll();">Clear</button>
@@ -477,9 +477,29 @@
             var qualification = $("#txtQualification").val();
             var completionStatus = $("#drpQualificationStatus").val();
             var completionDate = $("#txtCompletionDate").val();
+
+            if (qualification == "") {
+                alert("Please insert the Qualification");
+                //swal("Ahh!", "Please insert the Qualification", "Alert");
+            }
+
+            if (completionStatus == "" || completionStatus == "Select") {
+                alert("Please select the qualification status");
+            }
+
+            if (completionStatus == "Passed") {
+                if (completionDate == "") {
+                    alert("Please insert the completion date")
+                }
+            }
+
+
+
+
+            //if (qualification != "" && completionStatus = ! "" && completionStatus != "Select") {
             var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + qualification + "</td><td>" + completionStatus + "</td><td>" + completionDate + "</td></tr>";
             $("#tblQualification tbody").append(markup);
-
+            //}
             $("#txtQualification").val('');
             $("#drpQualificationStatus").val('');
             $("#txtCompletionDate").val('');
@@ -494,16 +514,22 @@
             });
         });
     });
+
+    //function isValidDate(date) {
+    //    var temp = date.split('/');
+    //    var d = new Date(temp[1] + '/' + temp[0] + '/' + temp[2]);
+    //    return (d && (d.getMonth() + 1) == temp[1] && d.getDate() == Number(temp[0]) && d.getFullYear() == Number(temp[2]));
+    //}
+    //alert(isValidDate(completionDate)); // it not exist ---> false
 </script>
 
 @* ---------------------- Clone for Subject ---------------------- *@
 <script type="text/javascript">
     $(document).ready(function () {
         $("#btnAddSubject").click(function () {
-
-
             var subject = $("#drpSubject").find("option:selected").text();
             var subjectId = $("#drpSubject").val();
+
             if ($('#chkPrimarySubject').is(":checked")) {
                 var primarySubject = 'Yes';
             }
@@ -511,13 +537,12 @@
                 var primarySubject = 'No';
             }
 
-
-            var markup = "<tr><td><input type='checkbox' name='record' id='" + subjectId + "'></td><td>" + subject + "</td><td>" + primarySubject + "</td></tr>";
-            $("#tblSubject tbody").append(markup);
-
+            if (subject != "" && subject != "Select") {
+                var markup = "<tr><td><input type='checkbox' name='record' id='" + subjectId + "'></td><td>" + subject + "</td><td>" + primarySubject + "</td></tr>";
+                $("#tblSubject tbody").append(markup);
+            }
             $("#drpSubject").val('');
             $("#chkPrimarySubject").val('');
-
         });
 
         // Find and remove selected table rows
@@ -576,4 +601,79 @@
             });
         });
     });
+</script>
+
+
+<script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+            <button class="btn btn-primary start" disabled>
+                <em class="fa fa-fw fa-upload"></em>
+                <span>Start</span>
+            </button>
+            {% } %}
+            {% if (!i) { %}
+            <button class="btn btn-warning cancel">
+                <em class="fa fa-fw fa-times"></em>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>
+
+<script id="template-download" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+            <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+            <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}" {% if (file.deletewithcredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
+                <em class="fa fa-fw fa-trash"></em>
+                <span>Delete</span>
+            </button>
+            {% } else { %}
+            <button class="btn btn-warning cancel">
+                <em class="fa fa-fw fa-times"></em>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
 </script>

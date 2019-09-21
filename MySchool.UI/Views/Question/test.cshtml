@@ -1,27 +1,40 @@
-﻿@model MySchool.Entities.QuestionEntities
+﻿@model MySchool.Entities.ExamPaper
 
 @{
     ViewBag.Title = "QuestionPape";
 }
 
-@*for Countdown*@
-<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css">
-<script type="text/javascript" src="js/jquery.plugin.js"></script>
-<script type="text/javascript" src="js/jquery.countdown.js"></script>
+
+
 
 
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/Question.js"></script>
+<script src="~/Scripts/QuestionPaper.js"></script>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
 <body style="background-image: url(../background/depart.jpg);
     background-size: cover;">
 
     @Html.Hidden("getQuestionPaper", @Url.Action("GetQuestionPaper", "Question"))
+    @Html.Hidden("loaddata", @Url.Action("GetFirstQuestion", "Question"))
 
-    <div class="row" style="height:2000px;">
+    <div class="row" style="height:10px;">
 
-        <div class="col-md-7 bac" style=" width: 100%;">
+        <div class="col-md-7 bac" style="height:55px; width: 100%;">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text m-t-lg">
@@ -33,8 +46,6 @@
             </div>
         </div>
 
-
-
         <p>
             Alternately, you can have a new page loaded automatically on expiry.
             Use the <em>Back</em> button to return.
@@ -45,233 +56,154 @@
             <button type="button" id="newPageStart">Start</button>
         </p>
 
-
-
-
-
         <div class="col-md-8" style="width: 100%;">
 
             <div style="height:900px;">
                 @*/////////////////////// class="table-responsive"///////////////////////////*@
                 <div class="card">
+
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title"><h4>  </h4></div>
-                                </div>
+                            <div class="panel panel-default" style="height:400px">
 
-                                <form class="form-horizontal" id="MyForm2" data-parsley-validate="" novalidate="" action="#">
-
-
-                                    <div class="form-group" style="    margin-left: 397px;">
-
-
-
-                                        @*<style>
-                                               table {
-                                                   border-collapse: collapse;
-                                                   width: 12%;
-                                               }
-
-                                               td, th {
-                                                   border: 2px solid #dddddd;
-                                                   text-align: center;
-                                                   padding: 1px;
-                                               }
-                                        </style>*@
-                                        <table style="border-collapse: collapse; width: 12%;">
-
-                                            <tr>
-                                                <td style="background-color:forestgreen; color: black;">01</td>
-                                                <td style="color: black;">02</td>
-                                                <td style="background-color:forestgreen; color: sandybrown;">03</td>
-                                                <td style="color: sandybrown;">04</td>
-                                                <td style="color: black;">05</td>
-                                                <td style="color: black;">06</td>
-                                                <td style="color: black;">07</td>
-                                                <td style="color: black;">08</td>
-                                                <td style="color: black;">09</td>
-                                                <td style="color: black;">10</td>
-                                            </tr>
-                                            <tr>
-                                                <td style="color: black;">11</td>
-                                                <td style="color: black;">12</td>
-                                                <td style="color: black;">13</td>
-                                                <td style="color: black;">14</td>
-                                                <td style="color: black;">15</td>
-                                                <td style="color: black;">16</td>
-                                                <td style="color: black;">17</td>
-                                                <td style="color: black;">18</td>
-                                                <td style="color: black;">19</td>
-                                                <td style="color: black;">20</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </form>
-
-
-                            </div>
-
-
-
-
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="panel-title"><h4>  </h4></div>
-                                </div>
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-content">
-                                        <form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">
 
-                                            <div class="form-group" style="margin-right: -1000px;">
-                                                <label class="col-sm-2 control-label">Q 1<font color=""></font> </label>
-                                                <div class="col-sm-10" style="width: 30%;">
-                                                    @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
-                                                    <h2 class="no-margins">Which country is the secular country ?</h2>
-                                                </div>
+                                        @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
+                                        <div class="form-group" style="margin-right: -600px;">
+                                            <div class="col-sm-10" style="width: 20%;">
+                                                <table style="border-collapse:collapse; width:10%; position:center;">
+
+
+                                                    <tr>
+                                                        <td background-color:forestgreen; color: black;">01</td>
+                                                        <td style="color: black;">02</td>
+                                                        <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                        <td style="color: sandybrown;">04</td>
+                                                        <td style="color: black;">05</td>
+                                                        <td style="color: black;">06</td>
+                                                        <td style="color: black;">07</td>
+                                                        <td style="color: black;">08</td>
+                                                        <td style="color: black;">09</td>
+                                                        <td style="color: black;">10</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td style="background-color:forestgreen; color: black;">01</td>
+                                                        <td style="color: black;">02</td>
+                                                        <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                        <td style="color: sandybrown;">04</td>
+                                                        <td style="color: black;">05</td>
+                                                        <td style="color: black;">06</td>
+                                                        <td style="color: black;">07</td>
+                                                        <td style="color: black;">08</td>
+                                                        <td style="color: black;">09</td>
+                                                        <td style="color: black;">10</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                    </tr>
+
+
+
+                                                </table>
                                             </div>
-
-                                            @*<style>
-                                                table {
-                                                    border-collapse: collapse;
-                                                    width: 100%;
-                                                }
-
-                                                td, th {
-                                                    border: 1px solid #dddddd;
-                                                    text-align: left;
-                                                    padding: 8px;
-                                                }
-                                            </style>*@
-                                            <table>
-                                                <tr>
-                                                    <th>Select</th>
-                                                    <th>Answer</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>  <input type="checkbox" name="India" value="India"> </td>
-                                                    <td>India</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>  <input type="checkbox" name="Pakisthan" value="Pakisthan"> </td>
-                                                    <td>Pakisthan</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>  <input type="checkbox" name="China" value="China"> </td>
-                                                    <td>China</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>  <input type="checkbox" name="Bangladesh" value="Bangladesh"> </td>
-                                                    <td>Bangladesh</td>
-                                                </tr>
-                                            </table>
-
-                                            <div class="form-group">
-                                                <input type="hidden" id="TopicID" />
-                                            </div>
-
-                                        </form>
+                                        </div>
 
                                     </div>
-
                                 </div>
                             </div>
 
-
-
-
                             <div class="text-center mt-lg">
-                                <button type="button" class="btn btn-warning">Previous</button>
-                                <button type="button" class="btn btn-success">Next</button>
+                                <input type="submit" class="btn btn-warning" value="Previous" name="Command" />
+                                <input type="submit" class="btn btn-success" value="Next" name="Command" />
                             </div>
                         </div>
 
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 </body>
 
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
 
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
 
+}
+@section Scripts {
 
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
 
-    @section Styles {
-        @Styles.Render("~/bundles/datatablesCss")
-        @Styles.Render("~/bundles/SweetAlertCss")
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
 
-        @Styles.Render("~/bundles/tagsinputCss")
-        @Styles.Render("~/bundles/sliderCtrlCss")
-        @Styles.Render("~/bundles/chosenCss")
-        @Styles.Render("~/bundles/datetimePickerCss")
-        @Styles.Render("~/bundles/ColorPickerCss")
-        @Styles.Render("~/bundles/select2Css")
-        @Styles.Render("~/bundles/fileUploadCss")
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
 
-    }
-    @section Scripts {
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
 
-        @Scripts.Render("~/bundles/datatables")
-        @Scripts.Render("~/bundles/demoDatatable")
+}
 
-        @Scripts.Render("~/bundles/parsley")
-        @Scripts.Render("~/bundles/SweetAlert")
-
-        @Scripts.Render("~/bundles/filestyle")
-        @Scripts.Render("~/bundles/tagsinput")
-        @Scripts.Render("~/bundles/chosen")
-        @Scripts.Render("~/bundles/sliderCtrl")
-        @Scripts.Render("~/bundles/inputmask")
-        @Scripts.Render("~/bundles/wysiwyg")
-        @Scripts.Render("~/bundles/moment")
-        @Scripts.Render("~/bundles/datetimePicker")
-        @Scripts.Render("~/bundles/ColorPicker")
-        @Scripts.Render("~/bundles/demoForms")
-        @Scripts.Render("~/bundles/select2")
-
-        @Scripts.Render("~/bundles/fileUpload")
-        @Scripts.Render("~/bundles/demoUpload")
-
-    }
-
-    @*<script type="text/javascript">
-            $(document).ready(function () {
-
-            });
-        </script>*@
-
-    <script>
-
-        //var timer;
-        //function countDown(i, callback) {
-        //    //callback = callback || function(){};
-        //    timer = setInterval(function() {
-        //        document.getElementById("displayDiv").innerHTML = "Exam Timer: " + i;
-        //        i-- || (clearInterval(timer), callback());
-        //    },1000);
-        //}
-        //$("#go").on("click", function(){
-        //    countDown(10, function(){
-        //        alert("Your Exam Is Over!")
-        //    });
-        //});
-        ////$("#stop").click(function(){
-        ////    clearInterval(timer);
-        ////});
-
-
-        $('#newPage').countdown({
-            until: shortly, expiryUrl: 'http://jquery.com',
-            description: 'To go to jQuery'
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            function SetRightAnswer(itm) {
+                alert(item);
+            }
         });
+    </script>*@
 
-        $('#newPageStart').click(function () {
-            shortly = new Date();
-            shortly.setSeconds(shortly.getSeconds() + 5.5);
-            $('#newPage').countdown('option', { until: shortly });
-        });
 
-    </script>
+
+<script>
+
+    //var timer;
+    //function countDown(i, callback) {
+    //    //callback = callback || function(){};
+    //    timer = setInterval(function() {
+    //        document.getElementById("displayDiv").innerHTML = "Exam Timer: " + i;
+    //        i-- || (clearInterval(timer), callback());
+    //    },1000);
+    //}
+    //$("#go").on("click", function(){
+    //    countDown(10, function(){
+    //        alert("Your Exam Is Over!")
+    //    });
+    //});
+    ////$("#stop").click(function(){
+    ////    clearInterval(timer);
+    ////});
+
+
+    $('#newPage').countdown({
+        until: shortly, expiryUrl: 'http://jquery.com',
+        description: 'To go to jQuery'
+    });
+
+    $('#newPageStart').click(function () {
+        shortly = new Date();
+        shortly.setSeconds(shortly.getSeconds() + 5.5);
+        $('#newPage').countdown('option', { until: shortly });
+    });
+
+</script>

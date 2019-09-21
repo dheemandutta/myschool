@@ -122,12 +122,12 @@
                 </a>
             </li>*@
 
-            <li class="@Html.isActive(controller: "Exam")">
+            @*<li class="@Html.isActive(controller: "Exam")">
                 <a href="@Url.Action("Index", "Exam")" title="Exam">
                     <em class="icon-note"></em>
                     <span>Exam</span>
                 </a>
-            </li>
+            </li>*@
 
 
             <li class="@Html.isActive(controller: "Topic")">
@@ -137,12 +137,12 @@
                 </a>
             </li>
 
-            <li class="@Html.isActive(controller: "Subject2")">
+            @*<li class="@Html.isActive(controller: "Subject2")">
                 <a href="@Url.Action("Index", "Subject2")" title="Subject2">
                     <em class="icon-tag"></em>
                     <span>Subject For Exam</span>
                 </a>
-            </li>
+            </li>*@
 
             <li class="@Html.isActive(controller: "Question")">
                 <a href="@Url.Action("Index", "Question")" title="Question">
@@ -161,7 +161,7 @@
             <li class="@Html.isActive(controller: "Choice")">
                 <a href="@Url.Action("Index", "Choice")" title="Choice">
                     <em class="icon-pin"></em>
-                    <span>Choice</span>
+                    <span>Answer</span>
                 </a>
             </li>
             @*<li class="@Html.isActive(controller: "tblConfig")">

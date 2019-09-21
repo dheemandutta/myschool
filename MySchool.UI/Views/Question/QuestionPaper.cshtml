@@ -42,7 +42,7 @@
         </div>
 
         <div class="col-md-8" style="width: 100%;">
-
+            <div id="clock"></div>
             <div style="height:900px;">
                 @*/////////////////////// class="table-responsive"///////////////////////////*@
                 <div class="card">
@@ -51,7 +51,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="panel panel-default" style="height:400px">
-                                  
+
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-content">
 
@@ -162,7 +162,7 @@
 
 
                                                 </div>
-                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -173,10 +173,10 @@
                                     <input type="submit" class="btn btn-success" value="Next" name="Command" />
                                 </div>
                             </div>
-                            
+
                         </div>
                     }
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -214,7 +214,7 @@
     @Scripts.Render("~/bundles/ColorPicker")
     @Scripts.Render("~/bundles/demoForms")
     @Scripts.Render("~/bundles/select2")
-
+<script src="~/Scripts/jquery.countdown.min.js"></script>
     @Scripts.Render("~/bundles/fileUpload")
     @Scripts.Render("~/bundles/demoUpload")
 
@@ -223,8 +223,19 @@
 <script type="text/javascript">
     $(document).ready(function () {
         function SetRightAnswer(itm) {
-            alert(item);
+            //alert(item);
         }
+
+        var fiveSeconds = new Date().getTime() + 500000;
+        $('#clock').countdown(fiveSeconds, {elapse: true})
+        .on('update.countdown', function(event) {
+          var $this = $(this);
+          if (event.elapsed) {
+            $this.html(event.strftime('After end: <span>%H:%M:%S</span>'));
+          } else {
+            $this.html(event.strftime('To end: <span>%H:%M:%S</span>'));
+          }
+        });
     });
 </script>
 

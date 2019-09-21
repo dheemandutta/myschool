@@ -488,6 +488,7 @@
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.countdown.min.js" />
     <Content Include="Scripts\Question.js" />
     <Content Include="Scripts\QuestionPaper.js" />
     <Content Include="Scripts\Section.js" />

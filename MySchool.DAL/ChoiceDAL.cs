@@ -90,7 +90,7 @@ namespace MySchool.DAL
             return topicEntities;
         }
 
-        public int DeleteChoice(int ID)
+        public int DeleteChoice(int ID, ref string oUTPUT)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
@@ -98,6 +98,7 @@ namespace MySchool.DAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@Id", ID);
             int recordAffected = cmd.ExecuteNonQuery();
+            oUTPUT = Convert.ToString(cmd.Parameters["@OUTPUT"].Value);
             con.Close();
             return recordAffected;
         }

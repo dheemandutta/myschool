@@ -70,10 +70,10 @@ namespace MySchool.UI.Controllers
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DeleteTopic(int ID)
+        public ActionResult DeleteTopic(int ID, ref string oUTPUT)
         {
             TopicBL topicBL = new TopicBL();
-            int recordaffected = topicBL.DeleteTopic(ID);
+            int recordaffected = topicBL.DeleteTopic(ID, ref oUTPUT);
             return Json(recordaffected, JsonRequestBehavior.AllowGet);
 
         }

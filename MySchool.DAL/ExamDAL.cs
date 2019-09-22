@@ -126,5 +126,29 @@ namespace MySchool.DAL
             Exam.ExamName = Convert.ToString(ds.Tables[0].Rows[0]["ExamName"]);
             return Exam;
         }
+
+
+
+        //for Exam drp
+        public List<ExamEntities> GetExamForDrp()  
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetExamForDrp", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<ExamEntities> studentParticularsList = myTable.AsEnumerable().Select(m => new ExamEntities()
+            {
+                ExamID = m.Field<int>("ID"),
+                ExamName = m.Field<string>("ExamName")
+
+            }).ToList();
+
+            con.Close();
+            return studentParticularsList;
+        }
     }
 }

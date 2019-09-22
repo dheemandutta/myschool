@@ -269,10 +269,10 @@ namespace MySchool.UI.Controllers
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DeleteQuestion(int ID)
+        public ActionResult DeleteQuestion(int ID, ref string recordCount)
         {
             QuestionBL topicBL = new QuestionBL();
-            int recordaffected = topicBL.DeleteQuestion(ID);
+            int recordaffected = topicBL.DeleteQuestion(ID, ref recordCount);
             return Json(recordaffected, JsonRequestBehavior.AllowGet);
 
         }

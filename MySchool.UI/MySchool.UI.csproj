@@ -210,6 +210,7 @@
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherParticularController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\UserRegistrationController.cs" />
     <Compile Include="Controllers\YearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -510,6 +511,7 @@
     <Content Include="Sql Script\fullscript_20092019.sql" />
     <Content Include="Sql Script\PP_Patch_20_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_20_09_2019_II.sql" />
+    <Content Include="Sql Script\PP_Patch_23_09_2019.sql" />
     <Content Include="Sql Script\SS_Patch_17_09_2019.sql" />
     <Content Include="Sql Script\fullscript_15092019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_03_09_2019.sql" />
@@ -1007,6 +1009,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Question\test.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\UserRegistration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

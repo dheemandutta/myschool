@@ -29,9 +29,8 @@
             </li>
 
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-            <li class="@Html.isActive(controller: "Student")">
+            @*<li class="@Html.isActive(controller: "Student")">
                 <a href="#Student" title="Student" data-toggle="collapse">
-                    @*<div class="label label-info pull-right">3</div>*@
                     <em class="icon-speedometer"></em>
                     <span data-localize="sidebar.nav.Student">Student</span>
                 </a>
@@ -40,52 +39,46 @@
 
                     <li class="@Html.isActive(controller: "StudentSearch")">
                         <a href="@Url.Action("Index", "StudentSearch")" title="StudentSearch">
-                            @*<em class="icon-trophy"></em>*@
                             <span>StudentSearch</span>
                         </a>
                     </li>
 
                     <li class="@Html.isActive(controller: "Student")">
                         <a href="@Url.Action("Index", "Student")" title="Student">
-                            @*<em class="icon-trophy"></em>*@
                             <span>Student</span>
                         </a>
                     </li>
 
                     <li class="@Html.isActive(controller: "StudentParticulars")">
                         <a href="@Url.Action("Index", "StudentParticulars")" title="StudentParticulars">
-                            @*<em class="icon-trophy"></em>*@
                             <span>Student Particulars</span>
                         </a>
                     </li>
 
                     <li class="@Html.isActive(controller: "StudentAttendent")">
                         <a href="@Url.Action("Index", "StudentAttendent")" title="StudentAttendent">
-                            @*<em class="icon-trophy"></em>*@
                             <span>Student Attendance</span>
                         </a>
                     </li>
 
                     <li class="@Html.isActive(controller: "StudentContact")">
                         <a href="@Url.Action("Index", "StudentContact")" title="StudentContact">
-                            @*<em class="icon-trophy"></em>*@
                             <span>Student Contact</span>
                         </a>
                     </li>
 
                     <li class="@Html.isActive(controller: "Student Health")">
                         <a href="@Url.Action("Index", "StudentHealth")" title="StudentHealth">
-                            @*<em class="icon-trophy"></em>*@
                             <span>Student Health</span>
                         </a>
                     </li>
 
                 </ul>
-            </li>
+            </li>*@
 
 
 
-            <li class="@Html.isActive(controller: "Year")">
+            @*<li class="@Html.isActive(controller: "Year")">
                 <a href="@Url.Action("Index", "Year")" title="Year">
                     <em class="icon-trophy"></em>
                     <span>Year</span>
@@ -127,55 +120,67 @@
                     <em class="icon-trophy"></em>
                     <span>Teacher Particulars</span>
                 </a>
-            </li>
+            </li>*@
 
-            <li class="@Html.isActive(controller: "Exam")">
+            @*<li class="@Html.isActive(controller: "Exam")">
                 <a href="@Url.Action("Index", "Exam")" title="Exam">
-                    <em class="icon-trophy"></em>
+                    <em class="icon-note"></em>
                     <span>Exam</span>
                 </a>
-            </li>
+            </li>*@
 
 
             <li class="@Html.isActive(controller: "Topic")">
                 <a href="@Url.Action("Index", "Topic")" title="Topic">
-                    <em class="icon-trophy"></em>
+                    <em class="icon-pie-chart"></em>
                     <span>Topic</span>
                 </a>
             </li>
 
-            <li class="@Html.isActive(controller: "Subject2")">
+            @*<li class="@Html.isActive(controller: "Subject2")">
                 <a href="@Url.Action("Index", "Subject2")" title="Subject2">
-                    <em class="icon-trophy"></em>
+                    <em class="icon-tag"></em>
                     <span>Subject For Exam</span>
                 </a>
-            </li>
+            </li>*@
 
             <li class="@Html.isActive(controller: "Question")">
                 <a href="@Url.Action("Index", "Question")" title="Question">
-                    <em class="icon-trophy"></em>
+                    <em class="icon-docs"></em>
                     <span>Question</span>
                 </a>
             </li>
 
+            @*<li class="@Html.isActive(controller: "QuestionPaper")">
+                <a href="@Url.Action("QuestionPaper", "Question")" title="Question Paper">
+                    <em class="icon-doc"></em>
+                    <span>Question Paper</span>
+                </a>
+            </li>*@
+
             <li class="@Html.isActive(controller: "Choice")">
                 <a href="@Url.Action("Index", "Choice")" title="Choice">
-                    <em class="icon-trophy"></em>
-                    <span>Choice</span>
+                    <em class="icon-pin"></em>
+                    <span>Answer</span>
                 </a>
             </li>
-            <li class="@Html.isActive(controller: "tblConfig")">
+            @*<li class="@Html.isActive(controller: "tblConfig")">
                 <a href="@Url.Action("Index", "tblConfig")" title="tblConfig">
                     <em class="icon-trophy"></em>
                     <span>tblConfig</span>
                 </a>
+            </li>*@
+            
+            <li class="@Html.isActive(controller: "Question")">
+                <a href="@Url.Action("StartTest", "Question")" title="StartTest">
+                    <em class="icon-control-play"></em>
+                    <span>StartTest</span>
+                </a>
             </li>
-
-
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
 
-            <li class="@Html.isActive(controller: "Dashboard")">
+            @*<li class="@Html.isActive(controller: "Dashboard")">
                 <a href="#dashboard" title="Dashboard" data-toggle="collapse">
                     <div class="label label-info pull-right">3</div>
                     <em class="icon-speedometer"></em>
@@ -764,7 +769,7 @@
                     <em class="icon-trophy"></em>
                     <span>Movie App</span>
                 </a>
-            </li>
+            </li>*@
 
 
 

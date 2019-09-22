@@ -128,7 +128,7 @@ function GetSubjectByID(ID) {
         dataType: "json",
         success: function (result) {
             $('#SubjectName').val(result.SubjectName);
-            $('#SubjectID').val(result.SubjectID);
+            $('#SubjectID').val(result.ID);
     
             //$("#btnSave").attr('value', 'Update');
         },

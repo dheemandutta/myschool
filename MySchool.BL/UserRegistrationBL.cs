@@ -16,5 +16,10 @@ namespace MySchool.BL
             return userRegistrationDAL.SaveUser(userRegistrationEntities);
         }
 
+        public UserRegistrationEntities ValidateUser(string username, string password)
+        {
+            UserRegistrationDAL userRegistrationDAL = new UserRegistrationDAL();
+            return userRegistrationDAL.ValidateUser(username, password);
+        }
     }
 }

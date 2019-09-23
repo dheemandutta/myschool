@@ -8,6 +8,7 @@ using MySchool.Entities;
 using System.Globalization;
 using System.Web.Script.Serialization;
 using System.IO;
+using System.Web.Security;
 
 namespace MySchool.UI.Controllers
 {
@@ -16,7 +17,53 @@ namespace MySchool.UI.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            ViewData["SubTitle"] = "";
+            ViewData["Message"] = "";
+
             return View();
+        }
+
+        public bool AuthenticateUser(string userName, string password)
+        {
+            UserRegistrationBL userBl = new UserRegistrationBL();
+            UserRegistrationEntities loggedinUser = new UserRegistrationEntities();
+
+            loggedinUser = userBl.ValidateUser(userName, password);
+
+            //if (loggedinUser.UserId > 0)
+            //{
+            //    System.Web.HttpContext.Current.Session["UserName"] = loggedinUser.UserName;
+            //    return true;
+            //}
+            //else
+            {
+                return false;
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult Index(UserRegistrationEntities loginViewModelEntities)
+        {
+            ViewData["SubTitle"] = "";
+            ViewData["Message"] = "";
+
+            bool isAuthenticated = AuthenticateUser(loginViewModelEntities.UserName, loginViewModelEntities.Password);
+            loginViewModelEntities.IsAuthenticated = isAuthenticated;
+
+            if (isAuthenticated)
+            {
+                FormsAuthentication.SetAuthCookie(loginViewModelEntities.UserName, false);
+
+                return RedirectToAction("Index", "Dashboard");
+            }
+            else
+            {
+                ViewData["Message"] = "Invalid Login/Password";
+
+            }
+
+            return View(loginViewModelEntities);
         }
     }
 }

@@ -39,5 +39,47 @@ namespace MySchool.DAL
             con.Close();
             return recordsAffected;
         }
+
+        public UserRegistrationEntities ValidateUser(string userName, string password)
+        {
+            UserRegistrationEntities user = new UserRegistrationEntities();
+            DataSet ds = new DataSet();
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("stpGetUserByIDAndPass", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UserName", userName);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    con.Open();
+
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+                    con.Close();
+                }
+            }
+            return ConvertDataTableUser(ds);
+        }
+
+        private UserRegistrationEntities ConvertDataTableUser(DataSet ds)
+        {
+            UserRegistrationEntities user = new UserRegistrationEntities();
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow item in ds.Tables[0].Rows)
+                    {
+                        if (item["UserName"] != DBNull.Value)
+                            user.UserName = item["UserName"].ToString();
+                        if (item["Password"] != DBNull.Value)
+                            user.Password = item["Password"].ToString();
+                    }
+                }
+            }
+
+            return user;
+        }
+
     }
 }

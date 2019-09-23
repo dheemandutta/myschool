@@ -74,6 +74,7 @@
     <Compile Include="TeacherSubjectEntities.cs" />
     <Compile Include="TimeTableEntities.cs" />
     <Compile Include="TopicEntities.cs" />
+    <Compile Include="UserRegistrationEntities.cs" />
     <Compile Include="YearEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

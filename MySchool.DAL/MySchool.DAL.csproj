@@ -57,6 +57,7 @@
     <Compile Include="tblConfigDAL.cs" />
     <Compile Include="TeacherDAL.cs" />
     <Compile Include="TopicDAL.cs" />
+    <Compile Include="UserRegistrationDAL.cs" />
     <Compile Include="YearDAL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,6 +17,12 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
+        public JsonResult Add(UserRegistrationEntities userRegistrationEntities)
+        {
+            UserRegistrationBL userRegistrationBL = new UserRegistrationBL();
+            return Json(userRegistrationBL.SaveUser(userRegistrationEntities), JsonRequestBehavior.AllowGet);
+        }
+
         //for GetExamForDrp drp
         public void GetExamForDrp()
         {

@@ -34,7 +34,7 @@ namespace MySchool.UI.Controllers
             // GettblSubjectForDrp();
             QuestionBL topicBL = new QuestionBL();
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
-            topicBL.GetQuestionPaper(questionCount);
+            topicBL.GetQuestionPaper(questionCount,int.Parse(Session["UserId"].ToString()));
             return View();
         }
 
@@ -55,7 +55,7 @@ namespace MySchool.UI.Controllers
                 // i = i + 1;
                 int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
 
-                examPaper = topicBL.GetNextPrevQuestion(1,1);
+                examPaper = topicBL.GetNextPrevQuestion(1,1, int.Parse(Session["UserId"].ToString()));
                 examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
                 examPaper.QuestionEntities[0].IsShown = true;
                 examPaper.QuestionEntities[0].HasAlreadyShown = true;
@@ -111,7 +111,7 @@ namespace MySchool.UI.Controllers
                     examPaper.PageIndex -= 1;
             }
 
-            examPaper = topicBL.GetNextPrevQuestion(examPaper.PageIndex, examPaper.PageSize);
+            examPaper = topicBL.GetNextPrevQuestion(examPaper.PageIndex, examPaper.PageSize, int.Parse(Session["UserId"].ToString()));
 
 
 

@@ -286,7 +286,7 @@ namespace MySchool.DAL
         }
 
 
-        public void GetQuestionPaper(int questionCount)
+        public void GetQuestionPaper(int questionCount, int userId)
         {
             QuestionViewEntities questionViewEntities = new QuestionViewEntities();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -294,6 +294,7 @@ namespace MySchool.DAL
             SqlCommand cmd = new SqlCommand("stpGetQuestion", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@QuestionCount", questionCount);
+            cmd.Parameters.AddWithValue("@UserId", userId);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);
@@ -303,7 +304,7 @@ namespace MySchool.DAL
             //return examPaper;
         }
 
-        public ExamPaper GetNextPrevQuestion(int pageIndex,int pageSize)
+        public ExamPaper GetNextPrevQuestion(int pageIndex,int pageSize,int userId)
         {
             QuestionViewEntities questionViewEntities = new QuestionViewEntities();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -314,6 +315,7 @@ namespace MySchool.DAL
             cmd.Parameters.AddWithValue("@PageSize", pageSize);
             cmd.Parameters.Add(new SqlParameter("@QuestionCount", SqlDbType.Int));
             cmd.Parameters[2].Direction = ParameterDirection.Output;
+            cmd.Parameters.AddWithValue("@UserId", userId);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);

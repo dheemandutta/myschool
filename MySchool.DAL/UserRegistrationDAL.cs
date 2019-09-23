@@ -72,8 +72,14 @@ namespace MySchool.DAL
                     {
                         if (item["UserName"] != DBNull.Value)
                             user.UserName = item["UserName"].ToString();
-                        if (item["Password"] != DBNull.Value)
-                            user.Password = item["Password"].ToString();
+                        if (item["FirstName"] != DBNull.Value)
+                            user.FirstName = item["FirstName"].ToString();
+                        if (item["LastName"] != DBNull.Value)
+                            user.LastName = item["LastName"].ToString();
+                        if (item["RoleID"] != DBNull.Value)
+                            user.RoleId = int.Parse(item["RoleID"].ToString());
+                        if (item["ID"] != DBNull.Value)
+                            user.ID = int.Parse(item["ID"].ToString());
                     }
                 }
             }

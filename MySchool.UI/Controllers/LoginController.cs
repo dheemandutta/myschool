@@ -30,12 +30,15 @@ namespace MySchool.UI.Controllers
 
             loggedinUser = userBl.ValidateUser(userName, password);
 
-            //if (loggedinUser.UserId > 0)
-            //{
-            //    System.Web.HttpContext.Current.Session["UserName"] = loggedinUser.UserName;
-            //    return true;
-            //}
-            //else
+            if (loggedinUser.ID > 0)
+            {
+                System.Web.HttpContext.Current.Session["UserName"] = loggedinUser.UserName;
+                System.Web.HttpContext.Current.Session["RoleId"] = loggedinUser.RoleId;
+                System.Web.HttpContext.Current.Session["Name"] = loggedinUser.FirstName + loggedinUser.LastName;
+                System.Web.HttpContext.Current.Session["UserId"] = loggedinUser.ID;
+                return true;
+            }
+            else
             {
                 return false;
             }
@@ -55,7 +58,7 @@ namespace MySchool.UI.Controllers
             {
                 FormsAuthentication.SetAuthCookie(loginViewModelEntities.UserName, false);
 
-                return RedirectToAction("Index", "Dashboard");
+                return RedirectToAction("Index", "Home");
             }
             else
             {

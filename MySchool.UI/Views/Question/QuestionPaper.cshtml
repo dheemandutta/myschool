@@ -41,6 +41,7 @@
             </div>
         </div>
 
+       
         <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock"></div>
 
         <div class="col-md-8" style="width: 100%;">
@@ -128,7 +129,7 @@
                                                             for (int m = 0, cnt = 0; m < Model.QuestionCount / 10; m++, cnt++)
                                                             {
                                                                 <tr>
-                                                                    
+
                                                                     <td background-color:forestgreen; color: black;">01</td>
                                                                     <td style="color: black;">02</td>
                                                                     <td style="background-color:forestgreen; color: sandybrown;">03</td>
@@ -237,24 +238,56 @@
             //alert(item);
         }
 
-        var fiveSeconds = new Date().getTime() + 15000;
-        $('#clock').countdown(fiveSeconds, {elapse: true})
-        .on('update.countdown', function(event) {
-          var $this = $(this);
-          if (event.elapsed) {
-           // $this.html(event.strftime('After end: <span>%H:%M:%S</span>'));
-              //$(document).ready(function() {
-                 $(':input[type="submit"]').prop('disabled', true);
-                 //$('input[type="text"]').keyup(function() {
-                 //   if($(this).val() != '') {
-                 //      $(':input[type="submit"]').prop('disabled', false);
-                 //   }
-                 //});
-             //});
-          } else {
-            $this.html(event.strftime('To end: <span>%H:%M:%S</span>'));
-          }
-        });
+        var secsleft;
+         var examtime = 150000;
+        //var fiveSeconds = 1569167274100;
+
+        function startTimer(fiveSeconds) {
+
+            var countdowntime = new Date().getTime() + fiveSeconds;
+
+            $('#clock').countdown(countdowntime, { elapse: true })
+                .on('update.countdown', function (event) {
+                    var $this = $(this);
+                    if (event.elapsed) {
+                        // $this.html(event.strftime('After end: <span>%H:%M:%S</span>'));
+                        //$(document).ready(function() {
+                        $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
+                        $(':input[type="submit"]').prop('disabled', true);
+                        localStorage.removeItem('seconds');
+
+                    } else {
+
+                        $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
+                        //console.log(%SECS);
+
+                        var secsleft = (event.strftime('%H') * 3600) + (event.strftime('%M') * 60) + event.strftime('%S');
+                        console.log(secsleft);
+                        localStorage.seconds = secsleft;
+
+                    }
+                });
+        }
+
+        
+
+        
+
+        window.onload = function () {
+            console.log('here');
+            console.log(localStorage.seconds);
+            if (Number(localStorage.seconds) < examtime) {
+                var seconds = Number(localStorage.seconds);
+                console.log(seconds);
+                examtime =  seconds * 1000; //converted to millisecs
+            }
+            else {
+                examtime = examtime;
+            }
+          //display = document.querySelector('#clock');
+          startTimer(examtime);
+        };
+
     });
 </script>
 

@@ -1,9 +1,9 @@
 ﻿@model MySchool.Entities.UserRegistrationEntities
-
 @{
-           Layout = "~/Views/Shared/_LayoutPage.cshtml";
- }
+    /**/
 
+    Layout = null;
+}
 
 @{
     ViewBag.Title = "Main";
@@ -46,6 +46,7 @@
                                     <label>Password</label>  @Html.PasswordFor(a => a.Password, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(a => a.Password)
                                 </div>
+
 
                                 <div class="form-group">
                                 </div>

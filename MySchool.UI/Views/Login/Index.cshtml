@@ -1,8 +1,11 @@
 ﻿@model MySchool.Entities.UserRegistrationEntities
-@{
-    /**/
 
-    Layout = null;
+@*@{
+        Layout = null;
+}*@
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 @{
@@ -32,11 +35,13 @@
                 <div class="ibox-content">
                     <div class="row">
                         <div class="col-sm-6 b-r">
-
+                         
                         </div>
 
                         <div class="col-sm-6 b-r">
                             <form role="form">
+
+                                <h1>Log in</h1>
 
                                 <div class="form-group">
                                     <label>UserName</label> @Html.TextBoxFor(a => a.UserName, new { @class = "form-control" })

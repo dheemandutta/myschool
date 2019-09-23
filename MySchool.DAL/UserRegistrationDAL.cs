@@ -28,7 +28,7 @@ namespace MySchool.DAL
                 cmd.Parameters.AddWithValue("@ID", userRegistrationEntities.ID);
             }
 
-            cmd.Parameters.AddWithValue("@ExamId", userRegistrationEntities.ExamId);
+            cmd.Parameters.AddWithValue("@ExamId", 0);
 
             cmd.Parameters.AddWithValue("@FirstName", userRegistrationEntities.FirstName);
             cmd.Parameters.AddWithValue("@LastName", userRegistrationEntities.LastName);

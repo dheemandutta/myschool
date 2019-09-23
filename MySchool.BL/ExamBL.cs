@@ -41,6 +41,13 @@ namespace MySchool.BL
             ExamDAL ExamDl = new ExamDAL();
             return ExamDl.GetExamByID(ExamID);
         }
+
+        //for Exam drp
+        public List<ExamEntities> GetExamForDrp()
+        {
+            ExamDAL ExamDl = new ExamDAL();
+            return ExamDl.GetExamForDrp();
+        }
     }
 }
 

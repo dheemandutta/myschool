@@ -194,6 +194,7 @@
     <Compile Include="Controllers\ExamController.cs" />
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\StudentAttendentController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Controllers\TeacherParticularController.cs" />
     <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\UserRegistrationController.cs" />
     <Compile Include="Controllers\YearController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -503,6 +505,7 @@
     <Content Include="Scripts\tblConfig.js" />
     <Content Include="Scripts\TeacherParticulars.js" />
     <Content Include="Scripts\Topic.js" />
+    <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\Year.js" />
     <Content Include="Sql Script\DD_Patch_15092019.sql" />
     <Content Include="Sql Script\FullScriptOfMySchool_16.08.2019 .sql" />
@@ -511,6 +514,8 @@
     <Content Include="Sql Script\fullscript_23092019.sql" />
     <Content Include="Sql Script\PP_Patch_20_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_20_09_2019_II.sql" />
+    <Content Include="Sql Script\PP_Patch_23_09_2019.sql" />
+    <Content Include="Sql Script\PP_Patch_23_09_2019__II.sql" />
     <Content Include="Sql Script\SS_Patch_17_09_2019.sql" />
     <Content Include="Sql Script\fullscript_15092019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_03_09_2019.sql" />
@@ -1007,6 +1012,8 @@
     <Content Include="Views\Question\StartTest.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Question\test.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\UserRegistration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

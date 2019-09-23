@@ -38,5 +38,9 @@ namespace MySchool.Entities
 
         public int SectionID { get; set; }
         public string Section { get; set; }
+
+
+        public int ExamID { get; set; }
+        public string ExamName { get; set; }
     }
 }

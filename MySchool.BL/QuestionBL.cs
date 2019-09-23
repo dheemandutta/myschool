@@ -28,10 +28,10 @@ namespace MySchool.BL
             return topicDAL.GetQuestionPageWise(pageIndex, ref recordCount, length);
         }
 
-        public int DeleteQuestion(int ID)
+        public int DeleteQuestion(int ID, ref string oUTPUT)
         {
             QuestionDAL topicDAL = new QuestionDAL();
-            return topicDAL.DeleteQuestion(ID);
+            return topicDAL.DeleteQuestion(ID, ref oUTPUT);
         }
 
         //for Topic drp

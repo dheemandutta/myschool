@@ -71,12 +71,11 @@ namespace MySchool.UI.Controllers
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult DeleteChoice(int ID)
+        public ActionResult DeleteChoice(int ID, ref string oUTPUT)
         {
             ChoiceBL topicBL = new ChoiceBL();
-            int recordaffected = topicBL.DeleteChoice(ID);
+            int recordaffected = topicBL.DeleteChoice(ID, ref oUTPUT);
             return Json(recordaffected, JsonRequestBehavior.AllowGet);
-
         }
 
         //for Question drp

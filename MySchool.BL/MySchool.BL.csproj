@@ -56,6 +56,7 @@
     <Compile Include="tblConfigBL.cs" />
     <Compile Include="TeacherBL.cs" />
     <Compile Include="TopicBL.cs" />
+    <Compile Include="UserRegistrationBL.cs" />
     <Compile Include="YearBL.cs" />
   </ItemGroup>
   <ItemGroup>

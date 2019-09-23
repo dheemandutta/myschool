@@ -28,10 +28,10 @@ namespace MySchool.BL
             return topicDAL.GetChoicePageWise(pageIndex, ref recordCount, length);
         }
 
-        public int DeleteChoice(int ID)
+        public int DeleteChoice(int ID, ref string oUTPUT)
         {
             ChoiceDAL topicDAL = new ChoiceDAL();
-            return topicDAL.DeleteChoice(ID);
+            return topicDAL.DeleteChoice(ID, ref oUTPUT);
         }
 
         //for QuestionName drp

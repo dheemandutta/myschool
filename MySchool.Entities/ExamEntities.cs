@@ -12,5 +12,7 @@ namespace MySchool.Entities
 
         public string ExamName { get; set; }
 
+        public int ExamID { get; set; }
+
     }
 }

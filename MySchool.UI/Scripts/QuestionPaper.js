@@ -220,7 +220,18 @@ function SetValues(result) {
 
     } //end for
 
+    var quotient = result.AnsweredQuestions.length / 20;
+    var remainder = result.AnsweredQuestions.length % 20;
+    var rowcnt = 0;
+
+    if (remainder === 0)
+        rowcnt = quotient;
+    else
+        rowcnt = quotient + 1;
+
     for (k = 0; k < result.AnsweredQuestions.length; k++) {
+
+        
 
         if (result.AnsweredQuestions[k].HasAnswered === 1) {
             $(qTab).append(' <td style="color: black ; background-color:forestgreen;">' + result.AnsweredQuestions[k].RowNo + '</td>');

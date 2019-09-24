@@ -345,6 +345,7 @@ namespace MySchool.DAL
         {
             ExamPaper examPaper = new ExamPaper();
             List<QuestionEntities> questionEntitiesList = new List<QuestionEntities>();
+            List<int> IdList = new List<int>();
             for (int i = 0; i < dsQuestion.Tables[0].Rows.Count; i++)
             {
                 QuestionEntities questionEntities = new QuestionEntities();
@@ -352,10 +353,7 @@ namespace MySchool.DAL
                 questionEntities.QuestionText = Convert.ToString(dsQuestion.Tables[0].Rows[i]["QuestionText"]);
                 questionEntities.Marks = Convert.ToDecimal(dsQuestion.Tables[0].Rows[i]["Marks"]);
 
-                //DataView dv1 = dsQuestion.Tables[1].DefaultView;
-                //dv1.RowFilter = "QuestionId = " + dsQuestion.Tables[0].Rows[i]["Id"].ToString();
-                //DataTable dtAns = dv1.ToTable();
-                //dv1.Dispose();
+                IdList.Add(questionEntities.Id);
 
                 DataTable dtAns = dsQuestion.Tables[1].AsEnumerable()
                                     .Where(r => r.Field<int>("QuestionId") == int.Parse(dsQuestion.Tables[0].Rows[i]["Id"].ToString())).CopyToDataTable();
@@ -371,6 +369,7 @@ namespace MySchool.DAL
                     answerEntities1.IsUserAnswer = Convert.ToInt32(dtAns.Rows[j]["IsUserAnswer"].ToString());
 
                     answerEntities.Add(answerEntities1);
+                    
                 }
 
                 questionEntities.AnswerEntities = answerEntities;
@@ -378,6 +377,7 @@ namespace MySchool.DAL
             }
 
             examPaper.QuestionEntities = questionEntitiesList;
+            examPaper.QuestionList = IdList;
 
             List<int> qCnt = new List<int>();
 
@@ -417,22 +417,25 @@ namespace MySchool.DAL
 
 
 
-        //public int GetAllQuestion(int QuestionCount)
-        //{
-        //    SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
-        //    con.Open();
-        //    SqlCommand cmd = new SqlCommand("stpGetAllQuestion", con);
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Parameters.Add(new SqlParameter("@QuestionCount",SqlDbType.Int));
-        //    cmd.Parameters[0].Direction = ParameterDirection.Output;
-          
-        //    SqlDataAdapter da = new SqlDataAdapter(cmd);
-        //    DataSet ds = new DataSet();
-        //    da.Fill(ds);
-        //    con.Close();
-        //    ExamPaper topicEntities = new ExamPaper();
-        //    topicEntities.QuestionCount = Convert.ToInt32(ds.Tables[0].Rows[0]["QuestionCount"].ToString());
-        //    return topicEntities;
-        //}
+        public List<int> GetAllQuestion(int userId)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetQuestionCount", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId", userId);
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            List<int> questionList = new List<int>();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                questionList.Add(int.Parse(ds.Tables[0].Rows[i]["Id"].ToString()));
+            }
+
+            return questionList;
+        }
     }
 }

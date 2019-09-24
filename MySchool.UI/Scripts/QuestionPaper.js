@@ -1,9 +1,10 @@
-﻿function GetNextQuestion() {
+﻿function GetNextQuestion(int pageindex,int pagesize) {
     var loadposturl = $('#loaddata').val();
     $.ajax({
         url: loadposturl,
         type: "GET",
         contentType: "application/json;charset=utf-8",
+        data: JSON.stringify({ pageIndex: pageindex, pageSize: pagesize }),
         dataType: "json",
         success: function (result) {
             //SetUpGrid();

@@ -408,5 +408,19 @@ namespace MySchool.UI.Controllers
         //    return topicBL.GetAllQuestion(QuestionCount);
         //}
 
+        public JsonResult GetNextQuestion(int pageIndex,int pageSize)
+        {
+            ExamPaper examPaper = new ExamPaper();
+            QuestionBL topicBL = new QuestionBL();
+         
+            int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
+
+            examPaper = topicBL.GetNextPrevQuestion(1, 1, int.Parse(Session["UserId"].ToString()));
+            examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
+
+            return Json(examPaper, JsonRequestBehavior.AllowGet);
+
+        }
+
     }
 }

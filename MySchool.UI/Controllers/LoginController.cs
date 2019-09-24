@@ -34,7 +34,7 @@ namespace MySchool.UI.Controllers
             {
                 System.Web.HttpContext.Current.Session["UserName"] = loggedinUser.UserName;
                 System.Web.HttpContext.Current.Session["RoleId"] = loggedinUser.RoleId;
-                System.Web.HttpContext.Current.Session["Name"] = loggedinUser.FirstName + loggedinUser.LastName;
+                System.Web.HttpContext.Current.Session["Name"] = loggedinUser.FirstName +' '+ loggedinUser.LastName;
                 System.Web.HttpContext.Current.Session["UserId"] = loggedinUser.ID;
                 return true;
             }

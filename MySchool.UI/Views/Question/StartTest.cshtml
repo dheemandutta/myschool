@@ -22,8 +22,12 @@
                 <div class="col-lg-12">
                     <div class="text m-t-lg">
                         <h2>
-                            Please Click the Button below to start the test
+                            <span style="color:greenyellow">
+                                @System.Web.HttpContext.Current.Session["Name"].ToString()
+                            </span>
+                            Please Click the Button below to start the test.
                         </h2>
+                     
                     </div>
                 </div>
             </div>

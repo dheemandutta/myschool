@@ -15,7 +15,7 @@ function validate() {
 function clearTextBox() {
 
     $('#UserRegistrationID').val("");
-    $('#drpExam').val("");
+    //$('#drpExam').val("");
     $('#FirstName').val("");
     $('#LastName').val("");
     $('#UserName').val("");
@@ -34,7 +34,7 @@ function Add() {
 
     var userRegistration = {
         ID: $('#UserRegistrationID').val(),
-        ExamId: $('#drpExam').val(),
+        //ExamId: $('#drpExam').val(),
         FirstName: $('#FirstName').val(),
         LastName: $('#LastName').val(),
         UserName: $('#UserName').val(),

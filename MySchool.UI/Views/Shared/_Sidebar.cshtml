@@ -25,7 +25,7 @@
             <!-- END user info-->
             <!-- Iterates over all sidebar items-->
             <li class="nav-heading">
-                <span>Main Navigation</span>
+                @*<span>Main Navigation</span>*@
             </li>
 
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
@@ -130,60 +130,81 @@
         </li>*@
 
 
-            <li class="@Html.isActive(controller: "Topic")">
-                <a href="@Url.Action("Index", "Topic")" title="Topic">
-                    <em class="icon-pie-chart"></em>
-                    <span>Topic</span>
-                </a>
-            </li>
 
-            @*<li class="@Html.isActive(controller: "Subject2")">
-            <a href="@Url.Action("Index", "Subject2")" title="Subject2">
-                <em class="icon-tag"></em>
-                <span>Subject For Exam</span>
-            </a>
-        </li>*@
 
-            <li class="@Html.isActive(controller: "Question")">
-                <a href="@Url.Action("Index", "Question")" title="Question">
-                    <em class="icon-docs"></em>
-                    <span>Question</span>
-                </a>
-            </li>
+            @if (Convert.ToInt32(System.Web.HttpContext.Current.Session["RoleId"].ToString()) == 1)
+            {
 
-            @*<li class="@Html.isActive(controller: "QuestionPaper")">
-            <a href="@Url.Action("QuestionPaper", "Question")" title="Question Paper">
-                <em class="icon-doc"></em>
-                <span>Question Paper</span>
-            </a>
-        </li>*@
+                <li class="@Html.isActive(controller: "Topic")">
+                    <a href="@Url.Action("Index", "Topic")" title="Topic">
+                        <em class="icon-pie-chart"></em>
+                        <span>Topic</span>
+                    </a>
+                </li>
 
-            <li class="@Html.isActive(controller: "Choice")">
-                <a href="@Url.Action("Index", "Choice")" title="Choice">
-                    <em class="icon-pin"></em>
-                    <span>Answer</span>
+                @*<li class="@Html.isActive(controller: "Subject2")">
+                <a href="@Url.Action("Index", "Subject2")" title="Subject2">
+                    <em class="icon-tag"></em>
+                    <span>Subject For Exam</span>
                 </a>
-            </li>
-            @*<li class="@Html.isActive(controller: "tblConfig")">
-            <a href="@Url.Action("Index", "tblConfig")" title="tblConfig">
-                <em class="icon-trophy"></em>
-                <span>tblConfig</span>
-            </a>
-        </li>*@
+            </li>*@
 
-            <li class="@Html.isActive(controller: "Question")">
-                <a href="@Url.Action("StartTest", "Question")" title="StartTest">
-                    <em class="icon-control-play"></em>
-                    <span>StartTest</span>
+                <li class="@Html.isActive(controller: "Question")">
+                    <a href="@Url.Action("Index", "Question")" title="Question">
+                        <em class="icon-docs"></em>
+                        <span>Question</span>
+                    </a>
+                </li>
+
+                @*<li class="@Html.isActive(controller: "QuestionPaper")">
+                <a href="@Url.Action("QuestionPaper", "Question")" title="Question Paper">
+                    <em class="icon-doc"></em>
+                    <span>Question Paper</span>
                 </a>
-            </li>
-            
-            <li class="@Html.isActive(controller: "UserRegistration")">
-                <a href="@Url.Action("Index", "UserRegistration")" title="User Registration">
-                    <em class="icon-control-play"></em>
-                    <span>User Registration</span>
-                </a>
-            </li>
+            </li>*@
+
+                <li class="@Html.isActive(controller: "Choice")">
+                    <a href="@Url.Action("Index", "Choice")" title="Choice">
+                        <em class="icon-pin"></em>
+                        <span>Answer</span>
+                    </a>
+                </li>
+                <li class="@Html.isActive(controller: "tblConfig")">
+                    <a href="@Url.Action("Index", "tblConfig")" title="Config">
+                        <em class="icon-trophy"></em>
+                        <span>Config</span>
+                    </a>
+                </li>
+
+
+
+                <li class="@Html.isActive(controller: "UserRegistration")">
+                    <a href="@Url.Action("Index", "UserRegistration")" title="User Registration">
+                        <em class="icon-control-play"></em>
+                        <span>User Registration</span>
+                    </a>
+                </li>
+
+            }
+
+
+
+
+
+
+            @if (Convert.ToInt32(System.Web.HttpContext.Current.Session["RoleId"].ToString()) == 2)
+            {
+
+                <li class="@Html.isActive(controller: "Question")">
+                    <a href="@Url.Action("StartTest", "Question")" title="StartTest">
+                        <em class="icon-control-play"></em>
+                        <span>StartTest</span>
+                    </a>
+                </li>
+
+            }
+
+
 
 
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@

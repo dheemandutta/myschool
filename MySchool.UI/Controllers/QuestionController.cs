@@ -47,7 +47,7 @@ namespace MySchool.UI.Controllers
         public ActionResult StartTest(QuestionEntities q)
         {
             // GettblSubjectForDrp();
-            return RedirectToAction("QuestionPaper", "Question");
+            return RedirectToAction("Exam", "Question");
         }
 
         public ActionResult QuestionPaper()
@@ -413,7 +413,7 @@ namespace MySchool.UI.Controllers
         //    return topicBL.GetAllQuestion(QuestionCount);
         //}
 
-        public JsonResult GetNextQuestion(int pageIndex,int pageSize)
+        public JsonResult GetNextQuestion(string pageindex,string pagesize)
         {
             ExamPaper examPaper = new ExamPaper();
             QuestionBL topicBL = new QuestionBL();

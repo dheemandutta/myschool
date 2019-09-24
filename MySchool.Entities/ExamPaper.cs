@@ -16,6 +16,9 @@ namespace MySchool.Entities
 
             List<int> m = new List<int>();
             this.QuestionList = m;
+
+            List<AnsweredQuestions> aq = new List<AnsweredQuestions>();
+            this.AnsweredQuestions = aq;
         }
         public List<QuestionEntities> QuestionEntities { get; set; }
         public int PageIndex { get; set; }
@@ -27,6 +30,8 @@ namespace MySchool.Entities
         public List<int> AnsweredQuestionList { get; set; }
 
         public List<int> QuestionList { get; set; }
+
+        public List<AnsweredQuestions> AnsweredQuestions { get; set; }
 
     }
 }

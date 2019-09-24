@@ -44,6 +44,7 @@
     <Compile Include="AdmissionEntities.cs" />
     <Compile Include="AdmissionDetailsEntities.cs" />
     <Compile Include="AnnouncementEntities.cs" />
+    <Compile Include="AnsweredQuestions.cs" />
     <Compile Include="AnswerEntities.cs" />
     <Compile Include="CampaignEntities.cs" />
     <Compile Include="ChoiceEntities.cs" />

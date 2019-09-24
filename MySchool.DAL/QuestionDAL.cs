@@ -346,6 +346,7 @@ namespace MySchool.DAL
             ExamPaper examPaper = new ExamPaper();
             List<QuestionEntities> questionEntitiesList = new List<QuestionEntities>();
             List<int> IdList = new List<int>();
+            List<AnsweredQuestions> answeredQuestionsList = new List<AnsweredQuestions>();
             for (int i = 0; i < dsQuestion.Tables[0].Rows.Count; i++)
             {
                 QuestionEntities questionEntities = new QuestionEntities();
@@ -396,6 +397,20 @@ namespace MySchool.DAL
             }
 
             examPaper.AnsweredQuestionList = qCnt;
+
+
+            for (int l = 0; l < dsQuestion.Tables[4].Rows.Count; l++)
+            {
+                AnsweredQuestions aq = new AnsweredQuestions();
+
+                aq.RowNo = Convert.ToInt32(dsQuestion.Tables[4].Rows[l]["RowNo"].ToString());
+                aq.QuestionId = Convert.ToInt32(dsQuestion.Tables[4].Rows[l]["QuestionId"].ToString());
+                aq.HasAnswered = Convert.ToInt32(dsQuestion.Tables[4].Rows[l]["HasAnswered"].ToString());
+
+                answeredQuestionsList.Add(aq);
+            }
+
+            examPaper.AnsweredQuestions = answeredQuestionsList;
 
             return examPaper;
         }

@@ -208,6 +208,26 @@ function SetValues(result) {
 
             }
         }
+
+
+        //Create html table 
+        var qTab = $('#answertable tr');
+        $('#answertable tr td').remove();
+        console.log('Answered Question List');
+        console.log(result.AnsweredQuestions.length);
+
+        
+
+    } //end for
+
+    for (k = 0; k < result.AnsweredQuestions.length; k++) {
+
+        if (result.AnsweredQuestions[k].HasAnswered === 1) {
+            $(qTab).append(' <td style="color: black ; background-color:forestgreen;">' + result.AnsweredQuestions[k].RowNo + '</td>');
+        }
+        else {
+            $(qTab).append(' <td style="color: black ; ">' + result.AnsweredQuestions[k].RowNo + '</td>');
+        }
     }
 
 }

@@ -335,7 +335,7 @@ namespace MySchool.DAL
             con.Open();
             SqlCommand cmd = new SqlCommand("stpSaveUserAnswer", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@AnswerId", useranswerId);
+            cmd.Parameters.AddWithValue("@QuestionId", useranswerId);
             cmd.Parameters.AddWithValue("@Id", answerId);
             int records = cmd.ExecuteNonQuery();
             con.Close();

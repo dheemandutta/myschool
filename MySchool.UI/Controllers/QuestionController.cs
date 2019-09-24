@@ -413,14 +413,17 @@ namespace MySchool.UI.Controllers
         //    return topicBL.GetAllQuestion(QuestionCount);
         //}
 
-        public JsonResult GetNextQuestion(string pageindex,string pagesize, string radioValue)
+        public JsonResult GetNextQuestion(string pageindex,string pagesize, string radioValue,string quesId)
         {
             ExamPaper examPaper = new ExamPaper();
             QuestionBL topicBL = new QuestionBL();
-            //if (radioValue != null) {
-            //    topicBL.
-            //}
-         
+            if (radioValue != null)
+            {
+                if(! String.IsNullOrEmpty(quesId))
+                    if(int.Parse(quesId) > 0)
+                topicBL.SaveUserAnswer(int.Parse(radioValue), int.Parse(quesId));
+            }
+
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
 
             examPaper = topicBL.GetNextPrevQuestion(int.Parse(pageindex), int.Parse(pagesize), int.Parse(Session["UserId"].ToString()));

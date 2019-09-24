@@ -28,6 +28,11 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
+        public ActionResult Exam()
+        {
+            return View();
+        }
+
 
         public ActionResult StartTest()
         {

@@ -1015,6 +1015,7 @@
     <Content Include="Views\Question\test.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\UserRegistration\Index.cshtml" />
+    <Content Include="Views\Question\Exam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,271 @@
+﻿@model MySchool.Entities.ExamPaper
+
+@{
+    ViewBag.Title = "Exam";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/Question.js"></script>
+<script src="~/Scripts/QuestionPaper.js"></script>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+    </style>
+</head>
+<body style="background-image: url(../background/depart.jpg);
+    background-size: cover;">
+
+    @*@Html.Hidden("getQuestionPaper", @Url.Action("GetQuestionPaper", "Question"))
+    @Html.Hidden("loaddata", @Url.Action("GetFirstQuestion", "Question"))*@
+
+    <div class="row" style="height:10px;">
+
+        <div class="col-md-7 bac" style="height:55px; width: 45%;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="text m-t-lg">
+                        <h2>
+                             Exam
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock"></div>
+
+        <div class="col-md-8" style="width: 100%;">
+            <div style="height:900px;">
+                @*/////////////////////// class="table-responsive"///////////////////////////*@
+                <div class="card">
+                 
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="panel panel-default table-responsive" style="height:400px;">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-content">
+                                            <div class="form-group" style="margin-right: -600px; width:1000px;">
+                                                <div class="col-sm-10" style="width: 106%;">
+                                                    @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
+                                                    @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
+                                                    <h4>Question:</h4>
+
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <h3 class="no-margins"><span id="QuestionText" style="font-size: 15px;"> Question Text  </span></h3>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td><input type="radio" name="ans" value="male" id="rad1" checked="checked"> <div id="ansDiv1">Option Text 1</div>  </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="radio" name="ans" value="male" id="rad2"> <div id="ansDiv2">     </div> </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="radio" name="ans" value="male" id="rad3"> <div id="ansDiv3">     </div> </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input type="radio" name="ans" value="male" id="rad4"> <div id="ansDiv4">     </div>  </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad5"> <div id="ansDiv5">     </div>  </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad6"> <div id="ansDiv6">     </div>  </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad7">  <div id="ansDiv7">     </div>    </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad8">  <div id="ansDiv8">     </div>    </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad9"> <div id="ansDiv9">     </div>   </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad10"> <div id="ansDiv10">     </div>  </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad11"> <div id="ansDiv11">     </div>  </td>
+
+                                                        </tr>
+                                                        <tr style="display: none;">
+                                                            <td><input type="radio" name="ans" value="male" id="rad12"> <div id="ansDiv12">     </div>  </td>
+
+                                                        </tr>
+                                                    </table>
+
+                                                    <table>
+                                                        <tr>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center mt-lg">
+                                    <input type="submit" class="btn btn-warning" value="Previous" name="Command" />
+                                    <input type="submit" class="btn btn-success" value="Next" name="Command" />
+                                </div>
+
+                                <div class="panel panel-default" style="height:250px;">
+
+                                    <div class="ibox float-e-margins" align="center">
+                                        <div class="ibox-content">
+
+                                            @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
+                                            <div class="form-group" style="margin-right: -300px;">
+                                                <div class="col-sm-10 center" style="width: 20%;">
+                                                    <table style="border-collapse:collapse; width:10%; position:center;">
+                                                        <tr>
+                                                            <td background-color:forestgreen; color: black;">01</td>
+                                                            <td style="color: black;">02</td>
+                                                            <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                            <td style="color: sandybrown;">04</td>
+                                                            <td style="color: black;">05</td>
+                                                            <td style="color: black;">06</td>
+                                                            <td style="color: black;">07</td>
+                                                            <td style="color: black;">08</td>
+                                                            <td style="color: black;">09</td>
+                                                            <td style="color: black;">10</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+             
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
+
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
+
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
+
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
+    <script src="~/Scripts/jquery.countdown.min.js"></script>
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
+
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function SetRightAnswer(itm) {
+            //alert(item);
+        }
+
+        var secsleft;
+         var examtime = 150000;
+        //var fiveSeconds = 1569167274100;
+
+        function startTimer(fiveSeconds) {
+
+            var countdowntime = new Date().getTime() + fiveSeconds;
+
+            $('#clock').countdown(countdowntime, { elapse: true })
+                .on('update.countdown', function (event) {
+                    var $this = $(this);
+                    if (event.elapsed) {
+                        // $this.html(event.strftime('After end: <span>%H:%M:%S</span>'));
+                        //$(document).ready(function() {
+                        $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
+                        $(':input[type="submit"]').prop('disabled', true);
+                        localStorage.removeItem('seconds');
+
+                    } else {
+
+                        $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
+                        //console.log(%SECS);
+
+                        var secsleft = (event.strftime('%H') * 3600) + (event.strftime('%M') * 60) + event.strftime('%S');
+                        console.log(secsleft);
+                        localStorage.seconds = secsleft;
+
+                    }
+                });
+        }
+
+
+
+
+
+        window.onload = function () {
+            console.log('here');
+            console.log(localStorage.seconds);
+            if (Number(localStorage.seconds) < examtime) {
+                var seconds = Number(localStorage.seconds);
+                console.log(seconds);
+                examtime =  seconds * 1000; //converted to millisecs
+            }
+            else {
+                examtime = examtime;
+            }
+          //display = document.querySelector('#clock');
+          startTimer(examtime);
+        };
+
+    });
+</script>
+

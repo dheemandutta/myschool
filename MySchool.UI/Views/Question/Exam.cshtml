@@ -40,6 +40,7 @@
     <input type="hidden" value="1" id="pagesize" />
     <input type="hidden" value="1" id="pageindex" />
     <input type="hidden" value="0" id="qCnt" />
+    <input type="hidden" value="0" id="quesId" />
 
     <div class="row" style="height:10px;">
 
@@ -231,7 +232,7 @@
 
         }
 
-        GetNextQuestion($('#pageindex').val(), $('#pagesize').val());
+        GetNextQuestion($('#pageindex').val(), $('#pagesize').val(),null);
 
         $('#Next').click(function () {
 

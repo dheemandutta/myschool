@@ -413,10 +413,13 @@ namespace MySchool.UI.Controllers
         //    return topicBL.GetAllQuestion(QuestionCount);
         //}
 
-        public JsonResult GetNextQuestion(string pageindex,string pagesize)
+        public JsonResult GetNextQuestion(string pageindex,string pagesize, string radioValue)
         {
             ExamPaper examPaper = new ExamPaper();
             QuestionBL topicBL = new QuestionBL();
+            //if (radioValue != null) {
+            //    topicBL.
+            //}
          
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
 

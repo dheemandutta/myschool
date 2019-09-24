@@ -43,68 +43,68 @@ function SetValues(result) {
             case 1:
                 $('#rad1').show();
                 $('#ansDiv1').show();
-                $('#ansDiv1').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv1').html(result.QuestionEntities[0].AnswerEntities[i-1].AnswerText);
                 break;
             case 2:
                 $('#rad2').show();
                 $('#ansDiv2').show();
-                $('#ansDiv2').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv2').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 3:
                 $('#rad3').show();
                 $('#ansDiv3').show();
-                $('#ansDiv3').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv3').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 4:
                 $('#rad4').show();
                 $('#ansDiv4').show();
-                $('#ansDiv4').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv4').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 5:
                 $('#rad5').show();
                 $('#ansDiv5').show();
-                $('#ansDiv5').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv5').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 6:
                 $('#rad6').show();
                 $('#ansDiv6').show();
-                $('#ansDiv6').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv6').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 7:
                 $('#rad7').show();
                 $('#ansDiv7').show();
-                $('#ansDiv7').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv7').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 8:
                 $('#rad8').show();
                 $('#ansDiv8').show();
-                $('#ansDiv8').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv8').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 9:
                 $('#rad9').show();
                 $('#ansDiv9').show();
-                $('#ansDiv9').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv9').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 10:
                 $('#rad10').show();
                 $('#ansDiv10').show();
-                $('#ansDiv10').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv10').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 11:
                 $('#rad11').show();
                 $('#ansDiv11').show();
-                $('#ansDiv11').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv11').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
             case 12:
                 $('#rad12').show();
                 $('#ansDiv12').show();
-                $('#ansDiv12').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                $('#ansDiv12').html(result.QuestionEntities[0].AnswerEntities[i - 1].AnswerText);
                 break;
 
         }
 
         var startIndex = 12 - result.QuestionEntities[0].AnswerEntities.length;
-        for (j = result.QuestionEntities[0].AnswerEntities.length; j < (startIndex + result.QuestionEntities[0].AnswerEntities.length); j++) {
+        for (j = result.QuestionEntities[0].AnswerEntities.length + 1; j < (startIndex + result.QuestionEntities[0].AnswerEntities.length); j++) {
 
             switch (j) {
                 case 1:

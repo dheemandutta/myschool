@@ -84,7 +84,7 @@
 
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="radio" name="ans" value="male" id="rad4" hidden="hidden"> <div id="ansDiv4">     </div>  </td>
+                                                        <td><input type="radio" name="ans" value="male" id="rad4" > <div id="ansDiv4">     </div>  </td>
 
                                                     </tr>
                                                     <tr>
@@ -231,6 +231,10 @@
             if(index < qcount)
             index = parseInt(index) + 1;
             $('#pageindex').val(index);
+
+            var radioValue = $("input[name='ans']:checked").val();
+            console.log('ok');
+            console.log(radioValue);
 
             GetNextQuestion($('#pageindex').val(), $('#pagesize').val());
 

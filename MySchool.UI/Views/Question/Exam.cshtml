@@ -28,6 +28,7 @@
 
     <input type="hidden" value="1" id="pagesize" />
     <input type="hidden" value="1" id="pageindex" />
+    <input type="hidden" value="0" id="qCnt" />
 
     <div class="row" style="height:10px;">
 
@@ -66,7 +67,7 @@
                                                 <table>
                                                     <tr>
                                                         <td>
-                                                            <h3 class="no-margins"><span id="QuestionText" style="font-size: 15px;"> Question Text  </span></h3>
+                                                            <h3 class="no-margins"><span id="QuestionText" style="font-size: 15px;"> </span></h3>
                                                         </td>
                                                     </tr>
 
@@ -132,8 +133,8 @@
                             </div>
 
                             <div class="text-center mt-lg">
-                                <input type="submit" class="btn btn-warning" value="Previous" name="Command" />
-                                <input type="submit" class="btn btn-success" value="Next" name="Command" />
+                                <input id="Previous" class="btn btn-warning" value="Previous" name="Command" />
+                                <input id="Next" class="btn btn-success" value="Next" name="Command" />
                             </div>
 
                             <div class="panel panel-default" style="height:250px;">
@@ -219,7 +220,31 @@
 
         }
 
-        GetNextQuestion($('#pageindex').val(),$('#pagesize').val());
+        GetNextQuestion($('#pageindex').val(), $('#pagesize').val());
+
+        $('#Next').click(function () {
+
+            var index = $('#pageindex').val();
+
+            var qcount = $('#qCnt').val();
+          
+            if(index < qcount)
+            index = index + 1;
+            $('#pageindex').val(index);
+
+            GetNextQuestion($('#pageindex').val(), $('#pagesize').val());
+
+        });
+
+        $('#Previous').click(function () {
+
+            var index = $('#pageindex').val();
+            if(index >= 2)
+            index = index - 1;
+            $('#pageindex').val(index);
+
+            GetNextQuestion($('#pageindex').val(), $('#pagesize').val());
+        });
 
         var secsleft;
          var examtime = 150000;

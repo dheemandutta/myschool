@@ -24,7 +24,16 @@
 
             console.log(result);
             console.log(result.QuestionEntities[0].Id);
-            console.log(result.QuestionEntities[0].AnswerEntities);
+        console.log(result.QuestionEntities[0].AnswerEntities);
+        $('#qCnt').val(result.QuestionCount);
+        SetValues(result);
     });
-    return false;
+    //return false;
+}
+
+function SetValues(result) {
+
+    //set Question
+    $('#QuestionText').html(result.QuestionEntities[0].QuestionText);
+
 }

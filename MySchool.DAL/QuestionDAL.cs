@@ -325,7 +325,7 @@ namespace MySchool.DAL
             examPaper = CreateDataSet(ds);
             examPaper.PageSize = pageSize;
             examPaper.PageIndex = pageIndex;
-            examPaper.QuestionCount = questCount;
+           
             return examPaper;
         }
 
@@ -378,6 +378,8 @@ namespace MySchool.DAL
 
             examPaper.QuestionEntities = questionEntitiesList;
             examPaper.QuestionList = IdList;
+
+            examPaper.QuestionCount = IdList.Count;
 
             List<int> qCnt = new List<int>();
 

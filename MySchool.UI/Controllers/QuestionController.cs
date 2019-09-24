@@ -420,7 +420,7 @@ namespace MySchool.UI.Controllers
          
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
 
-            examPaper = topicBL.GetNextPrevQuestion(1, 1, int.Parse(Session["UserId"].ToString()));
+            examPaper = topicBL.GetNextPrevQuestion(int.Parse(pageindex), int.Parse(pagesize), int.Parse(Session["UserId"].ToString()));
             examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
 
             return Json(examPaper, JsonRequestBehavior.AllowGet);

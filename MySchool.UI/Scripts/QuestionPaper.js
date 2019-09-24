@@ -37,7 +37,7 @@ function SetValues(result) {
     $('#QuestionText').html(result.QuestionEntities[0].QuestionText);
 
     //set answers
-    for (i = 0; i < result.QuestionEntities[0].AnswerEntities.length; i++) {
+    for (i = 1; i <= result.QuestionEntities[0].AnswerEntities.length; i++) {
 
         switch (i) {
             case 1:
@@ -101,7 +101,75 @@ function SetValues(result) {
                 $('#ansDiv12').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
                 break;
 
-        };
+        }
+
+        var startIndex = 12 - result.QuestionEntities[0].AnswerEntities.length;
+        for (j = result.QuestionEntities[0].AnswerEntities.length; j < (startIndex + result.QuestionEntities[0].AnswerEntities.length); j++) {
+
+            switch (j) {
+                case 1:
+                    $('#rad1').hide();
+                    $('#ansDiv1').hide();
+                    //$('#ansDiv1').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 2:
+                    $('#rad2').hide();
+                    $('#ansDiv2').hide();
+                    //$('#ansDiv2').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 3:
+                    $('#rad3').hide();
+                    $('#ansDiv3').hide();
+                    //$('#ansDiv3').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 4:
+                    $('#rad4').hide();
+                    $('#ansDiv4').hide();
+                    //$('#ansDiv4').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 5:
+                    $('#rad5').hide();
+                    $('#ansDiv5').hide();
+                    //$('#ansDiv5').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 6:
+                    $('#rad6').hide();
+                    $('#ansDiv6').hide();
+                    //$('#ansDiv6').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 7:
+                    $('#rad7').hide();
+                    $('#ansDiv7').hide();
+                    //$('#ansDiv7').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 8:
+                    $('#rad8').hide();
+                    $('#ansDiv8').hide();
+                    //$('#ansDiv8').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 9:
+                    $('#rad9').hide();
+                    $('#ansDiv9').hide();
+                    //$('#ansDiv9').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 10:
+                    $('#rad10').hide();
+                    $('#ansDiv10').hide();
+                   // $('#ansDiv10').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 11:
+                    $('#rad11').hide();
+                    $('#ansDiv11').hide();
+                    //$('#ansDiv11').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+                case 12:
+                    $('#rad12').hide();
+                    $('#ansDiv12').hide();
+                    //$('#ansDiv12').html(result.QuestionEntities[0].AnswerEntities[i].AnswerText);
+                    break;
+
+            }
+        }
     }
 
 }

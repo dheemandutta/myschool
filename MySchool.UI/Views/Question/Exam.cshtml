@@ -70,53 +70,53 @@
                                                             <h3 class="no-margins"><span id="QuestionText" style="font-size: 15px;"> </span></h3>
                                                         </td>
                                                     </tr>
-
+                                                    @*<div id="ansDiv1" hidden="hidden"></div>*@
                                                     <tr>
-                                                        <td><input type="radio" name="ans" value="male" id="rad1" hidden="hidden" > <div id="ansDiv1" hidden="hidden"></div>  </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="radio" name="ans" value="male" id="rad2"> <div id="ansDiv2">     </div> </td>
+                                                        <td class="text-center mt-lg"><input type="radio" name="ans" value="male" id="rad1" hidden="hidden"> <div id="ansDiv1" style="width:5px;" hidden="hidden"></div>  </td>
 
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="radio" name="ans" value="male" id="rad3"> <div id="ansDiv3">     </div> </td>
+                                                        <td><input type="radio" name="ans" value="male" id="rad2" hidden="hidden"> <div id="ansDiv2">     </div> </td>
 
                                                     </tr>
                                                     <tr>
-                                                        <td><input type="radio" name="ans" value="male" id="rad4"> <div id="ansDiv4">     </div>  </td>
+                                                        <td><input type="radio" name="ans" value="male" id="rad3" hidden="hidden"> <div id="ansDiv3">     </div> </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad5" > <div id="ansDiv5">     </div>  </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad4" hidden="hidden"> <div id="ansDiv4">     </div>  </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad6"> <div id="ansDiv6">     </div>  </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad5" hidden="hidden"> <div id="ansDiv5">     </div>  </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad7">  <div id="ansDiv7">     </div>    </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad6" hidden="hidden"> <div id="ansDiv6">     </div>  </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad8">  <div id="ansDiv8">     </div>    </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad7" hidden="hidden">  <div id="ansDiv7">     </div>    </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad9"> <div id="ansDiv9">     </div>   </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad8" hidden="hidden">  <div id="ansDiv8">     </div>    </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad10"> <div id="ansDiv10">     </div>  </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad9" hidden="hidden"> <div id="ansDiv9">     </div>   </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad11"> <div id="ansDiv11">     </div>  </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad10" hidden="hidden"> <div id="ansDiv10">     </div>  </td>
 
                                                     </tr>
-                                                    <tr style="display: none;">
-                                                        <td><input type="radio" name="ans" value="male" id="rad12"> <div id="ansDiv12">     </div>  </td>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad11" hidden="hidden"> <div id="ansDiv11">     </div>  </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="radio" name="ans" value="male" id="rad12" hidden="hidden"> <div id="ansDiv12">     </div>  </td>
 
                                                     </tr>
                                                 </table>
@@ -229,7 +229,7 @@
             var qcount = $('#qCnt').val();
           
             if(index < qcount)
-            index = index + 1;
+            index = parseInt(index) + 1;
             $('#pageindex').val(index);
 
             GetNextQuestion($('#pageindex').val(), $('#pagesize').val());
@@ -240,7 +240,7 @@
 
             var index = $('#pageindex').val();
             if(index >= 2)
-            index = index - 1;
+            index = parseInt(index) - 1;
             $('#pageindex').val(index);
 
             GetNextQuestion($('#pageindex').val(), $('#pagesize').val());

@@ -353,7 +353,7 @@ namespace MySchool.DAL
                 questionEntities.QuestionText = Convert.ToString(dsQuestion.Tables[0].Rows[i]["QuestionText"]);
                 questionEntities.Marks = Convert.ToDecimal(dsQuestion.Tables[0].Rows[i]["Marks"]);
 
-                IdList.Add(questionEntities.Id);
+               // IdList.Add(questionEntities.Id);
 
                 DataTable dtAns = dsQuestion.Tables[1].AsEnumerable()
                                     .Where(r => r.Field<int>("QuestionId") == int.Parse(dsQuestion.Tables[0].Rows[i]["Id"].ToString())).CopyToDataTable();
@@ -374,9 +374,16 @@ namespace MySchool.DAL
 
                 questionEntities.AnswerEntities = answerEntities;
                 questionEntitiesList.Add(questionEntities);
+
             }
 
             examPaper.QuestionEntities = questionEntitiesList;
+
+            for (int i = 0; i < dsQuestion.Tables[3].Rows.Count; i++)
+            {
+                IdList.Add(int.Parse(dsQuestion.Tables[3].Rows[i]["Id"].ToString()));
+            }
+
             examPaper.QuestionList = IdList;
 
             examPaper.QuestionCount = IdList.Count;

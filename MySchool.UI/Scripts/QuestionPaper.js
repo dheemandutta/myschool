@@ -234,10 +234,10 @@ function SetValues(result) {
 
         if (result.AnsweredQuestions[k].HasAnswered === 1) {
 
-            $(qTab).append(' <td style="color: black ; background-color:forestgreen;">' + result.AnsweredQuestions[k].RowNo + '</td>');
+            $(qTab).append(' <td style="color: black ; border: 1px solid #dddddd; background-color:forestgreen;">' + result.AnsweredQuestions[k].RowNo + '</td>');
         }
         else {
-            $(qTab).append(' <td style="color: black ; ">' + result.AnsweredQuestions[k].RowNo + '</td>');
+            $(qTab).append(' <td style="color: black ; border: 1px solid #dddddd;">' + result.AnsweredQuestions[k].RowNo + '</td>');
         }
 
         //k = 25;

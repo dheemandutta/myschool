@@ -100,5 +100,22 @@ namespace MySchool.DAL
             con.Close();
             return recordAffected;
         }
+
+        public tblConfigEntities GettblConfigByKeyName(string KeyName)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetByKeyName", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@KeyName", KeyName);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            tblConfigEntities topicEntities = new tblConfigEntities();
+            topicEntities.KeyName = Convert.ToString(ds.Tables[0].Rows[0]["KeyName"]);
+            topicEntities.ConfigValue = Convert.ToString(ds.Tables[0].Rows[0]["ConfigValue"]);
+            return topicEntities;
+        }
     }
 }

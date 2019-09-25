@@ -38,7 +38,11 @@ namespace MySchool.UI.Controllers
         {
             // GettblSubjectForDrp();
             QuestionBL topicBL = new QuestionBL();
+            tblConfigBL configBL = new tblConfigBL();
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
+
+            questionCount = int.Parse( configBL.GettblConfigByKeyName("QuestionCount").ConfigValue);
+
             topicBL.GetQuestionPaper(questionCount,int.Parse(Session["UserId"].ToString()));
             return View();
         }
@@ -97,7 +101,7 @@ namespace MySchool.UI.Controllers
                 if (item.ID == int.Parse(collection.AllKeys[0]))
                 {
                     item.IsUserAnswer = 1;
-                    topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer); //save userdata
+                    topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer, int.Parse(Session["UserId"].ToString())); //save userdata
                     break;
                 }
             }

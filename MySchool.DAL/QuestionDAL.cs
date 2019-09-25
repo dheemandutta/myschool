@@ -329,7 +329,7 @@ namespace MySchool.DAL
             return examPaper;
         }
 
-        public void SaveUserAnswer(int answerId,int useranswerId)
+        public void SaveUserAnswer(int answerId,int useranswerId,int userId)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
@@ -337,6 +337,7 @@ namespace MySchool.DAL
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@QuestionId", useranswerId);
             cmd.Parameters.AddWithValue("@Id", answerId);
+            cmd.Parameters.AddWithValue("@UserId", userId);
             int records = cmd.ExecuteNonQuery();
             con.Close();
         }

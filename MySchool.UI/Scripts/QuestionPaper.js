@@ -220,8 +220,8 @@ function SetValues(result) {
 
     } //end for
 
-    var quotient = result.AnsweredQuestions.length / 20;
-    var remainder = result.AnsweredQuestions.length % 20;
+    var quotient = result.AnsweredQuestions.length / 25;
+    var remainder = result.AnsweredQuestions.length % 25;
     var rowcnt = 0;
 
     if (remainder === 0)
@@ -229,16 +229,33 @@ function SetValues(result) {
     else
         rowcnt = quotient + 1;
 
+    var actualrowcount = 1;
     for (k = 0; k < result.AnsweredQuestions.length; k++) {
 
-        
-
         if (result.AnsweredQuestions[k].HasAnswered === 1) {
+
             $(qTab).append(' <td style="color: black ; background-color:forestgreen;">' + result.AnsweredQuestions[k].RowNo + '</td>');
         }
         else {
             $(qTab).append(' <td style="color: black ; ">' + result.AnsweredQuestions[k].RowNo + '</td>');
         }
+
+        //k = 25;
+        if (k % 25 === 0) {
+            actualrowcount++;
+
+            $('#answertable').append('<tr class="' + actualrowcount + '"></tr>');
+
+            qTab = $('#answertable tr.' + actualrowcount);
+            //$(qTab).append(' <td style="color: black ; ">' + 100 + '</td>');
+           // console.log(qTab);
+
+            
+        }
+
+        //break;
     }
+
+    
 
 }

@@ -241,6 +241,7 @@ function SetValues(result) {
         }
 
         //k = 25;
+        if(k > 0)
         if (k % 25 === 0) {
             actualrowcount++;
 

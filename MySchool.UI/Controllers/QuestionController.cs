@@ -38,7 +38,11 @@ namespace MySchool.UI.Controllers
         {
             // GettblSubjectForDrp();
             QuestionBL topicBL = new QuestionBL();
+            tblConfigBL configBL = new tblConfigBL();
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
+
+            questionCount = int.Parse( configBL.GettblConfigByKeyName("QuestionCount").ConfigValue);
+
             topicBL.GetQuestionPaper(questionCount,int.Parse(Session["UserId"].ToString()));
             return View();
         }

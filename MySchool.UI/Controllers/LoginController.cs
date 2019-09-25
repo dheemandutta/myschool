@@ -32,6 +32,11 @@ namespace MySchool.UI.Controllers
 
             if (loggedinUser.ID > 0)
             {
+
+                FormsAuthentication.SetAuthCookie(loggedinUser.FirstName,false);
+                
+
+
                 System.Web.HttpContext.Current.Session["UserName"] = loggedinUser.UserName;
                 System.Web.HttpContext.Current.Session["RoleId"] = loggedinUser.RoleId;
                 System.Web.HttpContext.Current.Session["Name"] = loggedinUser.FirstName +' '+ loggedinUser.LastName;

@@ -1,7 +1,7 @@
 ﻿@model MySchool.Entities.tblConfigEntities
 
 @{
-    ViewBag.Title = "Config";
+    ViewBag.Title = "tblConfig";
 }
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -48,7 +48,7 @@
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Key Name:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="KeyName" placeholder="Key Name" required="required">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="KeyName" placeholder="Key Name" required="required" readonly/>
                                                     @*<select class="form-control" id="KeyName">
                                                         <option value="">Select</option>
                                                         <option value="Key1">Key1</option>
@@ -62,7 +62,7 @@
                                             <div class="form-group" style="margin-right: -600px;">
                                                 <label class="col-sm-2 control-label">Config Value:<font color=""></font> </label>
                                                 <div class="col-sm-10" style="width: 30%;">
-                                                    <input type="text" class="form-control" style="width: 90%;" id="ConfigValue" placeholder="Config Value" required="required">
+                                                    <input type="text" class="form-control" style="width: 90%;" id="ConfigValue" placeholder="Config Value" required="required"/>
                                                 </div>
                                             </div>
 

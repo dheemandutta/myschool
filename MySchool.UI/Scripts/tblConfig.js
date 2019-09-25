@@ -106,7 +106,8 @@ function SetUpGrid() {
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="GettblConfigByKeyName("' + data + '")"><i class="fa fa-edit"></i></a>';
+                    return '<a href="#" onclick="GettblConfigByKeyName(' + data + ')"><i class="fa fa-edit"></i></a>';
+                    //return '<a href="#" onclick="GetTopicByID(' + data + ')"><i class="fa fa-edit"></i></a>';
                 }
             }
             //,{
@@ -124,7 +125,7 @@ function GettblConfigByKeyName(parID) {
     var x = $("#gettblConfigByKeyName").val();
 
     $.getJSON(x, { ID: parID }, function (result) {
-      //  console.log(result);
+        console.log(result);
 
         $('#KeyName').val(result.KeyName);
         $('#ConfigValue').val(result.ConfigValue);

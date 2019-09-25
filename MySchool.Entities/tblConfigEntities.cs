@@ -8,6 +8,7 @@ namespace MySchool.Entities
 {
     public class tblConfigEntities
     {
+        public int ID { get; set; }
         public string KeyName { get; set; }
         public string ConfigValue { get; set; }
     }

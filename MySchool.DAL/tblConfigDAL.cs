@@ -49,6 +49,7 @@ namespace MySchool.DAL
             da.Fill(ds);
             con.Close();
             tblConfigEntities topicEntities = new tblConfigEntities();
+            topicEntities.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"]);
             topicEntities.KeyName = Convert.ToString(ds.Tables[0].Rows[0]["KeyName"]);
             topicEntities.ConfigValue = Convert.ToString(ds.Tables[0].Rows[0]["ConfigValue"]);
             return topicEntities;
@@ -77,7 +78,7 @@ namespace MySchool.DAL
                     {
                         topicEntities.Add(new tblConfigEntities
                         {
-                            //ID = Convert.ToInt32(dr["Id"]),
+                            ID = Convert.ToInt32(dr["Id"]),
                             KeyName = Convert.ToString(dr["KeyName"]),
                             ConfigValue = Convert.ToString(dr["ConfigValue"])
                         });

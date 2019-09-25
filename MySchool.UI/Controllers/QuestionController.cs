@@ -425,7 +425,7 @@ namespace MySchool.UI.Controllers
             {
                 if(! String.IsNullOrEmpty(quesId))
                     if(int.Parse(quesId) > 0)
-                topicBL.SaveUserAnswer(int.Parse(radioValue), int.Parse(quesId));
+                topicBL.SaveUserAnswer(int.Parse(radioValue), int.Parse(quesId), int.Parse(Session["UserId"].ToString()));
             }
 
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());

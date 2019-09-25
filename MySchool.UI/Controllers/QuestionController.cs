@@ -101,7 +101,7 @@ namespace MySchool.UI.Controllers
                 if (item.ID == int.Parse(collection.AllKeys[0]))
                 {
                     item.IsUserAnswer = 1;
-                    topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer); //save userdata
+                    topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer, int.Parse(Session["UserId"].ToString())); //save userdata
                     break;
                 }
             }

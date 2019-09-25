@@ -241,13 +241,13 @@
 
             var qcount = $('#qCnt').val();
           
-            if(index < qcount)
+            if(parseInt(index) < parseInt(qcount))
             index = parseInt(index) + 1;
             $('#pageindex').val(index);
 
             var radioValue = $("input[name='ans']:checked").val();
             console.log('ok');
-            console.log(radioValue);
+            console.log(qcount);
 
             GetNextQuestion($('#pageindex').val(), $('#pagesize').val(), radioValue);
 
@@ -257,7 +257,7 @@
 
             var index = $('#pageindex').val();
 
-            if(index >= 2)
+            if(parseInt(index) >= 2)
             index = parseInt(index) - 1;
             $('#pageindex').val(index);
 

@@ -49,6 +49,7 @@
     <Compile Include="CampaignEntities.cs" />
     <Compile Include="ChoiceEntities.cs" />
     <Compile Include="ExamPaper.cs" />
+    <Compile Include="QuestionAnswerEntities.cs" />
     <Compile Include="QuestionViewEntities.cs" />
     <Compile Include="DayOfWeekEntities.cs" />
     <Compile Include="DonarEntities.cs" />

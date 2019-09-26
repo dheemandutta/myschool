@@ -61,6 +61,7 @@
     <Compile Include="GradeEntities.cs" />
     <Compile Include="GradeGroupEntities.cs" />
     <Compile Include="QuestionEntities.cs" />
+    <Compile Include="ResultEntities.cs" />
     <Compile Include="SectionEntities.cs" />
     <Compile Include="StudentEntities.cs" />
     <Compile Include="StudentAttendentEntities.cs" />

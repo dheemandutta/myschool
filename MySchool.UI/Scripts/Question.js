@@ -27,7 +27,8 @@ function clearTextBox() {
     $('#Marks').val("");
     $('#drpSubject').val("");
     $('#tblSubject').val("");
- 
+
+   // $('input:checkbox').removeAttr('checked');       // chkPrimarySubject
 }
 
 function Add() {

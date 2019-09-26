@@ -515,6 +515,7 @@
     <Content Include="Sql Script\fullscript_23092019.sql" />
     <Content Include="Sql Script\fullscript_24092019.sql" />
     <Content Include="Sql Script\fullscript_25092019.sql" />
+    <Content Include="Sql Script\fullscript_26092019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_23_09_2019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_24_09_2019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_25_09_2019.sql" />

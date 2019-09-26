@@ -466,7 +466,7 @@ namespace MySchool.DAL
 
 
 
-        public QuestionAnswerEntities GetQuestionWithAnswerByUserID(int UserId)
+        public List<QuestionAnswerEntities> GetQuestionWithAnswerByUserID(int UserId)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
@@ -477,12 +477,20 @@ namespace MySchool.DAL
             DataSet ds = new DataSet();
             da.Fill(ds);
             con.Close();
-            QuestionAnswerEntities topicEntities = new QuestionAnswerEntities();
-            topicEntities.UserId = Convert.ToInt32(ds.Tables[0].Rows[0]["UserId"].ToString());
-            topicEntities.QuestionText = Convert.ToString(ds.Tables[0].Rows[0]["QuestionText"]);
-            topicEntities.RowNo = Convert.ToInt32(ds.Tables[0].Rows[0]["RowNo"]);
-            topicEntities.ChoiceText = Convert.ToString(ds.Tables[0].Rows[0]["ChoiceText"]);
-            return topicEntities;
+            List<QuestionAnswerEntities> questionAnswerEntitiesList = new List<QuestionAnswerEntities>();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                QuestionAnswerEntities topicEntities = new QuestionAnswerEntities();
+                topicEntities.QuestionId = Convert.ToInt32(ds.Tables[0].Rows[i]["QuestionId"].ToString());
+                topicEntities.QuestionText = Convert.ToString(ds.Tables[0].Rows[i]["Question"]);
+                topicEntities.RowNo = Convert.ToInt32(ds.Tables[0].Rows[i]["RowNo"]);
+                topicEntities.ChoiceText = Convert.ToString(ds.Tables[0].Rows[i]["RightAnswer"]);
+                topicEntities.UserAnswerText = Convert.ToString(ds.Tables[0].Rows[i]["UserAnswer"]);
+
+                questionAnswerEntitiesList.Add(topicEntities);
+            }
+            
+            return questionAnswerEntitiesList;
         }
     }
 }

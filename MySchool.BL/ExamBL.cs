@@ -48,6 +48,13 @@ namespace MySchool.BL
             ExamDAL ExamDl = new ExamDAL();
             return ExamDl.GetExamForDrp();
         }
+
+
+        public int GettblConfigByExamTime()
+        {
+            ExamDAL ExamDl = new ExamDAL();
+            return ExamDl.GettblConfigByExamTime();
+        }
     }
 }
 

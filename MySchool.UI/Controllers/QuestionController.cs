@@ -452,5 +452,14 @@ namespace MySchool.UI.Controllers
 
         }
 
+
+
+
+
+        public JsonResult GettblConfigByExamTime()
+        {
+            ExamBL examBL = new ExamBL();
+            return Json(examBL.GettblConfigByExamTime(), JsonRequestBehavior.AllowGet);
+        }
     }
 }

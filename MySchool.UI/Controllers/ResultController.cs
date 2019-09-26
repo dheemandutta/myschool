@@ -21,6 +21,7 @@ namespace MySchool.UI.Controllers
 
         public ActionResult MockTestResult()
         {
+            //int x = int.Parse(Session["UserId"].ToString());
             List<QuestionAnswerEntities> exam = new List<QuestionAnswerEntities>();
             QuestionBL question =  new QuestionBL();
             exam = question.GetQuestionWithAnswerByUserID(int.Parse(Session["UserId"].ToString()));

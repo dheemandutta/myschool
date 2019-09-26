@@ -27,6 +27,7 @@ function clearTextBox() {
     $('#Marks').val("");
     $('#drpSubject').val("");
     $('#tblSubject').val("");
+ 
 }
 
 function Add() {

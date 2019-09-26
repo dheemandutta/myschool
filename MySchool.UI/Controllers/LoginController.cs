@@ -23,6 +23,13 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Login");
+        }
+
         public bool AuthenticateUser(string userName, string password)
         {
             UserRegistrationBL userBl = new UserRegistrationBL();

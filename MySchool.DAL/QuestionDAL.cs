@@ -492,5 +492,24 @@ namespace MySchool.DAL
             
             return questionAnswerEntitiesList;
         }
+
+
+        public ResultEntities GetRightAnswerByUserID(int UserId)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetRightAnswerByUserID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            ResultEntities topicEntities = new ResultEntities();
+            //topicEntities.UserId = Convert.ToInt32(ds.Tables[0].Rows[0]["UserId"].ToString());
+            topicEntities.TotalMarks = Convert.ToDecimal(ds.Tables[0].Rows[0]["TotalMarks"]);
+            topicEntities.MarksObtained = Convert.ToDecimal(ds.Tables[1].Rows[0]["MarksObtained"]);
+            return topicEntities;
+        }
     }
 }

@@ -6,7 +6,29 @@
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 @*<script src="~/Scripts/Question.js"></script>*@
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+
+    /*///////////////////////////////////////////////////*/
+    * {
+        box-sizing: border-box;
+    }
+
+    .column {
+        float: left;
+    }
+    /*///////////////////////////////////////////////////*/
+</style>
 <body style="background-image: url(../background/depart.jpg);
     background-size: cover;">
 
@@ -24,6 +46,12 @@
                             Test Results
                         </h2>
                         <table>
+                            <tr>
+                                <th>Questions</th>
+                                <th>Right Answers</th>
+                                <th>Your Answers</th>
+                            </tr>
+
                             @foreach (MySchool.Entities.QuestionAnswerEntities item in Model)
                             {
                                 <tr>

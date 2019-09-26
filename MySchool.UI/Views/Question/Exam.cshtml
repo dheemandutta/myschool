@@ -148,12 +148,13 @@
                                 <input id="Previous" class="btn btn-warning" value="Previous" name="Command" />
                                 <input id="Next" class="btn btn-success" value="Next" name="Command" />
                             </div>
-                            <div>
+                            <div class="text-center mt-lg">
+                                <h5 style=" color:crimson;"> If you click submit, your exam will end immediately. </h5>
                                 @using (Html.BeginForm("ExamResult", "Question", FormMethod.Post))
                                 {
-                                    <input id="btnResult" type="submit" value="See Your Result" />
+                                    <input id="btnResult" style="background-color:rebeccapurple; color:white;" class="btn" type="submit" value="See Your Result" />
                                 }
-                                </div>
+                            </div>
 
                             <div class="panel panel-default" style="height:250px;">
 

@@ -101,5 +101,12 @@ namespace MySchool.BL
             QuestionDAL topicDAL = new QuestionDAL();
             return topicDAL.GetQuestionWithAnswerByUserID(UserId);
         }
+
+
+        public ResultEntities GetRightAnswerByUserID(int UserId)
+        {
+            QuestionDAL topicDAL = new QuestionDAL();
+            return topicDAL.GetRightAnswerByUserID(UserId);
+        }
     }
 }

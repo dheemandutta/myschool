@@ -29,7 +29,10 @@ namespace MySchool.UI.Controllers
 
         public ActionResult RealExamResult()
         {
-            return View();
+            ResultEntities realexam = new ResultEntities();
+            QuestionBL question = new QuestionBL();
+            realexam = question.GetRightAnswerByUserID(int.Parse(Session["UserId"].ToString()));
+            return View(realexam);
         }
     }
 }

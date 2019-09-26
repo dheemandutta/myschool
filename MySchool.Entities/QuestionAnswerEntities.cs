@@ -13,5 +13,10 @@ namespace MySchool.Entities
 
         public int RowNo { get; set; }
         public string ChoiceText { get; set; }
+
+        public string UserAnswerText { get; set; }
+
+        public int QuestionId { get; set; }
+
     }
 }

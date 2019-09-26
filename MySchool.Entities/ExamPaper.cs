@@ -33,5 +33,6 @@ namespace MySchool.Entities
 
         public List<AnsweredQuestions> AnsweredQuestions { get; set; }
 
+        public string ExamType { get; set; }
     }
 }

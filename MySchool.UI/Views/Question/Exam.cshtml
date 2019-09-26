@@ -148,6 +148,12 @@
                                 <input id="Previous" class="btn btn-warning" value="Previous" name="Command" />
                                 <input id="Next" class="btn btn-success" value="Next" name="Command" />
                             </div>
+                            <div>
+                                @using (Html.BeginForm("ExamResult", "Question", FormMethod.Post))
+                                {
+                                    <input id="btnResult" type="submit" value="See Your Result" />
+                                }
+                                </div>
 
                             <div class="panel panel-default" style="height:250px;">
 
@@ -280,7 +286,7 @@
                         // $this.html(event.strftime('After end: <span>%H:%M:%S</span>'));
                         //$(document).ready(function() {
                         $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
-                        $(':input[type="submit"]').prop('disabled', true);
+                       // $(':input[type="submit"]').prop('disabled', true);
                         localStorage.removeItem('seconds');
 
                     } else {

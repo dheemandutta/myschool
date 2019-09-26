@@ -37,27 +37,27 @@
 
             <div style="height:900px;">
                 @*/////////////////////// class="table-responsive"///////////////////////////*@
-              
+                @using (Html.BeginForm("StartTest", "Question"))
+                {
                     <div class="row">
                         <div class="col-lg-12">
                             <div class=" panel-default">
-                              
+
                                 <div class="ibox float-e-margins">
                                     <div class="ibox-content">
-                                        @using (Html.BeginForm("StartTest", "Question") )
-                                        {
-                                           
 
-                                                <div class="form-group">
-                                                    <input type="hidden" id="QuestionID" />
-                                                </div>
 
-                                                <div class="panel-footer text-center" >
-                                                    <input class="btn btn-primary btn-success"  style="font-size : 40px; width: 400px; height: 100px;" type="submit" value= 'Start Test'>
-                                                </div>
 
-                                           
-                                        }
+                                        <div class="form-group">
+                                            <input type="hidden" id="QuestionID" />
+                                        </div>
+
+                                        <div class="panel-footer text-center">
+                                            <input class="btn btn-primary btn-success" style="font-size : 40px; width: 400px; height: 100px;" type="submit" value='Start Test'>
+                                        </div>
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +71,8 @@
                             <input type="radio" name="test" value="RealTest"> RealTest
                         </label>
                     </div>
-        </div>
+                }
+            </div>
         @*/////////////////////// class="table-responsive"///////////////////////////*@
 
     </div>

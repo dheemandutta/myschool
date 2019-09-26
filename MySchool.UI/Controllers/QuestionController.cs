@@ -27,10 +27,13 @@ namespace MySchool.UI.Controllers
         {
             return View();
         }
-
-        public ActionResult Exam()
+        
+        public ActionResult Exam(string id)
         {
-            return View();
+            ExamPaper exam = new ExamPaper();
+            exam.ExamType = id;
+            Session["ExamType"] = id;
+            return View(exam);
         }
 
 
@@ -48,10 +51,10 @@ namespace MySchool.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult StartTest(QuestionEntities q)
+        public ActionResult StartTest(FormCollection q)
         {
             // GettblSubjectForDrp();
-            return RedirectToAction("Exam", "Question");
+            return RedirectToAction("Exam", "Question", new { id = q[0].ToString() });
         }
 
         public ActionResult QuestionPaper()
@@ -434,6 +437,18 @@ namespace MySchool.UI.Controllers
             examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
 
             return Json(examPaper, JsonRequestBehavior.AllowGet);
+
+        }
+
+        [HttpPost]
+        public ActionResult ExamResult()
+        {
+            string examType = Session["ExamType"].ToString();
+
+            if(examType == "MockTest")
+            return RedirectToAction("MockTestResult", "Result");
+            else
+                return RedirectToAction("RealExamResult", "Result");
 
         }
 

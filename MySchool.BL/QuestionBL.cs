@@ -96,7 +96,7 @@ namespace MySchool.BL
         //}
 
 
-        public QuestionAnswerEntities GetQuestionWithAnswerByUserID(int UserId)
+        public List<QuestionAnswerEntities> GetQuestionWithAnswerByUserID(int UserId)
         {
             QuestionDAL topicDAL = new QuestionDAL();
             return topicDAL.GetQuestionWithAnswerByUserID(UserId);

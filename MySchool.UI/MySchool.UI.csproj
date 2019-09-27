@@ -302,6 +302,7 @@
     <Content Include="Content\app\js\jquery.countdown.min.js" />
     <Content Include="Content\app\js\jquery.plugin.js" />
     <Content Include="Content\app\js\jquery.plugin.min.js" />
+    <Content Include="Content\examples.min.css" />
     <Content Include="Content\Images\bg1.jpg" />
     <Content Include="Content\Images\bg10.jpg" />
     <Content Include="Content\Images\bg2.jpg" />
@@ -480,7 +481,10 @@
     <Content Include="Scripts\demo\demo-vector-map.js" />
     <Content Include="Scripts\demo\demo-wizard.js" />
     <Content Include="Scripts\demo\demo-xeditable.js" />
+    <Content Include="Scripts\easytimer.js" />
+    <Content Include="Scripts\easytimer.min.js" />
     <Content Include="Scripts\exam.js" />
+    <Content Include="Scripts\examples.min.js" />
     <Content Include="Scripts\grade.js" />
     <Content Include="Content\app\js\jquery.countdown.min.map" />
     <Content Include="Content\app\js\jquery.plugin.min.map" />

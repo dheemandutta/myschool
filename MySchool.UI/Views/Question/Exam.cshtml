@@ -57,7 +57,10 @@
         </div>
 
 
-        <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock"></div>
+        <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock">
+           
+        </div>
+        
 
         <div class="col-md-8" style="width: 100%;">
             <div style="height:900px;">
@@ -228,6 +231,8 @@
     @Scripts.Render("~/bundles/demoForms")
     @Scripts.Render("~/bundles/select2")
     <script src="~/Scripts/jquery.countdown.min.js"></script>
+  
+    
     @Scripts.Render("~/bundles/fileUpload")
     @Scripts.Render("~/bundles/demoUpload")
 
@@ -253,8 +258,10 @@
             $('#pageindex').val(index);
 
             var radioValue = $("input[name='ans']:checked").val();
-            console.log('ok');
-            console.log(qcount);
+            //console.log('ok');
+            //console.log(qcount);
+
+            
 
             GetNextQuestion($('#pageindex').val(), $('#pagesize').val(), radioValue);
 
@@ -273,54 +280,111 @@
         });
 
         var secsleft;
-         var examtime = 150000;
-        //var fiveSeconds = 1569167274100;
+        
+        
+      
+        var t;
+        var timer2 = "5:01";
 
-        function startTimer(fiveSeconds) {
+        var interval = setInterval(function() {
 
-            var countdowntime = new Date().getTime() + fiveSeconds;
 
-            $('#clock').countdown(countdowntime, { elapse: true })
-                .on('update.countdown', function (event) {
-                    var $this = $(this);
-                    if (event.elapsed) {
-                        // $this.html(event.strftime('After end: <span>%H:%M:%S</span>'));
-                        //$(document).ready(function() {
-                        $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
-                       // $(':input[type="submit"]').prop('disabled', true);
-                        localStorage.removeItem('seconds');
+          var timer = timer2.split(':');
+          //by parsing integer, I avoid all extra string processing
+          var minutes = parseInt(timer[0], 10);
+          var seconds = parseInt(timer[1], 10);
+          --seconds;
+          minutes = (seconds < 0) ? --minutes : minutes;
+          if (minutes < 0) clearInterval(interval);
+          seconds = (seconds < 0) ? 59 : seconds;
+          seconds = (seconds < 10) ? '0' + seconds : seconds;
+          //minutes = (minutes < 10) ?  minutes : minutes;
+          $('#clock').html(minutes + ':' + seconds);
+          timer2 = minutes + ':' + seconds;
+        }, 1000);
 
-                    } else {
+        //function startTimer(fiveSeconds) {
+            
+        //    var countdowntime =   fiveSeconds;  // +
+        //    console.log('time left');
+        //    console.log(countdowntime);
+        //    $('#clock').countdown(countdowntime, { elapse: true })
+        //        .on('update.countdown', function (event) {
+        //            var $this = $(this);
+        //            if (event.elapsed) {
+                       
+        //                localStorage.removeItem('seconds');
+        //                $('#Next').prop('disabled', true);
+        //                $('#Previous').prop('disabled',true);
 
-                        $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
-                        //console.log(%SECS);
+        //            } else {
 
-                        var secsleft = (event.strftime('%H') * 3600) + (event.strftime('%M') * 60) + event.strftime('%S');
-                        console.log(secsleft);
-                        localStorage.seconds = secsleft;
+        //                $this.html(event.strftime('Time Left: <span>%H:%M:%S</span>'));
+        //                //console.log(%SECS);
 
-                    }
-                });
+        //                var secsleft = (event.strftime('%H') * 3600) + (event.strftime('%M') * 60) + event.strftime('%S');
+        //                console.log('secs left');
+        //                console.log(secsleft);
+        //                 localStorage.removeItem('seconds');
+        //                localStorage.seconds = secsleft;
+
+        //            }
+        //        });
+        //}
+
+            
+        
+
+
+        //window.onload = function () {
+        //    var examtime = 300000;
+        //    console.log(localStorage.seconds);
+        //    if (Number(localStorage.seconds) < examtime) {
+        //        console.log('here');
+        //        //console.log(localStorage.seconds);
+        //        //console.log(examtime)
+        //        var seconds = Number(localStorage.seconds);
+        //        var x = Number(localStorage.tim );
+        //       // console.log(seconds);
+        //        examtime = (seconds * 1000) + x; //converted to millisecs
+        //        startTimer(examtime);
+        //    }
+        //    else {
+        //        console.log('in else');
+        //        //console.log(localStorage.seconds);
+        //        //console.log(examtime)
+        //        var t = new Date().getTime();
+        //        localStorage.tim = t;
+        //        examtime = examtime + t ;
+        //        startTimer(examtime);
+        //    }
+        //  //display = document.querySelector('#clock');
+
+        //};
+
+
+        if (window.performance) {
+          console.info("window.performance works fine on this browser");
         }
+          if (performance.navigation.type == 1) {
+              console.info("This page is reloaded");
+              $('#Next').prop('disabled', true);
+              $('#Previous').prop('disabled',true);
+
+          } else {
+            console.info( "This page is not reloaded");
+          }
 
 
-
-
-
-        window.onload = function () {
-            console.log('here');
-            console.log(localStorage.seconds);
-            if (Number(localStorage.seconds) < examtime) {
-                var seconds = Number(localStorage.seconds);
-                console.log(seconds);
-                examtime =  seconds * 1000; //converted to millisecs
-            }
-            else {
-                examtime = examtime;
-            }
-          //display = document.querySelector('#clock');
-          startTimer(examtime);
-        };
+        //var timer = new Timer();
+        //timer.start({countdown: true, startValues: {seconds: 30}});
+        //$('#countdownExample .values').html(timer.getTimeValues().toString());
+        //timer.addEventListener('secondsUpdated', function (e) {
+        //    $('#countdownExample .values').html(timer.getTimeValues().toString());
+        //});
+        //timer.addEventListener('targetAchieved', function (e) {
+        //    $('#countdownExample .values').html('KABOOM!!');
+        //});
 
     });
 </script>

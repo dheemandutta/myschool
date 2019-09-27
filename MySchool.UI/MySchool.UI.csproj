@@ -225,7 +225,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="background\MySchool.jpg" />
+    <Content Include="background\OnlineExamSystem - Copy.jpg" />
     <Content Include="background\OnlineExamSystem.jpg" />
+    <Content Include="background\OnlineExamSystem1.jpg" />
+    <Content Include="background\OnlineExamSystem2.jpg" />
     <Content Include="background\online_examination_Software_odisha_india_interface_software_services.jpg" />
     <Content Include="background\shutterstock_95107219.jpg" />
     <Content Include="background\slide.jpg" />

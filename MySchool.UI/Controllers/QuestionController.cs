@@ -427,7 +427,7 @@ namespace MySchool.UI.Controllers
             if (radioValue != null)
             {
                 if(! String.IsNullOrEmpty(quesId))
-                    if(int.Parse(quesId) > 0)
+                    if(int.Parse(quesId) > 0 && !String.IsNullOrEmpty(radioValue))
                 topicBL.SaveUserAnswer(int.Parse(radioValue), int.Parse(quesId), int.Parse(Session["UserId"].ToString()));
             }
 

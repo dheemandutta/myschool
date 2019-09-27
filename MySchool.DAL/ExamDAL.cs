@@ -152,26 +152,27 @@ namespace MySchool.DAL
         }
 
 
-        public int GettblConfigByExamTime()
+        public decimal GettblConfigByExamTime()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpGettblConfigByExamTime", con);
             cmd.CommandType = CommandType.StoredProcedure;
             //cmd.Parameters.AddWithValue("@ID", ExamID);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            con.Close();
-            ExamEntities Exam = new ExamEntities();
+            //SqlDataAdapter da = new SqlDataAdapter(cmd);
+            //DataSet ds = new DataSet();
+            //da.Fill(ds);
+            //con.Close();
+            //ExamEntities Exam = new ExamEntities();
 
-            Exam.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
-            Exam.ConfigValue = Convert.ToString(ds.Tables[0].Rows[0]["ConfigValue"]);
-            Exam.KeyName = Convert.ToString(ds.Tables[0].Rows[0]["KeyName"]);
+            //Exam.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
+           // Exam.ConfigValue = Convert.ToString(ds.Tables[0].Rows[0]["ConfigValue"]);
+           // Exam.KeyName = Convert.ToString(ds.Tables[0].Rows[0]["KeyName"]);
 
-            int recordAffected = cmd.ExecuteNonQuery();
+            string recordAffected = (string)cmd.ExecuteScalar();
             con.Close();
-            return recordAffected;
+            decimal val = Convert.ToDecimal(recordAffected);
+            return val;
         }
     }
 }

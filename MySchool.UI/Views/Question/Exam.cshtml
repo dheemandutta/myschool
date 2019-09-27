@@ -36,6 +36,7 @@
     background-size: cover;">
 
     @Html.Hidden("loaddata", @Url.Action("GetNextQuestion", "Question"))
+    @Html.Hidden("loadconfigdata", @Url.Action("GettblConfigByExamTime", "Question"))
 
     <input type="hidden" value="1" id="pagesize" />
     <input type="hidden" value="1" id="pageindex" />
@@ -58,9 +59,9 @@
 
 
         <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock">
-           
+
         </div>
-        
+
 
         <div class="col-md-8" style="width: 100%;">
             <div style="height:900px;">
@@ -170,15 +171,15 @@
                                                 <table style="border-collapse:collapse; width:10%; position:center;" id="answertable">
                                                     <tr>
                                                         @*<td background-color:forestgreen; color: black;>01</td>
-                                                        <td style="color: black;">02</td>
-                                                        <td style="background-color:forestgreen; color: sandybrown;">03</td>
-                                                        <td style="color: sandybrown;">04</td>
-                                                        <td style="color: black;">05</td>
-                                                        <td style="color: black;">06</td>
-                                                        <td style="color: black;">07</td>
-                                                        <td style="color: black;">08</td>
-                                                        <td style="color: black;">09</td>
-                                                        <td style="color: black;">10</td>*@
+                                                            <td style="color: black;">02</td>
+                                                            <td style="background-color:forestgreen; color: sandybrown;">03</td>
+                                                            <td style="color: sandybrown;">04</td>
+                                                            <td style="color: black;">05</td>
+                                                            <td style="color: black;">06</td>
+                                                            <td style="color: black;">07</td>
+                                                            <td style="color: black;">08</td>
+                                                            <td style="color: black;">09</td>
+                                                            <td style="color: black;">10</td>*@
                                                     </tr>
                                                 </table>
                                             </div>
@@ -283,25 +284,44 @@
         
         
       
-        var t;
-        var timer2 = "5:01";
+        var t=$('#loadconfigdata').val();
 
-        var interval = setInterval(function() {
+        var jqxhr = $.getJSON( t, function() {
+          console.log( "success" );
+        })
+          .done(function(data) {
+              console.log("second success");
+             
+              var timer2 = data.toFixed(2);
+              console.log(timer2);
+              var seconds;
+              var timer;
+                var interval = setInterval(function() {
+    
+                   timer = timer2.split(':');
+                  //by parsing integer, I avoid all extra string processing
+                    var minutes = parseInt(timer[0], 10);
+                    seconds = parseInt(timer[1], 10);
+                    
+                  --seconds;
+                  minutes = (seconds < 0) ? --minutes : minutes;
+                  if (minutes < 0) clearInterval(interval);
+                  seconds = (seconds < 0) ? 59 : seconds;
+                  seconds = (seconds < 10) ? '0' + seconds : seconds;
+                  //minutes = (minutes < 10) ?  minutes : minutes;
+                  $('#clock').html(minutes + ':' + seconds);
+                  timer2 = minutes + ':' + seconds;
+                }, 1000);
+          })
+          .fail(function() {
+            console.log( "error" );
+          })
+          .always(function() {
+            console.log( "complete" );
+          });
+ 
 
-
-          var timer = timer2.split(':');
-          //by parsing integer, I avoid all extra string processing
-          var minutes = parseInt(timer[0], 10);
-          var seconds = parseInt(timer[1], 10);
-          --seconds;
-          minutes = (seconds < 0) ? --minutes : minutes;
-          if (minutes < 0) clearInterval(interval);
-          seconds = (seconds < 0) ? 59 : seconds;
-          seconds = (seconds < 10) ? '0' + seconds : seconds;
-          //minutes = (minutes < 10) ?  minutes : minutes;
-          $('#clock').html(minutes + ':' + seconds);
-          timer2 = minutes + ':' + seconds;
-        }, 1000);
+        
 
         //function startTimer(fiveSeconds) {
             

@@ -50,7 +50,7 @@ namespace MySchool.BL
         }
 
 
-        public int GettblConfigByExamTime()
+        public decimal GettblConfigByExamTime()
         {
             ExamDAL ExamDl = new ExamDAL();
             return ExamDl.GettblConfigByExamTime();

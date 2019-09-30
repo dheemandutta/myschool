@@ -527,6 +527,7 @@
     <Content Include="Sql Script\PP_FullScriptOfMySchool_23_09_2019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_24_09_2019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_25_09_2019.sql" />
+    <Content Include="Sql Script\PP_FullScriptOfMySchool_30_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_20_09_2019.sql" />
     <Content Include="Sql Script\PP_Patch_20_09_2019_II.sql" />
     <Content Include="Sql Script\PP_Patch_23_09_2019.sql" />

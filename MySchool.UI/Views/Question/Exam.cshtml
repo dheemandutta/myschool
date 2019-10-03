@@ -1,7 +1,11 @@
 ﻿@model MySchool.Entities.ExamPaper
 
+@*@{
+        ViewBag.Title = "Exam";
+    }*@
+
 @{
-    ViewBag.Title = "Exam";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
@@ -15,162 +19,162 @@
         }
 
         td, th {
-            /*border: 1px solid #dddddd;*/ 
+            /*border: 1px solid #dddddd;*/
             text-align: left;
             padding: 8px;
         }
 
 
         /*///////////////////////////////////////////////////*/
-        *{
-             box-sizing: border-box;
-         }
+        * {
+            box-sizing: border-box;
+        }
 
         .column {
-              float: left;
-            }
-         /*///////////////////////////////////////////////////*/
+            float: left;
+        }
+        /*///////////////////////////////////////////////////*/
     </style>
 </head>
 <body style="background-image: url(../background/depart.jpg);
     background-size: cover;">
+    <div style="width:1090px; position:center;">
+        @Html.Hidden("loaddata", @Url.Action("GetNextQuestion", "Question"))
+        @Html.Hidden("loadconfigdata", @Url.Action("GettblConfigByExamTime", "Question"))
 
-    @Html.Hidden("loaddata", @Url.Action("GetNextQuestion", "Question"))
-    @Html.Hidden("loadconfigdata", @Url.Action("GettblConfigByExamTime", "Question"))
+        <input type="hidden" value="1" id="pagesize" />
+        <input type="hidden" value="1" id="pageindex" />
+        <input type="hidden" value="0" id="qCnt" />
+        <input type="hidden" value="0" id="quesId" />
 
-    <input type="hidden" value="1" id="pagesize" />
-    <input type="hidden" value="1" id="pageindex" />
-    <input type="hidden" value="0" id="qCnt" />
-    <input type="hidden" value="0" id="quesId" />
+        <div class="row" style="height:10px;">
 
-    <div class="row" style="height:10px;">
-
-        <div class="col-md-7 bac" style="height:55px; width: 45%;">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text m-t-lg">
-                        <h2>
-                            Exam
-                        </h2>
+            <div class="col-md-7 bac" style="height:55px; width: 45%;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text m-t-lg">
+                            <h2>
+                                Exam
+                            </h2>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock">
+            <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock">
 
-        </div>
+            </div>
 
 
-        <div class="col-md-8" style="width: 100%;">
-            <div style="height:900px;">
-                @*/////////////////////// class="table-responsive"///////////////////////////*@
-                <div class="card">
+            <div class="col-md-8" style="width: 100%;">
+                <div style="height:900px;">
+                    @*/////////////////////// class="table-responsive"///////////////////////////*@
+                    <div class="card">
 
-                    <div class="row">
-                        <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-lg-12">
 
-                            <div class="panel panel-default table-responsive" style="height:400px;">
-                                <div class="ibox float-e-margins">
-                                    <div class="ibox-content">
-                                        <div class="form-group" style="margin-right: -600px; width:1000px;">
-                                            <div class="col-sm-10" style="width: 106%;">
-                                                @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
-                                                @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
-                                                <h4>Question:</h4>
+                                <div class="panel panel-default table-responsive" style="height:400px;">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-content">
+                                            <div class="form-group" style="margin-right: -600px; width:1000px;">
+                                                <div class="col-sm-10" style="width: 106%;">
+                                                    @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
+                                                    @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
+                                                    <h4>Question:</h4>
 
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            <h3 class="no-margins"><span id="QuestionText" style="font-size: 15px;"> </span></h3>
-                                                        </td>
-                                                    </tr>
-                                                    @*<div id="ansDiv1" hidden="hidden"></div>*@
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad1" hidden="hidden"> <div class="column" id="ansDiv1" hidden="hidden"></div>  </td>
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <h3 class="no-margins"><span id="QuestionText" style="font-size: 15px;"> </span></h3>
+                                                            </td>
+                                                        </tr>
+                                                        @*<div id="ansDiv1" hidden="hidden"></div>*@
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad1" hidden="hidden"> <div class="column" id="ansDiv1" hidden="hidden"></div>  </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad2" hidden="hidden"> <div class="column" id="ansDiv2" hidden="hidden">     </div> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad2" hidden="hidden"> <div class="column" id="ansDiv2" hidden="hidden">     </div> </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad3" hidden="hidden"> <div class="column" id="ansDiv3" hidden="hidden">     </div> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad3" hidden="hidden"> <div class="column" id="ansDiv3" hidden="hidden">     </div> </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad4" hidden="hidden"> <div class="column" id="ansDiv4" hidden="hidden">     </div>  </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad4" hidden="hidden"> <div class="column" id="ansDiv4" hidden="hidden">     </div>  </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad5" hidden="hidden"> <div class="column" id="ansDiv5" hidden="hidden">     </div>  </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad5" hidden="hidden"> <div class="column" id="ansDiv5" hidden="hidden">     </div>  </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad6" hidden="hidden"> <div class="column" id="ansDiv6" hidden="hidden">     </div>  </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad6" hidden="hidden"> <div class="column" id="ansDiv6" hidden="hidden">     </div>  </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad7" hidden="hidden">  <div class="column" id="ansDiv7" hidden="hidden">     </div>    </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad7" hidden="hidden">  <div class="column" id="ansDiv7" hidden="hidden">     </div>    </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad8" hidden="hidden">  <div class="column" id="ansDiv8" hidden="hidden">     </div>    </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad8" hidden="hidden">  <div class="column" id="ansDiv8" hidden="hidden">     </div>    </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad9" hidden="hidden"> <div class="column" id="ansDiv9" hidden="hidden">     </div>   </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad9" hidden="hidden"> <div class="column" id="ansDiv9" hidden="hidden">     </div>   </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad10" hidden="hidden"> <div class="column" id="ansDiv10" hidden="hidden">     </div>  </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad10" hidden="hidden"> <div class="column" id="ansDiv10" hidden="hidden">     </div>  </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad11" hidden="hidden"> <div class="column" id="ansDiv11" hidden="hidden">     </div>  </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad11" hidden="hidden"> <div class="column" id="ansDiv11" hidden="hidden">     </div>  </td>
 
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input class="column" type="radio" name="ans" value="0" id="rad12" hidden="hidden"> <div class="column" id="ansDiv12" hidden="hidden">     </div>  </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><input class="column" type="radio" name="ans" value="0" id="rad12" hidden="hidden"> <div class="column" id="ansDiv12" hidden="hidden">     </div>  </td>
 
-                                                    </tr>
-                                                </table>
+                                                        </tr>
+                                                    </table>
 
-                                                <table>
-                                                    <tr>
-                                                    </tr>
-                                                </table>
+                                                    <table>
+                                                        <tr>
+                                                        </tr>
+                                                    </table>
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="text-center mt-lg">
-                                <input id="Previous" class="btn btn-warning" value="Previous" name="Command" />
-                                <input id="Next" class="btn btn-success" value="Next" name="Command" />
-                            </div>
-                            <div class="text-center mt-lg">
-                                <h5 style=" color:crimson;"> If you click submit, your exam will end immediately. </h5>
-                                @using (Html.BeginForm("ExamResult", "Question", FormMethod.Post))
-                                {
-                                    <input id="btnResult" style="background-color:rebeccapurple; color:white;" class="btn" type="submit" value="See Your Result" />
-                                }
-                            </div>
+                                <div class="text-center mt-lg">
+                                    <input id="Previous" class="btn btn-warning" value="Previous" name="Command" />
+                                    <input id="Next" class="btn btn-success" value="Next" name="Command" />
+                                </div>
+                                <div class="text-center mt-lg">
+                                    <h5 style=" color:crimson;"> If you click submit, your exam will end immediately. </h5>
+                                    @using (Html.BeginForm("ExamResult", "Question", FormMethod.Post))
+                                    {
+                                        <input id="btnResult" style="background-color:rebeccapurple; color:white;" class="btn" type="submit" value="See Your Result" />
+                                    }
+                                </div>
 
-                            <div class="panel panel-default" style="height:250px;">
+                                <div class="panel panel-default" style="height:250px;">
 
-                                <div class="ibox float-e-margins" align="center">
-                                    <div class="ibox-content">
+                                    <div class="ibox float-e-margins" align="center">
+                                        <div class="ibox-content">
 
-                                        @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
-                                        <div class="form-group" style="margin-right: -300px;">
-                                            <div class="col-sm-10 center" style="width: 20%;">
-                                                <table style="border-collapse:collapse; width:10%; position:center;" id="answertable">
-                                                    <tr>
-                                                        @*<td background-color:forestgreen; color: black;>01</td>
+                                            @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
+                                            <div class="form-group" style="margin-right: -300px;">
+                                                <div class="col-sm-10 center" style="width: 20%;">
+                                                    <table style="border-collapse:collapse; width:10%; position:center;" id="answertable">
+                                                        <tr>
+                                                            @*<td background-color:forestgreen; color: black;>01</td>
                                                             <td style="color: black;">02</td>
                                                             <td style="background-color:forestgreen; color: sandybrown;">03</td>
                                                             <td style="color: sandybrown;">04</td>
@@ -180,19 +184,20 @@
                                                             <td style="color: black;">08</td>
                                                             <td style="color: black;">09</td>
                                                             <td style="color: black;">10</td>*@
-                                                    </tr>
-                                                </table>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
+
                                         </div>
-
                                     </div>
-                                </div>
 
+                                </div>
                             </div>
+
                         </div>
 
                     </div>
-
                 </div>
             </div>
         </div>
@@ -232,8 +237,8 @@
     @Scripts.Render("~/bundles/demoForms")
     @Scripts.Render("~/bundles/select2")
     <script src="~/Scripts/jquery.countdown.min.js"></script>
-  
-    
+
+
     @Scripts.Render("~/bundles/fileUpload")
     @Scripts.Render("~/bundles/demoUpload")
 
@@ -246,23 +251,23 @@
 
         }
 
-        GetNextQuestion($('#pageindex').val(), $('#pagesize').val(),null);
+        GetNextQuestion($('#pageindex').val(), $('#pagesize').val(), null);
 
         $('#Next').click(function () {
 
             var index = $('#pageindex').val();
 
             var qcount = $('#qCnt').val();
-          
-            if(parseInt(index) < parseInt(qcount))
-            index = parseInt(index) + 1;
+
+            if (parseInt(index) < parseInt(qcount))
+                index = parseInt(index) + 1;
             $('#pageindex').val(index);
 
             var radioValue = $("input[name='ans']:checked").val();
             //console.log('ok');
             //console.log(qcount);
 
-            
+
 
             GetNextQuestion($('#pageindex').val(), $('#pagesize').val(), radioValue);
 
@@ -272,63 +277,63 @@
 
             var index = $('#pageindex').val();
 
-            if(parseInt(index) >= 2)
-            index = parseInt(index) - 1;
+            if (parseInt(index) >= 2)
+                index = parseInt(index) - 1;
             $('#pageindex').val(index);
 
             var radioValue1 = $("input[name='ans']:checked").val();
-            GetNextQuestion($('#pageindex').val(), $('#pagesize').val(),radioValue1);
+            GetNextQuestion($('#pageindex').val(), $('#pagesize').val(), radioValue1);
         });
 
         var secsleft;
-        
-        
-      
-        var t=$('#loadconfigdata').val();
 
-        var jqxhr = $.getJSON( t, function() {
-          console.log( "success" );
+
+
+        var t = $('#loadconfigdata').val();
+
+        var jqxhr = $.getJSON(t, function () {
+            console.log("success");
         })
-          .done(function(data) {
-              console.log("second success");
-             
-              var timer2 = data.toFixed(2);
-              timer2 = timer2.replace('.', ':');
-              //var xx = timer2.split(':');
+            .done(function (data) {
+                console.log("second success");
 
-              console.log(timer2);
-              var seconds;
-              var timer;
-                var interval = setInterval(function() {
-    
-                   timer = timer2.split(':');
-                  //by parsing integer, I avoid all extra string processing
+                var timer2 = data.toFixed(2);
+                timer2 = timer2.replace('.', ':');
+                //var xx = timer2.split(':');
+
+                console.log(timer2);
+                var seconds;
+                var timer;
+                var interval = setInterval(function () {
+
+                    timer = timer2.split(':');
+                    //by parsing integer, I avoid all extra string processing
                     var minutes = parseInt(timer[0], 10);
                     seconds = parseInt(timer[1], 10);
 
-                   
-                  --seconds;
-                  minutes = (seconds < 0) ? --minutes : minutes;
-                  if (minutes < 0) clearInterval(interval);
-                  seconds = (seconds < 0) ? 59 : seconds;
-                  seconds = (seconds < 10) ? '0' + seconds : seconds;
-                  //minutes = (minutes < 10) ?  minutes : minutes;
-                  $('#clock').html(minutes + ':' + seconds);
-                  timer2 = minutes + ':' + seconds;
-                }, 1000);
-          })
-          .fail(function() {
-            console.log( "error" );
-          })
-          .always(function() {
-            console.log( "complete" );
-          });
- 
 
-        
+                    --seconds;
+                    minutes = (seconds < 0) ? --minutes : minutes;
+                    if (minutes < 0) clearInterval(interval);
+                    seconds = (seconds < 0) ? 59 : seconds;
+                    seconds = (seconds < 10) ? '0' + seconds : seconds;
+                    //minutes = (minutes < 10) ?  minutes : minutes;
+                    $('#clock').html(minutes + ':' + seconds);
+                    timer2 = minutes + ':' + seconds;
+                }, 1000);
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+            });
+
+
+
 
         //function startTimer(fiveSeconds) {
-            
+
         //    var countdowntime =   fiveSeconds;  // +
         //    console.log('time left');
         //    console.log(countdowntime);
@@ -336,7 +341,7 @@
         //        .on('update.countdown', function (event) {
         //            var $this = $(this);
         //            if (event.elapsed) {
-                       
+
         //                localStorage.removeItem('seconds');
         //                $('#Next').prop('disabled', true);
         //                $('#Previous').prop('disabled',true);
@@ -356,8 +361,8 @@
         //        });
         //}
 
-            
-        
+
+
 
 
         //window.onload = function () {
@@ -388,16 +393,16 @@
 
 
         if (window.performance) {
-          console.info("window.performance works fine on this browser");
+            console.info("window.performance works fine on this browser");
         }
-          if (performance.navigation.type == 1) {
-              console.info("This page is reloaded");
-              $('#Next').prop('disabled', true);
-              $('#Previous').prop('disabled',true);
+        if (performance.navigation.type == 1) {
+            console.info("This page is reloaded");
+            $('#Next').prop('disabled', true);
+            $('#Previous').prop('disabled', true);
 
-          } else {
-            console.info( "This page is not reloaded");
-          }
+        } else {
+            console.info("This page is not reloaded");
+        }
 
 
         //var timer = new Timer();

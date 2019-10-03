@@ -293,6 +293,9 @@
               console.log("second success");
              
               var timer2 = data.toFixed(2);
+              timer2 = timer2.replace('.', ':');
+              //var xx = timer2.split(':');
+
               console.log(timer2);
               var seconds;
               var timer;
@@ -302,7 +305,8 @@
                   //by parsing integer, I avoid all extra string processing
                     var minutes = parseInt(timer[0], 10);
                     seconds = parseInt(timer[1], 10);
-                    
+
+                   
                   --seconds;
                   minutes = (seconds < 0) ? --minutes : minutes;
                   if (minutes < 0) clearInterval(interval);

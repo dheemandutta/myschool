@@ -38,7 +38,7 @@
 </head>
 <body style="background-image: url(../background/depart.jpg);
     background-size: cover;">
-    <div style="width:1090px; position:center;">
+    <div style= "position:absolute; width: 80%; height: 100%; left: 10%; top: 5%;">
         @Html.Hidden("loaddata", @Url.Action("GetNextQuestion", "Question"))
         @Html.Hidden("loadconfigdata", @Url.Action("GettblConfigByExamTime", "Question"))
 

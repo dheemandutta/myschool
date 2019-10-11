@@ -189,6 +189,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AdmissionController.cs" />
     <Compile Include="Controllers\ChoiceController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ExamController.cs" />
@@ -525,6 +526,7 @@
     <Content Include="Sql Script\fullscript_24092019.sql" />
     <Content Include="Sql Script\fullscript_25092019.sql" />
     <Content Include="Sql Script\fullscript_26092019.sql" />
+    <Content Include="Sql Script\PP_FullScriptOfMySchool_11_10_2019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_23_09_2019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_24_09_2019.sql" />
     <Content Include="Sql Script\PP_FullScriptOfMySchool_25_09_2019.sql" />
@@ -1034,6 +1036,7 @@
     <Content Include="Views\Question\Exam.cshtml" />
     <Content Include="Views\Result\MockTestResult.cshtml" />
     <Content Include="Views\Result\RealExamResult.cshtml" />
+    <Content Include="Views\Admission\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

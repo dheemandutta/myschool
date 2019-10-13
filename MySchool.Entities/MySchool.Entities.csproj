@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="AdmissionEntities.cs" />
     <Compile Include="AdmissionDetailsEntities.cs" />
+    <Compile Include="AdmissionFormEntities.cs" />
     <Compile Include="AnnouncementEntities.cs" />
     <Compile Include="AnsweredQuestions.cs" />
     <Compile Include="AnswerEntities.cs" />

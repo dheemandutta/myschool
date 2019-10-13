@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdmissionFormDAL.cs" />
     <Compile Include="ChoiceDAL.cs" />
     <Compile Include="ExamDAL.cs" />
     <Compile Include="GradeDAL.cs" />

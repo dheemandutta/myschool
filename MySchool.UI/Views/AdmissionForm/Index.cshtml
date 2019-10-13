@@ -4,7 +4,7 @@
     ViewBag.Title = "Student Information";
 }
 
-<h2>Index</h2>
+<h2>Student Details</h2>
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/StudentHealth.js"></script>
@@ -111,11 +111,33 @@
                                         <input type="text" class="form-control" style="width:100%" id="txtAddress" placeholder="Mother Tounge" required="">
                                     </div>
                                 </div>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label>Applied for class*</label>
+                                        <select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
+                                            <option value="">Select</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
+                                    </div>
+                                </div>
+
                             </div>
+
                         </div>
                     </div>
-
-                    <!-- Fathers's Information-->
+                    </div>
+                   
+                <!-- Fathers's Information-->
                     <div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -232,6 +254,7 @@
                         </div>
                     </div>
 
+                  
                     <!-- Guardian Information-->
                     <div class="panel b">
                         <div class="panel-heading">
@@ -321,84 +344,60 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Order Review-->
+                  
+                    
+                    <!-- Photo Upload-->
                     <div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse6">6. Order Review</a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse5">5. Photo upload</a>
                             </h4>
                         </div>
-                        <div id="acc1collapse6" class="panel-collapse collapse">
-                            <div id="collapse06" class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <colgroup>
-                                            <col span="1" class="order-pic" />
-                                            <col span="1" class="order-item-name" />
-                                            <col span="1" class="order-qty" />
-                                            <col span="1" class="order-price" />
-                                            <col span="1" class="order-tax" />
-                                            <col span="1" class="order-total" />
-                                        </colgroup>
-                                        <thead class="bg-gray-lighter">
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Product Title</th>
-                                                <th class="wd-xs">Qty</th>
-                                                <th>Unit Price</th>
-                                                <th>Tax</th>
-                                                <th>Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <td colspan="5">Subtotal</td>
-                                                <td>$1540.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="5">Shipping &amp; Handling (Free)</td>
-                                                <td>$0.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="5">Tax</td>
-                                                <td>$49.00</td>
-                                            </tr>
-                                            <tr class="order-subtotal">
-                                                <td colspan="5">Subtotal</td>
-                                                <td>$1340.00</td>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
-                                            <tr>
-                                                <td class="order-pic thumb64">
-                                                    <img src="~/Content/Images/dummy.png" />
-                                                </td>
-                                                <td class="order-item-name">Lorem Ipsum dolor</td>
-                                                <td class="order-qty">
-                                                    <input type="text" name="checkout-qty" value="1" class="form-control" />
-                                                </td>
-                                                <td class="order-price">$825.00</td>
-                                                <td class="order-tax">$16.00</td>
-                                                <td class="order-total">$841.00</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="order-pic">
-                                                    <img src="~/Content/Images/dummy.png" />
-                                                </td>
-                                                <td class="order-item-name">Lorem Ipsum dolor</td>
-                                                <td class="order-qty">
-                                                    <input type="text" name="checkout-qty" value="1" class="form-control" />
-                                                </td>
-                                                <td class="order-price">$825.00</td>
-                                                <td class="order-tax">$16.00</td>
-                                                <td class="order-total">$841.00</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                        <div id="acc1collapse5" class="panel-collapse collapse">
+                            <div id="collapse05" class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Student Photo*</label>
+                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Father's Photo*</label>
+                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Father's signature*</label>
+                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Mothers's Photo*</label>
+                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Mothers's signature*</label>
+                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="mt-lg">
-                                    <button type="button" class="btn btn-info">Submit Order</button>
+                                    <button type="button" class="btn btn-info">Submit Form</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>

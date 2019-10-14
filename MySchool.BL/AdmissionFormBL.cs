@@ -1,13 +1,18 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
+using MySchool.Entities;
+using MySchool.DAL;
 namespace MySchool.BL
 {
-    class AdmissionFormBL
+    public class AdmissionFormBL
     {
+        public List<AdmissionFormEntities> GetAdmissionFormPageWise(int pageIndex, ref int recordCount, int length)
+        {
+            AdmissionFormDAL admissionFormDAL = new AdmissionFormDAL();
+            return admissionFormDAL.GetAdmissionFormPageWise(pageIndex, ref recordCount, length);
+        }
     }
 }

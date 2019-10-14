@@ -68,5 +68,43 @@ namespace MySchool.DAL
             con.Close();
             return recordAffected;
         }
+
+        public List<AdmissionFormEntities> GetAdmissionFormPageWise(int pageIndex, ref int recordCount, int length)
+        {
+            List<AdmissionFormEntities> topicEntities = new List<AdmissionFormEntities>();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("stpGetAdmissionFormPageWise", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+                    cmd.Parameters.AddWithValue("@PageSize", length);
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4);
+                    cmd.Parameters["@RecordCount"].Direction = ParameterDirection.Output;
+                    con.Open();
+
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        topicEntities.Add(new AdmissionFormEntities
+                        {
+                            ID = Convert.ToInt32(dr["Id"]),
+                            FormNumber = Convert.ToString(dr["FormNumber"]),
+                            StudentName = Convert.ToString(dr["StudentName"]),
+                            DOB1 = Convert.ToString(dr["DOB"]),
+                            Address = Convert.ToString(dr["Address"]),
+                            IdentificationMarks = Convert.ToString(dr["IdentificationMarks"])
+                        });
+                    }
+                    recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);
+                    con.Close();
+                }
+            }
+            return topicEntities;
+        }
     }
 }

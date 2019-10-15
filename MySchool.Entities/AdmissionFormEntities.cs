@@ -16,6 +16,7 @@ namespace MySchool.Entities
         public string SLNAme { get; set; }
         public string Gender { get; set; }
         public DateTime DOB { get; set; }
+        public string DOB1 { get; set; }
         public string FFName { get; set; }
         public string FMName { get; set; }
         public string FLName { get; set; }
@@ -46,5 +47,7 @@ namespace MySchool.Entities
         public string FContactNo { get; set; }
         public string MContactNo { get; set; }
         public string Email { get; set; }
+
+        public string StudentName { get; set; }
     }
 }

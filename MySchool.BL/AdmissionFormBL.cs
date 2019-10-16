@@ -14,5 +14,11 @@ namespace MySchool.BL
             AdmissionFormDAL admissionFormDAL = new AdmissionFormDAL();
             return admissionFormDAL.GetAdmissionFormPageWise(pageIndex, ref recordCount, length);
         }
+
+        public int SaveOrUpdate(AdmissionFormEntities admissionForm)
+        {
+            AdmissionFormDAL admissionfromDal = new AdmissionFormDAL();
+            return admissionfromDal.SaveorUpdate(admissionForm);
+        }
     }
 }

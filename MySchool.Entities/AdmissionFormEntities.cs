@@ -48,6 +48,9 @@ namespace MySchool.Entities
         public string MContactNo { get; set; }
         public string Email { get; set; }
 
+        public string Religion { get; set; }
+        public string Caste { get; set; }
+        public DateTime FormFillDate { get; set; }
         public string StudentName { get; set; }
     }
 }

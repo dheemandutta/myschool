@@ -60,5 +60,12 @@ namespace MySchool.UI.Controllers
             var data = topicEntities;
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult SaveOrUpdate(AdmissionFormEntities admissionForm)
+        {
+            AdmissionFormBL admissionBl = new AdmissionFormBL();
+            int recordAffected = admissionBl.SaveOrUpdate(admissionForm);
+            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
     }
 }

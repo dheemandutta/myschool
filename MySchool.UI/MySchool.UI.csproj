@@ -507,6 +507,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\jquery.countdown.js" />
     <Content Include="Scripts\jquery.countdown.min.js" />
+    <Content Include="Scripts\knockout-3.5.0.debug.js" />
+    <Content Include="Scripts\knockout-3.5.0.js" />
     <Content Include="Scripts\Question.js" />
     <Content Include="Scripts\QuestionPaper.js" />
     <Content Include="Scripts\Section.js" />

@@ -132,8 +132,8 @@ namespace MySchool.UI
                         "~/Vendor/modernizr/modernizr.custom.js"
             ));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Vendor/bootstrap/dist/js/bootstrap.js"
+            bundles.Add(new ScriptBundle("~/bundles/knockout").Include(
+                      "~/Scripts/knockout-3.5.0.js"
             ));
 
             // Vendor Plugins

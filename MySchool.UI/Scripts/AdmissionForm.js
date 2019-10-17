@@ -2,7 +2,8 @@
 
 //saveadmissionform
 
-SaveOrUpdate
+
+
 
 function SaveOrUpdate() {
     var postUrl = $('#saveadmissionform').val();

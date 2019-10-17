@@ -22,6 +22,9 @@ namespace MySchool.UI.Controllers
         [HttpPost]
         public ActionResult Index(AdmissionFormEntities admissionForm)
         {
+            AdmissionFormBL admissionBl = new AdmissionFormBL();
+            admissionBl.SaveOrUpdate(admissionForm);
+
             return View();
         }
 

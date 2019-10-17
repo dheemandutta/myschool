@@ -347,12 +347,12 @@
                         </div>
                         <div id="acc1collapse4" class="panel-collapse collapse">
                             <div id="collapse04" class="panel-body">
-                                <div class="row">
+                                @*<div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <div class="radio c-radio">
                                                 <label>
-                                                    @*<input id="chkFather" type="radio" name="checkout-pay" value="Father" checked="checked" class="form-control" />*@
+                                                    <input id="chkFather" type="radio" name="checkout-pay" value="Father" checked="checked" class="form-control" />
                                                     @Html.RadioButtonFor(model => model.RelationWithGuardian, "yes", new { id = "chkFather" })
 
                                                     <span class="fa fa-check"></span>Father as Guardian
@@ -360,29 +360,31 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <div class="radio c-radio">
-                                            <label>
-                                                @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkMother" })
-                                                <span class="fa fa-check"></span>Mother as Guardian
-                                            </label>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <div class="radio c-radio">
+                                                <label>
+                                                    @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkMother" })
+                                                    <span class="fa fa-check"></span>Mother as Guardian
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <div class="radio c-radio">
-                                            <label>
-                                                @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkOthers" })
-                                                <span class="fa fa-check"></span>Others
-                                            </label>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <div class="radio c-radio">
+                                                <label>
+                                                    @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkOthers" })
+                                                    <span class="fa fa-check"></span>Others
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
+                                </div>*@
+                                
+
+                              
                                 <div id="collapse03" class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-4">
@@ -485,8 +487,10 @@
                                     <input type="hidden" id="FormID" />
                                 </div>
                                 <div class="mt-lg">
-                                    <button type="button" id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>
-                                    <button type="button" id="btnSaveOrUpdate" class="btn btn-info" onclick="ClearAll">Clear all</button>
+                                    @*<button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>*@
+
+                                    <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>
+                                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
                                 </div>
 
                             </div>

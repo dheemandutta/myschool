@@ -46,7 +46,7 @@ function SaveOrUpdate() {
 
         IdentificationMarks: $('#txtIdentificationMarks').val(),
         SpecialMedicalProblem: $('#txtSpecialMedicalProblem').val(),
-        RelationWithGuardian: $('#txtRelationship').val(),
+        RelationWithGuardian : $('#txtRelationship').val(),
 
         //Photo upload part
         //SPhoto: $('#').val(),

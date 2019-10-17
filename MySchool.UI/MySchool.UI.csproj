@@ -475,6 +475,7 @@
     <Content Include="Content\Json\jqgrid-tree.json" />
     <Content Include="Content\Json\jqgrid.json" />
     <Content Include="Content\Json\xeditable-groups.json" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\Choice.js" />
     <Content Include="Scripts\demo\demo-dashboard.js" />
     <Content Include="Scripts\demo\demo-datatable.js" />

@@ -48,7 +48,7 @@
         </footer>
     </div>
     @if (IsSectionDefined("BodyArea"))
-        {@RenderSection("BodyArea", required: false)}
+    {@RenderSection("BodyArea", required: false)}
     <!-- =============== VENDOR SCRIPTS ===============-->
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/matchMedia")
@@ -58,9 +58,11 @@
     @Scripts.Render("~/bundles/jqueryEasing")
     @Scripts.Render("~/bundles/animo")
     @Scripts.Render("~/bundles/slimscroll")
+    @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/screenfull")
     @Scripts.Render("~/bundles/localize")
     @Scripts.Render("~/bundles/demoRTL")
+
     <!-- =============== PAGE VENDOR SCRIPTS ===============-->
     @RenderSection("scripts", required: false)
     <!-- =============== APP SCRIPTS ===============-->

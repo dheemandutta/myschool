@@ -475,6 +475,7 @@
     <Content Include="Content\Json\jqgrid-tree.json" />
     <Content Include="Content\Json\jqgrid.json" />
     <Content Include="Content\Json\xeditable-groups.json" />
+    <Content Include="Scripts\bootstrap-multiselect.js" />
     <Content Include="Scripts\Choice.js" />
     <Content Include="Scripts\demo\demo-dashboard.js" />
     <Content Include="Scripts\demo\demo-datatable.js" />
@@ -507,6 +508,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <Content Include="Scripts\jquery.countdown.js" />
     <Content Include="Scripts\jquery.countdown.min.js" />
+    <Content Include="Scripts\knockout-3.5.0.debug.js" />
+    <Content Include="Scripts\knockout-3.5.0.js" />
     <Content Include="Scripts\Question.js" />
     <Content Include="Scripts\QuestionPaper.js" />
     <Content Include="Scripts\Section.js" />

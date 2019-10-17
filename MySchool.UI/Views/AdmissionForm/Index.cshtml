@@ -16,7 +16,7 @@
     <div class="col-md-9">
         <div class="container-md">
             <!-- Checkout Process-->
-            <form action="" novalidate="novalidate">
+            <form novalidate="novalidate" method="post">
                 <div id="accordion" class="panel-group">
                     <!-- Basic Information-->
                     <div class="panel b">
@@ -405,7 +405,7 @@
                                         <input type="file" id="photoStudent" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
                                     </div>
                                 </div>
-                                <img id='img-upload' />
+                                @*<img id='img-upload' />*@
                             </div>
                             <div class="row">
                                 <div class="col-lg-4">
@@ -446,7 +446,8 @@
                                 <input type="hidden" id="FormID" />
                             </div>
                             <div class="mt-lg">
-                                <button type="button" id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>
+                                @*<button type="button"  id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>*@
+                                <input type="submit" id="btnSaveOrUpdate" class="btn btn-info" value="Submit Form" />
                                 <button type="button" id="btnSaveOrUpdate" class="btn btn-info" onclick="ClearAll">Clear all</button>
                             </div>
 

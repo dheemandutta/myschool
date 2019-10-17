@@ -8,7 +8,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using MySchool.Entities;
-using AutoMapper;
+
 
 namespace MySchool.DAL
 {

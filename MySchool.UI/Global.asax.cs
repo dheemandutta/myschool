@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
+
 namespace MySchool.UI
 {
     public class MvcApplication : System.Web.HttpApplication
@@ -16,6 +17,11 @@ namespace MySchool.UI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //AutoMapperRegister();
         }
+
+        
+        
     }
 }

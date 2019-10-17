@@ -16,7 +16,7 @@
     <div class="col-md-9">
         <div class="container-md">
             <!-- Checkout Process-->
-            <form novalidate="novalidate" method="post">
+            <form action="" novalidate="novalidate">
                 <div id="accordion" class="panel-group">
                     <!-- Basic Information-->
                     <div class="panel b">
@@ -31,19 +31,20 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>First Name*</label>
-                                            <input type="text" id="txtStudentFirstName" name="checkout-studentfirstname" placeholder="Student First Name" required="" class="form-control" />
+                                            @*<input type="text" id="txtStudentFirstName" name="checkout-studentfirstname" placeholder="Student First Name" required="" class="form-control" />*@
+                                            @Html.TextBoxFor(m => m.SFName,new { @class = "form-control", @placeholder= "Student First Name", @required="", id= "txtStudentFirstName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Middle Name</label>
-                                            <input type="text" id="txtStudentMiddleName" name="checkout-studentmiddlename" placeholder="Student Middle Name" class="form-control" />
+                                            @Html.TextBoxFor(m => m.SMName, new { @class = "form-control", @placeholder = "Student Middle Name", id = "txtStudentMiddleName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Last Name*</label>
-                                            <input type="text" id="txtStudentLastName" name="checkout-studentlastname" placeholder="Student Last Name" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.SLNAme, new { @class = "form-control", @placeholder = "Student Last Name", @required = "", id = "txtStudentLastName" })
                                         </div>
                                     </div>
                                 </div>
@@ -63,24 +64,39 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Gender*</label>
-                                            <select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
                                                 <option value="">Select</option>
                                                 <option value="Male">Male</option>
                                                 <option value="Female">Female</option>
                                                 <option value="Others">Others</option>
-                                            </select>
+                                            </select>*@
+                                            @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Select", Value = "" },
+                                                   new SelectListItem{ Text="Male", Value = "Male" },
+                                                   new SelectListItem{ Text="Female", Value = "Female" },
+                                                   new SelectListItem{ Text="Others", Value = "Others" }
+                                                },new {name="Gender", @class="form-control m-b", @style="width:50%", @id="drpGender", @required=""})
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Religion*</label>
-                                            <select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
                                                 <option value="">Select</option>
                                                 <option value="Hindu">Hindu</option>
                                                 <option value="Muslim">Muslim</option>
                                                 <option value="Christian">Christian</option>
                                                 <option value="Others">Others</option>
-                                            </select>
+                                            </select>*@
+                                            @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
+                                                   {
+                                                      new SelectListItem{ Text="Select", Value = "" },
+                                                      new SelectListItem{ Text="Hindu", Value = "Hindu" },
+                                                      new SelectListItem{ Text="Muslim", Value = "Muslim" },
+                                                      new SelectListItem{ Text="Christian", Value = "Christian" },
+                                                      new SelectListItem{ Text="Others", Value = "Others" }
+                                                   }, new { name = "Religion", @class = "form-control m-b", @style = "width:50%", @id = "drpReligion", @required = "" })
                                         </div>
                                     </div>
                                 </div>
@@ -89,19 +105,28 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Caste*</label>
-                                            <select name="account" class="form-control m-b" style="width:50%" id="drpCaste" required="">
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpCaste" required="">
                                                 <option value="">Select</option>
                                                 <option value="General">General</option>
                                                 <option value="OBC">OBC</option>
                                                 <option value="SC">SC</option>
                                                 <option value="ST">ST</option>
-                                            </select>
+                                            </select>*@
+                                            @Html.DropDownListFor(m => m.Caste, new List<SelectListItem>
+                                                  {
+                                                     new SelectListItem{ Text="Select", Value = "" },
+                                                     new SelectListItem{ Text="General", Value = "General" },
+                                                     new SelectListItem{ Text="OBC", Value = "OBC" },
+                                                     new SelectListItem{ Text="SC", Value = "SC" },
+                                                     new SelectListItem{ Text="ST", Value = "ST" }
+                                                 }, new { name = "Caste", @class = "form-control m-b", @style = "width:50%", @id = "drpCaste", @required = "" })
                                         </div>
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="form-group">
                                             <label>Address*</label>
-                                            <input type="text" class="form-control" style="width:100%" id="txtAddress" placeholder="Address" required="">
+                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address", @required = "", id = "txtAddress" })
+
                                         </div>
                                     </div>
                                 </div>
@@ -109,20 +134,21 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input type="text" class="form-control" style="width:100%" id="txtEmail" placeholder="Email" required="">
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email",  id = "txtEmail" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Mother tounge*</label>
-                                            <input type="text" class="form-control" style="width:100%" id="txtMotherToung" placeholder="Mother Tounge" required="">
+                                            @Html.TextBoxFor(m => m.MoutherTounge, new { @class = "form-control", @placeholder = "Mother Tounge", @required = "", id = "txtMotherToung" })
                                         </div>
                                     </div>
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Identification Marks*</label>
-                                            <input type="text" class="form-control" style="width:100%" id="txtIdentificationMarks" placeholder="Identification marks" required="">
+                                            @Html.TextBoxFor(m => m.IdentificationMarks, new { @class = "form-control", @placeholder = "Identification marks", @required = "", id = "txtIdentificationMarks" })
+
                                         </div>
                                     </div>
 
@@ -132,25 +158,41 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Special medical problem*</label>
-                                            <input type="text" class="form-control" style="width:100%" id="txtSpecialMedicalProblem" placeholder="Special medical problem" required="">
+                                            @Html.TextBoxFor(m => m.SpecialMedicalProblem, new { @class = "form-control", @placeholder = "Special medical problem", @required = "", id = "txtSpecialMedicalProblem" })
+
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Applied for class*</label>
-                                            <select name="account" class="form-control m-b" style="width:50%" id="drpGrade" required="">
-                                                <option value="">Select</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                            </select>
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGrade" required="">
+                                                    <option value="">Select</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>*@
+                                            @Html.DropDownListFor(m => m.GradeID, new List<SelectListItem>     ///////////////////////////////////////////////////////
+                                              {
+                                                 new SelectListItem{ Text="Select", Value = "" },
+                                                 new SelectListItem{ Text="1", Value = "1" },
+                                                 new SelectListItem{ Text="2", Value = "2" },
+                                                 new SelectListItem{ Text="3", Value = "3" },
+                                                 new SelectListItem{ Text="4", Value = "4" },
+                                                 new SelectListItem{ Text="5", Value = "5" },
+                                                 new SelectListItem{ Text="6", Value = "6" },
+                                                 new SelectListItem{ Text="7", Value = "7" },
+                                                 new SelectListItem{ Text="8", Value = "8" },
+                                                 new SelectListItem{ Text="9", Value = "9" },
+                                                 new SelectListItem{ Text="10", Value = "10" }
+                                              }, new { name = "Grade", @class = "form-control m-b", @style = "width:50%", @id = "drpGrade", @required = "" })
+
                                         </div>
                                     </div>
 
@@ -173,19 +215,20 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>First Name*</label>
-                                            <input type="text" id="txtFatherFirstName" name="checkout-Fatherfirstname" placeholder="Father First Name" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.FFName, new { @class = "form-control", @placeholder = "Father First Name", @required = "", id = "txtFatherFirstName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Middle Name</label>
-                                            <input type="text" id="txtFatherMiddleName" name="checkout-Fathermiddlename" placeholder="Father Middle Name" class="form-control" />
+                                            @Html.TextBoxFor(m => m.FMName, new { @class = "form-control", @placeholder = "Father Middle Name",  id = "txtFatherMiddleName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Last Name*</label>
-                                            <input type="text" id="txtFatherLastName" name="checkout-Fatherlastname" placeholder="Father Last Name" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.FLName, new { @class = "form-control", @placeholder = "Father Last Name", @required = "", id = "txtFatherLastName" })
+
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +237,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Contact No.*</label>
-                                            <input type="text" name="checkout-ship-city" id="txtContactNoFather" placeholder="Contact no." required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.FContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactNoFather" })
                                         </div>
 
 
@@ -202,14 +245,14 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Qualification*</label>
-                                            <input type="text" name="checkout-ship-zip" id="txtQualificationFather" placeholder="Qualification" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.FatherQualification, new { @class = "form-control", @placeholder = "Qualification", @required = "", id = "txtQualificationFather" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
 
                                         <div class="form-group">
                                             <label>Occupation*</label>
-                                            <input type="text" name="checkout-ship-telephone" id="txtOccupationFather" placeholder="Occupation" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.FatherOccupation, new { @class = "form-control", @placeholder = "Occupation", @required = "", id = "txtOccupationFather" })
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +262,7 @@
 
                                         <div class="form-group">
                                             <label>Annual Income*</label>
-                                            <input type="text" name="checkout-ship-telephone" id="txtAnnualIncomeFather" placeholder="Annual income" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.FatherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", @required = "", id = "txtAnnualIncomeFather" })
                                         </div>
                                     </div>
 
@@ -227,7 +270,6 @@
                             </div>
                         </div>
                     </div>
-
 
                     <!-- Mother's Information-->
                     <div class="panel b">
@@ -242,19 +284,19 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>First Name*</label>
-                                            <input type="text" id="txtMotherFirstName" name="checkout-Motherfirstname" placeholder="Mother First Name" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.MFName, new { @class = "form-control", @placeholder = "Mother First Name", @required = "", id = "txtMotherFirstName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Middle Name</label>
-                                            <input type="text" id="txtMotherMiddleName" name="checkout-Mothermiddlename" placeholder="Mother Middle Name" class="form-control" />
+                                            @Html.TextBoxFor(m => m.MMName, new { @class = "form-control", @placeholder = "Mother Middle Name", id = "txtMotherMiddleName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Last Name*</label>
-                                            <input type="text" id="txtMotherLastName" name="checkout-Motherlastname" placeholder="Mother Last Name" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
                                         </div>
                                     </div>
                                 </div>
@@ -263,20 +305,20 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Contact No.*</label>
-                                            <input type="text" name="checkout-ship-city" id="txtContactNumberMother" placeholder="Contact no." required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.MContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactNumberMother" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Qualification*</label>
-                                            <input type="text" name="checkout-ship-zip" id="txtQualificationMother" placeholder="Qualification" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.MotherQualification, new { @class = "form-control", @placeholder = "Qualification", @required = "", id = "txtQualificationMother" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
 
                                         <div class="form-group">
                                             <label>Occupation*</label>
-                                            <input type="text" name="checkout-ship-telephone" id="txtOccupationMother" placeholder="Occupation" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.MotherOccupation, new { @class = "form-control", @placeholder = "Occupation", @required = "", id = "txtOccupationMother" })
                                         </div>
                                     </div>
                                 </div>
@@ -286,7 +328,7 @@
 
                                         <div class="form-group">
                                             <label>Annual Income*</label>
-                                            <input type="text" name="checkout-ship-telephone" id="txtAnnualIncomeMother" placeholder="Annual income" required="" class="form-control" />
+                                            @Html.TextBoxFor(m => m.MotherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", @required = "", id = "txtAnnualIncomeMother" })
                                         </div>
                                     </div>
 
@@ -296,69 +338,128 @@
                         </div>
                     </div>
                
+                    <!-- Guardian Information-->
+                    <div class="panel b">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse4">4. Guardian's Information</a>
+                            </h4>
+                        </div>
+                        <div id="acc1collapse4" class="panel-collapse collapse">
+                            <div id="collapse04" class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <div class="radio c-radio">
+                                                <label>
+                                                    @*<input id="chkFather" type="radio" name="checkout-pay" value="Father" checked="checked" class="form-control" />*@
+                                                    @Html.RadioButtonFor(model => model.RelationWithGuardian, "yes", new { id = "chkFather" })
 
-
-                <!-- Guardian Information-->
-                <div class="panel b">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse4">4. Guardian's Information</a>
-                        </h4>
-                    </div>
-                    <div id="acc1collapse4" class="panel-collapse collapse">
-                        <div id="collapse04" class="panel-body">
-                            <div class="row">
+                                                    <span class="fa fa-check"></span>Father as Guardian
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <div class="radio c-radio">
                                             <label>
-                                                <input id="chkFather" type="radio" name="checkout-pay" value="Father" checked="checked" class="form-control" />
-                                                <span class="fa fa-check"></span>Father as Guardian
+                                                @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkMother" })
+                                                <span class="fa fa-check"></span>Mother as Guardian
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <div class="radio c-radio">
-                                        <label>
-                                            <input id="chkMother" type="radio" name="checkout-pay" value="Mother" class="form-control" />
-                                            <span class="fa fa-check"></span>Mother as Guardian
-                                        </label>
+
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <div class="radio c-radio">
+                                            <label>
+                                                @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkOthers" })
+                                                <span class="fa fa-check"></span>Others
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-lg-4">
-                                <div class="form-group">
-                                    <div class="radio c-radio">
-                                        <label>
-                                            <input id="chkOthers" type="radio" name="checkout-pay" value="Other" class="form-control" />
-                                            <span class="fa fa-check"></span>Others
-                                        </label>
+                                <div id="collapse03" class="panel-body">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>First Name*</label>
+                                                @Html.TextBoxFor(m => m.GFName, new { @class = "form-control", @placeholder = "Guardian First Name", @required = "", id = "txtGuardianFirstName" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Middle Name</label>
+                                                @Html.TextBoxFor(m => m.GMName, new { @class = "form-control", @placeholder = "Guardian Middle Name", id = "txtGuardianMiddleName" })
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Last Name*</label>
+                                                @Html.TextBoxFor(m => m.GLName, new { @class = "form-control", @placeholder = "Guardian Last Name", @required = "", id = "txtGuardianLastName" })
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    <div class="row">
+                                        @*<div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Contact No.*</label>
+                                                @Html.TextBoxFor(m => m.GContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactno" })
+                                            </div>
+                                        </div>*@
+
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Relationship with Guardian*</label>
+                                                @Html.TextBoxFor(m => m.RelationWithGuardian, new { @class = "form-control", @placeholder = "Relationship", @required = "", id = "txtRelationship" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div id="collapse03" class="panel-body">
+                    <!-- Photo Upload-->
+                    <div class="panel b">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse5">5. Photo upload</a>
+                            </h4>
+                        </div>
+                        <div id="acc1collapse5" class="panel-collapse collapse">
+                            <div id="collapse05" class="panel-body">
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>First Name*</label>
-                                            <input type="text" id="txtGuardianFirstName" name="checkout-Guardianfirstname" placeholder="Guardian First Name" required="" class="form-control" />
+                                            <label>Student Photo*</label>
+                                            <img id="imgStudent" src="~/Images/photoPreview.jpg" accept="image/*" />
+                                            <input type="file" id="photoStudent" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
                                         </div>
                                     </div>
+                                    <img id='img-upload' />
+                                </div>
+                                <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Middle Name</label>
-                                            <input type="text" id="txtGuardianMiddleName" name="checkout-Guardianmiddlename" placeholder="Guardian Middle Name" class="form-control" />
+                                            <label>Father's Photo*</label>
+                                            <img id="imgFather" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                                            <input type="file" id="photoFather" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
                                         </div>
                                     </div>
+
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Last Name*</label>
-                                            <input type="text" id="txtGuardianLastName" name="checkout-Guardianlastname" placeholder="Guardian Last Name" required="" class="form-control" />
+                                            <label>Father's signature*</label>
+                                            <img id="imgFatherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                                            <input type="file" id="photoFatherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
                                         </div>
                                     </div>
                                 </div>
@@ -366,94 +467,31 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Contact No.*</label>
-                                            <input type="text" name="checkout-ship-city" placeholder="Contact no." required="" class="form-control" />
+                                            <label>Mothers's Photo*</label>
+                                            <img id="imgMother" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                                            <input type="file" id="photoMother" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
                                         </div>
-
-
                                     </div>
+
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Relationship with Guardian*</label>
-                                            <input type="text" id="txtRelationship" name="checkout-ship-zip" placeholder="Relationship" required="" class="form-control" />
+                                            <label>Mothers's signature*</label>
+                                            <img id="imgMotherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                                            <input type="file" id="photoMotherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" id="FormID" />
+                                </div>
+                                <div class="mt-lg">
+                                    <button type="button" id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>
+                                    <button type="button" id="btnSaveOrUpdate" class="btn btn-info" onclick="ClearAll">Clear all</button>
                                 </div>
 
                             </div>
                         </div>
                     </div>
-                </div>
-
-
-                <!-- Photo Upload-->
-
-                <div class="panel b">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse5">5. Photo upload</a>
-                        </h4>
-                    </div>
-                    <div id="acc1collapse5" class="panel-collapse collapse">
-                        <div id="collapse05" class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Student Photo*</label>
-                                        <img id="imgStudent" src="~/Images/photoPreview.jpg" accept="image/*" />
-                                        <input type="file" id="photoStudent" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                    </div>
-                                </div>
-                                @*<img id='img-upload' />*@
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Father's Photo*</label>
-                                        <img id="imgFather" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                        <input type="file" id="photoFather" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Father's signature*</label>
-                                        <img id="imgFatherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                        <input type="file" id="photoFatherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Mothers's Photo*</label>
-                                        <img id="imgMother" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                        <input type="file" id="photoMother" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-4">
-                                    <div class="form-group">
-                                        <label>Mothers's signature*</label>
-                                        <img id="imgMotherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                        <input type="file" id="photoMotherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" id="FormID" />
-                            </div>
-                            <div class="mt-lg">
-                                @*<button type="button"  id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>*@
-                                <input type="submit" id="btnSaveOrUpdate" class="btn btn-info" value="Submit Form" />
-                                <button type="button" id="btnSaveOrUpdate" class="btn btn-info" onclick="ClearAll">Clear all</button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
 
 
 
@@ -511,8 +549,8 @@
                                 </div>
 
                             </div>
-                        </div>
-                    </div>*@
+                        </div>*@
+                </div>
 
 
 

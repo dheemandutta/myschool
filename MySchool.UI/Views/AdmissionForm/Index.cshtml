@@ -32,7 +32,7 @@
                                         <div class="form-group">
                                             <label>First Name*</label>
                                             @*<input type="text" id="txtStudentFirstName" name="checkout-studentfirstname" placeholder="Student First Name" required="" class="form-control" />*@
-                                            @Html.TextBoxFor(m => m.SFName,new { @class = "form-control", @placeholder= "Student First Name", @required="", id= "txtStudentFirstName" })
+                                            @Html.TextBoxFor(m => m.SFName, new { @class = "form-control", @placeholder = "Student First Name", @required = "", id = "txtStudentFirstName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -54,7 +54,8 @@
                                         <div class="form-group">
                                             <label>Date of Birth*</label>
                                             <div id="datetimepicker1" class="input-group date" style="width:70%">
-                                                <input type="text" id="txtDateofBirth" class="form-control" required="">
+                                                @*<input type="text" id="txtDateofBirth" class="form-control" required="">*@
+                                                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtStudentDOB" })
                                                 <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
                                                 </span>
@@ -65,30 +66,30 @@
                                         <div class="form-group">
                                             <label>Gender*</label>
                                             @*<select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
-                                                <option value="">Select</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                                <option value="Others">Others</option>
-                                            </select>*@
+                                                    <option value="">Select</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Others">Others</option>
+                                                </select>*@
                                             @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
                                                 {
                                                    new SelectListItem{ Text="Select", Value = "" },
                                                    new SelectListItem{ Text="Male", Value = "Male" },
                                                    new SelectListItem{ Text="Female", Value = "Female" },
                                                    new SelectListItem{ Text="Others", Value = "Others" }
-                                                },new {name="Gender", @class="form-control m-b", @style="width:50%", @id="drpGender", @required=""})
+                                                }, new { name = "Gender", @class = "form-control m-b", @style = "width:50%", @id = "drpGender", @required = "" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Religion*</label>
                                             @*<select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
-                                                <option value="">Select</option>
-                                                <option value="Hindu">Hindu</option>
-                                                <option value="Muslim">Muslim</option>
-                                                <option value="Christian">Christian</option>
-                                                <option value="Others">Others</option>
-                                            </select>*@
+                                                    <option value="">Select</option>
+                                                    <option value="Hindu">Hindu</option>
+                                                    <option value="Muslim">Muslim</option>
+                                                    <option value="Christian">Christian</option>
+                                                    <option value="Others">Others</option>
+                                                </select>*@
                                             @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
                                                    {
                                                       new SelectListItem{ Text="Select", Value = "" },
@@ -106,12 +107,12 @@
                                         <div class="form-group">
                                             <label>Caste*</label>
                                             @*<select name="account" class="form-control m-b" style="width:50%" id="drpCaste" required="">
-                                                <option value="">Select</option>
-                                                <option value="General">General</option>
-                                                <option value="OBC">OBC</option>
-                                                <option value="SC">SC</option>
-                                                <option value="ST">ST</option>
-                                            </select>*@
+                                                    <option value="">Select</option>
+                                                    <option value="General">General</option>
+                                                    <option value="OBC">OBC</option>
+                                                    <option value="SC">SC</option>
+                                                    <option value="ST">ST</option>
+                                                </select>*@
                                             @Html.DropDownListFor(m => m.Caste, new List<SelectListItem>
                                                   {
                                                      new SelectListItem{ Text="Select", Value = "" },
@@ -134,7 +135,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Email</label>
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email",  id = "txtEmail" })
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", id = "txtEmail" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -221,7 +222,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Middle Name</label>
-                                            @Html.TextBoxFor(m => m.FMName, new { @class = "form-control", @placeholder = "Father Middle Name",  id = "txtFatherMiddleName" })
+                                            @Html.TextBoxFor(m => m.FMName, new { @class = "form-control", @placeholder = "Father Middle Name", id = "txtFatherMiddleName" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -337,7 +338,7 @@
 
                         </div>
                     </div>
-               
+
                     <!-- Guardian Information-->
                     <div class="panel b">
                         <div class="panel-heading">
@@ -348,43 +349,43 @@
                         <div id="acc1collapse4" class="panel-collapse collapse">
                             <div id="collapse04" class="panel-body">
                                 @*<div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <div class="radio c-radio">
-                                                <label>
-                                                    <input id="chkFather" type="radio" name="checkout-pay" value="Father" checked="checked" class="form-control" />
-                                                    @Html.RadioButtonFor(model => model.RelationWithGuardian, "yes", new { id = "chkFather" })
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <div class="radio c-radio">
+                                                    <label>
+                                                        <input id="chkFather" type="radio" name="checkout-pay" value="Father" checked="checked" class="form-control" />
+                                                        @Html.RadioButtonFor(model => model.RelationWithGuardian, "yes", new { id = "chkFather" })
 
-                                                    <span class="fa fa-check"></span>Father as Guardian
-                                                </label>
+                                                        <span class="fa fa-check"></span>Father as Guardian
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <div class="radio c-radio">
-                                                <label>
-                                                    @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkMother" })
-                                                    <span class="fa fa-check"></span>Mother as Guardian
-                                                </label>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <div class="radio c-radio">
+                                                    <label>
+                                                        @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkMother" })
+                                                        <span class="fa fa-check"></span>Mother as Guardian
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <div class="radio c-radio">
-                                                <label>
-                                                    @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkOthers" })
-                                                    <span class="fa fa-check"></span>Others
-                                                </label>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <div class="radio c-radio">
+                                                    <label>
+                                                        @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkOthers" })
+                                                        <span class="fa fa-check"></span>Others
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                </div>*@
-                                
+                                    </div>*@
 
-                              
+
+
                                 <div id="collapse03" class="panel-body">
                                     <div class="row">
                                         <div class="col-lg-4">
@@ -409,11 +410,11 @@
 
                                     <div class="row">
                                         @*<div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Contact No.*</label>
-                                                @Html.TextBoxFor(m => m.GContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactno" })
-                                            </div>
-                                        </div>*@
+                                                <div class="form-group">
+                                                    <label>Contact No.*</label>
+                                                    @Html.TextBoxFor(m => m.GContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactno" })
+                                                </div>
+                                            </div>*@
 
                                         <div class="col-lg-4">
                                             <div class="form-group">
@@ -500,7 +501,7 @@
 
 
 
-                @*<div class="panel b">
+                    @*<div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse5">5. Photo upload</a>
@@ -591,13 +592,14 @@
     @Styles.Render("~/bundles/datetimePickerCss")
     @Styles.Render("~/bundles/ColorPickerCss")
     @Styles.Render("~/bundles/select2Css")
+
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryValidate")
     @Scripts.Render("~/bundles/jquerySteps")
     @Scripts.Render("~/bundles/demoWizard")
+    @Scripts.Render("~/bundles/moment")
     @Scripts.Render("~/bundles/datetimePicker")
-
     @Scripts.Render("~/bundles/filestyle")
     @Scripts.Render("~/bundles/tagsinput")
     @Scripts.Render("~/bundles/chosen")

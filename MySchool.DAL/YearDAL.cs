@@ -7,11 +7,22 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using MySchool.Entities;
-
+//using AutoMapper;
 namespace MySchool.DAL
 { 
     public class YearDAL
-    { 
+    {
+
+       // IMapper mapper;
+        //public YearDAL()
+        //{
+        //    var config = new MapperConfiguration(cfg =>
+        //    {
+        //        cfg.CreateMap<IDataReader, YearEntities>();
+        //    });
+
+        //    mapper = config.CreateMapper();
+        //}
         public int SaveYear(YearEntities yearEntities)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -19,24 +30,9 @@ namespace MySchool.DAL
             SqlCommand cmd = new SqlCommand("stpSaveYear", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            //if (!String.IsNullOrEmpty(yearEntities.Year))
-            //{
-            //    cmd.Parameters.AddWithValue("@Year", yearEntities.Year);
-            //}
-            //else
-            //{
-            //    cmd.Parameters.AddWithValue("@Year", DBNull.Value);
-            //}
+           
             cmd.Parameters.AddWithValue("@Year", yearEntities.Year);
 
-            //if (!String.IsNullOrEmpty(yearEntities.YearDesc))
-            //{
-            //    cmd.Parameters.AddWithValue("@YearDesc", yearEntities.YearDesc);
-            //}
-            //else
-            //{
-            //    cmd.Parameters.AddWithValue("@YearDesc", DBNull.Value);
-            //}
             cmd.Parameters.AddWithValue("@YearDesc", yearEntities.YearDesc);
 
             if (yearEntities.ID > 0)
@@ -71,6 +67,11 @@ namespace MySchool.DAL
                     DataSet ds = new DataSet();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(ds);
+
+
+                    // List<YearEntities>  x = AutoMapper.Mapper.Map<IDataReader, List<YearEntities>>(ds.Tables[0].CreateDataReader());
+
+                    //List<YearEntities> xx = mapper.Map<IDataReader, List<YearEntities>>(ds.Tables[0].CreateDataReader());
 
                     foreach (DataRow dr in ds.Tables[0].Rows)
                     {

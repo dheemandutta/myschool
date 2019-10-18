@@ -155,3 +155,38 @@ function SetUpGrid() {
         ]
     });
 }
+
+//UpdateSelectionStatus
+
+//function UpdateSelectStaus() {
+//    var updateStausUrl = $('#updateselectstatus').val();
+//    var selectStatus = {
+//        ID: $('#GridID').val(),
+//        Grade: $('#txtGrade').val(),
+//        GradeGroupID: $('#drpGrade').val()
+//    };
+
+//        $.ajax({
+//            url: updateStausUrl,
+//            data: JSON.stringify({ ID: ID }),
+//            type: "POST",
+//            contentType: "application/json;charser=UTF-8",
+//            dataType: "json",
+//            success: function (result) {
+//                debugger;
+//                if (result > 0) {
+//                    alert("Grade deleted successfully");
+
+//                    SetUpGrid();
+
+//                }
+//                else {
+//                    alert("Grade can not be deleted as this is already used.");
+//                }
+//            },
+//            error: function () {
+//                alert(errormessage.responseText);
+//            }
+//        });
+    
+//}

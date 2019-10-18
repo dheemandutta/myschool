@@ -76,5 +76,12 @@ namespace MySchool.UI.Controllers
             int recordAffected = admissionBl.SaveOrUpdate(admissionForm);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult UpdateSelectionStatus(AdmissionFormEntities admissionForm)
+        {
+            AdmissionFormBL admissionBl = new AdmissionFormBL();
+            int recordAffected = admissionBl.UpdateSelectionStatus(admissionForm);
+            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
     }
 }

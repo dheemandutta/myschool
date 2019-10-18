@@ -24,7 +24,6 @@ namespace MySchool.UI.Controllers
         {
             AdmissionFormBL admissionBl = new AdmissionFormBL();
             admissionBl.SaveOrUpdate(admissionForm);
-
             return View();
         }
 

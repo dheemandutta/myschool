@@ -24,7 +24,6 @@ namespace MySchool.UI.Controllers
         {
             AdmissionFormBL admissionBl = new AdmissionFormBL();
             admissionBl.SaveOrUpdate(admissionForm);
-
             return View();
         }
 
@@ -74,6 +73,13 @@ namespace MySchool.UI.Controllers
         {
             AdmissionFormBL admissionBl = new AdmissionFormBL();
             int recordAffected = admissionBl.SaveOrUpdate(admissionForm);
+            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult UpdateSelectionStatus(AdmissionFormEntities admissionForm)
+        {
+            AdmissionFormBL admissionBl = new AdmissionFormBL();
+            int recordAffected = admissionBl.UpdateSelectionStatus(admissionForm);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
     }

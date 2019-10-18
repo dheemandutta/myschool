@@ -36,6 +36,7 @@ namespace MySchool.Entities
         public string MotherAnnualIncome { get; set; }
         public int GradeID { get; set; }
         public int YearID { get; set; }
+        public bool isSelectedForInterview { get; set; }
         public string IdentificationMarks { get; set; }
         public string SpecialMedicalProblem { get; set; }
         public string RelationWithGuardian { get; set; }

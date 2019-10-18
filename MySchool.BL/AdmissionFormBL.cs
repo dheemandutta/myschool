@@ -20,5 +20,11 @@ namespace MySchool.BL
             AdmissionFormDAL admissionfromDal = new AdmissionFormDAL();
             return admissionfromDal.SaveorUpdate(admissionForm);
         }
+
+        public int UpdateSelectionStatus(AdmissionFormEntities admissionForm)
+        {
+            AdmissionFormDAL admissiondal = new AdmissionFormDAL();
+            return admissiondal.UpdateSelectionStatus(admissionForm);
+        }
     }
 }

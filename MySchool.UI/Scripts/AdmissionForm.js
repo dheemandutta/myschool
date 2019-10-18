@@ -152,6 +152,16 @@ function SetUpGrid() {
             //        return '<a href="#" onclick="Delete(' + d + ')"><i class="fa fa-trash"></i></a>';
             //    }
             //}
+           ,{
+                "data": "ID", "width": "50px", "render": function (data) {
+                   return '<a href="#" onclick="xxxxxxxxxxxx(' + data + ')">Select</a>';
+                }
+            },
+            {
+                "data": "ID", "width": "50px", "render": function (data) {
+                    return '<a href="#" onclick="xxxxxxxxxx(' + data + ')">Deselect</a>';
+                }
+            }
         ]
     });
 }

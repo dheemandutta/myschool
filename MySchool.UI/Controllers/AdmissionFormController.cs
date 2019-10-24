@@ -44,7 +44,7 @@ namespace MySchool.UI.Controllers
                 length = int.Parse(Request.Form.GetValues("length").FirstOrDefault().ToString());
             }
             else
-            {
+            { 
                 draw = 1;
                 start = 0;
                 length = 50;

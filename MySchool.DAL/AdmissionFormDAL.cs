@@ -9,7 +9,6 @@ using System.Data.SqlClient;
 using System.Configuration;
 using MySchool.Entities;
 
-
 namespace MySchool.DAL
 {
     public class AdmissionFormDAL
@@ -27,13 +26,12 @@ namespace MySchool.DAL
             {
                 cmd.Parameters.AddWithValue("@ID", admissionEntity.ID);
             }
-
             cmd.Parameters.AddWithValue("@FormNumber", admissionEntity.FormNumber);
             cmd.Parameters.AddWithValue("@SFName", admissionEntity.SFName);
             cmd.Parameters.AddWithValue("@SMName", admissionEntity.SMName);
             cmd.Parameters.AddWithValue("@SLNAme", admissionEntity.SLNAme);
             cmd.Parameters.AddWithValue("@Gender", admissionEntity.Gender);
-            cmd.Parameters.AddWithValue("@DateTime DOB", admissionEntity.DOB);
+            cmd.Parameters.AddWithValue("@DOB", admissionEntity.DOB);
             cmd.Parameters.AddWithValue("@FFName", admissionEntity.FFName);
             cmd.Parameters.AddWithValue("@FMName", admissionEntity.FMName);
             cmd.Parameters.AddWithValue("@FLName", admissionEntity.FLName);

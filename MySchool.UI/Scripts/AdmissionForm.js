@@ -106,7 +106,7 @@ function loadData() {
 
 function SetUpGrid() {
     var loadposturl = $('#loaddata').val();
-
+   
     //do not throw error
     $.fn.dataTable.ext.errMode = 'none';
     //check if datatable is already created then destroy iy and then create it
@@ -129,6 +129,7 @@ function SetUpGrid() {
         "columns": [
             {
                 "data": "FormNumber", "name": "FormNumber", "autoWidth": true
+                
             },
             {
                 "data": "StudentName", "name": "StudentName", "autoWidth": true
@@ -154,49 +155,23 @@ function SetUpGrid() {
             //}
            ,{
                 "data": "ID", "width": "50px", "render": function (data) {
-                   return '<a href="#" onclick="xxxxxxxxxxxx(' + data + ')">Select</a>';
+
+                   return '<input type="button" value = "Select" onclick="EnableDisableSelectButton(' + data + ')">';
                 }
             },
             {
                 "data": "ID", "width": "50px", "render": function (data) {
-                    return '<a href="#" onclick="xxxxxxxxxx(' + data + ')">Deselect</a>';
+                    return '<input type="button" value="De-select" disabled = "true" onclick="EnableDisableDeSelectButton(' + data + ')">';
                 }
             }
         ]
     });
 }
 
-//UpdateSelectionStatus
-
-//function UpdateSelectStaus() {
-//    var updateStausUrl = $('#updateselectstatus').val();
-//    var selectStatus = {
-//        ID: $('#GridID').val(),
-//        Grade: $('#txtGrade').val(),
-//        GradeGroupID: $('#drpGrade').val()
-//    };
-
-//        $.ajax({
-//            url: updateStausUrl,
-//            data: JSON.stringify({ ID: ID }),
-//            type: "POST",
-//            contentType: "application/json;charser=UTF-8",
-//            dataType: "json",
-//            success: function (result) {
-//                debugger;
-//                if (result > 0) {
-//                    alert("Grade deleted successfully");
-
-//                    SetUpGrid();
-
-//                }
-//                else {
-//                    alert("Grade can not be deleted as this is already used.");
-//                }
-//            },
-//            error: function () {
-//                alert(errormessage.responseText);
-//            }
-//        });
+function EnableDisableSelectButton(ID) {
     
-//}
+}
+
+function EnableDisableDeSelectButton(ID) {
+
+}

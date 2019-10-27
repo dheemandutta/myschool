@@ -106,13 +106,13 @@ namespace MySchool.DAL
             return topicEntities;
         }
 
-        public int UpdateSelectionForAdmissionStatus(AdmissionFormEntities admissionForm)
+        public int UpdateSelectionForAdmissionStatus(int ID)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpUpdateAdmissionFormSelectionStatus", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@FormNumber", admissionForm.FormNumber);
+            cmd.Parameters.AddWithValue("@ID", ID);
             int reccordAffected = cmd.ExecuteNonQuery();
             con.Close();
             return reccordAffected;

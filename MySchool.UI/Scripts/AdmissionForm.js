@@ -105,31 +105,30 @@ function loadData() {
 }
 
 function SetUpGrid() {
+
     var loadposturl = $('#loaddata').val();
-   
-    //do not throw error
+
     $.fn.dataTable.ext.errMode = 'none';
-    //check if datatable is already created then destroy iy and then create it
     if ($.fn.dataTable.isDataTable('#AdmissionListTable')) {
         table = $('#AdmissionListTable').DataTable();
         table.destroy();
     }
-
-    $("#AdmissionListTable").DataTable({
-        "processing": true, // for show progress bar
-        "serverSide": true, // for process server side
-        "filter": false, // this is for disable filter (search box)
-        "orderMulti": false, // for disable multiple column at once
-        "bLengthChange": false, //disable entries dropdown
+    // alert('hh');
+    var mytable = $("#AdmissionListTable").DataTable({
+        "processing": true,
+        "serverSide": true,
+        "filter": false,
+        "orderMulti": false,
+        "bLengthChange": false,
         "ajax": {
             "url": loadposturl,
             "type": "POST",
             "datatype": "json"
+            //"data": { searchvalue: searchval }
         },
         "columns": [
             {
                 "data": "FormNumber", "name": "FormNumber", "autoWidth": true
-                
             },
             {
                 "data": "StudentName", "name": "StudentName", "autoWidth": true
@@ -143,40 +142,35 @@ function SetUpGrid() {
             {
                 "data": "IdentificationMarks", "name": "IdentificationMarks", "autoWidth": true
             }
-            //,{
-            //    "data": "ID", "width": "50px", "render": function (data) {
-            //        return '<a href="#" onclick="GetTopicByID(' + data + ')"><i class="fa fa-edit"></i></a>';
-            //    }
-            //},
-            //{
-            //    "data": "ID", "width": "50px", "render": function (d) {
-            //        return '<a href="#" onclick="Delete(' + d + ')"><i class="fa fa-trash"></i></a>';
-            //    }
-            //}
-           ,{
+            , {
                 "data": "ID", "width": "50px", "render": function (data) {
-                   return '<input type="button" value = "Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
+                    return '<input type="button" value = "Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
+                    //return '<a href="#" onclick="UpdateSelectionForAdmissionStatus(' + data + ')"><i class="fa fa-edit"></i></a>';
                 }
-            }//,
-            //{
-            //    "data": "ID", "width": "50px", "render": function (data) {
-            //        return '<input type="button" value="De-select" disabled = "true" onclick="EnableDisableDeSelectButton(' + data + ')">';
-            //    }
-            //}
+            }
         ]
     });
+
+
+    
 }
 
 
-function UpdateSelectionForAdmissionStatus(FormNumber) {
-    
+function UpdateSelectionForAdmissionStatus(ID) {
+  
     var updatestatus = $('#updateselectionforadmissionstatus').val();
     $.ajax({
-        url: updateselectionforadmissionstatus,
-        data: JSON.stringify({ FormNumber: FormNumber }),
+        url: updatestatus,
+        data: JSON.stringify({ ID: ID}),
         type: "POST",
         contentType: "application/json;charser=UTF-8",
-        dataType: "json"
-        
+        dataType: "json",
+        success: function (result) {
+            //alert("Selected Form Number ...........................");
+            alert(FormNumber);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
     });
 }

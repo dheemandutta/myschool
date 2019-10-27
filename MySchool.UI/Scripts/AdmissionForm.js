@@ -155,23 +155,28 @@ function SetUpGrid() {
             //}
            ,{
                 "data": "ID", "width": "50px", "render": function (data) {
-
-                   return '<input type="button" value = "Select" onclick="EnableDisableSelectButton(' + data + ')">';
+                   return '<input type="button" value = "Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
                 }
-            },
-            {
-                "data": "ID", "width": "50px", "render": function (data) {
-                    return '<input type="button" value="De-select" disabled = "true" onclick="EnableDisableDeSelectButton(' + data + ')">';
-                }
-            }
+            }//,
+            //{
+            //    "data": "ID", "width": "50px", "render": function (data) {
+            //        return '<input type="button" value="De-select" disabled = "true" onclick="EnableDisableDeSelectButton(' + data + ')">';
+            //    }
+            //}
         ]
     });
 }
 
-function EnableDisableSelectButton(ID) {
+
+function UpdateSelectionForAdmissionStatus(FormNumber) {
     
-}
-
-function EnableDisableDeSelectButton(ID) {
-
+    var updatestatus = $('#updateselectionforadmissionstatus').val();
+    $.ajax({
+        url: updateselectionforadmissionstatus,
+        data: JSON.stringify({ FormNumber: FormNumber }),
+        type: "POST",
+        contentType: "application/json;charser=UTF-8",
+        dataType: "json"
+        
+    });
 }

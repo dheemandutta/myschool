@@ -11,7 +11,7 @@
     background-size: cover;">
 
     @Html.Hidden("loaddata", @Url.Action("LoadData", "AdmissionForm"))
-    @Html.Hidden("updateselectstatus",Url.Action("UpdateSelectionStatus","AdmissionForm"))
+    @Html.Hidden("updateselectionforadmissionstatus",@Url.Action("UpdateSelectionForAdmissionStatus","AdmissionForm"))
     <div class="row" style="height:2000px;">
         <div class="col-md-7 bac" style=" width: 100%;">
             <div class="row">

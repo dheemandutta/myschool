@@ -76,10 +76,10 @@ namespace MySchool.UI.Controllers
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult UpdateSelectionStatus(AdmissionFormEntities admissionForm)
+        public ActionResult UpdateSelectionForAdmissionStatus(AdmissionFormEntities admissionForm)
         {
             AdmissionFormBL admissionBl = new AdmissionFormBL();
-            int recordAffected = admissionBl.UpdateSelectionStatus(admissionForm);
+            int recordAffected = admissionBl.UpdateSelectionForAdmissionStatus(admissionForm);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
     }

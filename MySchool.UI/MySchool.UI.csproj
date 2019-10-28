@@ -525,6 +525,7 @@
     <Content Include="Scripts\Topic.js" />
     <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\Year.js" />
+    <Content Include="Sql Script\SS_DBScript28102019.sql" />
     <Content Include="Sql Script\SnehasishDBScript27102019morning.sql" />
     <Content Include="Sql Script\Snehasish_Script_18102019.sql" />
     <Content Include="Sql Script\DBScriptFullSnehasish16102019.sql" />

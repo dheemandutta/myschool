@@ -143,7 +143,7 @@ function SetUpGrid() {
                 "data": "IdentificationMarks", "name": "IdentificationMarks", "autoWidth": true
             }
             , {
-                "data": "ID", "width": "50px", "render": function (data) {
+                "data": "ID", "width": "50px", "render": function (data, FormNumber) {
                     return '<input type="button" value = "Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
                     //return '<a href="#" onclick="UpdateSelectionForAdmissionStatus(' + data + ')"><i class="fa fa-edit"></i></a>';
                 }
@@ -156,7 +156,7 @@ function SetUpGrid() {
 }
 
 
-function UpdateSelectionForAdmissionStatus(ID) {
+function UpdateSelectionForAdmissionStatus(ID, FormNumber) {
   
     var updatestatus = $('#updateselectionforadmissionstatus').val();
     $.ajax({

@@ -145,7 +145,7 @@ function SetUpGrid() {
             , {
                 "data": "ID", "width": "50px", "render": function (data, FormNumber) {
                     return '<input type="button" value = "Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
-                    //return '<a href="#" onclick="UpdateSelectionForAdmissionStatus(' + data + ')"><i class="fa fa-edit"></i></a>';
+                 
                 }
             }
         ]

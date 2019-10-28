@@ -9,7 +9,7 @@ namespace MySchool.Entities
 {
     public class AdmissionFormEntities
     {
-        public int ID { get; set; }
+        public int ID { get; set;}
         public string FormNumber { get; set; }
         public string SFName { get; set; }
         public string SMName { get; set; }

@@ -118,6 +118,7 @@ namespace MySchool.DAL
             return reccordAffected;
         }
 
+
         public List<AdmissionFormEntities> GetAdmissionFormPageWise2(int pageIndex, ref int recordCount, int length)
         {
             List<AdmissionFormEntities> topicEntities = new List<AdmissionFormEntities>();

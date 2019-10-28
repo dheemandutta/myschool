@@ -9,7 +9,7 @@ namespace MySchool.Entities
 {
     public class AdmissionFormEntities
     {
-        public int ID { get; set; }
+        public int ID { get; set;}
         public string FormNumber { get; set; }
         public string SFName { get; set; }
         public string SMName { get; set; }
@@ -31,9 +31,9 @@ namespace MySchool.Entities
         public string FatherQualification { get; set; }
         public string MotherQualification { get; set; }
         public string FatherOccupation { get; set; }
-        public string FatherAnnualIncome { get; set; }
+        public decimal FatherAnnualIncome { get; set; }
         public string MotherOccupation { get; set; }
-        public string MotherAnnualIncome { get; set; }
+        public decimal MotherAnnualIncome { get; set; }
         public int GradeID { get; set; }
         public int YearID { get; set; }
         public bool isSelectedForInterview { get; set; }

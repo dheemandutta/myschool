@@ -18,5 +18,6 @@ namespace MySchool.UI.Controllers
         {
             return View();
         }
+
     }
 }

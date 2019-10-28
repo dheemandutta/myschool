@@ -17,7 +17,7 @@ namespace MySchool.DAL
             con.Open();
             SqlCommand cmd = new SqlCommand("stpGetStudentDetailsForAdmissionByID", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@ID", id);
+            cmd.Parameters.AddWithValue("@ID",id);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataSet ds = new DataSet();
             da.Fill(ds);

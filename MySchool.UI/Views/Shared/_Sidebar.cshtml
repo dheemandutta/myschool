@@ -148,17 +148,23 @@
             <li class="@Html.isActive(controller: "Admission")">
                 <a href="@Url.Action("Index", "AdmissionForm")" title="Admission">
                     <em class="icon-control-play"></em>
-                    <span>Admission</span>
+                    <span>Admission From</span>
                 </a>
             </li>
 
             <li class="@Html.isActive(controller: "AdmissionForm")">
                 <a href="@Url.Action("AdmissionList", "AdmissionForm")" title="AdmissionForm">
                     <em class="icon-control-play"></em>
-                    <span>Admission List</span>
+                    <span>Filled up Form List</span>
                 </a>
             </li>
 
+            <li class="@Html.isActive(controller: "Admission")">
+                <a href="@Url.Action("Index", "Admission")" title="Admission">
+                    <em class="icon-control-play"></em>
+                    <span>Student List for admission</span>
+                </a>
+            </li>
 
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 

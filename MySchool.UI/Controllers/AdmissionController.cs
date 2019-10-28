@@ -16,8 +16,45 @@ namespace MySchool.UI.Controllers
         // GET: Admission
         public ActionResult Index()
         {
+            GetAdmissionFormPageWise();
             return View();
         }
 
+        public JsonResult GetAdmissionFormPageWise()
+        {
+            int draw, start, length;
+            int pageIndex = 0;
+
+            if (null != Request.Form.GetValues("draw"))
+            {
+                draw = int.Parse(Request.Form.GetValues("draw").FirstOrDefault().ToString());
+                start = int.Parse(Request.Form.GetValues("start").FirstOrDefault().ToString());
+                length = int.Parse(Request.Form.GetValues("length").FirstOrDefault().ToString());
+            }
+            else
+            {
+                draw = 1;
+                start = 0;
+                length = 50;
+            }
+
+            if (start == 0)
+            {
+                pageIndex = 1;
+            }
+            else
+            {
+                pageIndex = (start / length) + 1;
+            }
+
+            AdmissionBL admissionbl= new AdmissionBL();
+            int totalrecords = 0;
+
+            List<AdmissionFormEntities> admissionList = new List<AdmissionFormEntities>();
+            admissionList = admissionbl.GetStudentListForAdmissionPageWise(pageIndex, ref totalrecords, length);
+
+            var data = admissionList;
+            return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

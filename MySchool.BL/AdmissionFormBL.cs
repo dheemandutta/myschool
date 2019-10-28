@@ -26,13 +26,5 @@ namespace MySchool.BL
             AdmissionFormDAL admissiondal = new AdmissionFormDAL();
             return admissiondal.UpdateSelectionForAdmissionStatus(ID);
         }
-
-
-
-        public List<AdmissionFormEntities> GetAdmissionFormPageWise2(int pageIndex, ref int recordCount, int length)
-        {
-            AdmissionFormDAL admissionFormDAL = new AdmissionFormDAL();
-            return admissionFormDAL.GetAdmissionFormPageWise2(pageIndex, ref recordCount, length);
-        }
     }
 }

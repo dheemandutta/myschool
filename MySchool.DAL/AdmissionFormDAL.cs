@@ -117,5 +117,44 @@ namespace MySchool.DAL
             con.Close();
             return reccordAffected;
         }
+
+
+        public List<AdmissionFormEntities> GetAdmissionFormPageWise2(int pageIndex, ref int recordCount, int length)
+        {
+            List<AdmissionFormEntities> topicEntities = new List<AdmissionFormEntities>();
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("stpGetAdmissionFormDetailsPageWie2", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@PageIndex", pageIndex);
+                    cmd.Parameters.AddWithValue("@PageSize", length);
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4);
+                    cmd.Parameters["@RecordCount"].Direction = ParameterDirection.Output;
+                    con.Open();
+
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(ds);
+
+                    foreach (DataRow dr in ds.Tables[0].Rows)
+                    {
+                        topicEntities.Add(new AdmissionFormEntities
+                        {
+                            ID = Convert.ToInt32(dr["Id"]),
+                            SPhoto = Convert.ToString(dr["SPhoto"]),
+                            FormNumber = Convert.ToString(dr["FormNumber"]),
+                            StudentName = Convert.ToString(dr["StudentName"]),
+                            MotherName = Convert.ToString(dr["MotherName"]),
+                            FatherName = Convert.ToString(dr["MotherName"])
+                        });
+                    }
+                    recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);
+                    con.Close();
+                }
+            }
+            return topicEntities;
+        }
     }
 }

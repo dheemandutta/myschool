@@ -16,11 +16,11 @@ namespace MySchool.UI.Controllers
             return View();
         }
 
-        public ActionResult SaveOrUpdate(TeacherEntities teachenetities)
-        {
-            TeacherBL teacherBl = new TeacherBL();
-            int recordAffected = teacherBl.SaveOrUpdate(teachenetities);
-            return Json(recordAffected, JsonRequestBehavior.AllowGet);
-        }
+        //public ActionResult SaveOrUpdate(TeacherEntities teachenetities)
+        //{
+        //    TeacherBL teacherBl = new TeacherBL();
+        //    int recordAffected = teacherBl.SaveOrUpdate(teachenetities);
+        //    return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

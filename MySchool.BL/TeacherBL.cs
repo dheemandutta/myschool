@@ -10,10 +10,10 @@ namespace MySchool.BL
 {
     public class TeacherBL
     {
-        public int SaveOrUpdate(TeacherEntities teacher)
-        {
-            TeacherDAL teacherDl = new TeacherDAL();
-            return teacherDl.SaveOrUpdate(teacher);
-        }
+        //public int SaveOrUpdate(TeacherEntities teacher)
+        //{
+        //    TeacherDAL teacherDl = new TeacherDAL();
+        //    return teacherDl.SaveOrUpdate(teacher);
+        //}
     }
 }

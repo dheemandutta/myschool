@@ -27,8 +27,8 @@ namespace MySchool.DAL
         //        cmd.Parameters.AddWithValue("@ID", teacher.ID);
         //    }
 
-        //    cmd.Parameters.AddWithValue("@FName", teacher.FName);
-        //    cmd.Parameters.AddWithValue("@LName", teacher.LName);
+        //    cmd.Parameters.AddWithValue("@FName", teacher.tFName);
+        //    cmd.Parameters.AddWithValue("@LName", teacher.tLName);
         //    cmd.Parameters.AddWithValue("@Photo", teacher.Photo);
         //    cmd.Parameters.AddWithValue("@Gender", teacher.Gender);
         //    cmd.Parameters.AddWithValue("@Address", teacher.Address);
@@ -49,10 +49,10 @@ namespace MySchool.DAL
         //    cmd.Parameters.AddWithValue("@TeacherSubjectId", teacher.TeacheSubjectId);
         //    cmd.Parameters.AddWithValue("@TeacherIDinQualification", teacher.TeacherIDInTeacherQualification);
         //    cmd.Parameters.AddWithValue("@SubjectID", teacher.SubjectID);
-        //    cmd.Parameters.AddWithValue("@isPrimarySubject", teacher.isPrimarySubject); 
+        //    cmd.Parameters.AddWithValue("@isPrimarySubject", teacher.isPrimarySubject);
 
-        //   int recordAffected = cmd.ExecuteNonQuery();
-        //   return recordAffected;
+        //    int recordAffected = cmd.ExecuteNonQuery();
+        //    return recordAffected;
         //}
     }
 }

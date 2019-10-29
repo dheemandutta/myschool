@@ -12,5 +12,7 @@ namespace MySchool.Entities
         public int YearID { get; set; }
         public int GradeID { get; set; }
         public decimal AdmAmt { get; set; }
+        public string AdmissonNumber { get; set; }
+        public int AdmissionFormID { get; set; }
     }
 }

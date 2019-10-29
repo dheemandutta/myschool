@@ -11,6 +11,30 @@ namespace MySchool.DAL
 {
     public class AdmissionDAL
     {
+        public int InsertUpdateAdmission(AdmissionEntities admission)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpInsertUpdateAdmission", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            if (String.IsNullOrEmpty(admission.ID.ToString()) || (admission.ID == 0))
+            {
+                cmd.Parameters.AddWithValue("@ID", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@ID", admission.ID);
+            }
+            cmd.Parameters.AddWithValue ("@YearID", admission.YearID);
+            cmd.Parameters.AddWithValue("@GradeID", admission.GradeID);
+            cmd.Parameters.AddWithValue("@AdmAmt", admission.AdmAmt);
+            cmd.Parameters.AddWithValue("@AdmissonNumber", admission.AdmissonNumber);
+            cmd.Parameters.AddWithValue("@AdmissionFormID", admission.@AdmissionFormID);
+            int recordAffected = cmd.ExecuteNonQuery();
+            con.Close();
+            return recordAffected;
+        }
+
         public AdmissionFormEntities GetStudentDetailsForAdmission(int id)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);

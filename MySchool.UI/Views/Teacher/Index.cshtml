@@ -1,0 +1,622 @@
+﻿@model MySchool.Entities.TeacherEntities
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@{
+    ViewBag.Title = "Teacher";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/TeacherParticulars.js"></script>
+
+@*<body style="background-image: url(../background/depart.jpg);
+    background-size: cover;">*@
+<body>
+    
+    <div class="col-md-9">
+        <div class="container-md">
+            <!-- Checkout Process-->
+            <form action="Index" novalidate="novalidate" method="post">
+                <div id="accordion" class="panel-group">
+                    <!-- Basic Information-->
+                    <div class="panel b">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse1">1. Basic Details</a>
+                            </h4>
+                        </div>
+                        <div id="acc1collapse1" class="panel-collapse collapse">
+                            <div id="collapse01" class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>First Name*</label>
+                                            @*<input type="text" id="txtTeacherFirstName" name="checkout-Teacherfirstname" placeholder="Teacher First Name" required="" class="form-control" />*@
+                                            @Html.TextBoxFor(m => m.TFName, new { @class = "form-control", @placeholder = "Teacher First Name", @required = "", id = "txtTeacherFirstName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Middle Name</label>
+                                            @Html.TextBoxFor(m => m.TMName, new { @class = "form-control", @placeholder = "Teacher Middle Name", id = "txtTeacherMiddleName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Last Name*</label>
+                                            @Html.TextBoxFor(m => m.TLName, new { @class = "form-control", @placeholder = "Teacher Last Name", @required = "", id = "txtTeacherLastName" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Date of Birth*</label>
+                                            <div id="datetimepicker1" class="input-group date" style="width:70%">
+                                                @*<input type="text" id="txtDateofBirth" class="form-control" required="">*@
+                                                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtTeacherDOB" })
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Gender*</label>
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
+                                    <option value="">Select</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Others">Others</option>
+                                </select>*@
+                                            @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Select", Value = "" },
+                                                   new SelectListItem{ Text="Male", Value = "Male" },
+                                                   new SelectListItem{ Text="Female", Value = "Female" },
+                                                   new SelectListItem{ Text="Others", Value = "Others" }
+                                                }, new { name = "Gender", @class = "form-control m-b", @style = "width:50%", @id = "drpGender", @required = "" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Religion*</label>
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
+                                    <option value="">Select</option>
+                                    <option value="Hindu">Hindu</option>
+                                    <option value="Muslim">Muslim</option>
+                                    <option value="Christian">Christian</option>
+                                    <option value="Others">Others</option>
+                                </select>*@
+                                            @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
+                                                   {
+                                                      new SelectListItem{ Text="Select", Value = "" },
+                                                      new SelectListItem{ Text="Hindu", Value = "Hindu" },
+                                                      new SelectListItem{ Text="Muslim", Value = "Muslim" },
+                                                      new SelectListItem{ Text="Christian", Value = "Christian" },
+                                                      new SelectListItem{ Text="Others", Value = "Others" }
+                                                   }, new { name = "Religion", @class = "form-control m-b", @style = "width:50%", @id = "drpReligion", @required = "" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Caste*</label>
+                                            @Html.DropDownListFor(m => m.Caste, new List<SelectListItem>
+                                                  {
+                                                     new SelectListItem{ Text="Select", Value = "" },
+                                                     new SelectListItem{ Text="General", Value = "General" },
+                                                     new SelectListItem{ Text="OBC", Value = "OBC" },
+                                                     new SelectListItem{ Text="SC", Value = "SC" },
+                                                     new SelectListItem{ Text="ST", Value = "ST" }
+                                                 }, new { name = "Caste", @class = "form-control m-b", @style = "width:50%", @id = "drpCaste", @required = "" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label>Address*</label>
+                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address", @required = "", id = "txtAddress" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            @Html.TextBoxFor(m => m.email, new { @class = "form-control", @placeholder = "Email", id = "txtEmail" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Mother tounge*</label>
+                                            @Html.TextBoxFor(m => m.MotherTounge, new { @class = "form-control", @placeholder = "Mother Tounge", @required = "", id = "txtMotherToung" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fathers's Information-->
+                    <div class="panel b">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse2">2. Fathers's Details</a>
+                            </h4>
+                        </div>
+                        <div id="acc1collapse2" class="panel-collapse collapse">
+                            <div id="collapse02" class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>First Name*</label>
+                                            @Html.TextBoxFor(m => m.FFName, new { @class = "form-control", @placeholder = "Father First Name", @required = "", id = "txtFatherFirstName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Middle Name</label>
+                                            @Html.TextBoxFor(m => m.FMName, new { @class = "form-control", @placeholder = "Father Middle Name", id = "txtFatherMiddleName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Last Name*</label>
+                                            @Html.TextBoxFor(m => m.FLName, new { @class = "form-control", @placeholder = "Father Last Name", @required = "", id = "txtFatherLastName" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mother's Information-->
+                    <div class="panel b">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse3">3. Mothers's Details</a>
+                            </h4>
+                        </div>
+                        <div id="acc1collapse3" class="panel-collapse collapse">
+                            <div id="collapse03" class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>First Name*</label>
+                                            @Html.TextBoxFor(m => m.MFName, new { @class = "form-control", @placeholder = "Mother First Name", @required = "", id = "txtMotherFirstName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Middle Name</label>
+                                            @Html.TextBoxFor(m => m.MMName, new { @class = "form-control", @placeholder = "Mother Middle Name", id = "txtMotherMiddleName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Last Name*</label>
+                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Teacher photo and sign upload-->
+                    <!-- Photo Upload-->
+                    <div class="panel b">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse4">4. Photo upload</a>
+                            </h4>
+                        </div>
+                        <div id="acc1collapse4" class="panel-collapse collapse">
+                            <div id="collapse04" class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Teacher Photo*</label>
+                                            <img id="imgTeacher" src="~/Images/photoPreview.jpg" accept="image/*" />
+                                            <input type="file" id="photoTeacher" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                        </div>
+                                    </div>
+                                    <img id='img-upload' />
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="hidden" id="FormID" />
+                                </div>
+                                <div class="mt-lg">
+
+
+                                    <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>
+                                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Teacher qualification-->
+                    <div class="panel b">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse5">5. Teacher qualification</a>
+                            </h4>
+                        </div>
+                        <div id="acc1collapse5" class="panel-collapse collapse">
+                            <div id="collapse05" class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Qualification*</label>
+                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Qualification Status*</label>
+                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Completion date*</label>
+                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="hidden" id="FormID" />
+                                </div>
+                                <div class="mt-lg">
+
+
+                                    <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>
+                                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</body>
+
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
+
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
+
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
+
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
+
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
+
+}
+
+<script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+            <button class="btn btn-primary start" disabled>
+                <em class="fa fa-fw fa-upload"></em>
+                <span>Start</span>
+            </button>
+            {% } %}
+            {% if (!i) { %}
+            <button class="btn btn-warning cancel">
+                <em class="fa fa-fw fa-times"></em>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>
+
+<script id="template-download" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+            <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+            <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}" {% if (file.deletewithcredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
+                <em class="fa fa-fw fa-trash"></em>
+                <span>Delete</span>
+            </button>
+            {% } else { %}
+            <button class="btn btn-warning cancel">
+                <em class="fa fa-fw fa-times"></em>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>
+
+
+@* ---------------------- Clone for Qualification ---------------------- *@
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnAdd").click(function () {
+            var qualification = $("#txtQualification").val();
+            var completionStatus = $("#drpQualificationStatus").val();
+            var completionDate = $("#txtCompletionDate").val();
+
+            if (qualification == "") {
+                alert("Please insert the Qualification");
+                //swal("Ahh!", "Please insert the Qualification", "Alert");
+            }
+
+            if (completionStatus == "" || completionStatus == "Select") {
+                alert("Please select the qualification status");
+            }
+
+            if (completionStatus == "Passed") {
+                if (completionDate == "") {
+                    alert("Please insert the completion date")
+                }
+            }
+
+
+
+
+            //if (qualification != "" && completionStatus = ! "" && completionStatus != "Select") {
+            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + qualification + "</td><td>" + completionStatus + "</td><td>" + completionDate + "</td></tr>";
+            $("#tblQualification tbody").append(markup);
+            //}
+            $("#txtQualification").val('');
+            $("#drpQualificationStatus").val('');
+            $("#txtCompletionDate").val('');
+        });
+
+        // Find and remove selected table rows
+        $("#btnRemove").click(function () {
+            $("#tblQualification tbody").find('input[name="record"]').each(function () {
+                if ($(this).is(":checked")) {
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
+    });
+
+    //function isValidDate(date) {
+    //    var temp = date.split('/');
+    //    var d = new Date(temp[1] + '/' + temp[0] + '/' + temp[2]);
+    //    return (d && (d.getMonth() + 1) == temp[1] && d.getDate() == Number(temp[0]) && d.getFullYear() == Number(temp[2]));
+    //}
+    //alert(isValidDate(completionDate)); // it not exist ---> false
+</script>
+
+@* ---------------------- Clone for Subject ---------------------- *@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnAddSubject").click(function () {
+            var subject = $("#drpSubject").find("option:selected").text();
+            var subjectId = $("#drpSubject").val();
+
+            if ($('#chkPrimarySubject').is(":checked")) {
+                var primarySubject = 'Yes';
+            }
+            else {
+                var primarySubject = 'No';
+            }
+
+            if (subject != "" && subject != "Select") {
+                var markup = "<tr><td><input type='checkbox' name='record' id='" + subjectId + "'></td><td>" + subject + "</td><td>" + primarySubject + "</td></tr>";
+                $("#tblSubject tbody").append(markup);
+            }
+            $("#drpSubject").val('');
+            $("#chkPrimarySubject").val('');
+        });
+
+        // Find and remove selected table rows
+        $("#btnRemoveSubject").click(function () {
+            $("#tblSubject tbody").find('input[name="record"]').each(function () {
+                if ($(this).is(":checked")) {
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
+    });
+</script>
+
+@* ---------------------- Qulaification and Subject table ---------------------- *@
+<style type="text/css">
+    form {
+        margin: 20px 0;
+    }
+
+        form input, button {
+            padding: 5px;
+        }
+
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #cdcdcd;
+    }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+        }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        var dataArr = [];
+        $("td").each(function () {
+            dataArr.push($(this).html());
+        });
+        $('#tblSubject td').click(function () {
+            $.ajax({
+                type: "POST",
+                url: 'server path/method name',
+                data: "content=" + dataArr,
+                success: function (data) {
+                    alert(data);// alert the data from the server
+                },
+                error: function () {
+                }
+            });
+        });
+    });
+</script>
+
+
+<script id="template-upload" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-upload fade">
+        <td>
+            <span class="preview"></span>
+        </td>
+        <td>
+            <p class="name">{%=file.name%}</p>
+            <strong class="error text-danger"></strong>
+        </td>
+        <td>
+            <p class="size">Processing...</p>
+            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-bar progress-bar-success" style="width:0%;"></div></div>
+        </td>
+        <td>
+            {% if (!i && !o.options.autoUpload) { %}
+            <button class="btn btn-primary start" disabled>
+                <em class="fa fa-fw fa-upload"></em>
+                <span>Start</span>
+            </button>
+            {% } %}
+            {% if (!i) { %}
+            <button class="btn btn-warning cancel">
+                <em class="fa fa-fw fa-times"></em>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>
+
+<script id="template-download" type="text/x-tmpl">
+    {% for (var i=0, file; file=o.files[i]; i++) { %}
+    <tr class="template-download fade">
+        <td>
+            <span class="preview">
+                {% if (file.thumbnailUrl) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" data-gallery><img src="{%=file.thumbnailUrl%}"></a>
+                {% } %}
+            </span>
+        </td>
+        <td>
+            <p class="name">
+                {% if (file.url) { %}
+                <a href="{%=file.url%}" title="{%=file.name%}" download="{%=file.name%}" {%=file.thumbnailUrl?'data-gallery':''%}>{%=file.name%}</a>
+                {% } else { %}
+                <span>{%=file.name%}</span>
+                {% } %}
+            </p>
+            {% if (file.error) { %}
+            <div><span class="label label-danger">Error</span> {%=file.error%}</div>
+            {% } %}
+        </td>
+        <td>
+            <span class="size">{%=o.formatFileSize(file.size)%}</span>
+        </td>
+        <td>
+            {% if (file.deleteUrl) { %}
+            <button class="btn btn-danger delete" data-type="{%=file.deleteType%}" data-url="{%=file.deleteUrl%}" {% if (file.deletewithcredentials) { %} data-xhr-fields='{"withCredentials":true}' {% } %}>
+                <em class="fa fa-fw fa-trash"></em>
+                <span>Delete</span>
+            </button>
+            {% } else { %}
+            <button class="btn btn-warning cancel">
+                <em class="fa fa-fw fa-times"></em>
+                <span>Cancel</span>
+            </button>
+            {% } %}
+        </td>
+    </tr>
+    {% } %}
+</script>

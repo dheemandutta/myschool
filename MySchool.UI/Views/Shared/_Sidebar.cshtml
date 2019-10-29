@@ -108,17 +108,11 @@
 
 
 
-            <li class="@Html.isActive(controller: "Teacher")">
-                <a href="@Url.Action("Index", "Teacher")" title="StudentParticulars">
-                    <em class="icon-trophy"></em>
-                    <span>Teacher</span>
-                </a>
-            </li>
 
-            <li class="@Html.isActive(controller: "TeacherParticular")">
-                <a href="@Url.Action("Index", "TeacherParticular")" title="StudentParticulars">
+            <li class="@Html.isActive(controller: "Teacher")">
+                <a href="@Url.Action("Index", "Teacher")" title="Teacher">
                     <em class="icon-trophy"></em>
-                    <span>Teacher Particulars</span>
+                    <span>Teacher Details entry</span>
                 </a>
             </li>
 

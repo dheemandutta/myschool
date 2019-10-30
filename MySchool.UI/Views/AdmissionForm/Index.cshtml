@@ -16,9 +16,13 @@
     <div class="col-md-9">
         <div class="container-md">
             <!-- Checkout Process-->
-            <form action="Index" novalidate="novalidate" method="post">
+            @*<form action="Index" novalidate="novalidate" method="post"> , new { enctype = "multipart/form-data" } *@
+            @using (Html.BeginForm("Index", "AdmissionForm", FormMethod.Post, new { @name = "Index", enctype = "multipart/form-data" }))
+            {
+
+              
                 <div id="accordion" class="panel-group">
-                    <!-- Basic Information-->
+                    Basic Information
                     <div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -31,7 +35,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>First Name*</label>
-                                            @*<input type="text" id="txtStudentFirstName" name="checkout-studentfirstname" placeholder="Student First Name" required="" class="form-control" />*@
+
                                             @Html.TextBoxFor(m => m.SFName, new { @class = "form-control", @placeholder = "Student First Name", @required = "", id = "txtStudentFirstName" })
                                         </div>
                                     </div>
@@ -54,7 +58,7 @@
                                         <div class="form-group">
                                             <label>Date of Birth*</label>
                                             <div id="datetimepicker1" class="input-group date" style="width:70%">
-                                              
+
                                                 @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtStudentDOB" })
                                                 <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
@@ -138,8 +142,8 @@
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Special medical problem*</label>
-                                            @Html.TextBoxFor(m => m.SpecialMedicalProblem, new { @class = "form-control", @placeholder = "Special medical problem", @required = "", id = "txtSpecialMedicalProblem" })
+                                            <label>Special medical problem</label>
+                                            @Html.TextBoxFor(m => m.SpecialMedicalProblem, new { @class = "form-control", @placeholder = "Special medical problem", id = "txtSpecialMedicalProblem" })
 
                                         </div>
                                     </div>
@@ -183,7 +187,7 @@
                         </div>
                     </div>
 
-                    <!-- Fathers's Information-->
+                    Fathers's Information
                     <div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -225,15 +229,15 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Qualification*</label>
-                                            @Html.TextBoxFor(m => m.FatherQualification, new { @class = "form-control", @placeholder = "Qualification", @required = "", id = "txtQualificationFather" })
+                                            <label>Qualification</label>
+                                            @Html.TextBoxFor(m => m.FatherQualification, new { @class = "form-control", @placeholder = "Qualification", id = "txtQualificationFather" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
 
                                         <div class="form-group">
-                                            <label>Occupation*</label>
-                                            @Html.TextBoxFor(m => m.FatherOccupation, new { @class = "form-control", @placeholder = "Occupation", @required = "", id = "txtOccupationFather" })
+                                            <label>Occupation</label>
+                                            @Html.TextBoxFor(m => m.FatherOccupation, new { @class = "form-control", @placeholder = "Occupation", id = "txtOccupationFather" })
                                         </div>
                                     </div>
                                 </div>
@@ -242,8 +246,8 @@
                                     <div class="col-lg-4">
 
                                         <div class="form-group">
-                                            <label>Annual Income*</label>
-                                            @Html.TextBoxFor(m => m.FatherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", @required = "", id = "txtAnnualIncomeFather" })
+                                            <label>Annual Income</label>
+                                            @Html.TextBoxFor(m => m.FatherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", id = "txtAnnualIncomeFather" })
                                         </div>
                                     </div>
 
@@ -252,7 +256,7 @@
                         </div>
                     </div>
 
-                    <!-- Mother's Information-->
+                    Mother's Information
                     <div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -291,15 +295,15 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Qualification*</label>
-                                            @Html.TextBoxFor(m => m.MotherQualification, new { @class = "form-control", @placeholder = "Qualification", @required = "", id = "txtQualificationMother" })
+                                            <label>Qualification</label>
+                                            @Html.TextBoxFor(m => m.MotherQualification, new { @class = "form-control", @placeholder = "Qualification", id = "txtQualificationMother" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
 
                                         <div class="form-group">
-                                            <label>Occupation*</label>
-                                            @Html.TextBoxFor(m => m.MotherOccupation, new { @class = "form-control", @placeholder = "Occupation", @required = "", id = "txtOccupationMother" })
+                                            <label>Occupation</label>
+                                            @Html.TextBoxFor(m => m.MotherOccupation, new { @class = "form-control", @placeholder = "Occupation", id = "txtOccupationMother" })
                                         </div>
                                     </div>
                                 </div>
@@ -308,8 +312,8 @@
                                     <div class="col-lg-4">
 
                                         <div class="form-group">
-                                            <label>Annual Income*</label>
-                                            @Html.TextBoxFor(m => m.MotherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", @required = "", id = "txtAnnualIncomeMother" })
+                                            <label>Annual Income</label>
+                                            @Html.TextBoxFor(m => m.MotherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", id = "txtAnnualIncomeMother" })
                                         </div>
                                     </div>
 
@@ -319,7 +323,7 @@
                         </div>
                     </div>
 
-                    <!-- Guardian Information-->
+                    Guardian Information
                     <div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -328,7 +332,7 @@
                         </div>
                         <div id="acc1collapse4" class="panel-collapse collapse">
                             <div id="collapse04" class="panel-body">
-                             
+
 
                                 <div id="collapse03" class="panel-body">
                                     <div class="row">
@@ -353,12 +357,12 @@
                                     </div>
 
                                     <div class="row">
-                                        @*<div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label>Contact No.*</label>
-                                                    @Html.TextBoxFor(m => m.GContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactno" })
-                                                </div>
-                                            </div>*@
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Contact No.*</label>
+                                                @Html.TextBoxFor(m => m.GContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactno" })
+                                            </div>
+                                        </div>
 
                                         <div class="col-lg-4">
                                             <div class="form-group">
@@ -374,7 +378,7 @@
                         </div>
                     </div>
 
-                    <!-- Photo Upload-->
+                    Photo Upload
                     <div class="panel b">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -387,55 +391,92 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Student Photo*</label>
-                                            <img id="imgStudent" src="~/Images/photoPreview.jpg" accept="image/*" />
-                                            <input type="file" id="photoStudent" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                            <input type="file" id="fileUpload" name="fileUpload" />
+                                            <div class="col-md-10">
+
+                                            </div>
                                         </div>
                                     </div>
-                                    <img id='img-upload' />
+
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Father's Photo*</label>
-                                            <img id="imgFather" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                            <input type="file" id="photoFather" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                            <input type="file" id="fileUpload1" name="fileUpload1" />
+                                            <div class="col-md-10">
+
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Father's signature*</label>
-                                            <img id="imgFatherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                            <input type="file" id="photoFatherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                        </div>
-                                    </div>
                                 </div>
-
                                 <div class="row">
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Mothers's Photo*</label>
-                                            <img id="imgMother" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                            <input type="file" id="photoMother" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                            <label>Mother's Photo*</label>
+                                            <input type="file" id="fileUpload2" name="fileUpload2" />
+                                            <div class="col-md-10">
+
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Mothers's signature*</label>
-                                            <img id="imgMotherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
-                                            <input type="file" id="photoMotherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                        </div>
-                                    </div>
                                 </div>
+                                @*<div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Student Photo*</label>
+                    <img id="imgStudent" src="~/Images/photoPreview.jpg" accept="image/*" />
+                    <input type="file" id="photoStudent" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                </div>
+            </div>
+            <img id='img-upload' />
+        </div>*@
+                                @*<div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Father's Photo*</label>
+                    <img id="imgFather" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                    <input type="file" id="photoFather" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Father's signature*</label>
+                    <img id="imgFatherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                    <input type="file" id="photoFatherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Mothers's Photo*</label>
+                    <img id="imgMother" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                    <input type="file" id="photoMother" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="form-group">
+                    <label>Mothers's signature*</label>
+                    <img id="imgMotherSign" src="~/Images/photoPreview.jpg" alt="Student Photo" />
+                    <input type="file" id="photoMotherSign" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                </div>
+            </div>
+        </div>*@
                                 <div class="form-group">
-                                    <input type="hidden" id="FormID" />  
+                                    <input type="hidden" id="FormID" />
                                 </div>
                                 <div class="mt-lg">
-                                    @*<button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>*@
+                                    @*<button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="SaveOrUpdate">Submit Form</button>
 
-                                    <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>
-                                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
+            <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>*@
+
+
                                 </div>
 
                             </div>
@@ -445,67 +486,17 @@
 
 
 
-                    @*<div class="panel b">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#acc1collapse5">5. Photo upload</a>
-                            </h4>
-                        </div>
-                        <div id="acc1collapse5" class="panel-collapse collapse">
-                            <div id="collapse05" class="panel-body">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Student Photo*</label>
-                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                        </div>
-                                    </div>
-                                    <img id='img-upload' />
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Father's Photo*</label>
-                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                        </div>
-                                    </div>
 
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Father's signature*</label>
-                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Mothers's Photo*</label>
-                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4">
-                                        <div class="form-group">
-                                            <label>Mothers's signature*</label>
-                                            <input type="file" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="mt-lg">
-                                    <button type="button" class="btn btn-info">Submit Form</button>
-                                </div>
-
-                            </div>
-                        </div>*@
                 </div>
+                <div class="mt-lg">
+                    <input type="submit" value="Create" class="btn btn-info" />
+                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
+                </div>
+            }
 
-
-
-            </form>
+            @*</form>*@
         </div>
-    </div>
+            </div>
 </body>
 <script type="text/javascript">
     function readURL(input) {

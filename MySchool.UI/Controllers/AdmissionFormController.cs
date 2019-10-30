@@ -20,7 +20,7 @@ namespace MySchool.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(AdmissionFormEntities admissionForm)
+        public ActionResult Index(AdmissionFormEntities admissionForm, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUpload1, HttpPostedFileBase fileUpload2)
         {
             AdmissionFormBL admissionBl = new AdmissionFormBL();
             admissionBl.SaveOrUpdate(admissionForm);

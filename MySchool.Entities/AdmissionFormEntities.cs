@@ -1,9 +1,12 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Xml.Linq;
 
 namespace MySchool.Entities
 {
@@ -55,6 +58,13 @@ namespace MySchool.Entities
         public string StudentName { get; set; }
         public string MotherName { get; set; }
         public string FatherName { get; set; }
+
+        [DisplayName("Upload File")]
+        public string ImagePath { get; set; }
+        public HttpPostedFile ImageFile { get; set; }
+
+        public string GContactNo { get; set; }
+
 
     }
 }

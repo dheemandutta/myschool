@@ -1065,6 +1065,7 @@
     <Content Include="Views\ActualAdmission\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AdmissionImages\" />
     <Folder Include="App_Data\" />
     <Folder Include="Vendor\blueimp-file-upload\js\cors\" />
     <Folder Include="Vendor\blueimp-file-upload\js\vendor\" />

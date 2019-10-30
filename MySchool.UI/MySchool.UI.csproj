@@ -189,6 +189,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ActualAdmissionController.cs" />
     <Compile Include="Controllers\AdmissionController.cs" />
     <Compile Include="Controllers\AdmissionFormController.cs" />
     <Compile Include="Controllers\ChoiceController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NewLoginController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
@@ -1058,6 +1060,8 @@
     <Content Include="Views\AdmissionForm\AdmissionList.cshtml" />
     <Content Include="Views\Admission\Index.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\NewLogin\Index.cshtml" />
+    <Content Include="Views\ActualAdmission\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

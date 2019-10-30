@@ -17,22 +17,6 @@ namespace MySchool.DAL
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpInsertUpdateSubject", con);
-            //cmd.CommandType = CommandType.StoredProcedure;
-
-            //if (String.IsNullOrEmpty(subjectEntities.ID.ToString()) || (subjectEntities.ID == 0))
-            //{
-            //    cmd.Parameters.AddWithValue("@ID", DBNull.Value);
-            //}
-            //else
-            //{
-            //    cmd.Parameters.AddWithValue("@ID", subjectEntities.ID);
-            //}
-
-            //cmd.Parameters.AddWithValue("@SubjectName", subjectEntities.SubjectName);
-
-            //int recordsAffected = cmd.ExecuteNonQuery();
-            //con.Close();
-            //return recordsAffected;
 
             cmd.CommandType = CommandType.StoredProcedure;
             if (String.IsNullOrEmpty(subjectEntities.ID.ToString()) || (subjectEntities.ID == 0))
@@ -116,6 +100,25 @@ namespace MySchool.DAL
         }
 
         //for Grade drp
-        ///////////////////////////////////////////////
+        public List<SubjectEntities> GetSubjectForDrp()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGettblSubjectForDrp", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<SubjectEntities> subjectParticularsList = myTable.AsEnumerable().Select(m => new SubjectEntities()
+            {
+                ID = m.Field<int>("Id"),
+                SubjectName = m.Field<string>("SubjectName")
+
+            }).ToList();
+
+            con.Close();
+            return subjectParticularsList;
+        }
     }
 }

@@ -13,7 +13,7 @@
 @*<body style="background-image: url(../background/depart.jpg);
     background-size: cover;">*@
 <body>
-    
+
     <div class="col-md-9">
         <div class="container-md">
             <!-- Checkout Process-->
@@ -66,12 +66,6 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Gender*</label>
-                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
-                                    <option value="">Select</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Others">Others</option>
-                                </select>*@
                                             @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
                                                 {
                                                    new SelectListItem{ Text="Select", Value = "" },
@@ -84,13 +78,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Religion*</label>
-                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
-                                    <option value="">Select</option>
-                                    <option value="Hindu">Hindu</option>
-                                    <option value="Muslim">Muslim</option>
-                                    <option value="Christian">Christian</option>
-                                    <option value="Others">Others</option>
-                                </select>*@
+
                                             @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
                                                    {
                                                       new SelectListItem{ Text="Select", Value = "" },
@@ -136,6 +124,19 @@
                                         <div class="form-group">
                                             <label>Mother tounge*</label>
                                             @Html.TextBoxFor(m => m.MotherTounge, new { @class = "form-control", @placeholder = "Mother Tounge", @required = "", id = "txtMotherToung" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Primary Subject*</label>
+                                            @Html.DropDownListFor(m => m.SubjectID, new List<SelectListItem>
+                                                   {
+                                                      new SelectListItem{ Text="Select", Value = "" },
+                                                      new SelectListItem{ Text="Hindu", Value = "Hindu" },
+                                                      new SelectListItem{ Text="Muslim", Value = "Muslim" },
+                                                      new SelectListItem{ Text="Christian", Value = "Christian" },
+                                                      new SelectListItem{ Text="Others", Value = "Others" }
+                                                   }, new { name = "subject", @class = "form-control m-b", @style = "width:50%", @id = "drpSubject", @required = "" })
                                         </div>
                                     </div>
                                 </div>
@@ -231,15 +232,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="hidden" id="FormID" />
+                                    <input type="hidden" id="ID" />
                                 </div>
-                                <div class="mt-lg">
-
-
-                                    <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>
-                                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -257,30 +251,77 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Qualification*</label>
-                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
+                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Qualification", @required = "", id = "txtQualification" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Qualification Status*</label>
-                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
+                                            @Html.DropDownListFor(m => m.QualStatus, new List<SelectListItem>
+                                                   {
+                                                      new SelectListItem{ Text="Select", Value = "" },
+                                                      new SelectListItem{ Text="completed", Value = "Completed" },
+                                                      new SelectListItem{ Text="purshing", Value = "Purshing" }
+                                                  }, new { name = "Caste", @class = "form-control m-b", @style = "width:100%", @id = "drpQualificationStatus", @required = "" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Completion date*</label>
-                                            @Html.TextBoxFor(m => m.MLName, new { @class = "form-control", @placeholder = "Mother Last Name", @required = "", id = "txtMotherLastName" })
+                                            <label>Completion date</label>
+                                            <div id="certificate" class="input-group date" style="width:90%">
+                                                @Html.TextBoxFor(m => m.QualCompletionDate, new { @class = "form-control", @required = "", id = "txtQualificationCompletionDate" })
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                  
+
+
+
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Certificate</label>
+                                            <input type="file" id="qualCertificate" data-classbutton="btn btn-default" data-classinput="form-control inline" class="form-control filestyle" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <br />
+                                            <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
+                                            <button type="button" class="btn btn-primary" id="btnRemove">Delete</button>
+                                        </div>
+                                    </div>
+
+                                    <img id='img-upload' />
+                                </div>
+
+                                <div class="row">
+                                    <div class="table-responsive">
+                                     <br />
+                                        <table class="table table-striped" id="tblQualification" style="width:90%" align="center">
+                                            <thead>
+                                                <tr>
+                                                    <th>Qualification</th>
+                                                    <th>Status</th>
+                                                    <th>Certificate</th>
+                                                    <th>Completion date</th>
+                                                    <th>Select</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <input type="hidden" id="FormID" />
                                 </div>
                                 <div class="mt-lg">
-
-
                                     <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>
                                     <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
                                 </div>
@@ -297,29 +338,43 @@
         </div>
     </div>
 </body>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#imgStudent').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    //$("#inputFile").change(function () {
+    //    readURL(this);
+    //});
+</script>
+
+
+
+
 
 @section Styles {
-    @Styles.Render("~/bundles/datatablesCss")
-    @Styles.Render("~/bundles/SweetAlertCss")
-
     @Styles.Render("~/bundles/tagsinputCss")
     @Styles.Render("~/bundles/sliderCtrlCss")
     @Styles.Render("~/bundles/chosenCss")
     @Styles.Render("~/bundles/datetimePickerCss")
     @Styles.Render("~/bundles/ColorPickerCss")
     @Styles.Render("~/bundles/select2Css")
-    @Styles.Render("~/bundles/fileUploadCss")
 
 }
-
 @section Scripts {
-
-    @Scripts.Render("~/bundles/datatables")
-    @Scripts.Render("~/bundles/demoDatatable")
-
-    @Scripts.Render("~/bundles/parsley")
-    @Scripts.Render("~/bundles/SweetAlert")
-
+    @Scripts.Render("~/bundles/jqueryValidate")
+    @Scripts.Render("~/bundles/jquerySteps")
+    @Scripts.Render("~/bundles/demoWizard")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
     @Scripts.Render("~/bundles/filestyle")
     @Scripts.Render("~/bundles/tagsinput")
     @Scripts.Render("~/bundles/chosen")
@@ -327,15 +382,12 @@
     @Scripts.Render("~/bundles/inputmask")
     @Scripts.Render("~/bundles/wysiwyg")
     @Scripts.Render("~/bundles/moment")
-    @Scripts.Render("~/bundles/datetimePicker")
     @Scripts.Render("~/bundles/ColorPicker")
     @Scripts.Render("~/bundles/demoForms")
     @Scripts.Render("~/bundles/select2")
-
-    @Scripts.Render("~/bundles/fileUpload")
-    @Scripts.Render("~/bundles/demoUpload")
-
+    @Scripts.Render("~/bundles/sparklines")
 }
+
 
 <script id="template-upload" type="text/x-tmpl">
     {% for (var i=0, file; file=o.files[i]; i++) { %}
@@ -420,32 +472,29 @@
             var qualification = $("#txtQualification").val();
             var completionStatus = $("#drpQualificationStatus").val();
             var completionDate = $("#txtCompletionDate").val();
+            var certificatePath = $("#qualCertificate").val();
 
             if (qualification == "") {
                 alert("Please insert the Qualification");
-                //swal("Ahh!", "Please insert the Qualification", "Alert");
             }
 
-            if (completionStatus == "" || completionStatus == "Select") {
+            else if (completionStatus == "" || completionStatus == "Select") {
                 alert("Please select the qualification status");
             }
 
-            if (completionStatus == "Passed") {
+            else if (completionStatus == "Passed") {
                 if (completionDate == "") {
                     alert("Please insert the completion date")
                 }
             }
 
-
-
-
-            //if (qualification != "" && completionStatus = ! "" && completionStatus != "Select") {
-            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + qualification + "</td><td>" + completionStatus + "</td><td>" + completionDate + "</td></tr>";
-            $("#tblQualification tbody").append(markup);
-            //}
-            $("#txtQualification").val('');
-            $("#drpQualificationStatus").val('');
-            $("#txtCompletionDate").val('');
+            else {
+                var markup = "<tr><td>" + qualification + "</td><td>" + completionStatus + "</td><td>" + certificatePath + "</td><td>" + completionDate + "</td><td><input type='checkbox' name='record'></td></tr>";
+                $("#tblQualification tbody").append(markup);
+                $("#txtQualification").val('');
+                $("#drpQualificationStatus").val('');
+                $("#txtCompletionDate").val('');
+            }
         });
 
         // Find and remove selected table rows

@@ -54,7 +54,7 @@
                                         <div class="form-group">
                                             <label>Date of Birth*</label>
                                             <div id="datetimepicker1" class="input-group date" style="width:70%">
-                                                @*<input type="text" id="txtDateofBirth" class="form-control" required="">*@
+                                              
                                                 @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtStudentDOB" })
                                                 <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
@@ -65,12 +65,6 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Gender*</label>
-                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
-                                                    <option value="">Select</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                    <option value="Others">Others</option>
-                                                </select>*@
                                             @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
                                                 {
                                                    new SelectListItem{ Text="Select", Value = "" },
@@ -83,13 +77,6 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Religion*</label>
-                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
-                                                    <option value="">Select</option>
-                                                    <option value="Hindu">Hindu</option>
-                                                    <option value="Muslim">Muslim</option>
-                                                    <option value="Christian">Christian</option>
-                                                    <option value="Others">Others</option>
-                                                </select>*@
                                             @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
                                                    {
                                                       new SelectListItem{ Text="Select", Value = "" },
@@ -106,13 +93,6 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Caste*</label>
-                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpCaste" required="">
-                                                    <option value="">Select</option>
-                                                    <option value="General">General</option>
-                                                    <option value="OBC">OBC</option>
-                                                    <option value="SC">SC</option>
-                                                    <option value="ST">ST</option>
-                                                </select>*@
                                             @Html.DropDownListFor(m => m.Caste, new List<SelectListItem>
                                                   {
                                                      new SelectListItem{ Text="Select", Value = "" },
@@ -166,20 +146,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Applied for class*</label>
-                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGrade" required="">
-                                                    <option value="">Select</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                    <option value="10">10</option>
-                                                </select>*@
-                                            @Html.DropDownListFor(m => m.GradeID, new List<SelectListItem>    
+                                            @Html.DropDownListFor(m => m.GradeID, new List<SelectListItem>
                                               {
                                                  new SelectListItem{ Text="Select", Value = "" },
                                                  new SelectListItem{ Text="1", Value = "1" },
@@ -194,6 +161,19 @@
                                                  new SelectListItem{ Text="10", Value = "10" }
                                               }, new { name = "Grade", @class = "form-control m-b", @style = "width:50%", @id = "drpGrade", @required = "" })
 
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Primary Subject*</label>
+                                            @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
+                                                   {
+                                                      new SelectListItem{ Text="Select", Value = "" },
+                                                      new SelectListItem{ Text="Hindu", Value = "Hindu" },
+                                                      new SelectListItem{ Text="Muslim", Value = "Muslim" },
+                                                      new SelectListItem{ Text="Christian", Value = "Christian" },
+                                                      new SelectListItem{ Text="Others", Value = "Others" }
+                                                   }, new { name = "Religion", @class = "form-control m-b", @style = "width:50%", @id = "drpSubject", @required = "" })
                                         </div>
                                     </div>
 
@@ -348,43 +328,7 @@
                         </div>
                         <div id="acc1collapse4" class="panel-collapse collapse">
                             <div id="collapse04" class="panel-body">
-                                @*<div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <div class="radio c-radio">
-                                                    <label>
-                                                        <input id="chkFather" type="radio" name="checkout-pay" value="Father" checked="checked" class="form-control" />
-                                                        @Html.RadioButtonFor(model => model.RelationWithGuardian, "yes", new { id = "chkFather" })
-
-                                                        <span class="fa fa-check"></span>Father as Guardian
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <div class="radio c-radio">
-                                                    <label>
-                                                        @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkMother" })
-                                                        <span class="fa fa-check"></span>Mother as Guardian
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <div class="radio c-radio">
-                                                    <label>
-                                                        @Html.RadioButtonFor(model => model.RelationWithGuardian, "no", new { id = "chkOthers" })
-                                                        <span class="fa fa-check"></span>Others
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>*@
-
-
+                             
 
                                 <div id="collapse03" class="panel-body">
                                     <div class="row">

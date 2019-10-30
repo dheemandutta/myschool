@@ -7,13 +7,12 @@
 @{
     ViewBag.Title = "Teacher";
 }
+
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-<script src="~/Scripts/TeacherParticulars.js"></script>
+<script src="~/Scripts/Teacher.js"></script>
 
-@*<body style="background-image: url(../background/depart.jpg);
-    background-size: cover;">*@
 <body>
-
+    @Html.Hidden("saveupdate",@Url.Action("SaveOrUpdate","Teacher"))
     <div class="col-md-9">
         <div class="container-md">
             <!-- Checkout Process-->
@@ -294,6 +293,7 @@
                                             <br />
                                             <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
                                             <button type="button" class="btn btn-primary" id="btnRemove">Delete</button>
+                                            <button type="button" class="btn btn-primary" id="btnOk">Ok</button>
                                         </div>
                                     </div>
 
@@ -302,7 +302,7 @@
 
                                 <div class="row">
                                     <div class="table-responsive">
-                                     <br />
+                                        <br />
                                         <table class="table table-striped" id="tblQualification" style="width:90%" align="center">
                                             <thead>
                                                 <tr>
@@ -338,6 +338,29 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnOk").click(function () {
+            var table = $("#tblQualification tbody");
+            var myArray = [];
+
+            table.find('tr').each(function (i) {
+                var myTableData = {};
+                var $tds = $(this).find('td');
+                myTableData.QualName = $tds.eq(0).text();
+                myTableData.QualStatus = $tds.eq(1).text();
+                myTableData.QualCertPath = $tds.eq(2).text();
+                myTableData.QualCompletionDate = $tds.eq(3).text();
+                myArray .push(myTableData);
+                alert(JSON.stringify(myArray));
+            });
+          
+        });
+    });
+</script>
+
+
 <script type="text/javascript">
     function readURL(input) {
         if (input.files && input.files[0]) {
@@ -355,9 +378,6 @@
     //    readURL(this);
     //});
 </script>
-
-
-
 
 
 @section Styles {
@@ -473,6 +493,7 @@
             var completionStatus = $("#drpQualificationStatus").val();
             var completionDate = $("#txtCompletionDate").val();
             var certificatePath = $("#qualCertificate").val();
+            alert(completionDate);
 
             if (qualification == "") {
                 alert("Please insert the Qualification");

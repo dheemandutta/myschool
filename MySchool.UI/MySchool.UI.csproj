@@ -521,7 +521,7 @@
     <Content Include="Scripts\subject.js" />
     <Content Include="Scripts\Subject2.js" />
     <Content Include="Scripts\tblConfig.js" />
-    <Content Include="Scripts\TeacherParticulars.js" />
+    <Content Include="Scripts\Teacher.js" />
     <Content Include="Scripts\Topic.js" />
     <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\Year.js" />

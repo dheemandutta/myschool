@@ -119,6 +119,64 @@ namespace MySchool.DAL
         }
 
 
-        
+        public ActualAdmissionEntities GetActualAdmissionByID(int ID)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetActualAdmissionByID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", ID);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataSet ds = new DataSet();
+            da.Fill(ds);
+            con.Close();
+            ActualAdmissionEntities actualAdmission = new ActualAdmissionEntities();
+            actualAdmission.ID = Convert.ToInt32(ds.Tables[0].Rows[0]["ID"].ToString());
+            actualAdmission.AdmissionNumber = Convert.ToString(ds.Tables[0].Rows[0]["FormNumber"]);
+            actualAdmission.FormNumber = Convert.ToString(ds.Tables[0].Rows[0]["FormNumber"]);
+            actualAdmission.SFName = Convert.ToString(ds.Tables[0].Rows[0]["SFName"]);
+            actualAdmission.SMName = Convert.ToString(ds.Tables[0].Rows[0]["SMName"]);
+            actualAdmission.SLNAme = Convert.ToString(ds.Tables[0].Rows[0]["SLNAme"]);
+            actualAdmission.Gender = Convert.ToString(ds.Tables[0].Rows[0]["Gender"]);
+            actualAdmission.DOB1 = Convert.ToString(ds.Tables[0].Rows[0]["DOB"]);
+            actualAdmission.FFName = Convert.ToString(ds.Tables[0].Rows[0]["FFName"]);
+            actualAdmission.FMName = Convert.ToString(ds.Tables[0].Rows[0]["FMName"]);
+            actualAdmission.FLName = Convert.ToString(ds.Tables[0].Rows[0]["FLName"]);
+            actualAdmission.MFName = Convert.ToString(ds.Tables[0].Rows[0]["MFName"]);
+            actualAdmission.MMName = Convert.ToString(ds.Tables[0].Rows[0]["MMName"]);
+            actualAdmission.MLName = Convert.ToString(ds.Tables[0].Rows[0]["MLName"]);
+            actualAdmission.GFName = Convert.ToString(ds.Tables[0].Rows[0]["GFName"]);
+            actualAdmission.GMName = Convert.ToString(ds.Tables[0].Rows[0]["GMName"]);
+            actualAdmission.GLName = Convert.ToString(ds.Tables[0].Rows[0]["GLName"]);
+            actualAdmission.Address = Convert.ToString(ds.Tables[0].Rows[0]["Address"]);
+            actualAdmission.MoutherTounge = Convert.ToString(ds.Tables[0].Rows[0]["MoutherTounge"]);
+            actualAdmission.FatherQualification = Convert.ToString(ds.Tables[0].Rows[0]["FatherQualification"]);
+            actualAdmission.MotherQualification = Convert.ToString(ds.Tables[0].Rows[0]["MotherQualification"]);
+            actualAdmission.FatherOccupation = Convert.ToString(ds.Tables[0].Rows[0]["FatherOccupation"]);
+            actualAdmission.FatherAnnualIncome = Convert.ToDecimal(ds.Tables[0].Rows[0]["FatherAnnualIncome"]);
+            actualAdmission.MotherOccupation = Convert.ToString(ds.Tables[0].Rows[0]["MotherOccupation"]);
+            actualAdmission.MotherAnnualIncome = Convert.ToDecimal(ds.Tables[0].Rows[0]["MotherAnnualIncome"]);
+            actualAdmission.GradeID = Convert.ToInt32(ds.Tables[0].Rows[0]["GradeID"]);
+            actualAdmission.YearID = Convert.ToInt32(ds.Tables[0].Rows[0]["YearID"]);
+            actualAdmission.isSelectedForInterview = Convert.ToBoolean(ds.Tables[0].Rows[0]["isSelectedForInterview"]);
+            actualAdmission.IdentificationMarks = Convert.ToString(ds.Tables[0].Rows[0]["IdentificationMarks"]);
+            actualAdmission.SpecialMedicalProblem = Convert.ToString(ds.Tables[0].Rows[0]["SpecialMedicalProblem"]);
+            actualAdmission.RelationWithGuardian = Convert.ToString(ds.Tables[0].Rows[0]["RelationWithGuardian"]);
+            actualAdmission.SPhoto = Convert.ToString(ds.Tables[0].Rows[0]["SPhoto"]);
+            actualAdmission.FPhoto = Convert.ToString(ds.Tables[0].Rows[0]["FPhoto"]);
+            actualAdmission.FSign = Convert.ToString(ds.Tables[0].Rows[0]["FSign"]);
+            actualAdmission.MPhoto = Convert.ToString(ds.Tables[0].Rows[0]["MPhoto"]);
+            actualAdmission.MSign = Convert.ToString(ds.Tables[0].Rows[0]["MSign"]);
+            actualAdmission.FContactNo = Convert.ToString(ds.Tables[0].Rows[0]["FContactNo"]);
+            actualAdmission.MContactNo = Convert.ToString(ds.Tables[0].Rows[0]["MContactNo"]);
+            actualAdmission.Email = Convert.ToString(ds.Tables[0].Rows[0]["Email"]);
+            actualAdmission.Religion = Convert.ToString(ds.Tables[0].Rows[0]["Religion"]);
+            actualAdmission.Caste = Convert.ToString(ds.Tables[0].Rows[0]["Caste"]);
+            actualAdmission.FormFillDate2 = Convert.ToString(ds.Tables[0].Rows[0]["FormFillDate"]);
+            //actualAdmission.StudentName = Convert.ToString(ds.Tables[0].Rows[0]["StudentName"]);
+            //actualAdmission.MotherName = Convert.ToString(ds.Tables[0].Rows[0]["MotherName"]);
+            //actualAdmission.FatherName = Convert.ToString(ds.Tables[0].Rows[0]["FatherName"]);
+            return actualAdmission;
+        }
     }
 }

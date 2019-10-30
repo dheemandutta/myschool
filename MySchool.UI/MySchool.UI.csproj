@@ -523,10 +523,11 @@
     <Content Include="Scripts\subject.js" />
     <Content Include="Scripts\Subject2.js" />
     <Content Include="Scripts\tblConfig.js" />
-    <Content Include="Scripts\TeacherParticulars.js" />
+    <Content Include="Scripts\Teacher.js" />
     <Content Include="Scripts\Topic.js" />
     <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\Year.js" />
+    <Content Include="Sql Script\PP_30.10.2019_stpGetActualAdmissionByID.sql" />
     <Content Include="Sql Script\SS_Patch_2902019.sql" />
     <Content Include="Sql Script\SS_Patch_29102019.sql" />
     <Content Include="Sql Script\SS_DBScript28102019.sql" />

@@ -16,7 +16,16 @@ namespace MySchool.UI.Controllers
         // GET: ActualAdmission
         public ActionResult Index()
         {
-            return View();
+            ActualAdmissionEntities actualAdmissionEntities = new ActualAdmissionEntities();
+            AdmissionFormBL admissionFormBL = new AdmissionFormBL();
+            actualAdmissionEntities = admissionFormBL.GetActualAdmissionByID(1);
+            return View(actualAdmissionEntities);
+        }
+
+        public ActionResult GetActualAdmissionByID(int ID)
+        {
+            AdmissionFormBL admissionFormBL = new AdmissionFormBL();
+            return Json(admissionFormBL.GetActualAdmissionByID(ID), JsonRequestBehavior.AllowGet);
         }
     }
 }

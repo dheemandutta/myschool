@@ -26,5 +26,11 @@ namespace MySchool.BL
             AdmissionFormDAL admissiondal = new AdmissionFormDAL();
             return admissiondal.UpdateSelectionForAdmissionStatus(ID);
         }
+
+        public ActualAdmissionEntities GetActualAdmissionByID(int ID)
+        {
+            AdmissionFormDAL admissiondal = new AdmissionFormDAL();
+            return admissiondal.GetActualAdmissionByID(ID);
+        }
     }
 }

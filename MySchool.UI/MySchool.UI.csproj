@@ -189,6 +189,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\ActualAdmissionController.cs" />
     <Compile Include="Controllers\AdmissionController.cs" />
     <Compile Include="Controllers\AdmissionFormController.cs" />
     <Compile Include="Controllers\ChoiceController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Controllers\GradeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NewLoginController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\ResultController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
@@ -525,6 +527,7 @@
     <Content Include="Scripts\Topic.js" />
     <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\Year.js" />
+    <Content Include="Sql Script\PP_30.10.2019_stpGetActualAdmissionByID.sql" />
     <Content Include="Sql Script\SS_Patch_2902019.sql" />
     <Content Include="Sql Script\SS_Patch_29102019.sql" />
     <Content Include="Sql Script\SS_DBScript28102019.sql" />
@@ -1059,6 +1062,8 @@
     <Content Include="Views\AdmissionForm\AdmissionList.cshtml" />
     <Content Include="Views\Admission\Index.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\NewLogin\Index.cshtml" />
+    <Content Include="Views\ActualAdmission\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

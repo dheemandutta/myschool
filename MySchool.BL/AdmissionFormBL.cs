@@ -32,5 +32,12 @@ namespace MySchool.BL
             AdmissionFormDAL admissiondal = new AdmissionFormDAL();
             return admissiondal.GetActualAdmissionByID(ID);
         }
+
+
+        //public int SaveOrUpdateForActualAdmission(ActualAdmissionEntities admissionForm)
+        //{
+        //    AdmissionFormDAL admissionfromDal = new AdmissionFormDAL();
+        //    return admissionfromDal.SaveOrUpdateForActualAdmission(admissionForm);
+        //}
     }
 }

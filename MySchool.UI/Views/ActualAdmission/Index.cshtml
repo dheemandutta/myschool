@@ -11,6 +11,7 @@
 <h2>Student Details</h2>
 <body>
     @Html.Hidden("saveadmissionform", Url.Action("SaveOrUpdate", "AdmissionForm"))
+    @Html.Hidden("saveOrUpdateForActualAdmission", Url.Action("SaveOrUpdateForActualAdmission", "AdmissionForm"))
     <div class="col-md-9">
         <div class="container-md">
             <!-- Checkout Process-->
@@ -35,180 +36,180 @@
                                     </div>
                                 </div>
 
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>First Name*</label>
-                                                @*<input type="text" id="txtStudentFirstName" name="checkout-studentfirstname" placeholder="Student First Name" required="" class="form-control" />*@
-                                                @Html.TextBoxFor(m => m.SFName, new { @class = "form-control", @placeholder = "Student First Name", @required = "", id = "txtStudentFirstName" })
-                                            </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>First Name*</label>
+                                            @*<input type="text" id="txtStudentFirstName" name="checkout-studentfirstname" placeholder="Student First Name" required="" class="form-control" />*@
+                                            @Html.TextBoxFor(m => m.SFName, new { @class = "form-control", @placeholder = "Student First Name", @required = "", id = "txtStudentFirstName" })
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Middle Name</label>
-                                                @Html.TextBoxFor(m => m.SMName, new { @class = "form-control", @placeholder = "Student Middle Name", id = "txtStudentMiddleName" })
-                                            </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Middle Name</label>
+                                            @Html.TextBoxFor(m => m.SMName, new { @class = "form-control", @placeholder = "Student Middle Name", id = "txtStudentMiddleName" })
                                         </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Last Name*</label>
-                                                @Html.TextBoxFor(m => m.SLNAme, new { @class = "form-control", @placeholder = "Student Last Name", @required = "", id = "txtStudentLastName" })
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Last Name*</label>
+                                            @Html.TextBoxFor(m => m.SLNAme, new { @class = "form-control", @placeholder = "Student Last Name", @required = "", id = "txtStudentLastName" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Date of Birth*</label>
+                                            <div id="datetimepicker1" class="input-group date" style="width:70%">
+                                                @*<input type="text" id="txtDateofBirth" class="form-control" required="">*@
+                                                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtStudentDOB" })
+                                                <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Date of Birth*</label>
-                                                <div id="datetimepicker1" class="input-group date" style="width:70%">
-                                                    @*<input type="text" id="txtDateofBirth" class="form-control" required="">*@
-                                                    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtStudentDOB" })
-                                                    <span class="input-group-addon">
-                                                        <span class="fa fa-calendar"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Gender*</label>
-                                                @*<select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
-                            <option value="">Select</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Others">Others</option>
-                        </select>*@
-                                                @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
-                                                    {
-                                                       new SelectListItem{ Text="Select", Value = "" },
-                                                       new SelectListItem{ Text="Male", Value = "Male" },
-                                                       new SelectListItem{ Text="Female", Value = "Female" },
-                                                       new SelectListItem{ Text="Others", Value = "Others" }
-                                                    }, new { name = "Gender", @class = "form-control m-b", @style = "width:50%", @id = "drpGender", @required = "" })
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Religion*</label>
-                                                @*<select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
-                            <option value="">Select</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Muslim">Muslim</option>
-                            <option value="Christian">Christian</option>
-                            <option value="Others">Others</option>
-                        </select>*@
-                                                @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
-                                                       {
-                                                          new SelectListItem{ Text="Select", Value = "" },
-                                                          new SelectListItem{ Text="Hindu", Value = "Hindu" },
-                                                          new SelectListItem{ Text="Muslim", Value = "Muslim" },
-                                                          new SelectListItem{ Text="Christian", Value = "Christian" },
-                                                          new SelectListItem{ Text="Others", Value = "Others" }
-                                                       }, new { name = "Religion", @class = "form-control m-b", @style = "width:50%", @id = "drpReligion", @required = "" })
-                                            </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Gender*</label>
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGender" required="">
+                                                    <option value="">Select</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Others">Others</option>
+                                                </select>*@
+                                            @Html.DropDownListFor(m => m.Gender, new List<SelectListItem>
+                                                {
+                                                   new SelectListItem{ Text="Select", Value = "" },
+                                                   new SelectListItem{ Text="Male", Value = "Male" },
+                                                   new SelectListItem{ Text="Female", Value = "Female" },
+                                                   new SelectListItem{ Text="Others", Value = "Others" }
+                                                }, new { name = "Gender", @class = "form-control m-b", @style = "width:50%", @id = "drpGender", @required = "" })
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Caste*</label>
-                                                @*<select name="account" class="form-control m-b" style="width:50%" id="drpCaste" required="">
-                            <option value="">Select</option>
-                            <option value="General">General</option>
-                            <option value="OBC">OBC</option>
-                            <option value="SC">SC</option>
-                            <option value="ST">ST</option>
-                        </select>*@
-                                                @Html.DropDownListFor(m => m.Caste, new List<SelectListItem>
-                                                      {
-                                                         new SelectListItem{ Text="Select", Value = "" },
-                                                         new SelectListItem{ Text="General", Value = "General" },
-                                                         new SelectListItem{ Text="OBC", Value = "OBC" },
-                                                         new SelectListItem{ Text="SC", Value = "SC" },
-                                                         new SelectListItem{ Text="ST", Value = "ST" }
-                                                     }, new { name = "Caste", @class = "form-control m-b", @style = "width:50%", @id = "drpCaste", @required = "" })
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <div class="form-group">
-                                                <label>Address*</label>
-                                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address", @required = "", id = "txtAddress" })
-
-                                            </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Religion*</label>
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpReligion" required="">
+                                                    <option value="">Select</option>
+                                                    <option value="Hindu">Hindu</option>
+                                                    <option value="Muslim">Muslim</option>
+                                                    <option value="Christian">Christian</option>
+                                                    <option value="Others">Others</option>
+                                                </select>*@
+                                            @Html.DropDownListFor(m => m.Religion, new List<SelectListItem>
+                                                   {
+                                                      new SelectListItem{ Text="Select", Value = "" },
+                                                      new SelectListItem{ Text="Hindu", Value = "Hindu" },
+                                                      new SelectListItem{ Text="Muslim", Value = "Muslim" },
+                                                      new SelectListItem{ Text="Christian", Value = "Christian" },
+                                                      new SelectListItem{ Text="Others", Value = "Others" }
+                                                   }, new { name = "Religion", @class = "form-control m-b", @style = "width:50%", @id = "drpReligion", @required = "" })
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", id = "txtEmail" })
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Mother tounge*</label>
-                                                @Html.TextBoxFor(m => m.MoutherTounge, new { @class = "form-control", @placeholder = "Mother Tounge", @required = "", id = "txtMotherToung" })
-                                            </div>
-                                        </div>
+                                </div>
 
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Identification Marks*</label>
-                                                @Html.TextBoxFor(m => m.IdentificationMarks, new { @class = "form-control", @placeholder = "Identification marks", @required = "", id = "txtIdentificationMarks" })
-
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Special medical problem*</label>
-                                                @Html.TextBoxFor(m => m.SpecialMedicalProblem, new { @class = "form-control", @placeholder = "Special medical problem", @required = "", id = "txtSpecialMedicalProblem" })
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label>Applied for class*</label>
-                                                @*<select name="account" class="form-control m-b" style="width:50%" id="drpGrade" required="">
-                            <option value="">Select</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>*@
-                                                @Html.DropDownListFor(m => m.GradeID, new List<SelectListItem>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Caste*</label>
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpCaste" required="">
+                                                    <option value="">Select</option>
+                                                    <option value="General">General</option>
+                                                    <option value="OBC">OBC</option>
+                                                    <option value="SC">SC</option>
+                                                    <option value="ST">ST</option>
+                                                </select>*@
+                                            @Html.DropDownListFor(m => m.Caste, new List<SelectListItem>
                                                   {
                                                      new SelectListItem{ Text="Select", Value = "" },
-                                                     new SelectListItem{ Text="1", Value = "1" },
-                                                     new SelectListItem{ Text="2", Value = "2" },
-                                                     new SelectListItem{ Text="3", Value = "3" },
-                                                     new SelectListItem{ Text="4", Value = "4" },
-                                                     new SelectListItem{ Text="5", Value = "5" },
-                                                     new SelectListItem{ Text="6", Value = "6" },
-                                                     new SelectListItem{ Text="7", Value = "7" },
-                                                     new SelectListItem{ Text="8", Value = "8" },
-                                                     new SelectListItem{ Text="9", Value = "9" },
-                                                     new SelectListItem{ Text="10", Value = "10" }
-                                                  }, new { name = "Grade", @class = "form-control m-b", @style = "width:50%", @id = "drpGrade", @required = "" })
-
-                                            </div>
+                                                     new SelectListItem{ Text="General", Value = "General" },
+                                                     new SelectListItem{ Text="OBC", Value = "OBC" },
+                                                     new SelectListItem{ Text="SC", Value = "SC" },
+                                                     new SelectListItem{ Text="ST", Value = "ST" }
+                                                 }, new { name = "Caste", @class = "form-control m-b", @style = "width:50%", @id = "drpCaste", @required = "" })
                                         </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="form-group">
+                                            <label>Address*</label>
+                                            @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address", @required = "", id = "txtAddress" })
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Email</label>
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", id = "txtEmail" })
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Mother tounge*</label>
+                                            @Html.TextBoxFor(m => m.MoutherTounge, new { @class = "form-control", @placeholder = "Mother Tounge", @required = "", id = "txtMotherToung" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Identification Marks*</label>
+                                            @Html.TextBoxFor(m => m.IdentificationMarks, new { @class = "form-control", @placeholder = "Identification marks", @required = "", id = "txtIdentificationMarks" })
+
+                                        </div>
                                     </div>
 
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Special medical problem*</label>
+                                            @Html.TextBoxFor(m => m.SpecialMedicalProblem, new { @class = "form-control", @placeholder = "Special medical problem", @required = "", id = "txtSpecialMedicalProblem" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Applied for class*</label>
+                                            @*<select name="account" class="form-control m-b" style="width:50%" id="drpGrade" required="">
+                                                    <option value="">Select</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                </select>*@
+                                            @Html.DropDownListFor(m => m.GradeID, new List<SelectListItem>
+                                              {
+                                                 new SelectListItem{ Text="Select", Value = "" },
+                                                 new SelectListItem{ Text="1", Value = "1" },
+                                                 new SelectListItem{ Text="2", Value = "2" },
+                                                 new SelectListItem{ Text="3", Value = "3" },
+                                                 new SelectListItem{ Text="4", Value = "4" },
+                                                 new SelectListItem{ Text="5", Value = "5" },
+                                                 new SelectListItem{ Text="6", Value = "6" },
+                                                 new SelectListItem{ Text="7", Value = "7" },
+                                                 new SelectListItem{ Text="8", Value = "8" },
+                                                 new SelectListItem{ Text="9", Value = "9" },
+                                                 new SelectListItem{ Text="10", Value = "10" }
+                                              }, new { name = "Grade", @class = "form-control m-b", @style = "width:50%", @id = "drpGrade", @required = "" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
+                        </div>
                     </div>
 
                     <!-- Fathers's Information-->

@@ -27,5 +27,13 @@ namespace MySchool.UI.Controllers
             AdmissionFormBL admissionFormBL = new AdmissionFormBL();
             return Json(admissionFormBL.GetActualAdmissionByID(ID), JsonRequestBehavior.AllowGet);
         }
+
+
+        public ActionResult SaveOrUpdateForActualAdmission(ActualAdmissionEntities admissionForm)
+        {
+            AdmissionFormBL admissionBl = new AdmissionFormBL();
+            int recordAffected = admissionBl.SaveOrUpdateForActualAdmission(admissionForm);
+            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
     }
 }

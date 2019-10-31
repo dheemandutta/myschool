@@ -34,10 +34,11 @@ namespace MySchool.BL
         }
 
 
-        //public int SaveOrUpdateForActualAdmission(ActualAdmissionEntities admissionForm)
-        //{
-        //    AdmissionFormDAL admissionfromDal = new AdmissionFormDAL();
-        //    return admissionfromDal.SaveOrUpdateForActualAdmission(admissionForm);
-        //}
+        public int SaveOrUpdateForActualAdmission(ActualAdmissionEntities admissionForm)
+        {
+            AdmissionFormDAL admissionfromDal = new AdmissionFormDAL();
+            // return admissionfromDal.SaveOrUpdateForActualAdmission(admissionForm);
+            return 0; ////////////////////////////////////////////
+        }
     }
 }

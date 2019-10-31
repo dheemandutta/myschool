@@ -29,11 +29,10 @@ namespace MySchool.UI.Controllers
         }
 
 
-        public ActionResult SaveOrUpdateForActualAdmission(ActualAdmissionEntities admissionForm)
+         public JsonResult SaveOrUpdateForActualAdmission(ActualAdmissionEntities choiceEntities)
         {
-            AdmissionFormBL admissionBl = new AdmissionFormBL();
-            int recordAffected = admissionBl.SaveOrUpdateForActualAdmission(admissionForm);
-            return Json(recordAffected, JsonRequestBehavior.AllowGet);
+            AdmissionFormBL admissionFormBL = new AdmissionFormBL();
+            return Json(admissionFormBL.SaveOrUpdateForActualAdmission(choiceEntities), JsonRequestBehavior.AllowGet);
         }
     }
 }

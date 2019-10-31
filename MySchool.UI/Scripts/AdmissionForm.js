@@ -142,10 +142,17 @@ function SetUpGrid() {
             {
                 "data": "IdentificationMarks", "name": "IdentificationMarks", "autoWidth": true
             }
-            , {
-                "data": "ID", "width": "50px", "render": function (data, FormNumber) {
-                    return '<input type="button" value = "Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
-                 
+            ,
+            {
+                "render": function (data, type, JsonResultRow, meta) {
+                    console.log('in grid render');
+                    console.log(JsonResultRow);
+                    if (JsonResultRow.isSelectedForAdmission === true) {
+                        return '<input type="button" value = "Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
+                    }
+                    else {
+                        return '<input type="button" value = "De-Select" onclick="UpdateSelectionForAdmissionStatus(' + data + ')">';
+                    }
                 }
             }
         ]

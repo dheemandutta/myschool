@@ -1,9 +1,12 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Xml.Linq;
 
 namespace MySchool.Entities
 {
@@ -36,7 +39,9 @@ namespace MySchool.Entities
         public decimal MotherAnnualIncome { get; set; }
         public int GradeID { get; set; }
         public int YearID { get; set; }
-        public bool isSelectedForInterview { get; set; }
+        public bool iSelectedForInterview { get; set; }
+
+        public bool isSelectedForAdmission { get; set; }
         public string IdentificationMarks { get; set; }
         public string SpecialMedicalProblem { get; set; }
         public string RelationWithGuardian { get; set; }
@@ -55,6 +60,16 @@ namespace MySchool.Entities
         public string StudentName { get; set; }
         public string MotherName { get; set; }
         public string FatherName { get; set; }
+
+        [DisplayName("Upload File")]
+        public string StudentImagePath { get; set; }
+        public string FatherImagePath { get; set; }
+        public string MotherImagePath { get; set; }
+
+        public HttpPostedFile ImageFile { get; set; }
+
+        public string GContactNo { get; set; }
+
 
     }
 }

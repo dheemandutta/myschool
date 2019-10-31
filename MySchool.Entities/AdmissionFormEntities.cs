@@ -60,7 +60,10 @@ namespace MySchool.Entities
         public string FatherName { get; set; }
 
         [DisplayName("Upload File")]
-        public string ImagePath { get; set; }
+        public string StudentImagePath { get; set; }
+        public string FatherImagePath { get; set; }
+        public string MotherImagePath { get; set; }
+
         public HttpPostedFile ImageFile { get; set; }
 
         public string GContactNo { get; set; }

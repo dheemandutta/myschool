@@ -96,7 +96,8 @@ namespace MySchool.DAL
                             StudentName = Convert.ToString(dr["StudentName"]),
                             DOB1 = Convert.ToString(dr["DOB"]),
                             Address = Convert.ToString(dr["Address"]),
-                            IdentificationMarks = Convert.ToString(dr["IdentificationMarks"])
+                            IdentificationMarks = Convert.ToString(dr["IdentificationMarks"]),
+                            isSelectedForAdmission = Convert.ToBoolean(dr["isSelectedForAdmission"])
                         });
                     }
                     recordCount = Convert.ToInt32(cmd.Parameters["@RecordCount"].Value);

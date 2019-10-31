@@ -61,7 +61,7 @@ namespace MySchool.UI.Controllers
 
 
 
-            //admissionBl.SaveOrUpdate(admissionForm);
+            admissionBl.SaveOrUpdate(admissionForm);
             return View();
         }
 

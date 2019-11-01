@@ -1066,6 +1066,7 @@
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\NewLogin\Index.cshtml" />
     <Content Include="Views\ActualAdmission\Index.cshtml" />
+    <Content Include="Views\Year\GetAllAcademicYear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdmissionImages\" />

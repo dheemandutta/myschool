@@ -9,11 +9,11 @@ using System.Configuration;
 using MySchool.Entities;
 //using AutoMapper;
 namespace MySchool.DAL
-{ 
+{
     public class YearDAL
     {
 
-       // IMapper mapper;
+        // IMapper mapper;
         //public YearDAL()
         //{
         //    var config = new MapperConfiguration(cfg =>
@@ -30,7 +30,7 @@ namespace MySchool.DAL
             SqlCommand cmd = new SqlCommand("stpSaveYear", con);
             cmd.CommandType = CommandType.StoredProcedure;
 
-           
+
             cmd.Parameters.AddWithValue("@Year", yearEntities.Year);
 
             cmd.Parameters.AddWithValue("@YearDesc", yearEntities.YearDesc);
@@ -87,6 +87,26 @@ namespace MySchool.DAL
                 }
             }
             return yearEntities;
+        }
+
+        public List<YearEntities> GetAllYearForDrp()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetYearForDropDown", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<YearEntities> yearList = myTable.AsEnumerable().Select(m => new YearEntities()
+            {
+                ID = m.Field<int>("ID"),
+                Year = m.Field<string>("Year"),
+                YearDesc = m.Field<string>("YearDesc"),
+            }).ToList();
+            con.Close();
+            return yearList;
         }
     }
 }

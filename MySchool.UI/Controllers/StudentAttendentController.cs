@@ -16,7 +16,7 @@ namespace MySchool.UI.Controllers
         // GET: StudentAttendent
         public ActionResult Index()
         {
-            GetAllGradeForDrp();
+            GetAllGradeForDrpNew();
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace MySchool.UI.Controllers
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
         }
 
-        //for ItemMaster drp
+        //for Grade drp
         public void GetAllGradeForDrp()
         {
             StudentAttendentBL studentAttendentBL = new StudentAttendentBL();
@@ -82,6 +82,97 @@ namespace MySchool.UI.Controllers
                                                 Value = x.ID.ToString()
                                             });
         }
+
+
+
+
+
+        //for Grade drp new
+        public void GetAllGradeForDrpNew()
+        {
+            StudentAttendentBL studentAttendentBL = new StudentAttendentBL();
+            List<GradeEntities> pocoList = new List<GradeEntities>();
+
+            pocoList = studentAttendentBL.GetAllGradeForDrpNew();
+
+            List<GradeEntities> itmasterList = new List<GradeEntities>();
+
+            foreach (GradeEntities up in pocoList)
+            {
+                GradeEntities unt = new GradeEntities();
+                unt.ID = up.ID;
+                unt.Grade = up.Grade;
+
+                itmasterList.Add(unt);
+            }
+            ViewBag.StudentAttendentMaster = itmasterList.Select(x =>
+                                            new SelectListItem()
+                                            {
+                                                Text = x.Grade,
+                                                Value = x.ID.ToString()
+                                            });
+        }
+
+        //for SectionByGradeId drp new
+        public JsonResult GetAllSectionByGradeIdForDrp_New(string ID)
+        {
+            StudentAttendentBL studentAttendentBL = new StudentAttendentBL();
+            List<SectionEntities> pocoList = new List<SectionEntities>();
+
+            pocoList = studentAttendentBL.GetAllSectionByGradeIdForDrp_New(ID);
+
+            List<SectionEntities> itmasterList = new List<SectionEntities>();
+
+            foreach (SectionEntities up in pocoList)
+            {
+                SectionEntities comp = new SectionEntities();
+                comp.ID = up.ID;
+                comp.Section = up.Section;
+
+                itmasterList.Add(comp);
+            }
+            //ViewBag.StudentAttendentMaster = itmasterList.Select(x =>
+            //                                new SelectListItem()
+            //                                {
+            //                                    Text = x.Section,
+            //                                    Value = x.ID.ToString()
+            //                                });
+            var data = itmasterList;
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
+
+
+
+        //for StudentBySectionID drp new
+        public JsonResult stpGetAllStudentBySectionIdForDrp_New(string ID, string YearID)
+        {
+            StudentAttendentBL studentAttendentBL = new StudentAttendentBL();
+            List<StudentEntities> pocoList = new List<StudentEntities>();
+
+            pocoList = studentAttendentBL.stpGetAllStudentBySectionIdForDrp_New(ID, YearID);
+
+            List<StudentEntities> itmasterList = new List<StudentEntities>();
+
+            foreach (StudentEntities up in pocoList)
+            {
+                StudentEntities comp = new StudentEntities();
+                comp.ID = up.ID;
+                comp.StudentName = up.StudentName;
+
+                itmasterList.Add(comp);
+            }
+            //ViewBag.StudentAttendentMaster = itmasterList.Select(x =>
+            //                                new SelectListItem()
+            //                                {
+            //                                    Text = x.Section,
+            //                                    Value = x.ID.ToString()
+            //                                });
+            var data = itmasterList;
+            return Json(data, JsonRequestBehavior.AllowGet);
+            //return Json(equipmentsBL.SaveEquipments(equipmentsPC, int.Parse(Session["VesselID"].ToString())), JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }

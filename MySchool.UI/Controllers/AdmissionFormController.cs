@@ -135,5 +135,19 @@ namespace MySchool.UI.Controllers
                 default: return false;
             }
         }
+        public void GetAllGradeForDrp()
+        {
+            List<GradeEntities> gradeList = new List<GradeEntities>();
+            SectionBL sectionBl = new SectionBL();
+            gradeList = sectionBl.GetAllGradeForDrp();
+            ViewBag.getAllGradeForDrp = gradeList.Select(x =>
+                new SelectListItem
+                {
+                    Text = x.Grade,
+                    Value = x.ID.ToString()
+                }
+            );
+        }
+
     }
 }

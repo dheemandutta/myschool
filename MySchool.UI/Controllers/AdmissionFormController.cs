@@ -17,7 +17,12 @@ namespace MySchool.UI.Controllers
         // GET: AdmissionForm
         public ActionResult Index()
         {
-            return View();
+            AdmissionFormEntities admissionFormEntities = new AdmissionFormEntities();            
+            AdmissionFormBL admissionFormBL = new AdmissionFormBL();
+
+            //admissionFormEntities = admissionFormBL.GetAdmissionOfMaxIdByID(Session[""].ToString());
+            admissionFormEntities = admissionFormBL.GetAdmissionOfMaxIdByID(1.ToString());
+            return View(admissionFormEntities);
         }
 
         [HttpPost]
@@ -135,19 +140,8 @@ namespace MySchool.UI.Controllers
                 default: return false;
             }
         }
-        public void GetAllGradeForDrp()
-        {
-            List<GradeEntities> gradeList = new List<GradeEntities>();
-            SectionBL sectionBl = new SectionBL();
-            gradeList = sectionBl.GetAllGradeForDrp();
-            ViewBag.getAllGradeForDrp = gradeList.Select(x =>
-                new SelectListItem
-                {
-                    Text = x.Grade,
-                    Value = x.ID.ToString()
-                }
-            );
-        }
 
+
+    
     }
 }

@@ -11,7 +11,7 @@
 <h2>Student Details</h2>
 <body>
     @Html.Hidden("saveadmissionform", Url.Action("SaveOrUpdate", "AdmissionForm"))
-    <div class="col-md-9">
+    <div class="col-md-9 row" style="height:890px;">
         <div class="container-md">
             <!-- Checkout Process-->
             @*<form action="Index" novalidate="novalidate" method="post"> , new { enctype = "multipart/form-data" } *@
@@ -206,7 +206,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Contact No.*</label>
-                                            @Html.TextBoxFor(m => m.FContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactNoFather" })
+                                            @Html.TextBoxFor(m => m.FContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "",@type = "number", id = "txtContactNoFather" })
                                         </div>
 
 
@@ -231,7 +231,7 @@
 
                                         <div class="form-group">
                                             <label>Annual Income</label>
-                                            @Html.TextBoxFor(m => m.FatherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", id = "txtAnnualIncomeFather" })
+                                            @Html.TextBoxFor(m => m.FatherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income",@type = "number", id = "txtAnnualIncomeFather" })
                                         </div>
                                     </div>
 
@@ -274,7 +274,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Contact No.*</label>
-                                            @Html.TextBoxFor(m => m.MContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactNumberMother" })
+                                            @Html.TextBoxFor(m => m.MContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "",@type = "number", id = "txtContactNumberMother" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
@@ -297,7 +297,7 @@
 
                                         <div class="form-group">
                                             <label>Annual Income</label>
-                                            @Html.TextBoxFor(m => m.MotherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income", id = "txtAnnualIncomeMother" })
+                                            @Html.TextBoxFor(m => m.MotherAnnualIncome, new { @class = "form-control", @placeholder = "Annual income",@type = "number", id = "txtAnnualIncomeMother" })
                                         </div>
                                     </div>
 
@@ -344,7 +344,7 @@
                                         <div class="col-lg-4">
                                             <div class="form-group">
                                                 <label>Contact No.*</label>
-                                                @Html.TextBoxFor(m => m.GContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "", id = "txtContactno" })
+                                                @Html.TextBoxFor(m => m.GContactNo, new { @class = "form-control", @placeholder = "Contact no", @required = "",@type = "number", id = "txtContactno" })
                                             </div>
                                         </div>
 
@@ -474,7 +474,7 @@
                 </div>
                 <div class="mt-lg">
                     <input type="submit" value="Create" class="btn btn-info" />
-                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
+                    @*<button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>*@
                 </div>
             }
 

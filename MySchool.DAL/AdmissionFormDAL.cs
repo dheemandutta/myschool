@@ -179,5 +179,23 @@ namespace MySchool.DAL
             //actualAdmission.FatherName = Convert.ToString(ds.Tables[0].Rows[0]["FatherName"]);
             return actualAdmission;
         }
+
+
+        public int GetAdmissionOfMaxIdByID()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetAdmissionOfMaxIdByID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            int? maxAdmissionID = (int?)cmd.ExecuteScalar();
+            con.Close();
+            if (maxAdmissionID.HasValue)
+                maxAdmissionID += 1;
+            else
+                maxAdmissionID = 0;
+
+            return maxAdmissionID.Value;
+        }
     }
 }

@@ -70,6 +70,7 @@ namespace MySchool.Entities
 
         public string GContactNo { get; set; }
 
-
+        public int AdmissionFormMaxId { get; set; }
+        
     }
 }

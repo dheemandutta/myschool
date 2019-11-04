@@ -182,8 +182,6 @@ function UpdateSelectionForAdmissionStatus(ID, FormNumber) {
     });
 }
 
-
-
 function SaveOrUpdateForActualAdmission() {          ////////////////////////////////////////////////////////////////////////////////
     var postUrl = $('#saveOrUpdateForActualAdmission').val();
     var res = validate;

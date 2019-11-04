@@ -23,8 +23,8 @@ namespace MySchool.BL
 
         public int UpdateSelectionForAdmissionStatus(int ID)
         {
-            AdmissionFormDAL admissiondal = new AdmissionFormDAL();
-            return admissiondal.UpdateSelectionForAdmissionStatus(ID);
+            AdmissionFormDAL admissionFormDAL = new AdmissionFormDAL();
+            return admissionFormDAL.UpdateSelectionForAdmissionStatus(ID);
         }
 
         public ActualAdmissionEntities GetActualAdmissionByID(int ID)
@@ -32,7 +32,6 @@ namespace MySchool.BL
             AdmissionFormDAL admissiondal = new AdmissionFormDAL();
             return admissiondal.GetActualAdmissionByID(ID);
         }
-
 
         public int SaveOrUpdateForActualAdmission(ActualAdmissionEntities admissionForm)
         {
@@ -51,6 +50,12 @@ namespace MySchool.BL
 
             admissionFormEntities.FormNumber = admnum;
             return admissionFormEntities;
+        }
+
+        public List<GradeEntities> GetAllGradeForDrp()
+        {
+            SectionDAL sectionDal = new SectionDAL();
+            return sectionDal.GetAllGradeForDrp();
         }
     }
 }

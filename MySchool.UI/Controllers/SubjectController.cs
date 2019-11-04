@@ -105,5 +105,19 @@ namespace MySchool.UI.Controllers
             int recordAffected = subjectBl.DeleteSubject(ID);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
         }
+
+        public void GetAllSubjectForDrp()
+        {
+            List<SubjectEntities> subjectList = new List<SubjectEntities>();
+            SubjectBL subjectBl = new SubjectBL();
+            subjectList = subjectBl.GetAllSubjectForDrp();
+            ViewBag.getAllGradeForDrp = subjectList.Select(x =>
+                new SelectListItem
+                {
+                    Text = x.SubjectName,
+                    Value = x.ID.ToString()
+                }
+            );
+        }
     }
 }

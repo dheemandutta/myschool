@@ -164,7 +164,7 @@ function SetUpGrid() {
 
 
 function UpdateSelectionForAdmissionStatus(ID, FormNumber) {
-  
+
     var updatestatus = $('#updateselectionforadmissionstatus').val();
     $.ajax({
         url: updatestatus,

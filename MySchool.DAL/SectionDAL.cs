@@ -63,22 +63,25 @@ namespace MySchool.DAL
 
         public List<GradeEntities> GetAllGradeForDrp()
         {
+            List<GradeEntities> gradeList = new List<GradeEntities>();
+            DataSet ds = new DataSet();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpGetAllGradeForDrp", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(ds);
-            DataTable myTable = ds.Tables[0];
-            List<GradeEntities> unitMasterList = myTable.AsEnumerable().Select(m => new GradeEntities()
-            {
-                ID = m.Field<int>("ID"),
-                Grade = m.Field<string>("Grade")
-
-            }).ToList();
             con.Close();
-            return unitMasterList;
+            
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                gradeList.Add(new GradeEntities
+                {
+                    ID = Convert.ToInt32(dr["ID"]),
+                    Grade = Convert.ToString(dr["Grade"]),
+                });
+            }
+            return gradeList;
         }
 
         public int Delete(int ID)

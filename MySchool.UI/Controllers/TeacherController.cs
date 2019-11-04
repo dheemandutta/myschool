@@ -13,6 +13,7 @@ namespace MySchool.UI.Controllers
         // GET: TeacherParticular
         public ActionResult Index()
         {
+            GetAllSubjectForDrp();
             return View();
         }
 
@@ -21,6 +22,20 @@ namespace MySchool.UI.Controllers
             TeacherBL teacherBl = new TeacherBL();
             int recordAffected = teacherBl.SaveOrUpdate(teachenetities);
             return Json(recordAffected, JsonRequestBehavior.AllowGet);
+        }
+
+        public void GetAllSubjectForDrp()
+        {
+            List<SubjectEntities> subjectList = new List<SubjectEntities>();
+            SubjectBL subjectBl = new SubjectBL();
+            subjectList = subjectBl.GetAllSubjectForDrp();
+            ViewBag.getAllGradeForDrp = subjectList.Select(x =>
+                new SelectListItem
+                {
+                    Text = x.SubjectName,
+                    Value = x.ID.ToString()
+                }
+            );
         }
     }
 }

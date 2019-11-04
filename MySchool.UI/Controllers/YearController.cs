@@ -19,7 +19,11 @@ namespace MySchool.UI.Controllers
         {
             return View();
         }
-
+        public ActionResult GetAllAcademicYear()
+        {
+            GetAllAcademicYearForDrp();
+            return View();
+        }
 
         public JsonResult Add(YearEntities yearEntities)
         {
@@ -62,6 +66,20 @@ namespace MySchool.UI.Controllers
 
             var data = yearEntities;
             return Json(new { draw = draw, recordsFiltered = totalrecords, recordsTotal = totalrecords, data = data }, JsonRequestBehavior.AllowGet);
+        }
+
+        public void GetAllAcademicYearForDrp()
+        {
+            YearBL yearbl = new YearBL();
+            List<YearEntities> yearlist = new List<YearEntities>();
+            yearlist = yearbl.GetAllYearForDrp();
+            ViewBag.getAllYear = yearlist.Select(x =>
+                  new SelectListItem
+                  {
+                      Text = x.YearDesc,
+                      Value = x.ID.ToString()
+                  }
+            );
         }
     }
 }

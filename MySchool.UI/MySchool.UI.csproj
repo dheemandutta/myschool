@@ -527,8 +527,10 @@
     <Content Include="Scripts\Topic.js" />
     <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\Year.js" />
+    <Content Include="Sql Script\PP_02.11.2019_stpGetAdmissionOfMaxIdByID.sql" />
     <Content Include="Sql Script\PP_30.10.2019_stpGetActualAdmissionByID.sql" />
     <Content Include="Sql Script\PP_31.10.2019_3_SP.sql" />
+    <Content Include="Sql Script\SS_Patch_01_11_2019.sql" />
     <Content Include="Sql Script\SS_Patch_2902019.sql" />
     <Content Include="Sql Script\SS_Patch_29102019.sql" />
     <Content Include="Sql Script\SS_DBScript28102019.sql" />
@@ -1066,6 +1068,8 @@
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\NewLogin\Index.cshtml" />
     <Content Include="Views\ActualAdmission\Index.cshtml" />
+    <Content Include="Views\Year\GetAllAcademicYear.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdmissionImages\" />

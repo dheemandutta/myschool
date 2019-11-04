@@ -52,3 +52,35 @@ function SetUpGrid() {
         ]
     });
 }
+
+
+
+
+
+
+
+
+
+
+function GetAllSectionByGradeIdForDrp_New(ID) {
+    var x = $("#myUrlid").val();
+
+    $.ajax({
+        url: x,
+        type: "POST",
+        data: JSON.stringify({ 'ID': ID }),
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            //debugger;
+            var drpSection = $('#SectionID');
+            drpSection.find('option').remove();
+            $.each(result, function () {
+                drpSection.append('<option value=' + this.ID + '>' + this.Section + '</option>');
+            });
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}

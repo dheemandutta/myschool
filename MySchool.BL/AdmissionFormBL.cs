@@ -40,5 +40,17 @@ namespace MySchool.BL
             // return admissionfromDal.SaveOrUpdateForActualAdmission(admissionForm);
             return 0; ////////////////////////////////////////////
         }
+
+        public AdmissionFormEntities GetAdmissionOfMaxIdByID(string academicYear)
+        {
+            AdmissionFormDAL admissiondal = new AdmissionFormDAL();
+            int maxAdmissionId = admissiondal.GetAdmissionOfMaxIdByID();
+       
+            string admnum = "ADM-" + academicYear + maxAdmissionId.ToString();
+            AdmissionFormEntities admissionFormEntities = new AdmissionFormEntities();
+
+            admissionFormEntities.FormNumber = admnum;
+            return admissionFormEntities;
+        }
     }
 }

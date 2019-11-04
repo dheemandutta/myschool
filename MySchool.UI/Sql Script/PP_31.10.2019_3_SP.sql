@@ -10,7 +10,7 @@ end
 ----------------------------------------------------------------------
 -- stpGetAllSectionByGradeIdForDrp_New 3
 
-alter procedure [dbo].[stpGetAllSectionByGradeIdForDrp_New]
+CREATE procedure [dbo].[stpGetAllSectionByGradeIdForDrp_New]
 @ID int
 as
 begin
@@ -21,15 +21,24 @@ ON G.ID = S.GradeId
 WHERE G.ID = @ID
 END
 ----------------------------------------------------------------------
--- stpGetAllStudentBySectionIdForDrp_New 3
+-- stpGetAllStudentBySectionIdForDrp_New 3, 1
 
-alter procedure [dbo].[stpGetAllStudentBySectionIdForDrp_New]
-@ID int
+ALTER procedure [dbo].[stpGetAllStudentBySectionIdForDrp_New]
+@ID INT,
+@YearID INT
 as
 begin
-select S.ID        ,S.AdmissionID          --,StudentName
+select S.ID,     SP.FirstName + ' ' + SP.LastName AS StudentName
 from Student S
+
 INNER JOIN Section SE
 ON SE.ID = S.SectionID
+
+INNER JOIN StudentParticulars SP
+ON S.ID = SP.StudentID
+
+INNER JOIN [Year] Y
+ON Y.ID = S.YearID
+
 WHERE SE.ID = @ID
 end

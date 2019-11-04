@@ -45,7 +45,7 @@ function Add() {
     console.log(years);
 
     $.post(postUrl,
-        { yearEntities : years },
+        { yearEntities: years },
         function (data, status, jqXHR) {
             //alert('Data Saved Successfully');
             loadData();
@@ -104,7 +104,7 @@ function SetUpGrid() {
             "type": "POST",
             "datatype": "json"
         },
-        "columns":[
+        "columns": [
             {
                 "data": "Year", "name": "Year", "autoWidth": true
             },
@@ -119,4 +119,11 @@ function SetUpGrid() {
             //}
         ]
     });
+}
+
+function GetAcademicYearSession() {
+    var myYear = $('#drpYear').val();
+    alert(myYear);
+    Session["CurrentAcademicYearValue"] = myYear;
+    Session["CurrentAcademicYearText"] = $('#drpYear').text();
 }

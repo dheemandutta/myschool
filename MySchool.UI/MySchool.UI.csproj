@@ -1070,6 +1070,7 @@
     <Content Include="Views\ActualAdmission\Index.cshtml" />
     <Content Include="Views\Year\GetAllAcademicYear.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\AdmissionForm\GetAdmissionFormDetailsByID.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="AdmissionImages\" />

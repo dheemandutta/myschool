@@ -156,5 +156,10 @@ namespace MySchool.UI.Controllers
             );
         }
 
+        public ActionResult GetAdmissionFormDetailsByID(int ID)
+        {
+            AdmissionFormBL admissionFormBl = new AdmissionFormBL();
+            return Json(admissionFormBl.GetActualAdmissionByID(ID), JsonRequestBehavior.AllowGet);
+        }
     }
 }

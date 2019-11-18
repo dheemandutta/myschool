@@ -11,6 +11,9 @@
 <h2>Student Details</h2>
 @Html.Hidden("getadmissionformdetailsbyid", Url.Action("GetAdmissionFormDetailsByID", "AdmissionForm"))
 <body>
+    <input type="text" id="txtID" />
+    <button class="btn btn-primary" id="btnID" onclick="GetAdmissionFormDetailsById();">Show</button>
+
     <table>
         <tr>
             <td colspan="4"><h2>Student Details</h2></td>

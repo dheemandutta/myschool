@@ -1,10 +1,4 @@
 ﻿
-
-//saveadmissionform
-
-
-
-
 function SaveOrUpdate() {
     var postUrl = $('#saveadmissionform').val();
     var res = validate;
@@ -266,30 +260,51 @@ function SaveOrUpdateForActualAdmission() {          ///////////////////////////
 }
 
 function GetAdmissionFormDetailsById(ID) {
-    var getbyID = $('#getadmissionformdetailsbyid').val();
-    $('#txtFormNumber"').val() = AdmissionNumber ,
-    $('#txtStudentName"').val(): SFName + SMName + SLNAme ,
-        $('#txtClass"').val() =  ,
-    $('#txtDateofBirth"').val() = DOB ,
-    $('#txtSex"').val() = Gender,
-        $('#txtAddress"').val() : Address,
-            $('#txtEmail"').val() = Email ,
-            $('#txtReligon"').val() = Religion ,
-            $('#txtCaste"').val() = Caste ,
-            $('#txtMotherTounge"').val() = MoutherTounge ,
-            $('#txtIdentificationMarks"').val() = IdentificationMarks ,
-            $('#txtSpecialMedicalProblem"').val() = SpecialMedicalProblem ,
-            $('#txtAppliedFor"').val() = GradeID ,
-    $('#txtFathersName"').val() = FFName + FMName + FLName ,
-    $('#txtFatherContactNumber"').val() = FContactNo ,
-    $('#txtFatherQualification"').val() = FatherQualification ,
-        $('#txtFathersOccupation"').val() = FatherOccupation ,
-        $('#txtFatherAnnualIncome"').val() = FatherAnnualIncome ,
-        $('#txtMothersName"').val() = MFName + MMName + MLName ,
-        $('#txtMotherContactNumber"').val() = MContactNo ,
-    $('#txtMotherQualification"').val() = MotherQualification ,
-        $('#txtMothersOccupation"').val() = MotherOccupation , 
-        $('#txtMotherAnnualIncome"').val() = MotherAnnualIncome ,
-    $('#txtGuardinaName"').val() = GFName + GMName + GLName ,
-    $('#txtRelationship"').val() = RelationWithGuardian 
-}
+    var postUrl = $('#getadmissionformdetailsbyid').val();
+    $.ajax({
+        url: postUrl,
+        data: JSON.stringify({ ID: txtID.val()}),
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            if (response != null) {
+                $('#txtFormNumber').val(AdmissionNumber),
+                $('#txtStudentName').val(SFName + SMName + SLNAme),
+                $('#txtClass').val(),
+                $('#txtDateofBirth').val(DOB),
+                $('#txtSex').val(Gender),
+                $('#txtAddress').val(Address),
+                $('#txtEmail').val(Email),
+                $('#txtReligon').val(Religion),
+                $('#txtCaste').val(Caste),
+                $('#txtMotherTounge').val(MoutherTounge),
+                $('#txtIdentificationMarks').val(IdentificationMarks),
+                $('#txtSpecialMedicalProblem').val(SpecialMedicalProblem),
+                $('#txtAppliedFor').val(GradeID),
+                $('#txtFathersName').val(FFName + FMName + FLName),
+                $('#txtFatherContactNumber').val(FContactNo),
+                $('#txtFatherQualification').val(FatherQualification),
+                $('#txtFathersOccupation').val(FatherOccupation),
+                $('#txtFatherAnnualIncome').val(FatherAnnualIncome),
+                $('#txtMothersName').val(MFName + MMName + MLName),
+                $('#txtMotherContactNumber').val(MContactNo),
+                $('#txtMotherQualification').val(MotherQualification),
+                $('#txtMothersOccupation').val(MotherOccupation),
+                $('#txtMotherAnnualIncome').val(MotherAnnualIncome),
+                $('#txtGuardinaName').val(GFName + GMName + GLName),
+                $('#txtRelationship').val(RelationWithGuardian)
+            } else
+            {
+                alert("Something went wrong");
+            }
+        },
+        failure: function (response) {
+            alert(response.responseText);
+        },
+        error: function (response) {
+            alert(response.responseText);
+        }
+    });
+};
+    

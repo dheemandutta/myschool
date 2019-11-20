@@ -104,7 +104,7 @@ namespace MySchool.DAL
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
-            SqlCommand cmd = new SqlCommand("stpGettblSubjectForDrp", con);
+            SqlCommand cmd = new SqlCommand("stpGetSubjectForDrp", con);
             cmd.CommandType = CommandType.StoredProcedure;
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(cmd);

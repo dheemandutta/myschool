@@ -75,41 +75,9 @@
 
                 </ul>
             </li>
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-            <li class="@Html.isActive(controller: "Admission")">
-                <a href="#Admission" title="Student" data-toggle="collapse">
-                    <em class="icon-speedometer"></em>
-                    <span data-localize="sidebar.nav.Student">Admission</span>
-                </a>
-                <ul id="Admission" class="nav sidebar-subnav collapse">
-                    <li class="sidebar-subnav-header">Admission</li>
 
-                    <li class="@Html.isActive(controller: "Admission")">
-                        <a href="@Url.Action("Index", "AdmissionForm")" title="Admission">
-                            <em class="icon-control-play"></em>
-                            <span>Admission Form</span>
-                        </a>
-                    </li>
 
-                    <li class="@Html.isActive(controller: "AdmissionForm")">
-                        <a href="@Url.Action("AdmissionList", "AdmissionForm")" title="Admission Form">
-                            <em class="icon-control-play"></em>
-                            <span>Filled-up Form List</span>
-                        </a>
-                    </li>
 
-                    <li class="@Html.isActive(controller: "Admission")">
-                        <a href="@Url.Action("Index", "Admission")" title="Admission">
-                            <em class="icon-control-play"></em>
-                            <span>Student List for admission</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </li>
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
-
-            @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
             <li class="@Html.isActive(controller: "Year")">
                 <a href="@Url.Action("Index", "Year")" title="Year">
                     <em class="icon-trophy"></em>
@@ -171,7 +139,26 @@
                 </a>
             </li>
 
+            <li class="@Html.isActive(controller: "Admission")">
+                <a href="@Url.Action("Index", "AdmissionForm")" title="Admission">
+                    <em class="icon-control-play"></em>
+                    <span>Admission Form</span>
+                </a>
+            </li>
 
+            <li class="@Html.isActive(controller: "AdmissionForm")">
+                <a href="@Url.Action("AdmissionList", "AdmissionForm")" title="Admission Form">
+                    <em class="icon-control-play"></em>
+                    <span>Filled-up Form List</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Admission")">
+                <a href="@Url.Action("Index", "Admission")" title="Admission">
+                    <em class="icon-control-play"></em>
+                    <span>Student List for admission</span>
+                </a>
+            </li>
 
             <li class="@Html.isActive(controller: "Year")">
                 <a href="@Url.Action("GetAllAcademicYear", "Year")" title="Year">
@@ -180,12 +167,20 @@
                 </a>
             </li>
 
-            <li class="@Html.isActive(controller: "Year")">
-                <a href="@Url.Action("Index", "Year")" title="Year">
+            <li class="@Html.isActive(controller: "Dashboard")">
+                <a href="@Url.Action("Index", "Dashboard")" title="Dashboard">
                     <em class="icon-control-play"></em>
                     <span>Dashboard Entry</span>
                 </a>
             </li>
+
+            <li class="@Html.isActive(controller: "AdmissionForm")">
+                <a href="@Url.Action("GetAdmissionFormDetailsByID", "AdmissionForm")" title="AdmissionForm">
+                    <em class="icon-control-play"></em>
+                    <span>Show Admission Form</span>
+                </a>
+            </li>
+
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
 

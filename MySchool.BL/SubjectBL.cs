@@ -35,5 +35,11 @@ namespace MySchool.BL
 
         //for Grade drp
         ////////////////////////////////////////////////////
+        ///
+        public List<SubjectEntities> GetAllSubjectForDrp()
+        {
+            SubjectDAL subjectDal = new SubjectDAL();
+            return subjectDal.GetSubjectForDrp();
+        }
     }
 }

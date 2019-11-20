@@ -1,0 +1,227 @@
+﻿
+@{
+    ViewBag.Title = "GetAdmissionFormDetailsByID";
+}
+
+<h2>Admission Details</h2>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/knockout-3.5.0.debug.js"></script>
+<script src="~/Scripts/AdmissionForm.js"></script>
+<h2>Student Details</h2>
+@Html.Hidden("getadmissionformdetailsbyid", Url.Action("GetAdmissionFormDetailsByID", "AdmissionForm"))
+<body>
+    <input type="text" id="txtID" />
+    <button class="btn btn-primary" id="btnID" onclick="GetAdmissionFormDetailsById();">Show</button>
+
+    <table>
+        <tr>
+            <td colspan="4"><h2>Student Details</h2></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>:</td>
+            <td><label id="txtStudentName"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Applied for class</td>
+            <td>:</td>
+            <td><label id="txtClass"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Date of birth</td>
+            <td>:</td>
+            <td><label id="txtDateofBirth"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Sex</td>
+            <td>:</td>
+            <td><label id="txtSex"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>:</td>
+            <td><label id="txtAddress"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td><label id="txtEmail"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Religon</td>
+            <td>:</td>
+            <td><label id="txtReligon"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Caste</td>
+            <td>:</td>
+            <td><label id="txtCaste"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Mother tounge</td>
+            <td>:</td>
+            <td><label id="txtMotherTounge"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Indentification Marks</td>
+            <td>:</td>
+            <td><label id="txtIdentificationMarks"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Special Medical Problem</td>
+            <td>:</td>
+            <td><label id="txtSpecialMedicalProblem"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Applied For</td>
+            <td>:</td>
+            <td><label id="txtAppliedFor"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="4"><h2>Father's Details</h2></td>
+        </tr>
+        <tr>
+            <td>Father's Name</td>
+            <td>:</td>
+            <td><label id="txtFathersName"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Father's Contact No.</td>
+            <td>:</td>
+            <td><label id="txtFatherContactNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Father's Qualification</td>
+            <td>:</td>
+            <td><label id="txtFatherQualification"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Father's Occupation</td>
+            <td>:</td>
+            <td><label id="txtFathersOccupation"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Father's Annual Income</td>
+            <td>:</td>
+            <td><label id="txtFatherAnnualIncome"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="4"><h2>Mother's Details</h2></td>
+        </tr>
+        <tr>
+            <td>Mother's Name</td>
+            <td>:</td>
+            <td><label id="txtMothersName"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Mother's Contact No.</td>
+            <td>:</td>
+            <td><label id="txtMotherContactNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Mother's Qualification</td>
+            <td>:</td>
+            <td><label id="txtMotherQualification"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Mother's Occupation</td>
+            <td>:</td>
+            <td><label id="txtMothersOccupation"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Mother's Annual Income</td>
+            <td>:</td>
+            <td><label id="txtMotherAnnualIncome"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Guradian Name</td>
+            <td>:</td>
+            <td><label id="txtGuardinaName"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Relationship with Guradian</td>
+            <td>:</td>
+            <td><label id="txtRelationship"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        <tr>
+            <td>Form Number</td>
+            <td>:</td>
+            <td><label id="txtFormNumber"></label></td>
+            <td></td>
+        </tr>
+        </tr>
+    </table>
+</body>
+

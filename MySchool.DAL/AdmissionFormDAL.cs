@@ -119,7 +119,6 @@ namespace MySchool.DAL
             return reccordAffected;
         }
 
-
         public ActualAdmissionEntities GetActualAdmissionByID(int ID)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -180,7 +179,6 @@ namespace MySchool.DAL
             return actualAdmission;
         }
 
-
         public int GetAdmissionOfMaxIdByID()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -196,6 +194,26 @@ namespace MySchool.DAL
                 maxAdmissionID = 0;
 
             return maxAdmissionID.Value;
+        }
+
+        public List<GradeEntities> GetAllGradeForDrp()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetAllGradeForDrp", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<GradeEntities> unitMasterList = myTable.AsEnumerable().Select(m => new GradeEntities()
+            {
+                ID = m.Field<int>("ID"),
+                Grade = m.Field<string>("Grade")
+
+            }).ToList();
+            con.Close();
+            return unitMasterList;
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MySchool.Entities;
+using MySchool.BL;
 
 namespace Accountant.UI.Controllers
 {
@@ -29,6 +31,12 @@ namespace Accountant.UI.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult SaveOrUpdateDashBoard(DashboardEntities dashboard)
+        {
+            DashboardBL dashboardbl = new DashboardBL();
+            return Json(dashboardbl.SaveOrUpdateDashboard(dashboard), JsonRequestBehavior.AllowGet);
         }
     }
 }

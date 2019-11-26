@@ -52,6 +52,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="CampaignEntities.cs" />
     <Compile Include="ChoiceEntities.cs" />
+    <Compile Include="DashboardEntities.cs" />
     <Compile Include="ExamPaper.cs" />
     <Compile Include="QuestionAnswerEntities.cs" />
     <Compile Include="QuestionViewEntities.cs" />

@@ -7,12 +7,16 @@
 @{
     ViewBag.Title = "Teacher";
 }
-
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <script src="~/Scripts/Teacher.js"></script>
 
+
+
+
+
 <body>
-    @Html.Hidden("saveupdate",@Url.Action("SaveOrUpdate","Teacher"))
+    @Html.Hidden("saveupdate", @Url.Action("SaveOrUpdate", "Teacher"))
     <div class="col-md-9">
         <div class="container-md">
             <!-- Checkout Process-->
@@ -53,12 +57,12 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Date of Birth*</label>
-                                            <div id="datetimepicker1" class="input-group date" style="width:70%">
+                                            <div id="datetimepicker1" class="form-group" style="width:70%">
                                                 @*<input type="text" id="txtDateofBirth" class="form-control" required="">*@
-                                                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtTeacherDOB" })
-                                                <span class="input-group-addon">
-                                                    <span class="fa fa-calendar"></span>
-                                                </span>
+                                                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @required = "", id = "txtTeacherDOB", placeholder = "MM/dd/YYYY" })
+                                                @*<span class="input-group-addon">
+                                                        <span class="fa fa-calendar"></span>
+                                                    </span>*@
                                             </div>
                                         </div>
                                     </div>
@@ -259,19 +263,19 @@
                                             @Html.DropDownListFor(m => m.QualStatus, new List<SelectListItem>
                                                    {
                                                       new SelectListItem{ Text="Select", Value = "" },
-                                                      new SelectListItem{ Text="completed", Value = "Completed" },
-                                                      new SelectListItem{ Text="purshing", Value = "Purshing" }
+                                                      new SelectListItem{ Text="Completed", Value = "Completed" },
+                                                      new SelectListItem{ Text="Pursuing", Value = "Pursuing" }
                                                   }, new { name = "Caste", @class = "form-control m-b", @style = "width:100%", @id = "drpQualificationStatus", @required = "" })
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Completion date</label>
-                                            <div id="certificate" class="input-group date" style="width:90%">
-                                                @Html.TextBoxFor(m => m.QualCompletionDate, new { @class = "form-control", @required = "", id = "txtQualificationCompletionDate" })
-                                                <span class="input-group-addon">
-                                                    <span class="fa fa-calendar"></span>
-                                                </span>
+                                            <div id="certificate" class="form-group" style="width:90%">
+                                                @Html.TextBoxFor(m => m.QualCompletionDate, new { @class = "form-control", @required = "", id = "txtQualificationCompletionDate", name = "txtQualificationCompletionDate", placeholder = "MM/dd/YYYY" })
+                                                @*<input type="text" id="jdatepicker">*@
+                                                @*<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>*@
+
                                             </div>
                                         </div>
                                     </div>
@@ -293,7 +297,7 @@
                                             <br />
                                             <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
                                             <button type="button" class="btn btn-primary" id="btnRemove">Delete</button>
-                                            <button type="button" class="btn btn-primary" id="btnOk">Ok</button>
+
                                         </div>
                                     </div>
 
@@ -321,10 +325,7 @@
                                 <div class="form-group">
                                     <input type="hidden" id="FormID" />
                                 </div>
-                                <div class="mt-lg">
-                                    <button type="submit" id="btnSaveOrUpdate" class="btn btn-info" onclick="location.href='@Url.Action("Index", "AdmissionForm")'">Submit Form</button>
-                                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
-                                </div>
+
 
                             </div>
                         </div>
@@ -332,33 +333,36 @@
 
                 </div>
 
-
+                <div class="mt-lg">
+                    <button id="btnSaveOrUpdate" class="btn btn-info">Submit Form</button>
+                    <button type="button" id="btnClear" class="btn btn-info" onclick="ClearAll">Clear all</button>
+                </div>
 
             </form>
         </div>
     </div>
 </body>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnOk").click(function () {
-            var table = $("#tblQualification tbody");
-            var myArray = [];
+@*<script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnOk").click(function () {
+                var table = $("#tblQualification tbody");
+                var myArray = [];
 
-            table.find('tr').each(function (i) {
-                var myTableData = {};
-                var $tds = $(this).find('td');
-                myTableData.QualName = $tds.eq(0).text();
-                myTableData.QualStatus = $tds.eq(1).text();
-                myTableData.QualCertPath = $tds.eq(2).text();
-                myTableData.QualCompletionDate = $tds.eq(3).text();
-                myArray .push(myTableData);
-                alert(JSON.stringify(myArray));
+                table.find('tr').each(function (i) {
+                    var myTableData = {};
+                    var $tds = $(this).find('td');
+                    myTableData.QualName = $tds.eq(0).text();
+                    myTableData.QualStatus = $tds.eq(1).text();
+                    myTableData.QualCertPath = $tds.eq(2).text();
+                    myTableData.QualCompletionDate = $tds.eq(3).text();
+                    myArray .push(myTableData);
+                    alert(JSON.stringify(myArray));
+                });
+
             });
-          
         });
-    });
-</script>
+    </script>*@
 
 
 <script type="text/javascript">
@@ -387,6 +391,7 @@
     @Styles.Render("~/bundles/datetimePickerCss")
     @Styles.Render("~/bundles/ColorPickerCss")
     @Styles.Render("~/bundles/select2Css")
+    @*<link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />*@
 
 }
 @section Scripts {
@@ -406,6 +411,8 @@
     @Scripts.Render("~/bundles/demoForms")
     @Scripts.Render("~/bundles/select2")
     @Scripts.Render("~/bundles/sparklines")
+    @*<script src="~/Scripts/js/bootstrap-datepicker.min.js"></script>*@
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
 }
 
 
@@ -491,9 +498,9 @@
         $("#btnAdd").click(function () {
             var qualification = $("#txtQualification").val();
             var completionStatus = $("#drpQualificationStatus").val();
-            var completionDate = $("#txtCompletionDate").val();
+            var completionDate = $("#txtQualificationCompletionDate").val();
             var certificatePath = $("#qualCertificate").val();
-            alert(completionDate);
+            //alert(completionDate);
 
             if (qualification == "") {
                 alert("Please insert the Qualification");
@@ -514,7 +521,7 @@
                 $("#tblQualification tbody").append(markup);
                 $("#txtQualification").val('');
                 $("#drpQualificationStatus").val('');
-                $("#txtCompletionDate").val('');
+                $("#txtQualificationCompletionDate").val('');
             }
         });
 
@@ -566,6 +573,27 @@
                 }
             });
         });
+
+
+
+        $("#txtQualificationCompletionDate").datepicker({
+            showOn: "button",
+            buttonImage: "/Content/Images/calendar.gif",
+            buttonImageOnly: true,
+            buttonText: "Select date",
+            changeMonth: true,
+            changeYear: true
+        }); //
+
+        $("#txtTeacherDOB").datepicker({
+            showOn: "button",
+            buttonImage: "/Content/Images/calendar.gif",
+            buttonImageOnly: true,
+            buttonText: "Select date",
+            changeMonth: true,
+            changeYear: true
+        }); // txtTeacherDOB
+
     });
 </script>
 

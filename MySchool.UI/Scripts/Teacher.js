@@ -8,6 +8,21 @@ function SaveOrUpdate() {
         return false;
     }
 
+
+    var table = $("#tblQualification tbody");
+    var myArray = [];
+
+    table.find('tr').each(function (i) {
+        var myTableData = {};
+        var $tds = $(this).find('td');
+        myTableData.QualName = $tds.eq(0).text();
+        myTableData.QualStatus = $tds.eq(1).text();
+        myTableData.QualCertPath = $tds.eq(2).text();
+        myTableData.QualCompletionDate = $tds.eq(3).text();
+        myArray.push(myTableData);
+        alert(JSON.stringify(myArray));
+    });
+
     var teacher = {
         ID: $('#GridID').val(),
         Grade: $('#txtGrade').val(),

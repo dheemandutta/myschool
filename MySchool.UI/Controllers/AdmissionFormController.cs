@@ -17,7 +17,13 @@ namespace MySchool.UI.Controllers
         // GET: AdmissionForm
         public ActionResult Index()
         {
-            return View();
+            GetAllGradeForDrp();
+            AdmissionFormEntities admissionFormEntities = new AdmissionFormEntities();            
+            AdmissionFormBL admissionFormBL = new AdmissionFormBL();
+
+            //admissionFormEntities = admissionFormBL.GetAdmissionOfMaxIdByID(Session[""].ToString());
+            admissionFormEntities = admissionFormBL.GetAdmissionOfMaxIdByID(1.ToString());
+            return View(admissionFormEntities);
         }
 
         [HttpPost]
@@ -134,6 +140,26 @@ namespace MySchool.UI.Controllers
                 // Otherwise if anything else, return false
                 default: return false;
             }
+        }
+
+        public void GetAllGradeForDrp()
+        {
+            List<GradeEntities> gradeList = new List<GradeEntities>();
+            SectionBL sectionBl = new SectionBL();
+            gradeList = sectionBl.GetAllGradeForDrp();
+            ViewBag.getAllGradeForDrp = gradeList.Select(x =>
+                new SelectListItem()
+                {
+                    Text = x.Grade,
+                    Value = x.ID.ToString()
+                }
+            );
+        }
+
+       public ActionResult GetAdmissionFormDetailsByID(int ID)
+        {
+            AdmissionFormBL admissionFormBl = new AdmissionFormBL();
+            return Json(admissionFormBl.GetActualAdmissionByID(ID), JsonRequestBehavior.AllowGet);
         }
     }
 }

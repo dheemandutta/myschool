@@ -160,6 +160,27 @@
                 </a>
             </li>
 
+            <li class="@Html.isActive(controller: "Year")">
+                <a href="@Url.Action("GetAllAcademicYear", "Year")" title="Year">
+                    <em class="icon-control-play"></em>
+                    <span>Select Academic year</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "Dashboard")">
+                <a href="@Url.Action("Index", "Dashboard")" title="Dashboard">
+                    <em class="icon-control-play"></em>
+                    <span>Dashboard Entry</span>
+                </a>
+            </li>
+
+            <li class="@Html.isActive(controller: "AdmissionForm")">
+                <a href="@Url.Action("GetAdmissionFormDetailsByID", "AdmissionForm")" title="AdmissionForm">
+                    <em class="icon-control-play"></em>
+                    <span>Show Admission Form</span>
+                </a>
+            </li>
+
             @*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
 
 

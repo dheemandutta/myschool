@@ -44,6 +44,7 @@
     <Compile Include="AdmissionBL.cs" />
     <Compile Include="AdmissionFormBL.cs" />
     <Compile Include="ChoiceBL.cs" />
+    <Compile Include="DashboardBL.cs" />
     <Compile Include="ExamBL.cs" />
     <Compile Include="GradeBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

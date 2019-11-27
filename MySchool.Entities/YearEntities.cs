@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MySchool.Entities
 {
-    public class YearEntities:BaseEntity
+    public class YearEntities 
     {
         public int ID { get; set; }
 

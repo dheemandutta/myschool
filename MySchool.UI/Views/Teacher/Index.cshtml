@@ -132,14 +132,7 @@
                                     <div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Primary Subject*</label>
-                                            @Html.DropDownListFor(m => m.SubjectID, new List<SelectListItem>
-                                                   {
-                                                      new SelectListItem{ Text="Select", Value = "" },
-                                                      new SelectListItem{ Text="Hindu", Value = "Hindu" },
-                                                      new SelectListItem{ Text="Muslim", Value = "Muslim" },
-                                                      new SelectListItem{ Text="Christian", Value = "Christian" },
-                                                      new SelectListItem{ Text="Others", Value = "Others" }
-                                                   }, new { name = "subject", @class = "form-control m-b", @style = "width:50%", @id = "drpSubject", @required = "" })
+                                            @Html.DropDownListFor(model => model.ID, (IEnumerable<SelectListItem>)ViewBag.getAllGradeForDrp, "Select", new { @class = "form-control", @id = "drpSubject" })
                                         </div>
                                     </div>
                                 </div>

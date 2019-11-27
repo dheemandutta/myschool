@@ -14,5 +14,7 @@ namespace MySchool.Entities
         public int GradeID { get; set; }
 
         public int YearID { get; set; }
+
+        public string StudentName { get; set; }
     }
 }

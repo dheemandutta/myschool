@@ -21,5 +21,11 @@ namespace MySchool.BL
             YearDAL yearDAL = new YearDAL();
             return yearDAL.GetYearPageWise(pageIndex, ref recordCount, length);
         }
+
+        public List<YearEntities> GetAllYearForDrp()
+        {
+            YearDAL yearDal = new YearDAL();
+            return yearDal.GetAllYearForDrp();
+        }
     }
 }

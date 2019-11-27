@@ -119,7 +119,6 @@ namespace MySchool.DAL
             return reccordAffected;
         }
 
-
         public ActualAdmissionEntities GetActualAdmissionByID(int ID)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
@@ -178,6 +177,43 @@ namespace MySchool.DAL
             //actualAdmission.MotherName = Convert.ToString(ds.Tables[0].Rows[0]["MotherName"]);
             //actualAdmission.FatherName = Convert.ToString(ds.Tables[0].Rows[0]["FatherName"]);
             return actualAdmission;
+        }
+
+        public int GetAdmissionOfMaxIdByID()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetAdmissionOfMaxIdByID", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            int? maxAdmissionID = (int?)cmd.ExecuteScalar();
+            con.Close();
+            if (maxAdmissionID.HasValue)
+                maxAdmissionID += 1;
+            else
+                maxAdmissionID = 0;
+
+            return maxAdmissionID.Value;
+        }
+
+        public List<GradeEntities> GetAllGradeForDrp()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpGetAllGradeForDrp", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(ds);
+            DataTable myTable = ds.Tables[0];
+            List<GradeEntities> unitMasterList = myTable.AsEnumerable().Select(m => new GradeEntities()
+            {
+                ID = m.Field<int>("ID"),
+                Grade = m.Field<string>("Grade")
+
+            }).ToList();
+            con.Close();
+            return unitMasterList;
         }
     }
 }

@@ -23,14 +23,39 @@ namespace MySchool.BL
 
         public int UpdateSelectionForAdmissionStatus(int ID)
         {
-            AdmissionFormDAL admissiondal = new AdmissionFormDAL();
-            return admissiondal.UpdateSelectionForAdmissionStatus(ID);
+            AdmissionFormDAL admissionFormDAL = new AdmissionFormDAL();
+            return admissionFormDAL.UpdateSelectionForAdmissionStatus(ID);
         }
 
         public ActualAdmissionEntities GetActualAdmissionByID(int ID)
         {
             AdmissionFormDAL admissiondal = new AdmissionFormDAL();
             return admissiondal.GetActualAdmissionByID(ID);
+        }
+
+        public int SaveOrUpdateForActualAdmission(ActualAdmissionEntities admissionForm)
+        {
+            AdmissionFormDAL admissionfromDal = new AdmissionFormDAL();
+            // return admissionfromDal.SaveOrUpdateForActualAdmission(admissionForm);
+            return 0; ////////////////////////////////////////////
+        }
+
+        public AdmissionFormEntities GetAdmissionOfMaxIdByID(string academicYear)
+        {
+            AdmissionFormDAL admissiondal = new AdmissionFormDAL();
+            int maxAdmissionId = admissiondal.GetAdmissionOfMaxIdByID();
+       
+            string admnum = "ADM-" + academicYear + maxAdmissionId.ToString();
+            AdmissionFormEntities admissionFormEntities = new AdmissionFormEntities();
+
+            admissionFormEntities.FormNumber = admnum;
+            return admissionFormEntities;
+        }
+
+        public List<GradeEntities> GetAllGradeForDrp()
+        {
+            SectionDAL sectionDal = new SectionDAL();
+            return sectionDal.GetAllGradeForDrp();
         }
     }
 }

@@ -22,10 +22,25 @@ namespace MySchool.UI.Controllers
             return View(actualAdmissionEntities);
         }
 
+        public ActionResult ActualAdmissionPaint()
+        {
+            ActualAdmissionEntities actualAdmissionEntities = new ActualAdmissionEntities();
+            AdmissionFormBL admissionFormBL = new AdmissionFormBL();
+            actualAdmissionEntities = admissionFormBL.GetActualAdmissionByID(1);
+            return View(actualAdmissionEntities);
+        }
+
         public ActionResult GetActualAdmissionByID(int ID)
         {
             AdmissionFormBL admissionFormBL = new AdmissionFormBL();
             return Json(admissionFormBL.GetActualAdmissionByID(ID), JsonRequestBehavior.AllowGet);
+        }
+
+
+         public JsonResult SaveOrUpdateForActualAdmission(ActualAdmissionEntities choiceEntities)
+        {
+            AdmissionFormBL admissionFormBL = new AdmissionFormBL();
+            return Json(admissionFormBL.SaveOrUpdateForActualAdmission(choiceEntities), JsonRequestBehavior.AllowGet);
         }
     }
 }

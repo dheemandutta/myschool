@@ -1,5 +1,5 @@
-﻿function SaveOrUpdateDashBoard() {
-    var postUrl = $('#SaveOrUpdateDashBoard').val();
+﻿function SaveUpdateDashBoard() {
+    var postUrl = $('#saveorupdatedashboard').val();
     var res = validate;
     if (res === false) {
         return false;
@@ -13,7 +13,7 @@
         releaseDate: $('#txtReleaseDate').val(),
         expiryDate: $('#txtExpiryDate').val(),
         importance: $('#drpImportance').val(),
-        filepath: $('#fileUpload').val(),
+        //filepath: '',
     };
 
     $.ajax({

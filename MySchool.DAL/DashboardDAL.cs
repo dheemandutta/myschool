@@ -32,7 +32,7 @@ namespace MySchool.DAL
             cmd.Parameters.AddWithValue("@releaseDate", dashboard.releaseDate);
             cmd.Parameters.AddWithValue("@expiryDate", dashboard.expiryDate);
             cmd.Parameters.AddWithValue("@importance", dashboard.importance);
-            cmd.Parameters.AddWithValue("@filepath", dashboard.filepath);
+            //cmd.Parameters.AddWithValue("@filepath", dashboard.filepath);
 
             int recordAffected = cmd.ExecuteNonQuery();
             con.Close();

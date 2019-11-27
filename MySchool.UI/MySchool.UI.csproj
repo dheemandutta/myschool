@@ -529,6 +529,7 @@
     <Content Include="Scripts\UserRegistration.js" />
     <Content Include="Scripts\Year.js" />
     <Content Include="Sql Script\DBScript_Dashboard_Snehasish20191126.sql" />
+    <Content Include="Sql Script\DBScript_Dashboard_Snehasish20191127.sql" />
     <Content Include="Sql Script\PP_02.11.2019_stpGetAdmissionOfMaxIdByID.sql" />
     <Content Include="Sql Script\PP_30.10.2019_stpGetActualAdmissionByID.sql" />
     <Content Include="Sql Script\PP_31.10.2019_3_SP.sql" />

@@ -24,8 +24,8 @@
         dataType: "json",
         success: function (result) {
             if (result > 0) {
-                ClearAll();
-                SetUpGrid();
+                //ClearAll();
+                //SetUpGrid();
                 swal("Good job!", "Data Saved Successfully", "success");
             }
             else {

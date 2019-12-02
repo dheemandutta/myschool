@@ -30,6 +30,7 @@ namespace Accountant.UI.Controllers
 
         public ActionResult Index()
         {
+           
             return View();
         }
 

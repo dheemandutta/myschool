@@ -82,10 +82,10 @@ namespace MySchool.BL
             return topicDAL.GettblSubjectForDrp();
         }
 
-        public void SaveUserAnswer(int answerId, int useranswerId, int userId)
+        public void SaveUserAnswer(int answerId, int useranswerId, int userId,string currentTime)
         {
             QuestionDAL topicDAL = new QuestionDAL();
-            topicDAL.SaveUserAnswer(answerId, useranswerId,userId);
+            topicDAL.SaveUserAnswer(answerId, useranswerId,userId,currentTime);
         }
 
 

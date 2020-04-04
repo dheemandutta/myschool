@@ -329,7 +329,7 @@ namespace MySchool.DAL
             return examPaper;
         }
 
-        public void SaveUserAnswer(int answerId,int useranswerId,int userId)
+        public void SaveUserAnswer(int answerId,int useranswerId,int userId,string currentTime)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
@@ -338,6 +338,7 @@ namespace MySchool.DAL
             cmd.Parameters.AddWithValue("@QuestionId", useranswerId);
             cmd.Parameters.AddWithValue("@Id", answerId);
             cmd.Parameters.AddWithValue("@UserId", userId);
+            cmd.Parameters.AddWithValue("@CurrentTime", currentTime);
             int records = cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -354,7 +355,7 @@ namespace MySchool.DAL
                 questionEntities.Id = Convert.ToInt32(dsQuestion.Tables[0].Rows[i]["Id"].ToString());
                 questionEntities.QuestionText = Convert.ToString(dsQuestion.Tables[0].Rows[i]["QuestionText"]);
                 questionEntities.Marks = Convert.ToDecimal(dsQuestion.Tables[0].Rows[i]["Marks"]);
-
+                
                // IdList.Add(questionEntities.Id);
 
                 DataTable dtAns = dsQuestion.Tables[1].AsEnumerable()
@@ -369,6 +370,15 @@ namespace MySchool.DAL
                     answerEntities1.QuestionID = Convert.ToInt32(dtAns.Rows[j]["QuestionId"].ToString());
                     answerEntities1.IsRightAnswer = Convert.ToString(dtAns.Rows[j]["IsAnswer"].ToString());
                     answerEntities1.IsUserAnswer = Convert.ToInt32(dtAns.Rows[j]["IsUserAnswer"].ToString());
+                    answerEntities1.ChoiceID = Convert.ToInt32(dtAns.Rows[j]["ChoiceId"].ToString());
+                    
+                    if(dtAns.Rows[j]["IsUserAnswer"].ToString() == "1")
+                    {
+                        examPaper.UserAnswer = answerEntities1.ChoiceID.ToString();
+                    }
+                    //examPaper.RadioValue = dtAns.Rows[j]["IsUserAnswer"].ToString();
+
+
 
                     answerEntities.Add(answerEntities1);
                     

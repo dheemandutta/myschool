@@ -10,14 +10,14 @@ namespace MySchool.BL
 {
     public class ExamBL
     {
- 
+
         public int SaveOrUpdateExam(ExamEntities Exam)
         {
             ExamDAL ExamDl = new ExamDAL();
             return ExamDl.SaveOrUpdateExam(Exam);
         }
 
-        
+
         public int DeleteExam(int ID)
         {
             ExamDAL ExamDl = new ExamDAL();
@@ -50,11 +50,19 @@ namespace MySchool.BL
         }
 
 
-        public decimal GettblConfigByExamTime()
+        public string GettblConfigByExamTime(string userId)
         {
             ExamDAL ExamDl = new ExamDAL();
-            return ExamDl.GettblConfigByExamTime();
+            return ExamDl.GettblConfigByExamTime(userId);
+        }
+
+        public void UpdateExamTime(int userId, string currentTime)
+        {
+            ExamDAL ExamDl = new ExamDAL();
+            ExamDl.UpdateExamTime(userId, currentTime);
         }
     }
+
+        
 }
 

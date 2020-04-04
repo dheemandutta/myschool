@@ -152,27 +152,35 @@ namespace MySchool.DAL
         }
 
 
-        public decimal GettblConfigByExamTime()
+        public string GettblConfigByExamTime(string userId)
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand("stpGettblConfigByExamTime", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@ID", ExamID);
-            //SqlDataAdapter da = new SqlDataAdapter(cmd);
-            //DataSet ds = new DataSet();
-            //da.Fill(ds);
-            //con.Close();
-            //ExamEntities Exam = new ExamEntities();
-
-            //Exam.Id = Convert.ToInt32(ds.Tables[0].Rows[0]["Id"].ToString());
-           // Exam.ConfigValue = Convert.ToString(ds.Tables[0].Rows[0]["ConfigValue"]);
-           // Exam.KeyName = Convert.ToString(ds.Tables[0].Rows[0]["KeyName"]);
-
+            cmd.Parameters.AddWithValue("@UserId", userId);
+           
             string recordAffected = (string)cmd.ExecuteScalar();
             con.Close();
-            decimal val = Convert.ToDecimal(recordAffected);
-            return val;
+            //decimal val = Convert.ToDecimal(recordAffected);
+            string[] words = recordAffected.Split('.');
+            if (words.Length == 1) recordAffected = recordAffected + ".00";
+            return recordAffected;
+        }
+
+        public void UpdateExamTime(int userId,string currentTime)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolDBConnectionString"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("stpUpdateExamTime", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@CurrentTime", currentTime);
+            cmd.Parameters.AddWithValue("@UserId", userId);
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+            //decimal val = Convert.ToDecimal(recordAffected);
+            
         }
     }
 }

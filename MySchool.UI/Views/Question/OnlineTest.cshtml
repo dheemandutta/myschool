@@ -1,0 +1,312 @@
+﻿@model MySchool.Entities.ExamPaper
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/QuestionPaper.js"></script>
+
+<!DOCTYPE html>
+
+
+<head>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            /*border: 1px solid #dddddd;*/
+            text-align: left;
+            padding: 8px;
+        }
+
+
+        /*///////////////////////////////////////////////////*/
+        * {
+            box-sizing: border-box;
+        }
+
+        .column {
+            float: left;
+        }
+        /*///////////////////////////////////////////////////*/
+    </style>
+</head>
+<body style="background-image: url(../background/depart.jpg); background-size: cover;">
+    <div style="position:absolute; width: 80%; height: 100%; left: 10%; top: 5%;">
+        @Html.Hidden("loaddata", @Url.Action("GetNextQuestion", "Question"))
+        @Html.Hidden("loadconfigdata", @Url.Action("GettblConfigByExamTime", "Question"))
+
+        <div class="col-md-7 bac" style="font-size:40px; color: #77fa42;   width: 54.333333%;" id="clock">
+
+        </div>
+
+        <form action="" method="post">
+            <div class="col-md-7 bac" style="height:55px; width: 45%;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text m-t-lg">
+                            <h2>
+                                Exam
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8" style="width: 100%;">
+                <div style="height:900px;">
+                    @*/////////////////////// class="table-responsive"///////////////////////////*@
+                    <div class="card">
+
+                        <div class="row">
+                            <div class="col-lg-12">
+
+                                <div class="panel panel-default table-responsive" style="height:400px;">
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-content">
+                                            <div class="form-group" style="margin-right: -600px; width:1000px;">
+                                                <div class="col-sm-10" style="width: 106%;">
+                                                    @*<input type="text" class="form-control" style="width: 90%;" id="TopicName" placeholder="Topic Name" required="required">*@
+                                                    @*<h1 class="no-margins"><span id="QuestionText" style="font-size: 24px;">@Html.DisplayFor(x => x.QuestionText)</span></h1>*@
+                                                    <h4>Question:</h4>
+
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <h3 class="no-margins"><span id="QuestionText" style="font-size: 15px;">@Html.Raw(HttpUtility.HtmlDecode(Model.QuestionEntities[0].QuestionText))</span></h3>
+                                                            </td>
+                                                        </tr>
+                                                        @Html.HiddenFor(m =>m.UserAnswer, new { @Id = "hdnselectedAnswer" })
+                                                        @Html.HiddenFor(m=> m.CurrentTime , new { @id = "hdncurrenttime" })
+                                                       @foreach(var answers in Model.QuestionEntities[0].AnswerEntities)
+                                                       {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.RadioButtonFor(m => m.UserAnswer, answers.ChoiceID, new { @Name = "answers" }) @Html.Raw(HttpUtility.HtmlDecode(answers.AnswerText))
+                                                            </td>
+
+                                                        </tr>
+                                                       }
+                                                        
+                                                    </table>
+
+                                                    <table>
+                                                        <tr>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="text-center mt-lg">
+                                @*<input id="Previous" class="btn btn-warning" value="Previous" name="Command" />
+                                <input id="Next" class="btn btn-success" value="Next" name="Command" />*@
+                                   <input type="submit" value="Next" name="action:Next" id="Next" />
+                                    <input type="submit" value="Previous" name="action:Previous" id="Previous" />
+
+                            </div>
+                                <div class="text-center mt-lg">
+                                    <h5 style=" color:crimson;"> If you click submit, your exam will end immediately. </h5>
+                                    @*@using (Html.BeginForm("ExamResult", "Question", FormMethod.Post))
+                                    {
+                                        <input id="btnResult" style="background-color:rebeccapurple; color:white;" class="btn" type="submit" value="See Your Result" />
+                                    }*@
+
+                                    <input type="submit" id="btnResult" style="background-color:rebeccapurple; color:white;" class="btn" value="See Your Result" name="action:Result"  />
+                                </div>
+
+                                <div class="panel panel-default" style="height:250px;">
+
+                                    <div class="ibox float-e-margins" align="center">
+                                        <div class="ibox-content">
+
+                                            @*<form class="form-horizontal" id="MyForm" data-parsley-validate="" novalidate="" action="#">*@
+                                            <div class="form-group" style="margin-right: -300px;">
+                                                <div class="col-sm-10 center" style="width: 20%;">
+                                                    <table style="border-collapse:collapse; width:10%; position:center;" id="answertable">
+
+
+                                                        @for (int j = 0, cellcounter = 0; j < Model.AnsweredQuestions.Count; j++, cellcounter++)
+                                                        {
+
+                                                            if (j % 40 == 0 && j!=0)
+                                                            {
+                                                                @:<tr>
+                                                            }
+
+
+                                                                if (Model.AnsweredQuestions[j].HasAnswered == 1)
+                                                                {
+
+                                                                    @:<td style="color: black ; border: 1px solid #dddddd; background-color:forestgreen;">
+                                                                        @Model.AnsweredQuestions[j].RowNo
+                                                                    @:</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    @:<td style="color: black ; border: 1px solid #dddddd;">
+                                                                        @Model.AnsweredQuestions[j].RowNo
+
+                                                                    @:</td>
+
+
+                                                                }
+
+                                                            if (j % 40 == 0 && j!= 0)
+                                                             {
+                                                               @:</tr>
+                                                             }
+
+                                                        }
+
+
+
+
+
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+         
+        </form>
+
+
+    </div>
+</body>
+
+@section Styles {
+    @Styles.Render("~/bundles/datatablesCss")
+    @Styles.Render("~/bundles/SweetAlertCss")
+
+    @Styles.Render("~/bundles/tagsinputCss")
+    @Styles.Render("~/bundles/sliderCtrlCss")
+    @Styles.Render("~/bundles/chosenCss")
+    @Styles.Render("~/bundles/datetimePickerCss")
+    @Styles.Render("~/bundles/ColorPickerCss")
+    @Styles.Render("~/bundles/select2Css")
+    @Styles.Render("~/bundles/fileUploadCss")
+
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/demoDatatable")
+
+    @Scripts.Render("~/bundles/parsley")
+    @Scripts.Render("~/bundles/SweetAlert")
+
+    @Scripts.Render("~/bundles/filestyle")
+    @Scripts.Render("~/bundles/tagsinput")
+    @Scripts.Render("~/bundles/chosen")
+    @Scripts.Render("~/bundles/sliderCtrl")
+    @Scripts.Render("~/bundles/inputmask")
+    @Scripts.Render("~/bundles/wysiwyg")
+    @Scripts.Render("~/bundles/moment")
+    @Scripts.Render("~/bundles/datetimePicker")
+    @Scripts.Render("~/bundles/ColorPicker")
+    @Scripts.Render("~/bundles/demoForms")
+    @Scripts.Render("~/bundles/select2")
+    <script src="~/Scripts/jquery.countdown.min.js"></script>
+
+
+    @Scripts.Render("~/bundles/fileUpload")
+    @Scripts.Render("~/bundles/demoUpload")
+
+}
+
+<script type="text/javascript">
+    var t = $('#loadconfigdata').val();
+
+    $(document).ready(function () {
+
+        var jqxhr = $.getJSON(t, function () {
+            console.log("success");
+        })
+            .done(function (data) {
+                console.log("second success");
+                console.log(data);
+                var timer2 = data; //parseFloat(data).toFixed(2);
+                timer2 = timer2.replace('.', ':');
+                //var xx = timer2.split(':');
+                console.log('second print');
+                console.log(timer2);
+                var seconds;
+                var timer;
+                var interval = setInterval(function () {
+
+                    timer = timer2.split(':');
+                    //by parsing integer, I avoid all extra string processing
+                    var minutes = parseInt(timer[0], 10);
+                    seconds = parseInt(timer[1], 10);
+
+
+                    --seconds;
+                    minutes = (seconds < 0) ? --minutes : minutes;
+                    if (minutes < 0) clearInterval(interval);
+                    seconds = (seconds < 0) ? 59 : seconds;
+                    seconds = (seconds < 10) ? '0' + seconds : seconds;
+                    //minutes = (minutes < 10) ?  minutes : minutes;
+                    $('#clock').html(minutes + ':' + seconds);
+                    $('#hdncurrenttime').val(minutes + ':' + seconds);
+                    timer2 = minutes + ':' + seconds;
+                }, 1000);
+            })
+            .fail(function () {
+                console.log("error");
+            })
+            .always(function () {
+                console.log("complete");
+            });
+
+
+
+        if (window.performance) {
+            console.info("window.performance works fine on this browser");
+        }
+        if (performance.navigation.type == 1) {
+            console.info("This page is reloaded");
+            $('#Next').prop('disabled', true);
+            $('#Previous').prop('disabled', true);
+
+        } else {
+            console.info("This page is not reloaded");
+        }
+
+
+
+        $("input[name='answers']").change(function(){
+            //hdnselectedAnswer
+            var rad = $(this).val();
+            //alert(rad);
+            $('#hdnselectedAnswer').val(rad);
+        });
+
+    });
+
+
+
+</script>

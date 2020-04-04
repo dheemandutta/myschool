@@ -155,6 +155,8 @@
                                 <div class="text-center mt-lg">
                                     <input id="Previous" class="btn btn-warning" value="Previous" name="Command" />
                                     <input id="Next" class="btn btn-success" value="Next" name="Command" />
+                                                                        
+
                                 </div>
                                 <div class="text-center mt-lg">
                                     <h5 style=" color:crimson;"> If you click submit, your exam will end immediately. </h5>
@@ -255,6 +257,7 @@
 
         $('#Next').click(function () {
 
+            console.log('NextClick');
             var index = $('#pageindex').val();
 
             var qcount = $('#qCnt').val();

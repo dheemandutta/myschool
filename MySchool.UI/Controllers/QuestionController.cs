@@ -14,8 +14,8 @@ namespace MySchool.UI.Controllers
 {
     public class QuestionController : Controller
     {
-  
-       
+
+        
         // GET: Question
         public ActionResult Index()
         {
@@ -36,6 +36,26 @@ namespace MySchool.UI.Controllers
             return View(exam);
         }
 
+        public ActionResult OnlineTest(string id)
+        {
+            ExamPaper exam = new ExamPaper();
+            exam.ExamType = id;
+            Session["ExamType"] = id;
+            
+            if (TempData["exampaper"] != null)
+            {
+                exam = (ExamPaper)TempData["exampaper"];
+                TempData["exampaper"] = exam;
+            }
+            else
+            {
+                exam = GetQuestion("1", "1", null, null,"60");
+                TempData["exampaper"] = exam;
+            }
+
+            return View(exam);
+        }
+
 
         public ActionResult StartTest()
         {
@@ -53,8 +73,10 @@ namespace MySchool.UI.Controllers
         [HttpPost]
         public ActionResult StartTest(FormCollection q)
         {
-            // GettblSubjectForDrp();
-            return RedirectToAction("Exam", "Question", new { id = q[0].ToString() });
+            // Actual
+            //return RedirectToAction("Exam", "Question", new { id = q[0].ToString() });
+            //POC
+            return RedirectToAction("OnlineTest", "Question", new { id = q[0].ToString() });
         }
 
         public ActionResult QuestionPaper()
@@ -104,7 +126,7 @@ namespace MySchool.UI.Controllers
                 if (item.ID == int.Parse(collection.AllKeys[0]))
                 {
                     item.IsUserAnswer = 1;
-                    topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer, int.Parse(Session["UserId"].ToString())); //save userdata
+                    //topicBL.SaveUserAnswer(item.ID, item.IsUserAnswer, int.Parse(Session["UserId"].ToString())); //save userdata
                     break;
                 }
             }
@@ -420,15 +442,41 @@ namespace MySchool.UI.Controllers
         //    return topicBL.GetAllQuestion(QuestionCount);
         //}
 
-        public JsonResult GetNextQuestion(string pageindex,string pagesize, string radioValue,string quesId)
+        //public JsonResult GetNextQuestion(string pageindex,string pagesize, string radioValue,string quesId)
+        //{
+        //    ExamPaper examPaper = new ExamPaper();
+        //    QuestionBL topicBL = new QuestionBL();
+        //    if (radioValue != null)
+        //    {
+        //        if(! String.IsNullOrEmpty(quesId))
+        //            if(int.Parse(quesId) > 0 && !String.IsNullOrEmpty(radioValue))
+        //        topicBL.SaveUserAnswer(int.Parse(radioValue), int.Parse(quesId), int.Parse(Session["UserId"].ToString()));
+        //    }
+
+        //    int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
+
+        //    examPaper = topicBL.GetNextPrevQuestion(int.Parse(pageindex), int.Parse(pagesize), int.Parse(Session["UserId"].ToString()));
+        //    examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
+
+        //    return Json(examPaper, JsonRequestBehavior.AllowGet);
+
+        //}
+
+        public ExamPaper GetQuestion(string pageindex, string pagesize, string radioValue, string quesId,string currentTime)
         {
             ExamPaper examPaper = new ExamPaper();
             QuestionBL topicBL = new QuestionBL();
-            if (radioValue != null)
+
+            if (radioValue != null && radioValue != String.Empty)
             {
-                if(! String.IsNullOrEmpty(quesId))
-                    if(int.Parse(quesId) > 0 && !String.IsNullOrEmpty(radioValue))
-                topicBL.SaveUserAnswer(int.Parse(radioValue), int.Parse(quesId), int.Parse(Session["UserId"].ToString()));
+                if (!String.IsNullOrEmpty(quesId))
+                    if (int.Parse(quesId) > 0 && !String.IsNullOrEmpty(radioValue))
+                        topicBL.SaveUserAnswer(int.Parse(radioValue), int.Parse(quesId), int.Parse(Session["UserId"].ToString()),currentTime);
+            }
+            else
+            {
+                ExamBL examBL = new ExamBL();
+                examBL.UpdateExamTime(int.Parse(Session["UserId"].ToString()), currentTime);
             }
 
             int questionCount = int.Parse(ConfigurationManager.AppSettings["QuestionCount"].ToString());
@@ -436,11 +484,57 @@ namespace MySchool.UI.Controllers
             examPaper = topicBL.GetNextPrevQuestion(int.Parse(pageindex), int.Parse(pagesize), int.Parse(Session["UserId"].ToString()));
             examPaper.QuestionEntities = examPaper.QuestionEntities.OrderBy(o => o.Id).ToList();
 
-            return Json(examPaper, JsonRequestBehavior.AllowGet);
 
+            return examPaper;
+        }
+
+
+        [HttpPost]
+        [MultipleButton(Name = "action", Argument = "Next")]
+        public ActionResult Next(ExamPaper mm) 
+        {
+            ExamPaper exam = new ExamPaper();
+
+            if (TempData["exampaper"] != null)
+            {
+                exam = (ExamPaper)TempData["exampaper"];
+            }
+            exam.PageSize = 1;
+            if (mm.UserAnswer != null)
+                exam.UserAnswer = mm.UserAnswer;
+            else
+                exam.UserAnswer = String.Empty;
+            if (exam.PageIndex > 0) exam.PageIndex = exam.PageIndex + 1;
+            ExamPaper examPaper = GetQuestion(exam.PageIndex.ToString(), exam.PageSize.ToString(),exam.UserAnswer.ToString(), exam.QuestionEntities[0].Id.ToString(),mm.CurrentTime);
+            TempData["exampaper"] = examPaper;
+            return RedirectToAction("OnlineTest", "Question", new { id = "RealTest" });
         }
 
         [HttpPost]
+        [MultipleButton(Name = "action", Argument = "Previous")]
+        public ActionResult Previous(ExamPaper mm)
+        {
+
+            ExamPaper exam = new ExamPaper();
+
+            if (TempData["exampaper"] != null)
+            {
+                exam = (ExamPaper)TempData["exampaper"];
+            }
+            exam.PageSize = 1;
+            if (mm.UserAnswer != null)
+                exam.UserAnswer = mm.UserAnswer;
+            else
+                exam.UserAnswer = String.Empty;
+            if (exam.PageIndex > 0) exam.PageIndex = exam.PageIndex - 1;
+            ExamPaper examPaper = GetQuestion(exam.PageIndex.ToString(), exam.PageSize.ToString(), exam.UserAnswer.ToString(), exam.QuestionEntities[0].Id.ToString(),mm.CurrentTime);
+            TempData["exampaper"] = examPaper;
+
+            return RedirectToAction("OnlineTest", "Question", new { id = "RealTest" });
+        }
+
+        [HttpPost]
+        [MultipleButton(Name = "action", Argument = "Result")]
         public ActionResult ExamResult()
         {
             string examType = Session["ExamType"].ToString();
@@ -458,8 +552,9 @@ namespace MySchool.UI.Controllers
 
         public JsonResult GettblConfigByExamTime()
         {
-            ExamBL examBL = new ExamBL();
-            return Json(examBL.GettblConfigByExamTime(), JsonRequestBehavior.AllowGet);
+            ExamBL examBL = new ExamBL(); 
+            var data = examBL.GettblConfigByExamTime(Session["UserId"].ToString());
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
 }

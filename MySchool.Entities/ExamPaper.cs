@@ -34,5 +34,10 @@ namespace MySchool.Entities
         public List<AnsweredQuestions> AnsweredQuestions { get; set; }
 
         public string ExamType { get; set; }
+
+        public string RadioValue { get; set; }
+        public string UserAnswer { get; set; }
+
+        public string CurrentTime { get; set; }
     }
 }
